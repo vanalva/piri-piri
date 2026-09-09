@@ -729,3 +729,11 @@ window.CARTA_GALLERY = {
   }
  ]
 };
+
+// Folder the tiles are built from, kept as a plain literal on purpose.
+// build-web.js copies only the assets it can SEE, and it finds them by
+// scanning src/js/*.js for quoted file paths or folder prefixes. The tile
+// filenames are assembled at runtime (base + width), so without this string
+// the whole gallery folder is invisible to the bundler and every tile 404s
+// on deploy while working fine locally, where src/ is served as-is.
+window.CARTA_GALLERY_DIR = "assets/resources/images/Carta/gallery/";

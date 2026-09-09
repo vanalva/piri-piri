@@ -265,7 +265,9 @@
         </div>
       </section>
 
-      <section class="section_masonry u-width-full u-theme-dark" data-item-gallery-section style="display: none;">
+      <!-- u-padding-block-8 matches the masonry section on historia. Without it
+           the first row of tiles butts straight into the detail card above. -->
+      <section class="section_masonry u-width-full u-padding-block-8 u-theme-dark" data-item-gallery-section style="display: none;">
         <div class="masonry-grid u-padding-inline-sitemargin" data-item-gallery>
           <!-- gallery rows injected by JS from window.CARTA_GALLERY[slug] -->
 
@@ -425,7 +427,7 @@
   </div>
 
   <script src="js/menu_items.js?v=80a83fa4"></script>
-  <script src="js/carta_gallery.js?v=61bec52c"></script>
+  <script src="js/carta_gallery.js?v=e46a3be6"></script>
   <script src="js/carta_widths.js?v=f8ab2f74"></script>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -577,7 +579,13 @@
         // resources/images/Carta/gallery/<w>w/<b>_<w>w.webp (Compression Lab
         // protocol, from the full-res source). Width list is per-image because
         // sources differ in resolution — avoids requesting a width that 404s.
-        const galPath = (b, w) => `assets/resources/images/Carta/gallery/${w}w/${b}_${w}w.webp`;
+        // The folder comes from carta_gallery.js so the deploy bundler can see
+        // it: build-web.js only copies assets it finds by scanning src/js, and
+        // it also rewrites `assets/` to `assets/` there when pages flatten
+        // to the web root. Hard-coding the path here worked locally and 404'd
+        // on GitHub Pages.
+        const GAL_DIR = window.CARTA_GALLERY_DIR || "assets/resources/images/Carta/gallery/";
+        const galPath = (b, w) => `${GAL_DIR}${w}w/${b}_${w}w.webp`;
         const makeTile = (entry, sizeClass) => {
           const tile = document.createElement("div");
           tile.className = "masonry-item " + sizeClass;
