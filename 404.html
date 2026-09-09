@@ -1,0 +1,828 @@
+<!DOCTYPE html><html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Página no encontrada (404) | Piri Piri</title>
+  <meta name="robots" content="noindex, follow">
+  <meta content="Página no encontrada - Piri Piri" property="og:title">
+  <meta content="Página no encontrada - Piri Piri" property="twitter:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="css/lumos.css?v=a040767e" rel="stylesheet" type="text/css">
+  <link href="css/site.css?v=20260606x" rel="stylesheet" type="text/css">
+  <link href="css/interactions.css?v=0dde50df" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+<link href="assets/resources/images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="assets/resources/images/webclip.jpg" rel="apple-touch-icon">
+</head>
+<body>
+  <div class="page_wrap">
+    
+    <div class="nav_component" data-style="overlap">
+      <div class="u-embed-css w-embed">
+        <style>
+:root {
+	--nav--menu-open-duration: 400ms;
+	--nav--menu-close-duration: 400ms;
+	--nav--dropdown-open-duration: 400ms;
+	--nav--dropdown-close-duration: 400ms;
+}
+body:has(.nav_component .w-nav-button.w--open):not(:has(.nav_desktop_wrap:not(.w-condition-invisible))) { overflow: hidden; }
+/* on smaller screens */
+@media (width < 65em) {
+	/* disable scroll when mobile menu is open */
+	body:has(.nav_component .w-nav-button.w--open) { overflow: hidden; }
+}
+/* on larger screens */
+@container (min-width: 65em) {
+	/* show desktop nav & dropdown backdrop */
+	.nav_desktop_wrap, .nav_dropdown_backdrop { display: block; }
+	/* hide mobile nav & mobile menu backdrop */
+	.nav_desktop_wrap:not(.w-condition-invisible) ~ .nav_mobile_wrap, .nav_desktop_wrap:not(.w-condition-invisible) ~ .nav_menu_backdrop { display: none; }
+}
+/* dropdown list: initial state */
+html:not(.wf-design-mode) .nav_dropdown_component > .w-dropdown-list {
+	/* removes display none to enable css transitions */
+	display: grid !important;
+	grid-template-columns: minmax(0, 1fr);
+	/* sets list to 0 height by default */
+	grid-template-rows: 0fr;
+	transition: grid-template-rows var(--nav--dropdown-close-duration);
+	/* makes list content not focusable when closed */
+	visibility: hidden;
+	opacity: 0;
+}
+/* makes list content focusable when opened */
+html:not(.wf-design-mode) .nav_dropdown_component > .w-dropdown-list.w--open {
+	visibility: visible;
+	opacity: 1;
+}
+/* sets list child to overflow hidden to enable css height transition */
+.nav_dropdown_component > .w-dropdown-list > * {
+	overflow: hidden;
+}
+/* set open state of dropdown list */
+.nav_dropdown_component:has(> .w-dropdown-toggle[aria-expanded="true"]) > .w-dropdown-list {
+	--nav--dropdown-close-duration: var(--nav--dropdown-open-duration);
+	grid-template-rows: 1fr;
+}
+/* on desktop, delay dropdown opening if another dropdown is open */
+.nav_desktop_wrap:has(.nav_dropdown_component > .w-dropdown-toggle.w--open[aria-expanded="false"]) .nav_dropdown_component:has(> .w--open[aria-expanded="true"]) > .w-dropdown-list {
+	transition-delay: var(--nav--dropdown-close-duration);
+}
+/* reveal dropdown backdrop when dropdown open */
+.nav_dropdown_backdrop {
+	transition: opacity var(--nav--dropdown-close-duration);
+}
+body:has(.nav_dropdown_component > [aria-expanded="true"]) .nav_dropdown_backdrop {
+	opacity: 1;
+}
+/* reveal mobile menu backdrop on menu open */
+.nav_menu_backdrop {
+	transition: opacity var(--nav--menu-close-duration);
+}
+.nav_component:has(.w-nav-button.w--open) .nav_menu_backdrop {
+	opacity: 1;
+}
+/* menu animations */
+@keyframes menuOpen {
+ from { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
+ to { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+}
+@keyframes menuClose {
+ from { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
+ to { clip-path: polygon(0 0, 100% 0, 100% 0, 0 0); }
+}
+/* menu open */
+.nav_component:has(.w-nav-button.w--open) .w-nav-menu {
+	animation: menuOpen var(--nav--menu-open-duration) ease-in-out forwards;
+}
+/* menu close */
+.nav_component:has(.w-nav-button:not(.w--open)) .w-nav-menu {
+	animation: menuClose var(--nav--menu-close-duration) ease-in-out forwards;
+}
+/* position overflow to top of screen */
+.nav_component .w-nav-overlay {
+ top: 0;
+ min-height: 100vh;
+}
+/* open dropdown on mobile */
+.nav_mobile_wrap [data-open-on-mobile] > .w-dropdown-toggle {
+	display: none;
+}
+.nav_mobile_wrap [data-open-on-mobile] > .w-dropdown-list {
+	visibility: visible !important;
+	opacity: 1 !important;
+	display: block !important;
+	grid-template-rows: 1fr !important;
+}
+/* nav banner */
+html:has(.nav_banner_wrap:not(.w-condition-invisible)):not(.hide-nav-banner) {
+	--nav--height-total: calc(var(--nav--banner-height) + var(--nav--height) + var(--nav--spacing-outer-vertical));
+}
+.hide-nav-banner .nav_banner_wrap {
+	display: none;
+}
+.wf-design-mode .nav_mobile_menu_wrap {
+	width: 100%;
+}
+</style>
+      </div>
+      <a href="#main" class="nav_skip_wrap w-inline-block">
+        <div class="nav_skip_text u-text-style-small">Skip to main content</div>
+      </a>
+      <div aria-label="Announcement" role="region" class="nav_banner_wrap">
+        <div class="nav_banner_contain">
+          <a data-state="external" href="#" class="nav_banner_link w-inline-block">
+            <div class="nav_banner_text u-line-clamp-1">Important Update Banner</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 27 24" fill="none" aria-hidden="true" class="nav_banner_svg">
+              <path d="M0 12L24 12" stroke="currentColor" stroke-width="var(--nav--icon-thickness)" vector-effect="non-scaling-stroke"></path>
+              <path d="M14 1.5L24.5 12L14 22.5" stroke="currentColor" stroke-width="var(--nav--icon-thickness)" vector-effect="non-scaling-stroke"></path>
+            </svg>
+          </a><button role="button" class="nav_banner_close_wrap"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 20 19" fill="none" aria-hidden="true" class="nav_banner_close_svg">
+              <path d="M1.51471 1.01465L18.4853 17.9852" stroke="currentColor" stroke-width="var(--nav--icon-thickness)" vector-effect="non-scaling-stroke"></path>
+              <path d="M1.51471 17.9851L18.4853 1.01454" stroke="currentColor" stroke-width="var(--nav--icon-thickness)" vector-effect="non-scaling-stroke"></path>
+            </svg><span class="nav_screen-reader-text">Close Announcement Banner</span></button>
+        </div>
+      </div>
+      <header class="nav_desktop_wrap">
+        <div class="nav_desktop_contain">
+          <div class="nav_desktop_layout">
+            <a aria-label="Home Page" href="./index.html" class="nav_desktop_logo w-inline-block">
+              <div style="" class="u-max-width-full"><svg viewbox="0 0 490 100" fill="currentColor" class="u-svg">
+                  <path d="M95.5547 65.5471L64.9664 57.3497L73.1584 87.9379L58.0446 91.9855L49.8472 61.408L11.8313 99.4186L0.765015 88.3524L38.781 50.3364L8.19813 42.1444L12.2457 27.0252L42.8339 35.2226L34.6365 4.63435L49.7557 0.58139L57.9531 31.1696L80.8876 8.2298L91.9538 19.296L69.0194 42.2359L99.6022 50.4333L95.5547 65.5471Z"></path>
+                  <path d="M121.46 94.2892V4.68817H138.485V79.5683H180.338V94.2892H121.46Z"></path>
+                  <path d="M245.918 29.7756V94.2892H230.174V84.3048C226.589 91.345 219.296 95.3118 210.076 95.3118C195.614 95.3118 186.141 84.8161 186.141 69.7131V29.7756H201.755V66.3814C201.755 75.2139 207.261 81.3552 215.195 81.3552C224.027 81.3552 230.169 74.4442 230.169 64.9712V29.7756H245.912H245.918Z"></path>
+                  <path d="M257.102 94.2892V29.7756H272.846V39.8891C276.043 33.3603 282.448 28.7529 291.534 28.7529C301.776 28.7529 308.811 33.1073 311.631 41.041C314.576 34.3829 322.768 28.7529 333.01 28.7529C346.962 28.7529 355.923 38.8665 355.923 52.5593V94.2892H340.309V57.2959C340.309 48.205 335.572 42.1928 328.021 42.1928C319.571 42.1928 314.323 48.2103 314.323 57.2959V94.2892H298.708V57.2959C298.708 48.205 293.972 42.1928 286.42 42.1928C278.099 42.1928 272.851 48.2103 272.851 57.2959V94.2892H257.108H257.102Z"></path>
+                  <path d="M364.724 62.0324C364.724 42.8333 378.804 28.7529 398.514 28.7529C418.225 28.7529 432.176 42.8333 432.176 62.0324C432.176 81.2314 418.096 95.3118 398.514 95.3118C378.933 95.3118 364.724 81.2314 364.724 62.0324ZM416.309 62.0324C416.309 50.3848 409.139 42.322 398.514 42.322C387.89 42.322 380.596 50.3848 380.596 62.0324C380.596 73.6799 387.766 81.7428 398.514 81.7428C409.263 81.7428 416.309 73.6799 416.309 62.0324Z"></path>
+                  <path d="M437.526 72.7864H451.865C452.505 78.9331 457.242 82.7708 464.282 82.7708C470.429 82.7708 474.525 79.6975 474.525 75.8598C474.525 61.5211 439.195 75.2193 439.195 47.9574C439.195 36.692 449.05 28.7583 462.361 28.7583C477.464 28.7583 487.836 37.0795 488.471 49.6205H474.132C473.238 43.603 467.732 40.5296 462.743 40.5296C457.113 40.5296 453.399 43.0917 453.399 47.4407C453.399 61.3919 489.24 46.0305 489.24 75.2193C489.24 87.3782 479.385 95.3172 464.282 95.3172C449.179 95.3172 438.296 86.6138 437.531 72.7864H437.526Z"></path>
+                </svg></div>
+            </a>
+            <nav aria-label="Main" class="nav_links_component" data-style="desktop">
+              <ul role="list" class="nav_links_wrap w-list-unstyled" data-style="desktop">
+                <li class="nav_links_item">
+                  <div data-delay="400" data-hover="true" class="nav_dropdown_component w-dropdown">
+                    <div data-state="expanded" class="nav_links_link w-dropdown-toggle" data-style="desktop">
+                      <div class="nav_links_text">Services</div>
+                      <div class="nav_links_svg"><svg viewbox="0 0 66 70" fill="none" width="100%" height="100%" aria-hidden="true" class="u-svg" data-style="bottom">
+                          <path d="M17 2L50 34.9999L17 68" class="u-path"></path>
+                        </svg></div>
+                    </div>
+                    <nav class="nav_dropdown_main_wrap w-dropdown-list" data-style="desktop">
+                      <div class="nav_dropdown_main_content">
+                        <div data-lenis-prevent="" class="nav_dropdown_main_scroll" data-style="desktop">
+                          <ul role="list" class="nav_dropdown_list">
+                            <li class="nav_dropdown_item">
+                              <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                <div class="nav_dropdown_text">Branding</div>
+                              </a>
+                            </li>
+                            <li class="nav_dropdown_item">
+                              <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                <div class="nav_dropdown_text">Website Design</div>
+                              </a>
+                            </li>
+                            <li class="nav_dropdown_item">
+                              <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                <div class="nav_dropdown_text">Development</div>
+                              </a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                </li>
+                <li class="nav_links_item">
+                  <div data-delay="400" data-hover="true" class="nav_dropdown_component w-dropdown">
+                    <div data-state="expanded" class="nav_links_link w-dropdown-toggle" data-style="desktop">
+                      <div class="nav_links_text">Work</div>
+                      <div class="nav_links_svg"><svg viewbox="0 0 66 70" fill="none" width="100%" height="100%" aria-hidden="true" class="u-svg" data-style="bottom">
+                          <path d="M17 2L50 34.9999L17 68" class="u-path"></path>
+                        </svg></div>
+                    </div>
+                    <nav class="nav_dropdown_mega_wrap w-dropdown-list" data-style="desktop">
+                      <div class="nav_dropdown_mega_content" data-style="desktop">
+                        <div data-lenis-prevent="" class="nav_dropdown_mega_scroll" data-style="desktop">
+                          <div class="nav_dropdown_mega_contain" data-style="desktop">
+                            <div class="nav_dropdown_mega_layout" data-style="desktop">
+                              <ul role="list" class="nav_dropdown_list">
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                    <div class="nav_dropdown_text">Branding</div>
+                                  </a>
+                                </li>
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                    <div class="nav_dropdown_text">Website Design</div>
+                                  </a>
+                                </li>
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                    <div class="nav_dropdown_text">Development</div>
+                                  </a>
+                                </li>
+                              </ul>
+                              <ul role="list" class="nav_dropdown_list">
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                    <div class="nav_dropdown_text">Branding</div>
+                                  </a>
+                                </li>
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                    <div class="nav_dropdown_text">Website Design</div>
+                                  </a>
+                                </li>
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                    <div class="nav_dropdown_text">Development</div>
+                                  </a>
+                                </li>
+                              </ul>
+                              <ul role="list" class="nav_dropdown_list">
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                    <div class="nav_dropdown_text">Branding</div>
+                                  </a>
+                                </li>
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                    <div class="nav_dropdown_text">Website Design</div>
+                                  </a>
+                                </li>
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                    <div class="nav_dropdown_text">Development</div>
+                                  </a>
+                                </li>
+                              </ul>
+                              <ul role="list" class="nav_dropdown_list">
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                    <div class="nav_dropdown_text">Branding</div>
+                                  </a>
+                                </li>
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                    <div class="nav_dropdown_text">Website Design</div>
+                                  </a>
+                                </li>
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block" data-style="desktop">
+                                    <div class="nav_dropdown_text">Development</div>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                </li>
+                <li class="nav_links_item">
+                  <a href="#" class="nav_links_link w-inline-block" data-style="desktop">
+                    <div class="nav_links_text">About</div>
+                  </a>
+                </li>
+                <li class="nav_links_item">
+                  <a href="#" class="nav_links_link w-inline-block" data-style="desktop">
+                    <div class="nav_links_text">Contact</div>
+                  </a>
+                </li>
+              </ul>
+              <ul role="list" class="nav_actions_wrap w-list-unstyled" data-style="desktop">
+                <li class="nav_links_item">
+                  <div data-delay="400" data-hover="false" class="nav_dropdown_component w-dropdown">
+                    <div data-state="expanded" class="nav_links_link w-dropdown-toggle" data-style="desktop">
+                      <div class="w-locales-list">
+                        <div class="nav_links_text u-text-transform-uppercase">EN</div>
+                        <div class="nav_links_locales_hide w-locales-empty"></div>
+                      </div>
+                      <div class="nav_links_svg"><svg viewbox="0 0 66 70" fill="none" width="100%" height="100%" aria-hidden="true" class="u-svg" data-style="bottom">
+                          <path d="M17 2L50 34.9999L17 68" class="u-path"></path>
+                        </svg></div>
+                    </div>
+                    <nav class="nav_dropdown_main_wrap w-dropdown-list" data-style="desktop">
+                      <div class="nav_dropdown_main_content">
+                        <div data-lenis-prevent="" class="nav_dropdown_main_scroll w-locales-list" data-style="desktop">
+                          <div class="w-locales-empty">
+                            <div>No enabled locales found.</div>
+                          </div>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                </li>
+                <li class="nav_links_item">
+                  <div data-delay="400" data-hover="false" data-open-on-mobile="" class="nav_dropdown_component w-dropdown">
+                    <div data-state="expanded" class="nav_links_link w-dropdown-toggle" data-style="desktop">
+                      <div class="nav_links_search_icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 400 400" fill="none" aria-hidden="true" class="u-svg">
+                          <path d="M 326,171     A 155,155 0 1,1 16,171     A 155,155 0 1,1 326,171" class="u-path"></path>
+                          <path d="M280.602 280.602L388.602 388.602" class="u-path"></path>
+                        </svg></div>
+                      <div class="u-sr-only">Search</div>
+                    </div>
+                    <nav class="nav_dropdown_mega_wrap w-dropdown-list" data-style="desktop">
+                      <div class="nav_dropdown_mega_content" data-style="desktop">
+                        <div data-lenis-prevent="" class="nav_dropdown_mega_scroll" data-style="desktop">
+                          <div class="nav_dropdown_mega_contain" data-style="desktop">
+                            <form action="/search" class="nav_search_wrap w-form"><button type="submit" tabindex="-1" class="nav_search_btn_wrap"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 400 400" fill="none" aria-hidden="true" class="nav_search_btn_icon">
+                                  <circle cx="171" cy="171" r="155" stroke="currentColor" stroke-width="var(--nav--icon-thickness)" vector-effect="non-scaling-stroke"></circle>
+                                  <path d="M280.602 280.602L388.602 388.602" stroke="currentColor" stroke-width="var(--nav--icon-thickness)" vector-effect="non-scaling-stroke"></path>
+                                </svg>
+                                <div class="u-sr-only">Search</div>
+                              </button><label class="nav_search_label"><span class="u-sr-only">Search</span><input class="nav_search_field w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search-2" required=""></label><input type="submit" class="u-display-none w-button" value="Search"></form>
+                          </div>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                </li>
+                <li class="nav_buttons_item is-main" data-style="desktop">
+                  <div class="button_main_wrap" data-button=" " data-trigger="hover focus">
+                    <div class="clickable_wrap u-cover-absolute">
+                      <a target="" href="#" class="clickable_link w-inline-block"><span class="clickable_text u-sr-only">Button Text</span></a><button type="button" class="clickable_btn"><span class="clickable_text u-sr-only">Button Text</span></button>
+                    </div>
+                    <div class="button_main_element" data-style="secondary">
+                      <div aria-hidden="true" class="button_main_text u-text-style-main">Button Text</div>
+                      <div class="button_main_icon u-hide-if-empty"></div>
+                      <div class="button_main_line"></div>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav_buttons_item">
+                  <div class="button_main_wrap" data-button=" " data-trigger="hover focus">
+                    <div class="clickable_wrap u-cover-absolute">
+                      <a target="" href="#" class="clickable_link w-inline-block"><span class="clickable_text u-sr-only">Button Text</span></a><button type="button" class="clickable_btn"><span class="clickable_text u-sr-only">Button Text</span></button>
+                    </div>
+                    <div class="button_main_element">
+                      <div aria-hidden="true" class="button_main_text u-text-style-main">Button Text</div>
+                      <div class="button_main_icon u-hide-if-empty"></div>
+                      <div class="button_main_line"></div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+      <div data-animation="default" data-collapse="all" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="nav_mobile_wrap w-nav">
+        <div class="nav_mobile_contain">
+          <div class="nav_mobile_layout">
+            <a aria-label="Home Page" href="./index.html" class="nav_mobile_logo w-inline-block">
+              <div style="" class="u-max-width-full"><svg viewbox="0 0 490 100" fill="currentColor" class="u-svg">
+                  <path d="M95.5547 65.5471L64.9664 57.3497L73.1584 87.9379L58.0446 91.9855L49.8472 61.408L11.8313 99.4186L0.765015 88.3524L38.781 50.3364L8.19813 42.1444L12.2457 27.0252L42.8339 35.2226L34.6365 4.63435L49.7557 0.58139L57.9531 31.1696L80.8876 8.2298L91.9538 19.296L69.0194 42.2359L99.6022 50.4333L95.5547 65.5471Z"></path>
+                  <path d="M121.46 94.2892V4.68817H138.485V79.5683H180.338V94.2892H121.46Z"></path>
+                  <path d="M245.918 29.7756V94.2892H230.174V84.3048C226.589 91.345 219.296 95.3118 210.076 95.3118C195.614 95.3118 186.141 84.8161 186.141 69.7131V29.7756H201.755V66.3814C201.755 75.2139 207.261 81.3552 215.195 81.3552C224.027 81.3552 230.169 74.4442 230.169 64.9712V29.7756H245.912H245.918Z"></path>
+                  <path d="M257.102 94.2892V29.7756H272.846V39.8891C276.043 33.3603 282.448 28.7529 291.534 28.7529C301.776 28.7529 308.811 33.1073 311.631 41.041C314.576 34.3829 322.768 28.7529 333.01 28.7529C346.962 28.7529 355.923 38.8665 355.923 52.5593V94.2892H340.309V57.2959C340.309 48.205 335.572 42.1928 328.021 42.1928C319.571 42.1928 314.323 48.2103 314.323 57.2959V94.2892H298.708V57.2959C298.708 48.205 293.972 42.1928 286.42 42.1928C278.099 42.1928 272.851 48.2103 272.851 57.2959V94.2892H257.108H257.102Z"></path>
+                  <path d="M364.724 62.0324C364.724 42.8333 378.804 28.7529 398.514 28.7529C418.225 28.7529 432.176 42.8333 432.176 62.0324C432.176 81.2314 418.096 95.3118 398.514 95.3118C378.933 95.3118 364.724 81.2314 364.724 62.0324ZM416.309 62.0324C416.309 50.3848 409.139 42.322 398.514 42.322C387.89 42.322 380.596 50.3848 380.596 62.0324C380.596 73.6799 387.766 81.7428 398.514 81.7428C409.263 81.7428 416.309 73.6799 416.309 62.0324Z"></path>
+                  <path d="M437.526 72.7864H451.865C452.505 78.9331 457.242 82.7708 464.282 82.7708C470.429 82.7708 474.525 79.6975 474.525 75.8598C474.525 61.5211 439.195 75.2193 439.195 47.9574C439.195 36.692 449.05 28.7583 462.361 28.7583C477.464 28.7583 487.836 37.0795 488.471 49.6205H474.132C473.238 43.603 467.732 40.5296 462.743 40.5296C457.113 40.5296 453.399 43.0917 453.399 47.4407C453.399 61.3919 489.24 46.0305 489.24 75.2193C489.24 87.3782 479.385 95.3172 464.282 95.3172C449.179 95.3172 438.296 86.6138 437.531 72.7864H437.526Z"></path>
+                </svg></div>
+            </a>
+            <nav role="navigation" class="nav_mobile_menu_wrap w-nav-menu">
+              <div data-lenis-prevent="" class="nav_mobile_menu_scroll">
+                <nav aria-label="Main" class="nav_links_component">
+                  <ul role="list" class="nav_links_wrap w-list-unstyled">
+                    <li class="nav_links_item">
+                      <div data-delay="400" data-hover="true" class="nav_dropdown_component w-dropdown">
+                        <div data-state="expanded" class="nav_links_link w-dropdown-toggle">
+                          <div class="nav_links_text">Services</div>
+                          <div class="nav_links_svg"><svg viewbox="0 0 66 70" fill="none" width="100%" height="100%" aria-hidden="true" class="u-svg" data-style="bottom">
+                              <path d="M17 2L50 34.9999L17 68" class="u-path"></path>
+                            </svg></div>
+                        </div>
+                        <nav class="nav_dropdown_main_wrap w-dropdown-list">
+                          <div class="nav_dropdown_main_content">
+                            <div data-lenis-prevent="" class="nav_dropdown_main_scroll">
+                              <ul role="list" class="nav_dropdown_list">
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block">
+                                    <div class="nav_dropdown_text">Branding</div>
+                                  </a>
+                                </li>
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block">
+                                    <div class="nav_dropdown_text">Website Design</div>
+                                  </a>
+                                </li>
+                                <li class="nav_dropdown_item">
+                                  <a href="#" class="nav_dropdown_link w-inline-block">
+                                    <div class="nav_dropdown_text">Development</div>
+                                  </a>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </nav>
+                      </div>
+                    </li>
+                    <li class="nav_links_item">
+                      <div data-delay="400" data-hover="true" class="nav_dropdown_component w-dropdown">
+                        <div data-state="expanded" class="nav_links_link w-dropdown-toggle">
+                          <div class="nav_links_text">Work</div>
+                          <div class="nav_links_svg"><svg viewbox="0 0 66 70" fill="none" width="100%" height="100%" aria-hidden="true" class="u-svg" data-style="bottom">
+                              <path d="M17 2L50 34.9999L17 68" class="u-path"></path>
+                            </svg></div>
+                        </div>
+                        <nav class="nav_dropdown_mega_wrap w-dropdown-list">
+                          <div class="nav_dropdown_mega_content">
+                            <div data-lenis-prevent="" class="nav_dropdown_mega_scroll">
+                              <div class="nav_dropdown_mega_contain">
+                                <div class="nav_dropdown_mega_layout">
+                                  <ul role="list" class="nav_dropdown_list">
+                                    <li class="nav_dropdown_item">
+                                      <a href="#" class="nav_dropdown_link w-inline-block">
+                                        <div class="nav_dropdown_text">Branding</div>
+                                      </a>
+                                    </li>
+                                    <li class="nav_dropdown_item">
+                                      <a href="#" class="nav_dropdown_link w-inline-block">
+                                        <div class="nav_dropdown_text">Website Design</div>
+                                      </a>
+                                    </li>
+                                    <li class="nav_dropdown_item">
+                                      <a href="#" class="nav_dropdown_link w-inline-block">
+                                        <div class="nav_dropdown_text">Development</div>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                  <ul role="list" class="nav_dropdown_list">
+                                    <li class="nav_dropdown_item">
+                                      <a href="#" class="nav_dropdown_link w-inline-block">
+                                        <div class="nav_dropdown_text">Branding</div>
+                                      </a>
+                                    </li>
+                                    <li class="nav_dropdown_item">
+                                      <a href="#" class="nav_dropdown_link w-inline-block">
+                                        <div class="nav_dropdown_text">Website Design</div>
+                                      </a>
+                                    </li>
+                                    <li class="nav_dropdown_item">
+                                      <a href="#" class="nav_dropdown_link w-inline-block">
+                                        <div class="nav_dropdown_text">Development</div>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                  <ul role="list" class="nav_dropdown_list">
+                                    <li class="nav_dropdown_item">
+                                      <a href="#" class="nav_dropdown_link w-inline-block">
+                                        <div class="nav_dropdown_text">Branding</div>
+                                      </a>
+                                    </li>
+                                    <li class="nav_dropdown_item">
+                                      <a href="#" class="nav_dropdown_link w-inline-block">
+                                        <div class="nav_dropdown_text">Website Design</div>
+                                      </a>
+                                    </li>
+                                    <li class="nav_dropdown_item">
+                                      <a href="#" class="nav_dropdown_link w-inline-block">
+                                        <div class="nav_dropdown_text">Development</div>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                  <ul role="list" class="nav_dropdown_list">
+                                    <li class="nav_dropdown_item">
+                                      <a href="#" class="nav_dropdown_link w-inline-block">
+                                        <div class="nav_dropdown_text">Branding</div>
+                                      </a>
+                                    </li>
+                                    <li class="nav_dropdown_item">
+                                      <a href="#" class="nav_dropdown_link w-inline-block">
+                                        <div class="nav_dropdown_text">Website Design</div>
+                                      </a>
+                                    </li>
+                                    <li class="nav_dropdown_item">
+                                      <a href="#" class="nav_dropdown_link w-inline-block">
+                                        <div class="nav_dropdown_text">Development</div>
+                                      </a>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </nav>
+                      </div>
+                    </li>
+                    <li class="nav_links_item">
+                      <a href="#" class="nav_links_link w-inline-block">
+                        <div class="nav_links_text">About</div>
+                      </a>
+                    </li>
+                    <li class="nav_links_item">
+                      <a href="#" class="nav_links_link w-inline-block">
+                        <div class="nav_links_text">Contact</div>
+                      </a>
+                    </li>
+                  </ul>
+                  <ul role="list" class="nav_actions_wrap w-list-unstyled">
+                    <li class="nav_links_item">
+                      <div data-delay="400" data-hover="false" class="nav_dropdown_component w-dropdown">
+                        <div data-state="expanded" class="nav_links_link w-dropdown-toggle">
+                          <div class="w-locales-list">
+                            <div class="nav_links_text u-text-transform-uppercase">EN</div>
+                            <div class="nav_links_locales_hide w-locales-empty"></div>
+                          </div>
+                          <div class="nav_links_svg"><svg viewbox="0 0 66 70" fill="none" width="100%" height="100%" aria-hidden="true" class="u-svg" data-style="bottom">
+                              <path d="M17 2L50 34.9999L17 68" class="u-path"></path>
+                            </svg></div>
+                        </div>
+                        <nav class="nav_dropdown_main_wrap w-dropdown-list">
+                          <div class="nav_dropdown_main_content">
+                            <div data-lenis-prevent="" class="nav_dropdown_main_scroll w-locales-list">
+                              <div class="w-locales-empty">
+                                <div>No enabled locales found.</div>
+                              </div>
+                            </div>
+                          </div>
+                        </nav>
+                      </div>
+                    </li>
+                    <li class="nav_links_item">
+                      <div data-delay="400" data-hover="false" data-open-on-mobile="" class="nav_dropdown_component w-dropdown">
+                        <div data-state="expanded" class="nav_links_link w-dropdown-toggle">
+                          <div class="nav_links_search_icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 400 400" fill="none" aria-hidden="true" class="u-svg">
+                              <path d="M 326,171     A 155,155 0 1,1 16,171     A 155,155 0 1,1 326,171" class="u-path"></path>
+                              <path d="M280.602 280.602L388.602 388.602" class="u-path"></path>
+                            </svg></div>
+                          <div class="u-sr-only">Search</div>
+                        </div>
+                        <nav class="nav_dropdown_mega_wrap w-dropdown-list">
+                          <div class="nav_dropdown_mega_content">
+                            <div data-lenis-prevent="" class="nav_dropdown_mega_scroll">
+                              <div class="nav_dropdown_mega_contain">
+                                <form action="/search" class="nav_search_wrap w-form"><button type="submit" tabindex="-1" class="nav_search_btn_wrap"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewbox="0 0 400 400" fill="none" aria-hidden="true" class="nav_search_btn_icon">
+                                      <circle cx="171" cy="171" r="155" stroke="currentColor" stroke-width="var(--nav--icon-thickness)" vector-effect="non-scaling-stroke"></circle>
+                                      <path d="M280.602 280.602L388.602 388.602" stroke="currentColor" stroke-width="var(--nav--icon-thickness)" vector-effect="non-scaling-stroke"></path>
+                                    </svg>
+                                    <div class="u-sr-only">Search</div>
+                                  </button><label class="nav_search_label"><span class="u-sr-only">Search</span><input class="nav_search_field w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search-2" required=""></label><input type="submit" class="u-display-none w-button" value="Search"></form>
+                              </div>
+                            </div>
+                          </div>
+                        </nav>
+                      </div>
+                    </li>
+                    <li class="nav_buttons_item is-main">
+                      <div class="button_main_wrap" data-button=" " data-trigger="hover focus">
+                        <div class="clickable_wrap u-cover-absolute">
+                          <a target="" href="#" class="clickable_link w-inline-block"><span class="clickable_text u-sr-only">Button Text</span></a><button type="button" class="clickable_btn"><span class="clickable_text u-sr-only">Button Text</span></button>
+                        </div>
+                        <div class="button_main_element" data-style="secondary">
+                          <div aria-hidden="true" class="button_main_text u-text-style-main">Button Text</div>
+                          <div class="button_main_icon u-hide-if-empty"></div>
+                          <div class="button_main_line"></div>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="nav_buttons_item">
+                      <div class="button_main_wrap" data-button=" " data-trigger="hover focus">
+                        <div class="clickable_wrap u-cover-absolute">
+                          <a target="" href="#" class="clickable_link w-inline-block"><span class="clickable_text u-sr-only">Button Text</span></a><button type="button" class="clickable_btn"><span class="clickable_text u-sr-only">Button Text</span></button>
+                        </div>
+                        <div class="button_main_element">
+                          <div aria-hidden="true" class="button_main_text u-text-style-main">Button Text</div>
+                          <div class="button_main_icon u-hide-if-empty"></div>
+                          <div class="button_main_line"></div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+            </nav>
+            <div data-state="open" class="nav_button_wrap w-nav-button">
+              <div class="nav_button_layout">
+                <div class="nav_button_line is-1"></div>
+                <div class="nav_button_line is-2"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="nav_dropdown_backdrop"></div>
+      <div class="nav_menu_backdrop"></div>
+      <div class="u-embed-js w-embed w-script">
+        <script>
+if (sessionStorage.getItem("hide-nav-banner") === "true") {
+  document.documentElement.classList.add("hide-nav-banner");
+}
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".nav_banner_close_wrap").forEach((button) => {
+    button.addEventListener("click", function () {
+      sessionStorage.setItem("hide-nav-banner", "true");
+      document.documentElement.classList.add("hide-nav-banner");
+    });
+  });
+  document.querySelectorAll(".nav_skip_wrap").forEach(function (link) {
+    const target = document.querySelector("main");
+    if (!target) return;
+    link.addEventListener("click", function () {
+      target.setAttribute("tabindex", "-1");
+      target.focus();
+    });
+  });
+});
+</script>
+      </div>
+    </div>
+    <main id="main" class="page_main">
+      <section class="hero_utility-page_wrap">
+        <div class="hero_utility-page_contain u-container">
+          <div class="hero_utility-page_content">
+            <div><svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 47 59" width="3rem">
+                <path fill-rule="evenodd" d="M0 0H30.5L47 16.5V59H0V0ZM21 19H26V34H21V19ZM21 39H26V44H21V39Z" fill="currentColor"></path>
+              </svg></div>
+            <div class="hero_utility-page_header">
+              <h1 class="hero_utility-page_title u-text-style-h2">Page Not Found</h1>
+              <div class="hero_utility-page_text u-text-style-main">The page you are looking for doesn&#x27;t exist or has been moved</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer_wrap">
+      <h2 class="footer_title u-sr-only">Footer</h2>
+      <div class="footer_contain u-container">
+        <div data-medium-columns="1" class="footer_layout u-grid-custom">
+          <div class="footer_content">
+            <a aria-label="Go to the homepage" href="./index.html" class="footer_logo_wrap w-inline-block">
+              <div style="" class="u-max-width-full"><svg viewbox="0 0 490 100" fill="currentColor" class="u-svg">
+                  <path d="M95.5547 65.5471L64.9664 57.3497L73.1584 87.9379L58.0446 91.9855L49.8472 61.408L11.8313 99.4186L0.765015 88.3524L38.781 50.3364L8.19813 42.1444L12.2457 27.0252L42.8339 35.2226L34.6365 4.63435L49.7557 0.58139L57.9531 31.1696L80.8876 8.2298L91.9538 19.296L69.0194 42.2359L99.6022 50.4333L95.5547 65.5471Z"></path>
+                  <path d="M121.46 94.2892V4.68817H138.485V79.5683H180.338V94.2892H121.46Z"></path>
+                  <path d="M245.918 29.7756V94.2892H230.174V84.3048C226.589 91.345 219.296 95.3118 210.076 95.3118C195.614 95.3118 186.141 84.8161 186.141 69.7131V29.7756H201.755V66.3814C201.755 75.2139 207.261 81.3552 215.195 81.3552C224.027 81.3552 230.169 74.4442 230.169 64.9712V29.7756H245.912H245.918Z"></path>
+                  <path d="M257.102 94.2892V29.7756H272.846V39.8891C276.043 33.3603 282.448 28.7529 291.534 28.7529C301.776 28.7529 308.811 33.1073 311.631 41.041C314.576 34.3829 322.768 28.7529 333.01 28.7529C346.962 28.7529 355.923 38.8665 355.923 52.5593V94.2892H340.309V57.2959C340.309 48.205 335.572 42.1928 328.021 42.1928C319.571 42.1928 314.323 48.2103 314.323 57.2959V94.2892H298.708V57.2959C298.708 48.205 293.972 42.1928 286.42 42.1928C278.099 42.1928 272.851 48.2103 272.851 57.2959V94.2892H257.108H257.102Z"></path>
+                  <path d="M364.724 62.0324C364.724 42.8333 378.804 28.7529 398.514 28.7529C418.225 28.7529 432.176 42.8333 432.176 62.0324C432.176 81.2314 418.096 95.3118 398.514 95.3118C378.933 95.3118 364.724 81.2314 364.724 62.0324ZM416.309 62.0324C416.309 50.3848 409.139 42.322 398.514 42.322C387.89 42.322 380.596 50.3848 380.596 62.0324C380.596 73.6799 387.766 81.7428 398.514 81.7428C409.263 81.7428 416.309 73.6799 416.309 62.0324Z"></path>
+                  <path d="M437.526 72.7864H451.865C452.505 78.9331 457.242 82.7708 464.282 82.7708C470.429 82.7708 474.525 79.6975 474.525 75.8598C474.525 61.5211 439.195 75.2193 439.195 47.9574C439.195 36.692 449.05 28.7583 462.361 28.7583C477.464 28.7583 487.836 37.0795 488.471 49.6205H474.132C473.238 43.603 467.732 40.5296 462.743 40.5296C457.113 40.5296 453.399 43.0917 453.399 47.4407C453.399 61.3919 489.24 46.0305 489.24 75.2193C489.24 87.3782 479.385 95.3172 464.282 95.3172C449.179 95.3172 438.296 86.6138 437.531 72.7864H437.526Z"></path>
+                </svg></div>
+            </a>
+            <div class="footer_social_wrap">
+              <h3 class="footer_social_title u-text-style-h6 u-margin-bottom-4">Follow us</h3>
+              <div role="list" class="footer_social_list">
+<div role="listitem" class="footer_social_item">
+                  <a aria-label="Instagram" href="#" target="_blank" class="footer_social_link w-inline-block"><svg viewbox="0 0 56 56" width="100%" aria-hidden="true" class="u-svg">
+                      <path d="M55.84,16.46c-.05-2.33-.49-4.63-1.3-6.8-1.46-3.76-4.43-6.74-8.2-8.19-2.17-.81-4.47-1.25-6.8-1.3-2.98-.14-3.94-.17-11.54-.17s-8.55.03-11.54.17c-2.32.04-4.62.48-6.8,1.3C5.9,2.92,2.93,5.9,1.47,9.66.66,11.84.22,14.14.17,16.46c-.13,2.98-.17,3.94-.17,11.54s.04,8.56.17,11.54c.05,2.33.49,4.63,1.3,6.8,1.46,3.76,4.43,6.74,8.19,8.19,2.18.82,4.48,1.26,6.8,1.3,2.99.14,3.94.17,11.54.17s8.56-.03,11.55-.17c2.32-.04,4.62-.48,6.8-1.3,3.76-1.45,6.73-4.43,8.19-8.19.81-2.17,1.25-4.47,1.3-6.8.13-2.98.16-3.94.16-11.54s-.03-8.56-.16-11.54ZM28,42.38c-7.94,0-14.37-6.44-14.37-14.38s6.43-14.38,14.37-14.38c3.97,0,7.56,1.61,10.17,4.21,2.6,2.61,4.21,6.2,4.21,10.17,0,7.94-6.44,14.38-14.38,14.38ZM42.95,16.41c-1.86,0-3.36-1.5-3.36-3.36s1.5-3.36,3.36-3.36,3.36,1.51,3.36,3.36-1.5,3.36-3.36,3.36Z" fill="currentColor"></path>
+                      <path d="M37.34,28c0,5.15-4.18,9.33-9.33,9.33h-.01c-5.15,0-9.33-4.18-9.33-9.33s4.18-9.33,9.33-9.33,9.34,4.18,9.34,9.33Z" fill="currentColor"></path>
+                    </svg></a>
+                </div>
+                <div role="listitem" class="footer_social_item">
+                  <a aria-label="Linked In" href="#" target="_blank" class="footer_social_link w-inline-block"><svg width="100%" viewbox="0 0 46 46" aria-hidden="true" class="u-svg">
+                      <path d="M11 5.5C11 8.6 8.6 11 5.5 11C2.4 11 0 8.5 0 5.5C0 2.5 2.5 0 5.5 0C8.5 0 11 2.5 11 5.5Z" fill="currentColor"></path>
+                      <path d="M10.2998 15.1992H0.799805V45.6992H10.2998V15.1992Z" fill="currentColor"></path>
+                      <path d="M45.8002 29V45.7H36.3002V30.9C36.3002 27.4 36.2002 22.8 31.4002 22.8C26.6002 22.8 25.7002 26.7 25.7002 30.6V45.7H16.2002V15.2H25.3002V19.4H25.4002C26.7002 17 29.8002 14.5 34.4002 14.5C44.0002 14.5 45.8002 20.8 45.8002 29Z" fill="currentColor"></path>
+                    </svg></a>
+                </div>
+<div role="listitem" class="footer_social_item">
+                  <a aria-label="X" href="#" target="_blank" class="footer_social_link w-inline-block"><svg width="100%" viewbox="0 0 300 301" aria-hidden="true" class="u-svg">
+                      <path d="M178.57 127.15L290.27 0H263.81L166.78 110.38L89.34 0H0L117.13 166.93L0 300.25H26.46L128.86 183.66L210.66 300.25H300M36.01 19.54H76.66L263.79 281.67H223.13" fill="currentColor"></path>
+                    </svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="" class="u-grid-wrapper u-gap-row-7 u-column-span-8" data-number="12">
+            <div role="navigation" data-large-columns="4" data-medium-columns="0" data-small-columns="2" data-xsmall-columns="1" class="u-grid">
+              <section data-trigger="group" class="footer_group_wrap">
+                <h3 class="footer_group_title u-text-style-h6 u-margin-bottom-text">Heading</h3>
+                <div role="list" class="footer_group_list">
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text</div>
+                    </a>
+                  </div>
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text Here</div>
+                    </a>
+                  </div>
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text Goes Here</div>
+                    </a>
+                  </div>
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text</div>
+                    </a>
+                  </div>
+                </div>
+              </section>
+              <section data-trigger="group" class="footer_group_wrap">
+                <h3 class="footer_group_title u-text-style-h6 u-margin-bottom-text">Heading Text</h3>
+                <div role="list" class="footer_group_list">
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text Here</div>
+                    </a>
+                  </div>
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text Goes Here</div>
+                    </a>
+                  </div>
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text</div>
+                    </a>
+                  </div>
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text Goes Here</div>
+                    </a>
+                  </div>
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text Here</div>
+                    </a>
+                  </div>
+                </div>
+              </section>
+              <section data-trigger="group" class="footer_group_wrap">
+                <h3 class="footer_group_title u-text-style-h6 u-margin-bottom-text">Heading Text</h3>
+                <div role="list" class="footer_group_list">
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text Goes Here</div>
+                    </a>
+                  </div>
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text</div>
+                    </a>
+                  </div>
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text Here</div>
+                    </a>
+                  </div>
+                </div>
+              </section>
+              <section data-trigger="group" class="footer_group_wrap">
+                <h3 class="footer_group_title u-text-style-h6 u-margin-bottom-text">Heading</h3>
+                <div role="list" class="footer_group_list">
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text Here</div>
+                    </a>
+                  </div>
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text</div>
+                    </a>
+                  </div>
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text Goes Here</div>
+                    </a>
+                  </div>
+                  <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+                    <a href="#" class="footer_link_wrap w-inline-block">
+                      <div class="footer_link_text u-text-style-small">Link Text Here</div>
+                    </a>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer_bottom_wrap">
+        <div class="footer_bottom_contain u-container">
+          <div class="footer_bottom_layout">
+            <div class="footer_bottom_text u-text-style-small"><span>© </span><span data-dynamic-year=" ">{{year}}</span><span> Copyright. All Rights Reserved.</span></div>
+            <div data-trigger="group" role="list" class="footer_bottom_list">
+              <div data-trigger="hover-other focus-other" role="listitem" class="footer_bottom_item">
+                <a href="#" class="footer_bottom_link_wrap w-inline-block">
+                  <div class="footer_bottom_link_text u-text-style-small">Privacy Policy</div>
+                </a>
+              </div>
+              <div data-trigger="hover-other focus-other" role="listitem" class="footer_bottom_item">
+                <a href="#" class="footer_bottom_link_wrap w-inline-block">
+                  <div class="footer_bottom_link_text u-text-style-small">Terms &amp; Conditions</div>
+                </a>
+              </div>
+              <div data-trigger="hover-other focus-other" role="listitem" class="footer_bottom_item">
+                <a href="#" class="footer_bottom_link_wrap w-inline-block">
+                  <div class="footer_bottom_link_text u-text-style-small">Site Map</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="u-embed-js w-embed w-script">
+        <script>
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll("[data-dynamic-year]").forEach(function (el) {
+    el.textContent = new Date().getFullYear();
+  });
+});
+</script>
+      </div>
+    </footer>
+  </div>
+
+<script src="https://cdn.prod.website-files.com/gsap/3.14.2/gsap.min.js" type="text/javascript"></script>
+</body>
+</html>

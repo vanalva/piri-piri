@@ -1,0 +1,3148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO: title + description -->
+  <title>Piri Piri | Pollo al carbón a domicilio y en Madrid · Lavapiés · Prosperidad · Las Tablas</title>
+  <meta name="description" content="Pollo al carbón asado en horno Josper con carbón Marabú. Pide pollo a domicilio o reserva mesa en Lavapiés, Prosperidad o Las Tablas. Burgers, bowls, alitas y nuestras salsas Piri Piri.">
+  <meta name="keywords" content="pollo al carbón Madrid, pollo a domicilio, pollo asado, restaurante Lavapiés, restaurante Prosperidad, Las Tablas, comer pollo Madrid, Piri Piri">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Piri Piri">
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="restaurant.restaurant">
+  <meta property="og:site_name" content="Piri Piri">
+  <meta property="og:title" content="Piri Piri | Pollo al carbón a domicilio en Madrid">
+  <meta property="og:description" content="Pollo al carbón asado en horno Josper con carbón Marabú. Lavapiés · Prosperidad · Las Tablas. Pide a domicilio o reserva mesa.">
+  <meta property="og:url" content="https://somospiripiri.com/">
+  <meta property="og:image" content="https://somospiripiri.com/resources/images/general/1366w/cocina-horno-carbon_1366w.webp">
+  <meta property="og:locale" content="es_ES">
+
+  <!-- Twitter card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Piri Piri | Pollo al carbón a domicilio en Madrid">
+  <meta name="twitter:description" content="Pollo al carbón asado en horno Josper. Lavapiés · Prosperidad · Las Tablas. Pide a domicilio o reserva mesa.">
+  <meta name="twitter:image" content="https://somospiripiri.com/resources/images/general/1366w/cocina-horno-carbon_1366w.webp">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://somospiripiri.com/">
+
+  <!-- Schema.org Restaurant structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Piri Piri",
+    "image": "https://somospiripiri.com/resources/images/general/1366w/cocina-horno-carbon_1366w.webp",
+    "url": "https://somospiripiri.com/",
+    "servesCuisine": ["Pollo al carbón", "Burgers", "Bowls", "Comida portuguesa"],
+    "priceRange": "€€",
+    "acceptsReservations": true,
+    "sameAs": [
+      "https://www.instagram.com/piripirialcarbon",
+      "https://www.tiktok.com/@piripirialcarbon"
+    ],
+    "department": [
+      {
+        "@type": "Restaurant",
+        "name": "Piri Piri Lavapiés",
+        "telephone": "+34 919 192 934",
+        "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressRegion": "Madrid", "addressCountry": "ES" }
+      },
+      {
+        "@type": "Restaurant",
+        "name": "Piri Piri Prosperidad",
+        "telephone": "+34 912 629 421",
+        "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressRegion": "Madrid", "addressCountry": "ES" }
+      },
+      {
+        "@type": "Restaurant",
+        "name": "Piri Piri Las Tablas",
+        "telephone": "+34 912 563 497",
+        "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressRegion": "Madrid", "addressCountry": "ES" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+<!-- CSS -->
+  <link href="css/lumos.css?v=a040767e" rel="stylesheet" type="text/css">
+  <link href="css/site.css?v=20260606x" rel="stylesheet" type="text/css">
+  <link href="css/interactions.css?v=0dde50df" rel="stylesheet" type="text/css">
+</head>
+
+<body class="u-theme-dark">
+
+  <!-- SUBSCRIBE POPUP - Center, auto-shows on page load
+       Same simple centered-card pattern as the old greeting popup. Closes on
+       backdrop click, X, or form submit. Footer SUSCRIBIRSE button re-opens
+       it via openSuscribePopup() defined below. -->
+  <div id="suscribe-popup" class="popup-overlay" onclick="if(event.target === this) { closeSuscribePopup(); }" style="position: fixed; inset: 0; z-index: 1100; display: none; justify-content: center; align-items: center; background-color: color-mix(in srgb, var(--swatch--dark-900) 85%, transparent); cursor: pointer;">
+    <style>
+      /* Each .popup-slide is one full Swiper slide — fixed at 100% width and
+         the height of the tallest slide. Use a flex column so the image stays
+         on top and the body fills (and vertically centers) the leftover area
+         on shorter slides. */
+      #suscribe-popup .slider_list > .popup-slide {
+        width: 100% !important;
+        height: auto;
+        flex-shrink: 0;
+        padding-inline: 0;
+        display: flex;
+        flex-direction: column;
+      }
+      /* Swiper wrapper grows to the tallest slide; let each slide stretch to
+         match so the layout below can use flex sizing reliably. */
+      #suscribe-popup .slider_list {
+        align-items: stretch;
+      }
+      /* Image and body both grow to fill leftover slide-track height on
+         shorter slides. They start at their natural sizes (image: 16:10,
+         body: content height) and share extra space 50/50 so the slide
+         feels balanced — image grows past 16:10 (object-fit: cover handles
+         the extra crop) and the body content stays vertically centered. */
+      #suscribe-popup .popup-slide > .popup-slide-image {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        flex: 1 1 auto;
+        min-height: 0;
+      }
+      #suscribe-popup .popup-slide > .popup-slide-body {
+        flex: 1 1 auto;
+        justify-content: center;
+      }
+      /* Pill bullets sit centered just inside the popup chrome. */
+      #suscribe-popup .slider_bullet_list {
+        margin-top: 0;
+        padding: 0 var(--_spacing---space--6) var(--_spacing---space--5);
+      }
+    </style>
+
+    <div class="modal_content u-theme-dark u-border-main u-position-relative u-radius-main" style="width: min(30rem, 92vw); cursor: default; background-color: var(--_theme---background); overflow: hidden;">
+      <!-- Close button top right -->
+      <button type="button" onclick="closeSuscribePopup();" class="popup-close-btn" style="z-index: 2;">
+        <svg width="14" height="14" viewBox="0 0 39.276 39.277" fill="currentColor" aria-hidden="true">
+          <path d="M6.505,0.79L39.276,33.561l-6.505,4.926L0,5.716Z"/>
+          <path d="M38.486,6.506L5.715,39.277l-4.926-6.505L33.56,0Z"/>
+        </svg>
+        <span class="u-sr-only">Cerrar</span>
+      </button>
+
+      <!-- Swiper carousel: loop + 3s autoplay + drag/swipe. The Lumos Slider
+           Initialization script (further down the page) auto-wires this from
+           the [data-slider='component'] selector + data-* attributes. -->
+      <div class="slider_wrap" data-slider="component">
+        <div class="slider_offset">
+          <div class="slider_element swiper"
+               data-speed="500"
+               data-follow-finger="true"
+               data-free-mode="false"
+               data-mousewheel="false"
+               data-loop="true"
+               data-autoplay="true"
+               data-autoplay-delay="3000">
+            <div class="slider_list swiper-wrapper">
+
+              <!-- Slide 0: PRENDE LA MECHA → Club Secreto.
+                   Was an email capture, but there is no ESP to submit to and
+                   the form had nowhere to go. The club is the thing worth
+                   joining anyway, so the slide points at the loyalty portal. -->
+              <div class="popup-slide">
+                <div class="popup-slide-image">
+                  <!-- Club Secreto imagery, not generic food — the slide sells
+                       the club, and this frame is from the club-secreto.html
+                       slider, so the popup previews the page it links to. -->
+                  <img src="assets/resources/images/loyalty/club-slider-6.webp" srcset="assets/resources/images/loyalty/480w/club-slider-6_480w.webp 480w, assets/resources/images/loyalty/768w/club-slider-6_768w.webp 768w, assets/resources/images/loyalty/1024w/club-slider-6_1024w.webp 1024w" sizes="(max-width: 767px) 90vw, 520px" loading="lazy" decoding="async" alt="El Club Secreto de los Devoradores de Alas" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <div class="popup-slide-body u-flex-vertical-nowrap u-align-items-center u-gap-6 u-padding-block-7 u-padding-inline-7" style="text-align: center;">
+                  <h2 class="u-text-style-h2 u-text-transform-uppercase u-margin-0" style="line-height: 0.95;">PRENDE<br>LA MECHA</h2>
+                  <p class="u-text-style-main u-margin-0" style="font-style: italic;">Entra al Club Secreto de los Devoradores de Alas. Cada compra suma plumas, y cada pluma desbloquea algo.</p>
+                  <div data-button-mode="orchid" class="button_main_wrap" data-trigger="hover focus" style="align-self: center;">
+                    <a href="https://portal.cheerfy.com/?portal_id=ff7d8ec029654c97961d8c2bda590325&affiliate=Landing%20Web" target="_blank" rel="noopener" class="button_main_element" data-style="secondary" onclick="closeSuscribePopup();">
+                      <div class="button_main_text u-text-style-main">ÚNETE AL CLUB</div>
+                    </a>
+                  </div>
+                  <a href="./club-secreto.html" class="u-text-style-small u-color-inherit u-text-decoration-underline" style="opacity: 0.75;" onclick="closeSuscribePopup();">¿Cómo funciona?</a>
+                </div>
+              </div>
+
+              <!-- Slide 1: VER LA CARTA (restored from old welcome popup) -->
+              <div class="popup-slide">
+                <div class="popup-slide-image">
+                  <img src="assets/resources/images/general/food-wings-iso.webp" srcset="assets/resources/images/general/480w/food-wings-iso_480w.webp 480w, assets/resources/images/general/768w/food-wings-iso_768w.webp 768w" sizes="(max-width: 767px) 90vw, 520px" loading="lazy" decoding="async" alt="Alitas Piri Piri con salsa" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <div class="popup-slide-body u-flex-vertical-nowrap u-align-items-center u-gap-6 u-padding-block-7 u-padding-inline-7" style="text-align: center;">
+                  <h2 class="u-text-style-h2 u-text-transform-uppercase u-margin-0" style="line-height: 0.95;">¡BIENVENIDO!</h2>
+                  <p class="u-text-style-main u-margin-0" style="font-style: italic;">Descubre nuestra carta y déjate tentar por el fuego de Piri Piri.</p>
+                  <div class="button_main_wrap" data-trigger="hover focus" style="align-self: center;">
+                    <a href="./carta.html" class="button_main_element" onclick="closeSuscribePopup();">
+                      <div class="button_main_text u-text-style-main">VER LA CARTA</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide: PIRI PIRAOS (juego) — third -->
+              <div class="popup-slide">
+                <div class="popup-slide-image">
+                  <img src="assets/resources/images/general/juego-promo.webp" srcset="assets/resources/images/general/480w/juego-promo_480w.webp 480w, assets/resources/images/general/juego-promo.webp 1040w" sizes="(max-width: 767px) 90vw, 520px" loading="lazy" decoding="async" alt="PIRI PIRAOS — el juego de Piri Piri" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <div class="popup-slide-body u-flex-vertical-nowrap u-align-items-center u-gap-6 u-padding-block-7 u-padding-inline-7" style="text-align: center;">
+                  <h2 class="u-text-style-h2 u-text-transform-uppercase u-margin-0" style="line-height: 0.95;">PIRI<br>PIRAOS</h2>
+                  <p class="u-text-style-main u-margin-0" style="font-style: italic;">Vuela con el gallo de fuego, escupe fuego y cocina la carta. ¿Batirás el récord?</p>
+                  <div class="button_main_wrap" data-trigger="hover focus" style="align-self: center;">
+                    <a href="./juego.html" class="button_main_element" onclick="closeSuscribePopup();">
+                      <div class="button_main_text u-text-style-main">JUGAR AHORA</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2: BEBIDAS DE VERANO (promo) -->
+              <div class="popup-slide">
+                <div class="popup-slide-image">
+                  <img src="assets/resources/images/Carta/1600w/citro-sangria_1600w.webp" srcset="assets/resources/images/Carta/480w/citro-sangria_480w.webp 480w, assets/resources/images/Carta/768w/citro-sangria_768w.webp 768w, assets/resources/images/Carta/1024w/citro-sangria_1024w.webp 1024w, assets/resources/images/Carta/1366w/citro-sangria_1366w.webp 1366w" sizes="(max-width: 767px) 90vw, 520px" loading="lazy" decoding="async" alt="Bebidas de verano Piri Piri" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <div class="popup-slide-body u-flex-vertical-nowrap u-align-items-center u-gap-6 u-padding-block-7 u-padding-inline-7" style="text-align: center;">
+                  <h2 class="u-text-style-h2 u-text-transform-uppercase u-margin-0" style="line-height: 0.95;">VERANO<br>EN VASO</h2>
+                  <p class="u-text-style-main u-margin-0" style="font-style: italic;">Sangrías, mojitos y splashes recién llegados. Frescos como un finde sin curro.</p>
+                  <div class="button_main_wrap" data-trigger="hover focus" style="align-self: center;">
+                    <a href="./carta.html#bebidas" class="button_main_element" data-style="secondary" onclick="closeSuscribePopup();">
+                      <div class="button_main_text u-text-style-main">VER BEBIDAS</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3: VERDADERO FINAL FELIZ (postres) -->
+              <div class="popup-slide">
+                <div class="popup-slide-image">
+                  <!-- TODO: replace with the postres photo -->
+                  <img src="https://picsum.photos/seed/piripiri-final-feliz/1200/750" alt="Postres Piri Piri" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                </div>
+                <div class="popup-slide-body u-flex-vertical-nowrap u-align-items-center u-gap-6 u-padding-block-7 u-padding-inline-7" style="text-align: center;">
+                  <h2 class="u-text-style-h2 u-text-transform-uppercase u-margin-0" style="line-height: 0.95;">VERDADERO<br>FINAL FELIZ</h2>
+                  <p class="u-text-style-main u-margin-0" style="font-style: italic;">Tarta de queso, mousse de chocolate, baba de camello. Termina como te mereces.</p>
+                  <div class="button_main_wrap" data-trigger="hover focus" style="align-self: center;">
+                    <a href="./carta.html#postres" class="button_main_element" data-style="secondary" onclick="closeSuscribePopup();">
+                      <div class="button_main_text u-text-style-main">VER POSTRES</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Pill bullets populated by Swiper pagination -->
+        <div class="slider_bullet_list" aria-label="Navegación del popup"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    function openSuscribePopup() {
+      var el = document.getElementById('suscribe-popup');
+      if (!el) return;
+      el.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      // Swiper measures sizes at init time. Because the popup ships hidden,
+      // the slider boots up with 0 width — refresh after we make it visible.
+      var swiperEl = el.querySelector('.slider_element');
+      if (swiperEl && swiperEl.swiper) {
+        swiperEl.swiper.update();
+        if (swiperEl.swiper.autoplay) swiperEl.swiper.autoplay.start();
+      }
+    }
+    function closeSuscribePopup() {
+      var el = document.getElementById('suscribe-popup');
+      if (!el) return;
+      el.style.display = 'none';
+      document.body.style.overflow = '';
+      var swiperEl = el.querySelector('.slider_element');
+      if (swiperEl && swiperEl.swiper && swiperEl.swiper.autoplay) {
+        swiperEl.swiper.autoplay.stop();
+      }
+    }
+    // Esc-to-close while the popup is open.
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var el = document.getElementById('suscribe-popup');
+      if (el && el.style.display !== 'none') closeSuscribePopup();
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      // Popup ships hidden; auto-open the FIRST time the visitor scrolls past
+      // ~80% of one viewport. No session gate for now so it's easy to test —
+      // add the sessionStorage check back when behavior is final.
+      var fired = false;
+      function check() {
+        if (fired) return;
+        if (window.scrollY < window.innerHeight * 0.8) return;
+        fired = true;
+        window.removeEventListener('scroll', onScroll);
+        openSuscribePopup();
+      }
+      var rafId = 0;
+      function onScroll() {
+        if (rafId) return;
+        rafId = requestAnimationFrame(function () { rafId = 0; check(); });
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    });
+  </script>
+
+
+
+  <!-- COOKIE BANNER - Bottom -->
+  <div id="cookie-banner" class="popup-cookie u-theme-dark u-border-top-main" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background-color: var(--_theme---background); backdrop-filter: blur(8px);">
+    <div class="u-container u-padding-block-4">
+      <div class="u-flex-horizontal-nowrap u-flex-column-mobile u-justify-content-between u-align-items-center u-gap-4">
+        <p class="u-text-style-small u-color-light-400 u-margin-0">Usamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra <a href="./legal.html#cookies" class="u-color-brand-500 u-text-decoration-underline">política de cookies</a>.</p>
+        <div class="u-flex-horizontal-nowrap u-gap-3">
+          <button onclick="document.getElementById('cookie-banner').style.display='none';" class="u-text-style-small u-color-light-400 u-bg-transparent u-border-none" style="cursor: pointer;">Rechazar</button>
+          <div class="button_main_wrap" data-trigger="hover focus" style="--_button---size: var(--_spacing---space--4);">
+            <button onclick="document.getElementById('cookie-banner').style.display='none';" class="button_main_element">
+              <div class="button_main_text u-text-style-small">Aceptar</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page_wrap">
+    <main class="page_main">
+
+      <!-- FULLSCREEN MENU -->
+      <dialog data-modal-target="menu" data-show-in-designer="false" class="modal_dialog u-theme-dark">
+        <div class="u-embed-css w-embed">
+          <style>
+.modal_dialog::backdrop { opacity: 0; }
+.wf-design-mode [data-show-in-designer="true"] {
+	display: block;
+}
+[data-menu-list] [data-menu-heart] {
+	opacity: 0;
+	transform: scale(.8);
+	transition: opacity .2s ease, transform .2s ease;
+}
+[data-menu-item]:hover [data-menu-heart] {
+	opacity: 1;
+	transform: scale(1.2);
+}
+          </style>
+        </div>
+        <div class="modal_inner u-position-relative u-bg-dark-900" data-style="full-screen">
+          <div data-modal-close="" class="modal_backdrop"></div>
+          <button type="button" data-modal-close class="popup-close-btn" aria-label="Cerrar menú">
+            <svg width="14" height="14" viewBox="0 0 39.276 39.277" fill="currentColor" aria-hidden="true">
+              <path d="M6.505,0.79L39.276,33.561l-6.505,4.926L0,5.716Z"/>
+              <path d="M38.486,6.506L5.715,39.277l-4.926-6.505L33.56,0Z"/>
+            </svg>
+            <span class="u-sr-only">Cerrar</span>
+          </button>
+          <div class="modal_content u-bg-transparent u-position-relative" style="overflow: visible;" data-style="full-screen">
+            <!-- Animated fire fan — top-right corner, 16 flames rotated 225° as a group, wider abanico fan -->
+            <div class="pp-inline-fire u-position-absolute u-pointer-off" style="top: -60rem; right: -18rem; width: clamp(32rem, 54vw, 50rem); height: clamp(32rem, 54vw, 50rem); z-index: 0; transform: rotate(225deg); transform-origin: 88% 100%;">
+              <div class="pp-flame-wrap" style="position:absolute;left:45%;bottom:4.17%;width:30%;height:90%;transform:rotate(-41deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:48.73%;bottom:5.59%;width:30%;height:90%;transform:rotate(-35.53deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:52.47%;bottom:1.16%;width:30%;height:90%;transform:rotate(-30.07deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:56.2%;bottom:0.88%;width:30%;height:90%;transform:rotate(-24.6deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:59.93%;bottom:5.38%;width:30%;height:90%;transform:rotate(-19.13deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:63.67%;bottom:4.5%;width:30%;height:90%;transform:rotate(-13.67deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:67.4%;bottom:0.23%;width:30%;height:90%;transform:rotate(-8.2deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:71.13%;bottom:2.21%;width:30%;height:90%;transform:rotate(-2.73deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:74.87%;bottom:5.97%;width:30%;height:90%;transform:rotate(2.73deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:78.6%;bottom:3.02%;width:30%;height:90%;transform:rotate(8.2deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:82.33%;bottom:0.02%;width:30%;height:90%;transform:rotate(13.67deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:86.07%;bottom:3.74%;width:30%;height:90%;transform:rotate(19.13deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:89.8%;bottom:5.79%;width:30%;height:90%;transform:rotate(24.6deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:93.53%;bottom:1.54%;width:30%;height:90%;transform:rotate(30.07deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:97.27%;bottom:0.59%;width:30%;height:90%;transform:rotate(35.53deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:101%;bottom:5.08%;width:30%;height:90%;transform:rotate(41deg);transform-origin:bottom center;"></div>
+            </div>
+            <!-- Animated fire fan — bottom-left corner, 10 flames rotated 45° as a group, wider abanico fan -->
+            <div class="pp-inline-fire u-position-absolute u-pointer-off" style="bottom: -18rem; left: -26rem; width: clamp(32rem, 54vw, 50rem); height: clamp(32rem, 54vw, 50rem); z-index: 0; transform: rotate(45deg); transform-origin: 12% 100%;">
+              <div class="pp-flame-wrap" style="position:absolute;left:-27%;bottom:2.78%;width:30%;height:90%;transform:rotate(-34deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:-21.67%;bottom:3.73%;width:30%;height:90%;transform:rotate(-26.44deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:-16.33%;bottom:0.78%;width:30%;height:90%;transform:rotate(-18.89deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:-11%;bottom:0.59%;width:30%;height:90%;transform:rotate(-11.33deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:-5.67%;bottom:3.59%;width:30%;height:90%;transform:rotate(-3.78deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:-0.33%;bottom:3%;width:30%;height:90%;transform:rotate(3.78deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:5%;bottom:0.15%;width:30%;height:90%;transform:rotate(11.33deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:10.33%;bottom:1.47%;width:30%;height:90%;transform:rotate(18.89deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:15.67%;bottom:3.98%;width:30%;height:90%;transform:rotate(26.44deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;left:21%;bottom:2.02%;width:30%;height:90%;transform:rotate(34deg);transform-origin:bottom center;"></div>
+            </div>
+            <div data-lenis-prevent=" " data-modal-scroll="" class="modal_scroll u-zindex-1 u-flex-vertical-nowrap u-min-height-full" style="padding: var(--_spacing---space--4) var(--_spacing---space--3);" data-style="full-screen">
+              <!-- Top row: Logo left, Close button right -->
+              <div class="u-flex-horizontal-nowrap u-justify-content-between u-align-items-start u-width-full">
+                <a href="./index.html" class="hero_logo_wrap" aria-label="Ir al inicio" style="width: 8rem;">
+                  <svg viewBox="0 0 84 36" fill="currentColor" class="u-svg" aria-hidden="true">
+                    <path d="M64.6885 3.86108C64.8623 3.85696 68.8297 3.80551 71.3027 6.45288C72.7493 8.00106 73.368 10.0776 73.1406 12.6257C72.6719 17.9369 69.8975 20.0423 67.582 20.6511C68.1416 23.1532 70.5841 31.2958 76.2754 31.5671L75.9121 34.7185C67.0161 34.2787 65.2897 23.7924 65.0752 23.1765L64.7695 29.8064L61.6992 29.0896L63.2637 3.89136L64.6885 3.86108ZM6.99707 6.59741C7.1744 6.5602 11.3916 5.70245 14.5674 8.13745C16.5419 9.65468 17.6341 12.0254 17.8066 15.1843C18.0975 20.4552 15.9866 23.2423 14.167 24.6531C13.0478 25.5171 11.9196 25.9707 11.1055 26.2058L11.8828 32.5837L8.66699 34.0203L5.5 6.91479L6.99707 6.59741ZM23.7842 28.95L20.7227 29.7302L19.8496 16.8943L22.9111 16.0925L23.7842 28.95ZM77.708 18.8767C77.7024 18.9162 77.1315 22.9073 76.3848 29.2234C75.4614 29.2971 74.0147 28.6829 73.3594 27.8357C74.2828 20.1906 74.6191 17.988 74.6191 17.988L77.708 18.8767ZM26.2275 2.73804C26.3931 2.71309 30.3224 2.16052 33.1104 4.47632C34.7391 5.82959 35.6176 7.81267 35.7129 10.3689C35.9085 15.4906 33.6156 17.9432 31.459 18.9207C32.992 22.0045 34.671 24.7838 37.4053 26.4001L35.8174 29.0886C32.6653 27.2244 30.7319 24.7374 28.9805 20.9119L29.3213 27.8894L26.2324 28.4646L24.8174 2.948L26.2275 2.73804ZM60.1846 15.5974L59.3477 28.6677L56.2539 28.1433L57.0908 15.0466L60.1846 15.5974ZM46.4678 1.40991C46.6407 1.39518 50.7305 1.08814 53.4736 3.81128C55.2252 5.55288 55.9944 8.04505 55.7578 11.2166C55.3667 16.4241 53.0008 18.8957 51.0811 20.0515C49.9027 20.7622 48.7608 21.0679 47.9463 21.198L47.8193 27.1238L44.5303 26.9734L44.9844 1.53296L46.4678 1.40991ZM42.0684 26.9402L38.9521 26.9451L38.9336 13.8318L42.0498 13.8259L42.0684 26.9402ZM10.2686 21.9119C11.8016 21.3161 14.2851 19.5618 14.0078 14.4773C13.8893 12.3529 13.2439 10.8225 12.0928 9.92944C11.0645 9.13292 9.76826 8.91972 8.76758 8.89429L10.2686 21.9119ZM65.4521 18.5671L65.916 18.6189C66.2663 18.6439 69.5602 18.6608 70.0381 13.2429C70.179 11.6009 69.8559 10.3735 69.0371 9.48999C68.2318 8.62195 67.0762 8.22024 66.166 8.03491L65.4521 18.5671ZM28.7168 17.4626L29.1855 17.4558C29.5381 17.4301 32.8014 17.0356 32.5967 11.6033C32.533 9.95635 32.0556 8.77933 31.1318 8.00562C30.2264 7.24561 29.0298 6.99322 28.1064 6.92358L28.7168 17.4626ZM47.7822 16.9441C49.3201 16.5362 51.8769 15.1011 52.25 10.0779C52.4137 7.91183 51.9678 6.2898 50.9307 5.25854C50.071 4.40364 48.9107 4.04378 48.001 3.89526L47.7822 16.9441ZM77.0303 11.8044C77.9537 11.8833 78.6048 13.0464 78.4863 14.4011C78.3726 15.7557 77.5312 16.7903 76.6123 16.7117C75.6933 16.6328 75.0426 15.4697 75.1562 14.115C75.2745 12.76 76.1115 11.726 77.0303 11.8044ZM20.8135 9.91772C21.7369 9.88309 22.5241 10.9571 22.5742 12.3162C22.6243 13.6753 21.9198 14.8052 20.9961 14.8396C20.0727 14.8739 19.2858 13.7994 19.2354 12.4402C19.1855 11.081 19.8903 9.95228 20.8135 9.91772ZM58.9297 8.60718C59.853 8.60741 60.5986 9.70994 60.5986 11.0701C60.5985 12.4296 59.8529 13.5318 58.9297 13.532C58.0064 13.532 57.2599 12.4298 57.2598 11.0701C57.2598 9.71016 58.0062 8.60718 58.9297 8.60718ZM40.5039 7.23022C41.4277 7.23022 42.1738 8.33284 42.1738 9.69312C42.1737 11.0528 41.4228 12.155 40.5039 12.155C39.585 12.155 38.8302 11.0532 38.8301 9.69312C38.8301 8.33287 39.5801 7.23026 40.5039 7.23022Z"/>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Middle: Menu links with left padding -->
+              <div class="modal_slot u-flex-grow u-flex-vertical-nowrap u-justify-content-center u-padding-left-6">
+                <div class="u-flex-vertical-nowrap u-gap-4" data-menu-list>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./index.html" class="u-text-style-display u-text-transform-uppercase u-text-brand u-text-decoration-none u-transition-color-main u-hover-color-brand">INICIO</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="https://carta.somospiripiri.com/" target="_blank" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">PEDIDOS</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="#reserva" data-modal-close class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">RESERVA</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./historia.html" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">HISTORIA</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./club-secreto.html" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">CLUB SECRETO</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./carta.html" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">CARTA</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./juego.html" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">PIRI PIRAOS</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./contacto.html" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">CONTACTO</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom row: Social + Address left, Buttons right -->
+              <div class="u-flex-horizontal-nowrap u-justify-content-between u-align-items-end u-width-full u-gap-6 u-flex-column-mobile">
+                <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-4 u-padding-left-6">
+                  <ul class="u-flex-horizontal-nowrap u-gap-4 u-list-style-none">
+<li>
+                      <a href="https://www.instagram.com/piripirialcarbon" target="_blank" class="u-flex-horizontal-nowrap u-align-items-center u-justify-content-center u-color-inherit u-size-8 u-transition-color-main u-hover-color-brand" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.2.1 4.7 1.7 4.8 4.8.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.1-1.6 4.7-4.8 4.8-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.2-.1-4.7-1.7-4.8-4.8-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3.1 1.6-4.7 4.8-4.8 1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zM12 16c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-11.8c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/>
+                        </svg>
+                      </a>
+                    </li>
+<li>
+                      <a href="https://www.tiktok.com/@piripirialcarbon" target="_blank" class="u-flex-horizontal-nowrap u-align-items-center u-justify-content-center u-color-inherit u-size-8 u-transition-color-main u-hover-color-brand" aria-label="TikTok">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M19.6 8.2c-2.3 0-4.2-1.9-4.2-4.2V3h-3.5v13.4c0 1.7-1.4 3.1-3.1 3.1s-3.1-1.4-3.1-3.1 1.4-3.1 3.1-3.1c.3 0 .6 0 .9.1V9.9c-.3 0-.6-.1-.9-.1-3.5 0-6.4 2.9-6.4 6.4s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4V9.3c1.4 1 3.1 1.6 4.9 1.6V7.6c-.3 0-.9.1-1.5.6z"/>
+                        </svg>
+                      </a>
+                    </li>
+                  </ul>
+                  <address class="u-text-style-small u-color-inherit u-font-style-normal">
+                    P.º DE LA TIERRA DE MELIDE, 27
+                  </address>
+                </div>
+
+                <div class="u-flex-horizontal-nowrap u-gap-4">
+                  <div class="button_main_wrap" data-trigger="hover focus">
+                    <a href="#reserva" data-modal-close class="button_main_element">
+                      <div class="button_main_text u-text-style-main">RESERVA</div>
+                    </a>
+                  </div>
+                  <div class="button_main_wrap" data-trigger="hover focus">
+                    <a href="https://carta.somospiripiri.com/" target="_blank" class="button_main_element" data-style="secondary">
+                      <div class="button_main_text u-text-style-main">PIDE YA</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+  <!-- HERO SECTION -->
+  <section class="hero u-min-height-screen u-position-relative u-zindex-1 u-theme-dark" style="display: grid; grid-template-rows: auto 1fr auto; overflow: clip;">
+
+    <!-- Navigation — highest z-index, always on top -->
+    <nav class="hero_nav u-flex-horizontal-nowrap u-justify-content-center u-align-items-center u-padding-inline-gutter u-width-full" style="position: relative; z-index: 10; padding-block: var(--site--gutter);">
+      <a href="./index.html" class="hero_logo_wrap" aria-label="Ir al inicio" style="width: 8rem; position: absolute; top: calc(2 * var(--site--gutter)); left: var(--site--gutter);">
+        <svg viewBox="0 0 84 36" fill="currentColor" class="u-svg" aria-hidden="true">
+          <path d="M64.6885 3.86108C64.8623 3.85696 68.8297 3.80551 71.3027 6.45288C72.7493 8.00106 73.368 10.0776 73.1406 12.6257C72.6719 17.9369 69.8975 20.0423 67.582 20.6511C68.1416 23.1532 70.5841 31.2958 76.2754 31.5671L75.9121 34.7185C67.0161 34.2787 65.2897 23.7924 65.0752 23.1765L64.7695 29.8064L61.6992 29.0896L63.2637 3.89136L64.6885 3.86108ZM6.99707 6.59741C7.1744 6.5602 11.3916 5.70245 14.5674 8.13745C16.5419 9.65468 17.6341 12.0254 17.8066 15.1843C18.0975 20.4552 15.9866 23.2423 14.167 24.6531C13.0478 25.5171 11.9196 25.9707 11.1055 26.2058L11.8828 32.5837L8.66699 34.0203L5.5 6.91479L6.99707 6.59741ZM23.7842 28.95L20.7227 29.7302L19.8496 16.8943L22.9111 16.0925L23.7842 28.95ZM77.708 18.8767C77.7024 18.9162 77.1315 22.9073 76.3848 29.2234C75.4614 29.2971 74.0147 28.6829 73.3594 27.8357C74.2828 20.1906 74.6191 17.988 74.6191 17.988L77.708 18.8767ZM26.2275 2.73804C26.3931 2.71309 30.3224 2.16052 33.1104 4.47632C34.7391 5.82959 35.6176 7.81267 35.7129 10.3689C35.9085 15.4906 33.6156 17.9432 31.459 18.9207C32.992 22.0045 34.671 24.7838 37.4053 26.4001L35.8174 29.0886C32.6653 27.2244 30.7319 24.7374 28.9805 20.9119L29.3213 27.8894L26.2324 28.4646L24.8174 2.948L26.2275 2.73804ZM60.1846 15.5974L59.3477 28.6677L56.2539 28.1433L57.0908 15.0466L60.1846 15.5974ZM46.4678 1.40991C46.6407 1.39518 50.7305 1.08814 53.4736 3.81128C55.2252 5.55288 55.9944 8.04505 55.7578 11.2166C55.3667 16.4241 53.0008 18.8957 51.0811 20.0515C49.9027 20.7622 48.7608 21.0679 47.9463 21.198L47.8193 27.1238L44.5303 26.9734L44.9844 1.53296L46.4678 1.40991ZM42.0684 26.9402L38.9521 26.9451L38.9336 13.8318L42.0498 13.8259L42.0684 26.9402ZM10.2686 21.9119C11.8016 21.3161 14.2851 19.5618 14.0078 14.4773C13.8893 12.3529 13.2439 10.8225 12.0928 9.92944C11.0645 9.13292 9.76826 8.91972 8.76758 8.89429L10.2686 21.9119ZM65.4521 18.5671L65.916 18.6189C66.2663 18.6439 69.5602 18.6608 70.0381 13.2429C70.179 11.6009 69.8559 10.3735 69.0371 9.48999C68.2318 8.62195 67.0762 8.22024 66.166 8.03491L65.4521 18.5671ZM28.7168 17.4626L29.1855 17.4558C29.5381 17.4301 32.8014 17.0356 32.5967 11.6033C32.533 9.95635 32.0556 8.77933 31.1318 8.00562C30.2264 7.24561 29.0298 6.99322 28.1064 6.92358L28.7168 17.4626ZM47.7822 16.9441C49.3201 16.5362 51.8769 15.1011 52.25 10.0779C52.4137 7.91183 51.9678 6.2898 50.9307 5.25854C50.071 4.40364 48.9107 4.04378 48.001 3.89526L47.7822 16.9441ZM77.0303 11.8044C77.9537 11.8833 78.6048 13.0464 78.4863 14.4011C78.3726 15.7557 77.5312 16.7903 76.6123 16.7117C75.6933 16.6328 75.0426 15.4697 75.1562 14.115C75.2745 12.76 76.1115 11.726 77.0303 11.8044ZM20.8135 9.91772C21.7369 9.88309 22.5241 10.9571 22.5742 12.3162C22.6243 13.6753 21.9198 14.8052 20.9961 14.8396C20.0727 14.8739 19.2858 13.7994 19.2354 12.4402C19.1855 11.081 19.8903 9.95228 20.8135 9.91772ZM58.9297 8.60718C59.853 8.60741 60.5986 9.70994 60.5986 11.0701C60.5985 12.4296 59.8529 13.5318 58.9297 13.532C58.0064 13.532 57.2599 12.4298 57.2598 11.0701C57.2598 9.71016 58.0062 8.60718 58.9297 8.60718ZM40.5039 7.23022C41.4277 7.23022 42.1738 8.33284 42.1738 9.69312C42.1737 11.0528 41.4228 12.155 40.5039 12.155C39.585 12.155 38.8302 11.0532 38.8301 9.69312C38.8301 8.33287 39.5801 7.23026 40.5039 7.23022Z"/>
+        </svg>
+      </a>
+
+      <ul class="hero_nav_links u-flex-horizontal-nowrap u-gap-5 u-list-style-none u-hide-tablet">
+        <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="./index.html" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Inicio</a></li>
+        <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="./historia.html" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Historia</a></li>
+        <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="./club-secreto.html" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Club Secreto</a></li>
+        <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="./carta.html" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Carta</a></li>
+        <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="./juego.html" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Piri Piraos</a></li>
+        <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="./contacto.html" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Contacto</a></li>
+        <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="https://carta.somospiripiri.com/" target="_blank" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Pedidos</a></li>
+      </ul>
+
+    </nav>
+
+    <!-- MENÚ button: fixed so it follows on scroll -->
+    <div data-modal-trigger="menu" class="button_main_wrap u-radius-round" data-trigger="hover focus" style="position: fixed; top: calc(2 * var(--site--gutter)); right: calc(2 * var(--site--gutter)); z-index: 11;">
+      <button class="button_main_element" aria-label="Abrir menú" data-style="secondary">
+        <svg class="button_main_icon" viewBox="0 0 39.261 32.661" fill="currentColor" aria-hidden="true" style="width: 1.25rem; height: auto;">
+          <path d="M.924,25.974h38.337l-.924,6.687H0Z"/>
+          <path d="M.924,12.987h38.337l-.924,6.687H0Z"/>
+          <path d="M.924,0h38.337l-.924,6.686H0Z"/>
+        </svg>
+        <div class="button_main_text u-text-style-main">MENÚ</div>
+      </button>
+    </div>
+
+    <!-- Main canvas: heading left, graphic+images fill the space -->
+    <div class="hero_canvas u-position-relative u-padding-inline-gutter" style="display: grid; grid-template-columns: 1fr 1fr; align-items: center; overflow: visible;">
+
+      <!-- Left: Heading with swap animation -->
+      <div class="hero_heading_col" style="position: relative; z-index: 3; align-self: center; display: flex; flex-direction: column; width: fit-content; margin-top: -16vh;">
+        <style>
+          .hero-title {
+            margin: 0;
+            font-family: var(--_typography---font--primary-family);
+            font-weight: 900;
+            line-height: 1;
+            /* Cap lowered from 11rem (176px) → 8rem (128px) so the title
+               doesn't dominate at small-desktop widths. Floor + vw ratio
+               unchanged so mobile/tablet sizing is preserved. */
+            font-size: clamp(3.5rem, 8.5vw, 8rem);
+            text-transform: uppercase;
+          }
+          .hero-line {
+            display: block;
+            line-height: 1;
+            margin-bottom: -0.08em; /* restore original 0.92 visual rhythm */
+          }
+          /* Each word slot clips its two stacked words */
+          .hero-slot {
+            display: inline-block;
+            overflow: hidden;
+            vertical-align: top;
+            line-height: 1;
+            height: 1em;
+          }
+          .hero-slot + .hero-slot {
+            margin-left: 0.22em;
+          }
+          .hero-slot-inner {
+            display: flex;
+            flex-direction: column;
+            will-change: transform;
+          }
+          .hero-slot-word {
+            display: block;
+            white-space: nowrap;
+            height: 1em;
+            line-height: 1;
+          }
+        </style>
+        <h1 id="hero-title" class="hero-title u-color-inherit u-font-style-italic" aria-label="CARBÓN A LO BESTIA.">
+          <span class="hero-line">
+            <span class="hero-slot"><span class="hero-slot-inner"><span class="hero-slot-word">CARBÓN</span><span class="hero-slot-word">SALSEO</span></span></span><span class="hero-slot"><span class="hero-slot-inner"><span class="hero-slot-word">A</span><span class="hero-slot-word">A</span></span></span>
+          </span>
+          <span class="hero-line">
+            <span class="hero-slot"><span class="hero-slot-inner"><span class="hero-slot-word">LO</span><span class="hero-slot-word">LO</span></span></span><span class="hero-slot"><span class="hero-slot-inner"><span class="hero-slot-word">BESTIA.</span><span class="hero-slot-word">BRUTO.</span></span></span>
+          </span>
+        </h1>
+        <script>
+        (function() {
+          function waitForGsap(cb) {
+            if (typeof gsap !== 'undefined') cb();
+            else setTimeout(() => waitForGsap(cb), 50);
+          }
+
+          waitForGsap(() => {
+            const slotInners = document.querySelectorAll('#hero-title .hero-slot-inner');
+            const h1         = document.getElementById('hero-title');
+            const labels     = ['CARBÓN A\nLO BESTIA.', 'SALSEO A\nLO BRUTO.'];
+            let current = 0;
+
+            gsap.set(slotInners, { y: 0 });
+
+            function swap() {
+              current = (current + 1) % 2;
+              h1.setAttribute('aria-label', labels[current]);
+
+              gsap.to(slotInners, {
+                y: current === 1 ? '-1em' : '0em',
+                duration: 0.5,
+                ease: 'power3.inOut',
+                stagger: 0.08,
+              });
+            }
+
+            setInterval(swap, 4000);
+          });
+        })();
+        </script>
+        <!-- Width tuning: min-width nudges the fit-content column wider on
+             big screens so the lede doesn't drop to 5+ lines; max-width caps
+             the measure so it doesn't sprawl across the hero at the new
+             larger text-large size. Aimed at a 2–3 line sweet spot from
+             1440 → 4K. -->
+        <p class="u-text-style-large u-color-inherit u-opacity-75" style="margin-top: var(--_spacing---space--8); min-width: clamp(0px, 22vw, 28rem); max-width: 38ch;">
+          Somos Piri Piri, un ají picante que suena divertido, pero no te confíes. Puede ser un bastardo que te muerda la lengua, y lo mejor es que te va a gustar.
+        </p>
+      </div>
+
+      <!-- Right: Graphic + images absolutely positioned -->
+      <div class="hero_graphic_col u-hide-mobile" style="position: relative; height: 100%; z-index: 2; display: flex; align-items: center;">
+
+        <!-- SOMOS PIRI PIRI graphic wrapped in semantic <h2> for SEO/screen readers.
+             display: contents removes the h2 from the layout box tree so the
+             SVG sizes against its flex parent exactly as before. -->
+        <h2 style="display: contents; margin: 0; padding: 0;">
+          <img src="assets/resources/graphics/graphic_somos-piripiri.svg" alt="SOMOS PIRI PIRI" style="position: relative; z-index: 3; width: 95%; height: auto; display: block; margin-left: -8%;">
+        </h2>
+
+      </div>
+    </div>
+
+    <!-- Top-right image: absolute on section so it touches the true edge -->
+    <div class="hero_topright_image" style="position: absolute; top: var(--site--gutter); right: var(--site--gutter); width: clamp(22rem, 38vw, 38rem); z-index: 1; border-radius: var(--radius--main); border: var(--border-width--main) solid var(--swatch--brand-500); overflow: visible;">
+      <div class="hero_topright_image_inner" style="border-radius: var(--radius--main); overflow: hidden; position: relative;">
+        <img src="assets/resources/images/general/group-table-01.webp" srcset="assets/resources/images/general/320w/group-table-01_320w.webp 320w, assets/resources/images/general/480w/group-table-01_480w.webp 480w, assets/resources/images/general/768w/group-table-01_768w.webp 768w, assets/resources/images/general/1024w/group-table-01_1024w.webp 1024w" sizes="(max-width: 767px) 60vw, 600px" loading="eager" decoding="async" fetchpriority="high" alt="Clientes disfrutando en Piri Piri" class="hero_topright_image_img" style="width: 100%; height: auto; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
+        <!-- Fire icon overlapping bottom-center of image -->
+        <div class="hero_nav_fire u-text-brand" style="position: absolute; bottom: -15%; left: 50%; transform: translateX(-50%) scale(0.8); width: clamp(5rem, 9vw, 9rem); z-index: 5; pointer-events: none; opacity: 0; transition: opacity 0.2s ease, transform 0.2s ease;">
+          <svg viewBox="0 0 59.522 73.562" fill="currentColor" aria-hidden="true" style="width: 100%; height: auto; display: block; filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));">
+            <path d="M30.127,22.24l11.9-19.4,16.664-.171.835,32.252-33.563,38.637L0,28.304l4.363-18.958L18.101,0Z"/>
+          </svg>
+        </div>
+        <style>
+          .hero_nav_links:has(.hero_nav_link:hover) ~ * .hero_nav_fire,
+          .hero:has(.hero_nav_link:hover) .hero_nav_fire {
+            opacity: 1;
+            transform: translateX(-50%) scale(1.1);
+          }
+        </style>
+      </div>
+    </div>
+
+    <!-- Bottom bar: social left, buttons right -->
+    <footer class="hero_footer u-padding-block-4 u-padding-inline-gutter u-width-full u-position-relative u-zindex-5" style="display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--_spacing---space--4);">
+
+      <!-- Empty left spacer (behind bottom-left image) -->
+      <div></div>
+
+      <!-- Social + address center -->
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--_spacing---space--4);">
+        <ul class="hero_social_links u-flex-horizontal-nowrap u-gap-4 u-list-style-none" style="margin: 0; padding: 0;">
+<li>
+            <a href="https://www.instagram.com/piripirialcarbon" target="_blank" class="hero_social_link u-flex-horizontal-nowrap u-align-items-center u-justify-content-center u-color-inherit u-size-8 u-transition-color-main u-hover-color-brand" aria-label="Instagram">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.2.1 4.7 1.7 4.8 4.8.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.1-1.6 4.7-4.8 4.8-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.2-.1-4.7-1.7-4.8-4.8-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3.1 1.6-4.7 4.8-4.8 1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zM12 16c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-11.8c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/>
+              </svg>
+            </a>
+          </li>
+<li>
+            <a href="https://www.tiktok.com/@piripirialcarbon" target="_blank" class="hero_social_link u-flex-horizontal-nowrap u-align-items-center u-justify-content-center u-color-inherit u-size-8 u-transition-color-main u-hover-color-brand" aria-label="TikTok">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19.6 8.2c-2.3 0-4.2-1.9-4.2-4.2V3h-3.5v13.4c0 1.7-1.4 3.1-3.1 3.1s-3.1-1.4-3.1-3.1 1.4-3.1 3.1-3.1c.3 0 .6 0 .9.1V9.9c-.3 0-.6-.1-.9-.1-3.5 0-6.4 2.9-6.4 6.4s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4V9.3c1.4 1 3.1 1.6 4.9 1.6V7.6c-.3 0-.9.1-1.5.6z"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+        <address id="hero-address" class="hero_address u-text-style-small u-color-inherit u-font-style-normal" aria-label="MESÓN DE PAREDES 15, LÓPEZ DE HOYOS 127, P.º DE LA TIERRA DE MELIDE 27">
+          <span class="hero-slot"><span class="hero-slot-inner"><span class="hero-slot-word">MESÓN DE PAREDES 15</span><span class="hero-slot-word">LÓPEZ DE HOYOS 127</span><span class="hero-slot-word">P.º DE LA TIERRA DE MELIDE, 27</span></span></span>
+        </address>
+        <script>
+        (function() {
+          function waitForGsap(cb) {
+            if (typeof gsap !== 'undefined') cb();
+            else setTimeout(() => waitForGsap(cb), 50);
+          }
+          waitForGsap(() => {
+            const inner = document.querySelector('#hero-address .hero-slot-inner');
+            if (!inner) return;
+            const count = inner.querySelectorAll('.hero-slot-word').length;
+            let current = 0;
+            gsap.set(inner, { y: 0 });
+            setInterval(() => {
+              current = (current + 1) % count;
+              gsap.to(inner, {
+                y: `-${current}em`,
+                duration: 0.5,
+                ease: 'power3.inOut',
+              });
+            }, 4000);
+          });
+        })();
+        </script>
+      </div>
+
+    </footer>
+
+    <!-- Bottom-left image: aligned to same gutter as nav/canvas -->
+    <div class="hero_bottomleft_image u-hide-tablet" style="position: absolute; bottom: var(--site--gutter); left: var(--site--gutter); width: clamp(17rem, 30vw, 28rem); z-index: 1; border-radius: var(--radius--main); border: var(--border-width--main) solid currentColor; overflow: hidden;">
+      <img src="assets/resources/images/general/interior-establishing.webp" srcset="assets/resources/images/general/480w/interior-establishing_480w.webp 480w, assets/resources/images/general/768w/interior-establishing_768w.webp 768w" sizes="448px" loading="eager" decoding="async" fetchpriority="high" alt="Interior del local Piri Piri" style="width: 100%; height: auto; display: block; aspect-ratio: 4 / 3; object-fit: cover;">
+    </div>
+
+  </section>
+
+  <!-- BRAND VALUES SLIDER SECTION -->
+  <section class="brand_values u-width-full u-padding-block-8 u-theme-dark u-bg-dark-900 u-position-relative" style="z-index: 2;">
+    <div class="slider_wrap u-gap-gutter u-width-full" data-slider="component">
+      <style>
+        /* Slider item sizing for brand cards — 0 gap, borders blend like masonry */
+        html .slider_list > .card_primary_wrap {
+          padding-inline: 0;
+          height: auto !important;
+          flex: 0 0 auto;
+          width: calc(100% / var(--slide-count));
+        }
+        html .slider_list > .card_primary_wrap + .card_primary_wrap {
+          margin-left: var(--border-width--overlap);
+        }
+        /* Enable touch/drag on slider */
+        .slider_element.swiper {
+          overflow: hidden;
+          touch-action: pan-y;
+        }
+        /* Brand-card slider: let the 3D flip spill vertically while still
+           clipping off-screen slides horizontally. */
+        .slider_element.swiper:has(.brand_card) {
+          overflow-x: clip;
+          overflow-y: visible;
+        }
+        /* Brand card specific styles — Luis: bigger cards, eyebrow titles
+           anchored at the top-left (NOT inside the bottom content flow) */
+        .brand_card .card_primary_element {
+          min-height: clamp(550px, 75vh, 800px);
+          /* Solid dark border so adjacent flush cards show a clean dark seam
+             against their bright brand backgrounds. */
+          border-color: var(--swatch--dark-900) !important;
+          /* Enables container-query units (cqi / cqw) for absolutely-
+             positioned children (icon, title, arrow) so they scale with the
+             CARD width, not the viewport — fixes oversized icons when 3 cards
+             share a small-desktop viewport. */
+          container-type: inline-size;
+        }
+        /* Title, icon, arrow and content all anchor at the same inset.
+           The card face (.card_primary_element) pads with space-7, so the
+           absolutely-positioned children match that value to share the
+           card's padding rhythm. */
+        .brand_card .card_primary_title {
+          position: absolute;
+          top: var(--_spacing---space--7);
+          left: var(--_spacing---space--7);
+          /* Force each word onto its own line: 100vw of word-spacing
+             guarantees a break between every word in the title regardless
+             of how long they are. Width still capped so it never collides
+             with the icon at top-right. */
+          max-width: calc(100% - var(--_spacing---space--7) * 2 - clamp(56px, 22cqi, 110px) - var(--_spacing---space--4));
+          word-spacing: 100vw;
+          font-size: clamp(1.5rem, 5cqi, 2.5rem) !important;
+          line-height: 1 !important;
+          letter-spacing: 0.04em !important;
+          margin: 0 !important;
+          font-style: italic !important;
+          font-weight: 900 !important;
+        }
+        .brand_card_icon {
+          position: absolute;
+          top: var(--_spacing---space--7);
+          right: var(--_spacing---space--7);
+          /* Sized as 22% of the card width (via container query unit), clamped
+             so it never gets tiny on mobile or oversized on a single-card
+             desktop view. Was clamp(80, 12vw, 140) — too big when 3 cards
+             shared a small viewport. */
+          width: clamp(56px, 22cqi, 110px);
+          height: clamp(56px, 22cqi, 110px);
+          object-fit: contain;
+        }
+        .brand_card_arrow {
+          position: absolute;
+          bottom: var(--_spacing---space--7);
+          right: var(--_spacing---space--7);
+          /* Also card-relative now so the arrow doesn't dwarf shrunken cards. */
+          width: clamp(22px, 8cqi, 44px);
+          height: auto;
+        }
+        .brand_card_body {
+          /* Inherit the global `u-text-style-large` token (set in site.css
+             :root) instead of a hand-rolled clamp — keeps all card bodies in
+             lockstep with the site type scale. line-height stays tighter
+             than the default so it reads as card hero copy. */
+          line-height: 1.25;
+        }
+        .brand_card .card_primary_content {
+          /* Reserve right side so body text doesn't run under the arrow. */
+          padding-right: clamp(48px, 8vw, 72px);
+        }
+        /* 3D card-flip interaction — click/tap to flip and reveal illustration.
+           Hover gives a subtle 3D tilt as a "I can be flipped" affordance.
+           Flip + tilt are composed via CSS variables so they stack cleanly
+           in any state (resting, flipped, hover, flipped+hover). */
+        .brand_card { perspective: 1200px; }
+        .brand_card .card_primary_group {
+          --flip-y: 0deg;
+          --tilt-x: 0deg;
+          --tilt-y: 0deg;
+          position: relative;
+          transform-style: preserve-3d;
+          transform: rotateY(var(--flip-y)) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+          transition: transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+          cursor: pointer;
+          will-change: transform;
+        }
+        .brand_card.is-flipped .card_primary_group {
+          --flip-y: 180deg;
+        }
+        /* Tilt is driven by JS (see initBrandCardTilt below) — only the four
+           corner zones tilt the card, and the direction follows whichever
+           corner the cursor is in. The CSS just owns the variables. */
+        .brand_card .card_primary_element,
+        .brand_card .card_primary_back {
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+        .brand_card .card_primary_back {
+          position: absolute;
+          inset: 0;
+          transform: rotateY(180deg);
+          overflow: hidden;
+          /* Match the front face so the dark border persists after the flip */
+          border: var(--border-width--main) solid var(--swatch--dark-900);
+          /* Mirror the card radius so the illustration is clipped to the
+             same rounded corners as the front face. */
+          border-radius: inherit;
+        }
+        /* Fill the entire back face so the illustration's colored background
+           reaches the card border — no centered padding. */
+        .brand_card .card_primary_back img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        /* Mobile: match the image-card sliders (food/gallery) so every carousel
+           card shares the same 4/5 footprint. The card height now comes from the
+           GROUP, and BOTH faces are absolutely positioned (symmetric). The old
+           layout left the front face in normal flow while the back was absolute
+           — that asymmetric 3D structure made backface-visibility flicker on
+           mobile while the swiper moved (text vanishing on swipe, and a flip
+           showing the mirrored front instead of the back illustration). With
+           both faces absolute inside an aspect-ratio'd group the flip stays
+           rock-solid during slider movement. */
+        @media (max-width: 767px) {
+          .brand_card .card_primary_group {
+            aspect-ratio: 4 / 5;
+            /* Symmetric easing so the flip is exactly half-way (90°, edge-on) at
+               0.25s, which is when we swap the visible face below. */
+            transition: transform 0.5s ease-in-out;
+          }
+          .brand_card .card_primary_element {
+            position: absolute;
+            inset: 0;
+            min-height: 0 !important;
+          }
+          /* backface-visibility is unreliable on mobile while the swiper
+             transforms the cards — that's what left the front text visible
+             (mirrored) after a flip and made it flicker on swipe. Turn it off
+             and instead show exactly ONE face via opacity, snapped at the flip's
+             midpoint (instant change after a 0.25s delay). The other half of the
+             rotation brings that face from edge-on to front, so it never looks
+             mirrored, and a plain swipe never hides the front. */
+          .brand_card .card_primary_element,
+          .brand_card .card_primary_back {
+            -webkit-backface-visibility: visible;
+            backface-visibility: visible;
+            transition: opacity 0s linear 0.25s;
+          }
+          .brand_card .card_primary_back { opacity: 0; }
+          .brand_card.is-flipped .card_primary_element { opacity: 0; }
+          .brand_card.is-flipped .card_primary_back { opacity: 1; }
+        }
+      </style>
+      <div style="--lg: 3; --md: 2; --sm: 1.2; --xs: 1;" class="slider_offset">
+        <div data-speed="600" data-follow-finger="true" data-free-mode="false" data-mousewheel="true" data-loop="true" data-autoplay="true" data-autoplay-delay="3000" class="slider_element swiper">
+          <div data-slot="" class="slider_list swiper-wrapper">
+
+            <!-- Card 1: FUEGO -->
+            <div class="card_primary_wrap brand_card brand_card--fuego">
+              <div data-trigger="hover focus" class="card_primary_group">
+                <div class="card_primary_element u-position-relative u-flex-vertical-nowrap u-justify-content-end u-padding-6 u-radius-main u-bg-brand u-text-dark-900">
+                  <!-- Icon - top right -->
+                  <svg class="brand_card_icon" viewBox="0 0 33.73 38.05" fill="currentColor" aria-hidden="true">
+                    <path d="M26.57,15.21c.31.07.54.41.71.66,1.92,2.87,4.3,6.9,5.92,9.96.21.39.63,1.01.51,1.41l-6.47,8.95-.67.33c-2.29.22-4.69,1.2-6.92,1.51-1.18.16-.43-.76-.37-1.37.19-1.89.31-3.79.53-5.69.09-.76.41-1.26.2-2.2-.18-.84-2.75-3.14-3.43-4.02-.15-.19-.27-.38-.24-.63-.23,0-.35.23-.46.4-.92,1.44-1.64,3.42-2.54,4.93l1.46,8.57-7.94-2.64L.99,25.12l-.99-7.62,9.43-5.33-4.71,6.53c1.33,1.89,2.07,4.35,3.84,5.85l2.07,1.04-2.72-7.58,5.71-7.73c.04-1.05.11-2.14.06-3.2-.09-1.95-.1-4-.23-5.96-.03-.42-.61-1.22.11-1.1l11.23,12.62c.02.81.09,1.65.04,2.46-.15,2.28-1.04,4.17-1.98,6.23l1.68,5.31c.35-.03.4-.36.51-.61.21-.5,1.49-3.77,1.49-3.98l.02-6.83Z"/>
+                    <polygon points="9.94 8.94 2.23 12.51 9.97 2.23 9.94 8.94"/>
+                  </svg>
+                  <!-- Title - top left -->
+                  <h3 class="card_primary_title u-text-style-h5 u-text-transform-uppercase u-margin-bottom-0">FUEGO INTERIOR</h3>
+                  <!-- Content - bottom -->
+                  <div class="card_primary_content u-margin-trim">
+                    <p class="brand_card_body u-text-style-large u-margin-bottom-0">
+                      Somos todo lo que el fuego transforma.<br>
+                      Encendemos la brasa con carbón Marabú y todo sucede dentro del Josper. Somos hijos del fuego. Somos Asadomasoquistas.
+                    </p>
+                  </div>
+                  <!-- Arrow - bottom right -->
+                  <svg class="brand_card_arrow" viewBox="0 0 45.84 56.54" fill="currentColor" aria-hidden="true">
+                    <path d="M2.927,37.379l20.5-8.11-18.247-8.108,2.818-20.161,37.842,19.147-2.591,18.246L0,57.535Z"/>
+                  </svg>
+                </div>
+                <!-- Back face: Fuego illustration -->
+                <div class="card_primary_back u-radius-main u-bg-brand u-text-dark-900" aria-hidden="true">
+                  <img src="assets/resources/graphics/pollo-fuego.svg?v=5" alt="Ilustración Fuego">
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 2: SALSEO -->
+            <div class="card_primary_wrap brand_card brand_card--salseo">
+              <div data-trigger="hover focus" class="card_primary_group">
+                <div class="card_primary_element u-position-relative u-flex-vertical-nowrap u-justify-content-end u-padding-6 u-radius-main u-bg-orchid u-text-dark-900">
+                  <!-- Icon - top right -->
+                  <svg class="brand_card_icon" viewBox="0 0 18.5 42.43" fill="currentColor" aria-hidden="true">
+                    <path d="M14.82,6.28h-1.62s-.06,8.48-.06,8.48l5.35,5.97-.03,4.18-7.15-.05-2,2.05c.07,2.43-.29,5.13-.1,7.52.1,1.27,1.32,1.39,2.02,2.29l7.15.05-.04,5.66-18.34-.13.15-21.17,5.44-6.43.06-8.49h-1.35s.04-6.21.04-6.21l10.12.07.4.41-.04,5.8Z"/>
+                    <path d="M11.79,34.84c-.17-.05-1.1-1.32-1.16-1.53-.15-.53-.11-3.09-.01-3.73.07-.48,1.79-3.08,2.04-3.09l.86,1.76-1,2.12c.48.49.75,1.29,1.46.72,1.74-1.38.53-2.45.43-4.32l2.01,1.37.89,2.34-1.05,1.97c1.33.31,1.34-.76,2.17-1.33l-.03,3.77-6.61-.05Z"/>
+                  </svg>
+                  <!-- Title - top left -->
+                  <h3 class="card_primary_title u-text-style-h5 u-text-transform-uppercase u-margin-bottom-0">PURO SALSEO</h3>
+                  <!-- Content - bottom -->
+                  <div class="card_primary_content u-margin-trim">
+                    <p class="brand_card_body u-text-style-large u-margin-bottom-0">
+                      Todo está en movimiento.<br>
+                      Todo cambia y se transforma. Aquí nada es común porque nos aburre lo que es normal y lo que no sorprende. Nos apasiona ser raros y diferentes.
+                    </p>
+                  </div>
+                  <!-- Arrow - bottom right -->
+                  <svg class="brand_card_arrow" viewBox="0 0 45.84 56.54" fill="currentColor" aria-hidden="true">
+                    <path d="M2.927,37.379l20.5-8.11-18.247-8.108,2.818-20.161,37.842,19.147-2.591,18.246L0,57.535Z"/>
+                  </svg>
+                </div>
+                <!-- Back face: Salseo illustration -->
+                <div class="card_primary_back u-radius-main u-bg-orchid u-text-dark-900" aria-hidden="true">
+                  <img src="assets/resources/graphics/salseo.svg" alt="Ilustración Salseo">
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 3: PICANTE -->
+            <div class="card_primary_wrap brand_card brand_card--picante">
+              <div data-trigger="hover focus" class="card_primary_group">
+                <div class="card_primary_element u-position-relative u-flex-vertical-nowrap u-justify-content-end u-padding-6 u-radius-main u-bg-gold u-text-dark-900">
+                  <!-- Icon - top right (matches the Picante values-tab in historia: simple flame) -->
+                  <svg class="brand_card_icon" viewBox="0 0 31.71 31.92" fill="currentColor" aria-hidden="true">
+                    <path d="M17.49,4.19l3.71.95.68,2.84c.29.06.26-.22.33-.44.39-1.22.75-2.46,1.06-3.71l2.07-1.57c.24.08.09.52.05.72-.18,1.04-.48,2.08-.64,3.13l.88,1.56,1.75-1.01.26-1.96c.42.19,1.2,1.22,1.07,1.63l-4.93,8.01-5.01,2.03-2.41,4.11-5.24-.04-5.31-4.86-.32.09c-1.22.97-2.38,2.06-3.66,2.96-.19.13-.2.31-.55.22L0,10.03l2.75,3.1.88-.65L1.61,7.72l2.63-4.06c.38-.06.24.54.21.76-.13.85-.76,2.29-.68,3.09.07.64,1.25,3.32,1.58,4.15.09.24.06.66.38.61l.27-6.4,2.85,2.45c.35-1.5.87-3.01,1.41-4.46.09-.23.08-.66.39-.6l.63,6.28-2.4,1.32c.26.46.11.96.26,1.46.33,1.04,1.83,2.18,2.09,3.31l.44-.11.47-3.64,1.54.89c.02-1.21.97-2.85.59-3.98-.12-.35-1.78-2.75-1.65-2.87l3.72,2.14-.47,4.16.22,1.22,1.75-3.22c-.08-.88.7-2.86.06-3.49-.5-.49-1.96-1.17-2.64-1.46v-.32S17.52,0,17.52,0c.38-.05.21.51.21.77.01,1.17-.1,2.26-.24,3.41Z"/>
+                    <path d="M28.43,17.08l-.16,7.28-8.11,7.56H7.81S1.92,21.38,1.92,21.38l2.97-2.92,5.76,4.64c.79.24,1.48-.14,2.17-.18,1.48-.09,3.18-.03,4.64-.18.25-.03.51-.15.73-.26.91-1.1,1.84-3.47,2.83-4.36.78-.69,2.53-1.16,3.37-1.93l4.04.89Z"/>
+                    <path d="M26.02,14.63l3.36-6.59c.29-.3,1.96.86,2.32,1.11-.27.85-1.53,5.8-1.92,6.07-.42.3-3.07-.5-3.76-.59Z"/>
+                  </svg>
+                  <!-- Title - top left -->
+                  <h3 class="card_primary_title u-text-style-h5 u-text-transform-uppercase u-margin-bottom-0">SABOR PICANTE</h3>
+                  <!-- Content - bottom -->
+                  <div class="card_primary_content u-margin-trim">
+                    <p class="brand_card_body u-text-style-large u-margin-bottom-0">
+                      Piri Piri es un ají picante que suena divertido...pero no te confíes.<br>
+                      Puede ser un bastardo que te muerda la lengua, y lo mejor es que te va a gustar. Mood tímido? Empieza con Piri Piri Suave. Valiente? Entonces lo tuyo es Piri Piri Fuerte.
+                    </p>
+                  </div>
+                  <!-- Arrow - bottom right -->
+                  <svg class="brand_card_arrow" viewBox="0 0 45.84 56.54" fill="currentColor" aria-hidden="true">
+                    <path d="M2.927,37.379l20.5-8.11-18.247-8.108,2.818-20.161,37.842,19.147-2.591,18.246L0,57.535Z"/>
+                  </svg>
+                </div>
+                <!-- Back face: Picante illustration -->
+                <div class="card_primary_back u-radius-main u-bg-gold u-text-dark-900" aria-hidden="true">
+                  <img src="assets/resources/graphics/lengua-picante.svg" alt="Ilustración Picante">
+                </div>
+              </div>
+            </div>
+
+            <!-- Card 4: GÓZALO -->
+            <div class="card_primary_wrap brand_card brand_card--gozalo">
+              <div data-trigger="hover focus" class="card_primary_group">
+                <div class="card_primary_element u-position-relative u-flex-vertical-nowrap u-justify-content-end u-padding-6 u-radius-main u-bg-hierba u-text-dark-900">
+                  <!-- Icon - top right (same SVG as the GÓZALO values-tab button: main shape + confetti) -->
+                  <svg class="brand_card_icon" viewBox="0 0 34.69 44.08" fill="currentColor" aria-hidden="true">
+                    <path d="M28.06,10.32c.07.29-.14.49-.21.7-.13.36-.23.83-.37,1.17-.09.24-.34.39-.2.74.45.2.83.54,1.24.82,1.57,1.09,3.28,2.2,4.8,3.38.56.44.31.29.47.93.08.34.17.67.25,1.01.06.23.24.51.18.71-.06.19-.22.17-.35.26-.57.39-1.15.81-1.72,1.18-.06.04-.32.2-.35.21-.09.04-.2,0-.28.05-.09.04-.09.2-.16.26-.09.08-.47.24-.6.33-.34.22-.65.48-.97.71-.09.07-.36.06-.26.26.14.26,1.13.09,1.4.09.96.01,1.93.07,2.89.06.29,0,.41-.06.74,0,.03,0,.16-.03.12.07-.04.09-.25.12-.34.17-.72.43-1.41.87-2.13,1.27-.92.51-1.83,1.13-2.78,1.65-.87.48-1.76,1.08-2.65,1.54-1,.52-2.09,1.26-3.09,1.85-.32.19-1.14.55-1.33.81-.08.11-.1.17-.12.3-.07.64,0,1.52,0,2.2,0,.18-.09.35,0,.56.11,1.1-.17,2.54-.01,3.59.08.55.56-.11.72-.25,1.39-1.2,2.77-2.37,4.1-3.64l.65-.54c.07.26-.12.39-.2.57-.41.94-.87,1.88-1.3,2.82-.18.39-.4.78-.56,1.17-.04.09-.26.68-.24.73.08.24.52-.07.64-.1.67-.14,1.34-.37,2.01-.55.26-.07.55-.35.89-.29.12.23-.09.34-.16.51-.31.74-.62,1.62-.88,2.39-.05.14-.18.19-.12.37l4.04,3.62c-.16.17-.42.02-.58.02-1.47.02-2.93.01-4.39,0l-4.16-.02-1.12-1.02-.35-.3c-1.62-1.39-3.15-2.92-4.74-4.31-.21-.19-.54-.28-.62-.6s-.2-.67-.31-.99c-.03-.1-.13-.17-.15-.27-.04-.17.05-.31.03-.4s-.24-.21-.3-.36c-.13-.35-.2-.88-.32-1.22-.03-.09-.12-.15-.17-.25-.12-.29-.07-.75-.44-.9-.19,0-.18.17-.27.27-.76.87-1.67,1.92-2.53,2.65-.14.11-.17.36-.42.19l-2.16-2.55-.26.02-.08,9.99-.12.02c-.05-.17-.18-.3-.26-.44-.4-.78-.73-1.58-1.14-2.36-.31-.59-.44-.31-.71.06-.55.76-1.11,1.76-1.69,2.46-.04.05-.18.21-.23.24-.11.06-1.55.07-1.62.02-.09-.18-.03-.41-.04-.61-.13-2.05-.06-4.2-.07-6.25,0-.66-.02-1.32.04-1.97,1.02-.77,2.07-1.51,3.1-2.27,1.57-1.16,3.12-2.36,4.7-3.5.12-.09.68-.37.68-.49,0-.09-.08-.14-.15-.17-.56-.28-1.36-.2-1.96-.28-.31-.05-.65-.19-.94-.23-1.26-.14-2.48-.29-3.73-.48-.19-.03-.42.04-.6-.06-.19-.11-.49-.74-.59-.95-.37-.57-.69-1.19-1.02-1.78-.09-.16-.37-.55-.43-.69-.03-.08,0-.17-.03-.22-.01-.02-.14-.07-.2-.15-.06-.09-.07-.21-.12-.3-.07-.12-.52-.71-.41-.82.27-.04.4.17.56.25,1.07.55,2.36,1.08,3.37,1.68.14.08.21.37.45.05.02-.21-.17-.35-.25-.48-.88-1.61-1.84-3.18-2.7-4.81-.08-.16-.24-.25-.25-.5-.02-.34.15-.4.29-.61.63-.96,1.39-1.96,1.93-2.93.04-.08.15-.13.17-.2.13-.42-.09-.96-.16-1.36-.05-.28-.03-.56-.06-.82-.04-.26-.29-1.13-.2-1.29s.16.28.19.32c1.37,2.44,2.78,4.9,4.11,7.36.04.08.15.13.17.2.1.32-.08.33-.17.51-.44.8-.92,1.66-1.41,2.42-.08.13-.31.22-.21.44.12.27,1.27.34,1.57.39.79.14,1.66.38,2.44.5.52.08.44-.07.88.33s.89.99,1.3,1.45c.94,1.04,1.95,2.37,2.93,3.32.06.06.34.29.41.28l12.17-11.91c.07-.14-.17-.4-.26-.5-.91-.96-2.03-1.88-2.95-2.83-.15-.15-.6-.49-.56-.69l3.26-2.96.17-.04Z"/>
+                    <path d="M20.3,11.9l.12-.07c.12.1.1.26.17.39.26.52.54.94.75,1.49.03.07.13.11.13.2,0,.04-.19.62-.22.71-.07.21-.17.45-.26.68-.06.18-.31.45-.16.69.1.14.23-.06.32-.1.1-.05.21-.06.31-.11.13-.06.13-.24.38-.13.56.53,1.16,1.06,1.69,1.62.1.1.45.47.44.57l-5.7,6.17c-.31.04-.27-.28-.36-.46-.4-.86-.8-1.73-1.19-2.58-.12-.26-.03-.61-.49-.54-.13.16-.12.37-.19.54-.3.75-.64,1.49-.94,2.24-.09.23-.07.69-.43.55l-.66-.95c-1.41-1.76-2.85-3.56-4.19-5.39-.25-.34-.54-.46-.35-.97.14-.36.39-.85.56-1.22,1.13-2.48,2.31-4.95,3.39-7.46.03-.08.11-.13.15-.22.26-.62-.06-1.34-.17-1.93-.29-1.56-.57-3.12-.86-4.68-.06-.32-.24-.57-.16-.93.18,0,.13.22.2.34.13.26.3.51.43.78.93,1.93,1.83,3.86,2.81,5.76.16.3.13.61.01.92-.03.09-.12.16-.16.26-.4,1.11-.76,2.22-1.16,3.32-.07.21-.3.42-.19.7l.44.44c.3.45.69.84,1.04,1.24.17.19.12.42.52.19l1.17-1.77c.21-.4-.37-2.08-.23-2.29.12-.2.19.2.22.25.36.63.83,1.28,1.17,1.91.22.4.08.74.07,1.14-.02.71-.02,1.44-.1,2.14-.02.18-.2.41-.02.59.4-.14.5-.49.73-.81s.5-.64.7-.94c.1-.15.33-.52.33-.69,0-.04-.04-.08-.04-.1v-1.49Z"/>
+                    <path d="M25.6,9.97s-.07-.19-.13-.27c-.34-.45-.69-.84-1.02-1.31-.07-.11-.22-.16-.21-.3,0-.09.04-.18.07-.26.39-.95.81-1.87,1.19-2.83.03-.08.08-.44.13-.43.18,0,.35.66.42.8.39.85.81,1.69,1.19,2.54.07.15.13.42.04.57l-1.52,1.55c-.05,0-.12-.02-.15-.06Z"/>
+                    <path d="M1.16,16.57c0-.21-.17-.29-.25-.42-.21-.34-.41-.72-.61-1.07C.2,14.92,0,14.8,0,14.54c0-.03.12-.51.14-.56.3-.85.65-1.7.94-2.56.06-.18.02-.4.16-.54.3.25.27.59.37.89.24.76.53,1.53.79,2.29.08.24.31.39.15.67-.23.43-.65.94-.93,1.36-.12.19-.13.5-.47.48Z"/>
+                    <path d="M9.05,13.05c-.33-.08-.04-.38,0-.53.79-2.46,1.33-4.99,2.15-7.44.03-.09.05-.5.19-.47.03,0,.25.57.28.65.12.33.22.83.34,1.15.08.21.22.31.24.61.02.38-.12.35-.25.59-.86,1.59-1.73,3.27-2.67,4.85-.12.2-.29.25-.28.59Z"/>
+                  </svg>
+                  <!-- Title - top left -->
+                  <h3 class="card_primary_title u-text-style-h5 u-text-transform-uppercase u-margin-bottom-0">GÓZALO TODO</h3>
+                  <!-- Content - bottom -->
+                  <div class="card_primary_content u-margin-trim">
+                    <p class="brand_card_body u-text-style-large u-margin-bottom-0">
+                      En otros lugares, tienes hambre y puedes comer.<br>
+                      Pero si quieres divertirte, ensuciarte, comer con las manos, morder a lo canalla y sin importarte nada ni nadie. Estás en el sitio perfecto.
+                    </p>
+                  </div>
+                  <!-- Arrow - bottom right -->
+                  <svg class="brand_card_arrow" viewBox="0 0 45.84 56.54" fill="currentColor" aria-hidden="true">
+                    <path d="M2.927,37.379l20.5-8.11-18.247-8.108,2.818-20.161,37.842,19.147-2.591,18.246L0,57.535Z"/>
+                  </svg>
+                </div>
+                <!-- Back face: Gózalo illustration -->
+                <div class="card_primary_back u-radius-main u-bg-hierba u-text-dark-900" aria-hidden="true">
+                  <img src="assets/resources/graphics/gozalo.svg?v=5" alt="Ilustración Gózalo">
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- Pill pagination (populated by Swiper) -->
+      <div class="slider_bullet_list" aria-label="Navegación de pilares"></div>
+    </div>
+  </section>
+
+  <!-- PLATOS ESTRELLA — menu data drives the slider so disabled/missing items
+       auto-drop out (no more dead links). Featured slugs are listed in
+       display order below; any slug not found in MENU_ITEMS or flagged
+       `disabled: true` or missing an image is silently skipped. -->
+  <script src="js/menu_items.js?v=80a83fa4"></script>
+
+  <section class="section_platos u-theme-dark u-padding-block-8">
+
+    <!-- Infinite Marquee -->
+    <div class="marquee_wrap u-gap-gutter u-margin-bottom-6" data-marquee="component">
+      <div style="--lg: 1" class="marquee_offset">
+        <div class="marquee_element swiper"
+             data-marquee-hover-ease="true"
+             data-marquee-direction="false"
+             data-marquee-mode="true"
+             data-marquee-respect-prm="true"
+             data-marquee-hover-pause="true"
+             data-marquee-speed="80000"
+             data-marquee-text-width-multiplier="2"
+             data-marquee-scale-text="true"
+             data-marquee-draggable="true">
+          <div class="marquee_list swiper-wrapper">
+            <p class="u-text-style-h1 u-text-transform-uppercase">QUE EL FUEGO TRANSFORME</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Food Image Slider -->
+    <div class="slider_wrap u-padding-inline-3" data-slider="component">
+      <style>
+        /* Slider item sizing for food slides — share --swiper-gap with the
+           testimonial slider so all carousels feel consistent. */
+        html .slider_list > .food_slide_item {
+          padding-inline: calc(var(--swiper-gap) / 2);
+          height: auto !important;
+          flex: 0 0 auto;
+          width: calc(100% / var(--slide-count));
+        }
+      </style>
+      <div style="--lg: 4; --md: 3; --sm: 2; --xs: 1.5;" class="slider_offset">
+        <div data-speed="600" data-follow-finger="true" data-free-mode="false" data-mousewheel="true" data-loop="true" data-autoplay="true" data-autoplay-delay="3000" class="slider_element swiper">
+          <div data-slot="" class="slider_list swiper-wrapper" data-platos-slides>
+            <!-- Slides populated by the inline script below from window.MENU_ITEMS. -->
+          </div>
+        </div>
+        <script>
+          // Run synchronously, before Swiper init at DOMContentLoaded so the
+          // carousel sees the final slide set. Edit FEATURED_SLUGS below to
+          // change which dishes appear and in what order.
+          //
+          // Only slugs from the real-photography batch belong here. The dish
+          // library holds two generations of images: the original generic
+          // renders (single plate, seamless grey backdrop, no branding) and
+          // the real shoot that landed in a0f2a31 (orange backdrop, enamel
+          // plates, branded bottles). Mixing them reads as a style break
+          // mid-reel, and the renders look dated next to the rest of the
+          // carta. The 23 slugs with real photos are the menu packs, the
+          // original burger, nachetes/tenders/tequeños, gozadera extra,
+          // bites de mazorca, pan hogaza, the four postres and the six
+          // salsas — pick replacements from that set only.
+          (function renderPlatosEstrella() {
+            var FEATURED_SLUGS = [
+              "menu-piri-piri-para-2",
+              "piri-piri-original-burger",
+              "menu-gran-pack",
+              "bites-de-mazorca",
+              "nachetes",
+              "menu-pack-familiar",
+              "tenders",
+              "menu-pollo-acompanamiento",
+              "tequenos",
+              "gozadera-extra",
+              "menu-single"
+            ];
+            var wrap = document.querySelector("[data-platos-slides]");
+            var items = Array.isArray(window.MENU_ITEMS) ? window.MENU_ITEMS : [];
+            if (!wrap || !items.length) return;
+            var bySlug = Object.create(null);
+            items.forEach(function (it) { if (it && it.slug) bySlug[it.slug] = it; });
+            // Responsive srcset for the marquee cards: derive smaller widths
+            // from the 1600w menu image so phones don't load full-size files.
+            var SLW = [480, 768, 1024, 1366];
+            function wvar(p, w) {
+              return /\/1600w\/.*_1600w\./.test(p)
+                ? p.replace(/\/1600w\//, "/" + w + "w/").replace(/_1600w\./, "_" + w + "w.")
+                : p;
+            }
+            function sset(p) {
+              return /\/1600w\/.*_1600w\./.test(p)
+                ? SLW.map(function (w) { return wvar(p, w) + " " + w + "w"; }).join(", ")
+                : "";
+            }
+            var html = FEATURED_SLUGS.map(function (slug) {
+              var it = bySlug[slug];
+              // Drop missing, disabled, or image-less items so we never link to
+              // a dead carta-item page or render an empty tile.
+              if (!it || it.disabled || !it.image) return "";
+              var safeName = String(it.name || "").replace(/"/g, "&quot;");
+              var ss = sset(it.image);
+              var imgAttrs = ss
+                ? 'src="' + wvar(it.image, 768) + '" srcset="' + ss + '" sizes="(max-width: 767px) 60vw, 28vw"'
+                : 'src="' + it.image + '"';
+              return (
+                '<a href="./carta-item.html?slug=' + encodeURIComponent(slug) + '" class="food_slide_item">' +
+                  '<div class="food_slide_image u-radius-main u-overflow-hidden u-border-main">' +
+                    '<img ' + imgAttrs + ' loading="lazy" decoding="async" alt="' + safeName + '" class="u-object-fit-cover u-width-full u-height-full">' +
+                  '</div>' +
+                '</a>'
+              );
+            }).join("");
+            wrap.innerHTML = html;
+          })();
+        </script>
+      </div>
+      <!-- Pill pagination (populated by Swiper) -->
+      <div class="slider_bullet_list" aria-label="Navegación de platos"></div>
+
+    </div>
+
+    <!-- Outline Heading + CTA -->
+    <div class="u-flex-horizontal-nowrap u-justify-content-between u-align-items-end u-padding-inline-3 u-margin-top-6 u-flex-wrap-mobile u-gap-6">
+      <h2 class="platos_heading u-text-style-display u-margin-bottom-0" style="font-size: clamp(5.5rem, 11vw, 11rem); line-height: 0.7;">
+        PLATOS<br>ESTRELLA
+      </h2>
+      <div class="button_main_wrap" data-trigger="hover focus">
+        <a href="./carta.html" class="button_main_element">
+          <div class="button_main_text u-text-style-main">VER CARTA</div>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- QUIENES SOMOS SECTION -->
+  <section class="section_quienes u-width-full u-theme-light">
+
+    <!-- Top: Orange background, min 75vh. Text anchored to the top so the
+         bigger chicken below has room without overlapping. -->
+    <!-- --pp-rooster drives BOTH the illustration's size and the space reserved
+         for it below the copy. It was sized off viewport WIDTH (55vw) while its
+         headroom came from viewport HEIGHT (100vh), so on a wide, short screen
+         the bird grew past the space and climbed into the paragraph. Capping it
+         against vh as well, and reserving 75% of it as padding (the share that
+         sits inside the section — the other 25% spills past the bottom edge),
+         keeps text and bird apart at every ratio. -->
+    <div class="u-theme-brand u-radius-bottom-main" style="--pp-rooster: min(clamp(32rem, 55vw, 64rem), 72vh); min-height: 100vh; padding-top: 15vh; padding-bottom: calc(0.75 * var(--pp-rooster) + var(--_spacing---space--6)); display: flex; align-items: flex-start; justify-content: center; position: relative; overflow: hidden;">
+      <!-- Centered info block — width matches the canonical --cs-measure recipe. -->
+      <div class="u-container-small u-align-items-center" style="text-align: center; position: relative; z-index: 2; max-width: var(--cs-measure); min-width: 0;">
+        <!-- Tagline -->
+        <p class="u-text-style-main u-text-transform-uppercase u-margin-bottom-4">¿Y ahora? ¿Quienes somos?</p>
+
+        <!-- Main Heading — inline margin kills the h2's default 0.83em
+             user-agent margin-block (huge at the display font size) and
+             pairs with `margin-top: 0` on the paragraph so the gap is exactly
+             space-3. Mirrors the historia QUIENES SOMOS section. -->
+        <h2 class="u-text-style-display u-text-transform-uppercase" style="margin: 0 0 var(--_spacing---space--3) 0;">QUEMAMOS<br>NUESTRA CARTA ANTERIOR</h2>
+
+        <!-- Body text - italic -->
+        <div style="margin-inline: auto;">
+          <p class="u-text-style-large u-margin-bottom-5" style="margin-top: 0; font-style: italic; font-family: var(--_font---font--heading);">
+            Y de sus cenizas nació el nuevo Piri Piri. Lo que empezó como Frango al carbón hoy es carbón a lo bestia con nuestras carnes, pollo, burgers...y salseo a lo bruto con nuestro Salsa Bar ilimitado.
+          </p>
+        </div>
+      </div>
+
+      <!-- Chicken illustration: bigger, more visible. Only ~25% spills past the
+           section's bottom edge; the rest sits inside the orange. Size comes
+           from --pp-rooster on the parent, which also reserves its headroom. -->
+      <img src="assets/resources/graphics/pollo-fuego.svg?v=5" alt="" aria-hidden="true"
+           style="position: absolute; bottom: 0; left: 50%; transform: translate(-50%, 25%); width: var(--pp-rooster); height: auto; pointer-events: none; z-index: 1;">
+    </div>
+
+  </section>
+
+  <!-- RESERVA TU MESA - Reservations Section -->
+  <section id="reserva" class="section_reserva u-width-full">
+    <!-- Light themed top part with heading. More top padding + bigger gap below
+         the title (matches contacto.html pattern) so the heading breathes above
+         the cards. -->
+    <div class="u-theme-light" style="padding-top: var(--_spacing---space--12); padding-bottom: 16rem;">
+      <div class="u-container">
+        <!-- Section Heading -->
+        <div class="u-margin-bottom-0" style="text-align: center;">
+          <!-- Main Heading with fire icons -->
+          <div style="position:relative;display:inline-block;" class="u-margin-bottom-7">
+            <h2 class="u-text-style-display u-text-transform-uppercase u-margin-0">RESERVA<br>TU MESA</h2>
+            <!-- Top-left of "RESERVA" — floats outside left, at top -->
+            <div class="pp-inline-fire" style="position:absolute;top:-80px;left:-100px;width:90px;height:110px;pointer-events:none;">
+              <div class="pp-flame-wrap" style="position:absolute;width:36px;height:90px;left:0;bottom:0;transform:rotate(-45deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;width:28px;height:68px;left:40px;bottom:0;transform:rotate(-28deg);transform-origin:bottom center;"></div>
+            </div>
+            <!-- Top-right of "TU MESA" — floats outside right, at top of second line -->
+            <div class="pp-inline-fire" style="position:absolute;top:-10px;right:-100px;width:90px;height:110px;pointer-events:none;">
+              <div class="pp-flame-wrap" style="position:absolute;width:28px;height:68px;left:2px;bottom:0;transform:rotate(28deg);transform-origin:bottom center;"></div>
+              <div class="pp-flame-wrap" style="position:absolute;width:36px;height:90px;left:40px;bottom:0;transform:rotate(45deg);transform-origin:bottom center;"></div>
+            </div>
+          </div>
+          <!-- Subtitle -->
+          <p class="u-text-style-h4 u-margin-bottom-5" style="font-style: italic; font-family: var(--_font---font--heading);">Asegura tu lugar en el templo del fuego</p>
+          <!-- Body text -->
+          <p class="u-text-style-large u-margin-bottom-0" style="font-style: italic; font-family: var(--_font---font--heading); max-width: 50ch; margin-inline: auto;">Elige tu local, selecciona tu momento y prepárate para una experiencia que transformará tu concepto de la comida.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dark themed bottom part with cards -->
+    <div class="u-theme-dark" style="padding-top: var(--_spacing---space--8); padding-bottom: var(--_spacing---space--8);">
+      <!-- Location Cards Stacked with Sticky Scroll - each card stacks slightly lower -->
+      <div class="u-container" style="margin-top: -12rem;">
+      <div class="u-flex-vertical-nowrap u-gap-5">
+        <!-- Card 1: Lavapiés -->
+        <div class="u-position-sticky" style="top: 2rem; z-index: 3;">
+          <div class="u-flex-horizontal-nowrap u-flex-column-mobile u-align-items-stretch">
+            <div class="u-align-self-stretch u-radius-main" style="flex: 0 0 56%; overflow: hidden; aspect-ratio: 16 / 9;">
+              <img src="assets/resources/images/general/1366w/local-lavapies_1366w.webp" srcset="assets/resources/images/general/480w/local-lavapies_480w.webp 480w, assets/resources/images/general/768w/local-lavapies_768w.webp 768w, assets/resources/images/general/1024w/local-lavapies_1024w.webp 1024w, assets/resources/images/general/1366w/local-lavapies_1366w.webp 1366w" sizes="(max-width: 767px) 92vw, 56vw" loading="lazy" decoding="async" alt="Piri Piri Lavapiés" class="u-width-full u-height-full u-object-fit-cover">
+            </div>
+            <div class="u-flex-vertical-nowrap u-gap-4 u-justify-content-center u-align-items-center u-text-align-center u-align-self-stretch u-radius-main" style="flex: 1; background: var(--_theme---background-2); border: var(--border-width--main) solid var(--_theme---border); padding: var(--_spacing---space--8); text-align: center;">
+              <h2 class="u-text-style-h1 u-margin-bottom-0">PIRIPIRI<br>LAVAPIÉS</h2>
+              <p class="u-text-style-large u-opacity-75">
+                Dirección: <a href="https://www.google.com/maps?ll=40.410895,-3.704632&amp;z=15&amp;t=m&amp;hl=es&amp;gl=ES&amp;mapclient=embed&amp;cid=4853788067506515583" target="_blank" class="u-color-inherit u-text-decoration-underline u-transition-color-main u-hover-color-brand">Calle del Mesón de Paredes 15, 28012 Madrid</a>
+              </p>
+              <p class="u-text-style-large u-opacity-75">Estás a nada de sentir placer ardiente.</p>
+              <div class="u-flex-horizontal-nowrap u-gap-4 u-flex-column-mobile u-justify-content-center u-align-items-center" style="margin-top: var(--_spacing---space--4);">
+                <div data-button-mode="orchid" data-wf--button-main--variant="secondary" class="button_main_wrap" data-trigger="hover focus">
+                  <a href="tel:919192934" class="button_main_element">
+                    <div class="button_main_text u-text-style-main">LLÁMANOS</div>
+                  </a>
+                </div>
+                <div class="button_main_wrap" data-trigger="hover focus">
+                  <a href="#" reserva-trigger="lavapies" class="button_main_element">
+                    <div class="button_main_text u-text-style-main">RESERVA</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Prosperidad -->
+        <div class="u-position-sticky" style="top: 4rem; z-index: 4;">
+          <div class="u-flex-horizontal-nowrap u-flex-column-mobile u-align-items-stretch">
+            <div class="u-align-self-stretch u-radius-main" style="flex: 0 0 56%; overflow: hidden; aspect-ratio: 16 / 9;">
+              <img src="assets/resources/images/general/1366w/local-prosperidad_1366w.webp" srcset="assets/resources/images/general/480w/local-prosperidad_480w.webp 480w, assets/resources/images/general/768w/local-prosperidad_768w.webp 768w, assets/resources/images/general/1024w/local-prosperidad_1024w.webp 1024w, assets/resources/images/general/1366w/local-prosperidad_1366w.webp 1366w" sizes="(max-width: 767px) 92vw, 56vw" loading="lazy" decoding="async" alt="Piri Piri Prosperidad" class="u-width-full u-height-full u-object-fit-cover">
+            </div>
+            <div class="u-flex-vertical-nowrap u-gap-4 u-justify-content-center u-align-items-center u-text-align-center u-align-self-stretch u-radius-main" style="flex: 1; background: var(--_theme---background-2); border: var(--border-width--main) solid var(--_theme---border); padding: var(--_spacing---space--8); text-align: center;">
+              <h2 class="u-text-style-h1 u-margin-bottom-0">PIRIPIRI<br>PROSPERIDAD</h2>
+              <p class="u-text-style-large u-opacity-75">
+                Dirección: <a href="https://maps.app.goo.gl/1Mu1NntzimFFkd7bA" target="_blank" class="u-color-inherit u-text-decoration-underline u-transition-color-main u-hover-color-brand">Calle de López de Hoyos 127, 28002 Madrid</a>
+              </p>
+              <p class="u-text-style-large u-opacity-75">Estás a nada de sentir placer ardiente.</p>
+              <div class="u-flex-horizontal-nowrap u-gap-4 u-flex-column-mobile u-justify-content-center u-align-items-center" style="margin-top: var(--_spacing---space--4);">
+                <div data-button-mode="orchid" data-wf--button-main--variant="secondary" class="button_main_wrap" data-trigger="hover focus">
+                  <a href="tel:912629421" class="button_main_element">
+                    <div class="button_main_text u-text-style-main">LLÁMANOS</div>
+                  </a>
+                </div>
+                <div class="button_main_wrap" data-trigger="hover focus">
+                  <a href="#" reserva-trigger="prosperidad" class="button_main_element">
+                    <div class="button_main_text u-text-style-main">RESERVA</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Las Tablas -->
+        <div class="u-position-sticky" style="top: 6rem; z-index: 5;">
+          <div class="u-flex-horizontal-nowrap u-flex-column-mobile u-align-items-stretch">
+            <div class="u-align-self-stretch u-radius-main" style="flex: 0 0 56%; overflow: hidden; aspect-ratio: 16 / 9;">
+              <img src="assets/resources/images/general/1366w/fachada-calle_1366w.webp" srcset="assets/resources/images/general/480w/fachada-calle_480w.webp 480w, assets/resources/images/general/768w/fachada-calle_768w.webp 768w, assets/resources/images/general/1024w/fachada-calle_1024w.webp 1024w, assets/resources/images/general/1366w/fachada-calle_1366w.webp 1366w" sizes="(max-width: 767px) 92vw, 56vw" loading="lazy" decoding="async" alt="Piri Piri Las Tablas" class="u-width-full u-height-full u-object-fit-cover">
+            </div>
+            <div class="u-flex-vertical-nowrap u-gap-4 u-justify-content-center u-align-items-center u-text-align-center u-align-self-stretch u-radius-main" style="flex: 1; background: var(--_theme---background-2); border: var(--border-width--main) solid var(--_theme---border); padding: var(--_spacing---space--8); text-align: center;">
+              <h2 class="u-text-style-h1 u-margin-bottom-0">PIRIPIRI<br>LAS TABLAS</h2>
+              <p class="u-text-style-large u-opacity-75">
+                Dirección: <a href="https://maps.app.goo.gl/dPkXc8XPTvbbbnRK7" target="_blank" class="u-color-inherit u-text-decoration-underline u-transition-color-main u-hover-color-brand">P.º de la Tierra de Melide, 27, Fuencarral-El Pardo, 28050 Madrid</a>
+              </p>
+              <p class="u-text-style-large u-opacity-75">Ya huele a brasa en Paseo de la Tierra de Melide 27. Hemos llegado con todo el Carbón a lo Bruto y el Salseo a lo Bestia.</p>
+              <div class="u-flex-horizontal-nowrap u-gap-4 u-flex-column-mobile u-justify-content-center u-align-items-center" style="margin-top: var(--_spacing---space--4);">
+                <div data-button-mode="orchid" data-wf--button-main--variant="secondary" class="button_main_wrap" data-trigger="hover focus">
+                  <a href="tel:912563497" class="button_main_element">
+                    <div class="button_main_text u-text-style-main">LLÁMANOS</div>
+                  </a>
+                </div>
+                <div class="button_main_wrap" data-trigger="hover focus">
+                  <a href="#" reserva-trigger="las-tablas" class="button_main_element">
+                    <div class="button_main_text u-text-style-main">RESERVA</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reserva Section - Hidden until a location card RESERVA button is clicked.
+       Positioned right after the RESERVA TU MESA section so the booking form
+       appears in context, not below the reviews. -->
+  <section id="reserva-section" class="u-section u-width-full u-padding-block-8 u-theme-dark" style="display: none;">
+    <div class="u-container">
+      <!-- Lavapiés -->
+      <div reserva-iframe="lavapies" class="u-margin-bottom-6" style="display: none;">
+        <h4 class="u-text-style-h4 u-margin-bottom-4">Estas reservando en Lavapiés</h4>
+        <div class="iframe-wrapper">
+          <iframe id="iframe-lavapies" title="Reservas Lavapiés" src="https://www.covermanager.com/reservation/module_restaurant/restaurante-piripiri/spanish" allow="payment" frameborder="0" width="100%" height="550" scrolling="no" onload="if (typeof iFrameResize === 'function') iFrameResize({}, this);"></iframe>
+        </div>
+      </div>
+
+      <!-- Prosperidad -->
+      <div reserva-iframe="prosperidad" class="u-margin-bottom-6" style="display: none;">
+        <h4 class="u-text-style-h4 u-margin-bottom-4">Estas reservando en Prosperidad</h4>
+        <div class="iframe-wrapper">
+          <iframe id="iframe-prosperidad" title="Reservas Prosperidad" src="https://www.covermanager.com/reservation/module_restaurant/restaurante-piripirifrango-prosperidad/spanish" allow="payment" frameborder="0" width="100%" height="550" scrolling="no" onload="if (typeof iFrameResize === 'function') iFrameResize({}, this);"></iframe>
+        </div>
+      </div>
+
+      <!-- Las Tablas -->
+      <div reserva-iframe="las-tablas" class="u-margin-bottom-6" style="display: none;">
+        <h4 class="u-text-style-h4 u-margin-bottom-4">Estas reservando en Las Tablas</h4>
+        <div class="iframe-wrapper">
+          <iframe id="iframe-las-tablas" title="Reservas Las Tablas" src="https://www.covermanager.com/reservation/module_restaurant/Grupo-Piri-Piri/spanish" allow="payment" frameborder="0" width="100%" height="550" scrolling="no" onload="if (typeof iFrameResize === 'function') iFrameResize({}, this);"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Únete al Club Section -->
+  <section id="club-secreto" class="u-section u-width-full u-padding-block-8 u-theme-dark" style="min-height: 80vh;">
+    <div class="u-container">
+      <div class="u-flex-horizontal-nowrap u-flex-column-mobile u-align-items-stretch u-gap-6">
+        <!-- Left Column: Text Content -->
+        <div class="u-flex-vertical-nowrap u-justify-content-between u-align-items-start" style="flex: 1;">
+          <!-- Top: Heading and Subtext -->
+          <div class="u-flex-vertical-nowrap u-align-items-start u-gap-4">
+            <h2 class="u-text-style-display u-text-transform-uppercase u-margin-bottom-0" style="font-size: clamp(5.5rem, 11vw, 11rem); line-height: 0.92;">ÚNETE<br>AL CLUB</h2>
+            <p class="u-text-style-h3 u-font-secondary">El club secreto de<br>los devoradores de alas</p>
+          </div>
+
+          <!-- Bottom: Logos + Wallet Buttons -->
+          <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-4 u-margin-top-8" style="flex-wrap: wrap;">
+            <!-- Animated logo. Vector (SMIL) instead of the old animated
+                 .webp: crisp on retina, and the new export drops the baked-in
+                 "El club secreto de los devoradores de alas" wordmark, which
+                 is already set as live text right above this. -->
+            <div style="width: 6rem; flex-shrink: 0;">
+              <img src="assets/resources/images/loyalty/piripiri-logo-anim-light.svg" loading="lazy" alt="Piri Piri" class="u-width-full u-height-auto" style="aspect-ratio: 1 / 1;">
+            </div>
+            <!-- Ribbon Logo -->
+            <div style="width: 12rem; flex-shrink: 0;">
+              <img src="assets/resources/images/loyalty/piripiri-ribon-logo.png" loading="lazy" alt="Piri Piri" class="u-width-full u-height-auto">
+            </div>
+            <!-- Google Wallet Button -->
+            <a href="#" class="u-flex-horizontal-nowrap u-align-items-center u-gap-3 u-padding-3 u-padding-inline-4 u-radius-main u-text-decoration-none u-color-inherit" style="background: var(--_theme---background-2); border: var(--border-width--main) solid var(--_theme---border); flex-shrink: 0;">
+              <svg viewBox="0 0 24 24" style="width: 2rem; height: 2rem;" fill="none">
+                <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="7" cy="12" r="2" fill="#4285F4"/>
+                <circle cx="10" cy="12" r="2" fill="#EA4335"/>
+                <circle cx="13" cy="12" r="2" fill="#FBBC05"/>
+                <circle cx="16" cy="12" r="2" fill="#34A853"/>
+              </svg>
+              <div class="u-flex-vertical-nowrap u-align-items-start">
+                <span class="u-text-style-small u-opacity-75">Add to</span>
+                <span class="u-text-style-main" style="font-weight: 600;">Google Wallet</span>
+              </div>
+            </a>
+            <!-- Apple Wallet Button -->
+            <a href="#" class="u-flex-horizontal-nowrap u-align-items-center u-gap-3 u-padding-3 u-padding-inline-4 u-radius-main u-text-decoration-none u-color-inherit" style="background: var(--_theme---background-2); border: var(--border-width--main) solid var(--_theme---border); flex-shrink: 0;">
+              <svg viewBox="0 0 24 24" style="width: 2rem; height: 2rem;" fill="none">
+                <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="4" y="6" width="16" height="3" fill="#FF5F57"/>
+                <rect x="4" y="9" width="16" height="3" fill="#FFBD2E"/>
+                <rect x="4" y="12" width="16" height="3" fill="#28CA41"/>
+                <rect x="4" y="15" width="16" height="3" fill="#1E90FF"/>
+              </svg>
+              <div class="u-flex-vertical-nowrap u-align-items-start">
+                <span class="u-text-style-small u-opacity-75">Add to</span>
+                <span class="u-text-style-main" style="font-weight: 600;">Apple Wallet</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Column: Illustration -->
+        <div class="u-flex-horizontal-nowrap u-justify-content-center u-align-items-center" style="flex: 1;">
+          <img src="assets/resources/images/loyalty/piripiri-logo-anim-light.svg" loading="lazy" alt="Club Secreto - Piri Piri" style="width: auto; height: 100%; max-height: 40rem; object-fit: contain; display: block;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google Reviews Section -->
+  <section id="reviews-section" class="u-section u-width-full u-padding-block-8 u-theme-dark">
+    <style>
+      /* Review cards — 5 per view on big screens. Gap between cards comes
+         from the shared --swiper-gap clamp (defined in site.css :root) so
+         testimonial + image carousels stay in sync. Tablet/mobile
+         breakpoints below switch to 3 and 1. */
+      .reviews_slider .slider_list > .swiper-slide {
+        padding-inline: calc(var(--swiper-gap) / 2);
+        width: calc(100% / 5) !important;
+        flex-shrink: 0;
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        transform-origin: center center;
+      }
+      /* Slider takes full section width and lives above the hearts overlay
+         (the heart particles use inline z-index: 10, so the slider needs
+         a higher stacking value to keep card text legible). */
+      .reviews_slider {
+        position: relative;
+        z-index: 20;
+      }
+      /* Soft edge fade on both ends — pseudo-elements sit on top of the
+         outermost cards and bleed the dark section background inward, so
+         the slider visually "fades" into the page rather than ending in
+         a hard vertical line. */
+      .reviews_slider::before,
+      .reviews_slider::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: clamp(2rem, 6vw, 5rem);
+        z-index: 25;
+        pointer-events: none;
+      }
+      .reviews_slider::before {
+        left: 0;
+        background: linear-gradient(to right, var(--swatch--dark-900), transparent);
+      }
+      .reviews_slider::after {
+        right: 0;
+        background: linear-gradient(to left, var(--swatch--dark-900), transparent);
+      }
+      /* Card inner styling — opaque background hides the hearts overlay
+         behind, so heart particles only show in the gaps between/around
+         cards (not on top of card text). */
+      .reviews_slider .review-card-inner {
+        min-height: clamp(400px, 50vh, 500px);
+        padding: var(--_spacing---space--6);
+        background-color: var(--swatch--dark-900);
+      }
+      /* Name - match h3 scale, italic for editorial feel */
+      .reviews_slider .review-name {
+        font-size: var(--_typography---font-size--h3);
+        font-style: italic;
+      }
+      /* Stars */
+      .reviews_slider .review-stars img {
+        width: 1.5rem;
+        height: auto;
+      }
+      /* No mask, no overflow clip — leaving cards fade out via opacity
+         transition. The swiper init runs with `centeredSlides: true` for
+         this slider, so the active card sits dead-center and we style a
+         symmetrical 5-card chain around it. */
+      .reviews_slider .slider_element,
+      .reviews_slider .slider_list {
+        overflow: visible;
+      }
+      /* The slide is just a layout slot — no background, no border. The
+         visible card IS the cream-bordered .review-card-inner (which
+         carries its own opaque dark fill, so hearts behind the card body
+         stay hidden). Heart particles remain visible in the gap between
+         adjacent cards (the --reviews-gap zone + the empty space around
+         scaled card_inner) as background atmosphere. */
+      .reviews_slider .slider_list > .swiper-slide {
+        opacity: 0;
+        --content-opacity: 0;
+        --card-scale: 0.8;
+      }
+      .reviews_slider .review-card-inner {
+        transform: scale(var(--card-scale));
+        transform-origin: center center;
+        transition: transform 0.5s ease;
+      }
+      .reviews_slider .review-card-inner > * {
+        opacity: var(--content-opacity);
+        transition: opacity 0.5s ease;
+      }
+      /* Progressive chain around the centered active slide:
+           prev-prev | prev | ACTIVE | next | next-next
+         Adjacents and outer cards share the same scale (0.85). The depth
+         progression comes from the opacity step on the card CONTENT, not
+         from the card backgrounds (which stay opaque so hearts don't
+         bleed through). `:has()` reaches the two slides BEFORE active. */
+
+      /* Active scales UP and stays at scale 1 in layout — adjacent + outer
+         stay at slot size (scale 1) and are clearly smaller than the
+         scaled-up active. Active gets a +z so it can overflow over its
+         neighbours without clipping. Opacity is more aggressive on both
+         tiers so the depth reads strongly. */
+
+      /* Outer left (2 slides before active) and outer right (2 after) —
+         heavily dimmed */
+      .reviews_slider .slider_list > .swiper-slide:has(+ .swiper-slide + .swiper-slide.is-active),
+      .reviews_slider .slider_list > .swiper-slide.is-active + .swiper-slide + .swiper-slide {
+        opacity: 1;
+        --content-opacity: 0.1;
+        --card-scale: 1;
+      }
+      /* Adjacent left (prev) and adjacent right (next) — meaningfully
+         dimmed but still readable */
+      .reviews_slider .slider_list > .swiper-slide:has(+ .swiper-slide.is-active),
+      .reviews_slider .slider_list > .swiper-slide.is-active + .swiper-slide {
+        opacity: 1;
+        --content-opacity: 0.35;
+        --card-scale: 1;
+      }
+      /* Active sits dead center, scales UP for prominence, sits on top so
+         the overflow into neighbouring slot space looks intentional. */
+      .reviews_slider .slider_list > .swiper-slide.is-active {
+        opacity: 1;
+        --content-opacity: 1;
+        --card-scale: 1.1;
+        z-index: 2;
+        position: relative;
+      }
+
+      /* Pill pagination indicators — centered below the slider, active pill
+         is the orchid pink so it visually pairs with the RESERVA button. */
+      .reviews_slider .slider_bullet_list {
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: var(--_spacing---space--6);
+        width: 100% !important;
+        flex-wrap: wrap;
+      }
+      .reviews_slider .slider_bullet_item {
+        aspect-ratio: auto;
+        width: 1.25rem;
+        height: 0.5rem;
+        background-color: var(--swatch--light-400);
+        border: none;
+        border-radius: 100vw;
+        padding: 0;
+        cursor: pointer;
+        transition: width 0.3s ease, background-color 0.3s ease;
+      }
+      .reviews_slider .slider_bullet_item.is-active {
+        width: 3rem;
+        background-color: var(--swatch--orchid-500);
+      }
+
+      /* Responsive card density steps down with the viewport so the cards
+         never get too narrow: 5 (big desktop) → 4 → 3 → 2 → mobile peek.
+         The dimming chain above is relative to the active slide, so it keeps
+         working at every count; these breakpoints only change the slide width
+         (and whether the heavily-dimmed outer pair is shown). Ordered widest→
+         narrowest so the narrowest matching rule wins. */
+
+      /* Large desktop: 4 per view. Keep the dimmed outer pair (matches the
+         5-card look, just less dense). */
+      @media (max-width: 1439px) {
+        .reviews_slider .slider_list > .swiper-slide {
+          width: calc(100% / 4) !important;
+        }
+      }
+
+      /* Medium screens: 3 cards per view (prev | ACTIVE | next).
+         The outer pair sits off-screen, so the adjacent prev/next are now the
+         visible outer cards. Hide the prev-prev / next-next so they don't
+         bleed into the layout. */
+      @media (max-width: 1199px) {
+        .reviews_slider .slider_list > .swiper-slide {
+          width: calc(100% / 3) !important;
+        }
+        /* Outer-outer slides fall back to the fully-hidden default */
+        .reviews_slider .slider_list > .swiper-slide:has(+ .swiper-slide + .swiper-slide.is-active),
+        .reviews_slider .slider_list > .swiper-slide.is-active + .swiper-slide + .swiper-slide {
+          opacity: 0;
+          --content-opacity: 0;
+          --card-scale: 0.8;
+        }
+      }
+
+      /* Small desktop / large tablet: 2 per view (active centred with a hint
+         of the prev/next on each side). Outer pair stays hidden (inherited
+         from the ≤1199px rule, which also matches here). */
+      @media (max-width: 991px) {
+        .reviews_slider .slider_list > .swiper-slide {
+          width: calc(100% / 2) !important;
+        }
+      }
+
+      /* Mobile: behave EXACTLY like the food/gallery peek carousels — one
+         centred card at 1.2 per view (~83vw) with the previous/next testimonial
+         peeking, full-bleed (100vw) and the same 16px gap (spaceBetween from the
+         shared init). Drops the bespoke stacked-card dimming/scale and the edge
+         fade so it reads as the same component. */
+      @media (max-width: 767px) {
+        /* full-bleed + no edge-fade mask, matching the other sliders */
+        .reviews_slider .slider_offset { margin-inline: 0; }
+        .reviews_slider .slider_wrap { padding-inline: 0; }
+        .reviews_slider::before,
+        .reviews_slider::after { display: none; }
+        /* every slide visible at full size — 1.2 per view, no opacity/scale step */
+        .reviews_slider .slider_list > .swiper-slide {
+          width: calc(100% / 1.2) !important;
+          opacity: 1 !important;
+          --content-opacity: 1 !important;
+          --card-scale: 1 !important;
+        }
+        .reviews_slider .review-card-inner {
+          /* Same footprint as the image cards (aspect-ratio 4/5 → ~355x444). */
+          aspect-ratio: 4 / 5;
+          min-height: 0;
+          padding: var(--_spacing---space--5);
+        }
+        .reviews_slider .review-card-inner > * { opacity: 1; }
+        .reviews_slider .slider_bullet_item {
+          width: 1rem;
+          height: 0.4rem;
+        }
+        .reviews_slider .slider_bullet_item.is-active {
+          width: 2.5rem;
+        }
+      }
+    </style>
+    <div class="reviews_grid u-width-full u-position-relative">
+
+      <!-- Decorative Hearts - particle effect, absolute overlay so the
+           slider can use the full section width. -->
+      <div id="hearts-col" style="position: absolute; top: -8rem; left: 0; right: 0; bottom: 50%; pointer-events: none; z-index: 0; user-select: none; overflow: visible;"></div>
+
+      <!-- Slider Container - right column -->
+      <div class="reviews_slider">
+        <div class="slider_wrap" data-slider="component">
+          <div style="--lg: 2.5; --md: 1.5; --sm: 1.1;" class="slider_offset">
+            <div data-speed="600" data-follow-finger="true" data-free-mode="false" data-mousewheel="true" data-loop="true" data-autoplay="true" data-autoplay-delay="2500" data-centered="true" class="slider_element swiper">
+              <div class="slider_list swiper-wrapper">
+
+                <!-- Review Card 1 -->
+                <div class="swiper-slide">
+                  <div class="review-card-inner u-flex-vertical-nowrap u-height-full u-border-main u-radius-main">
+                    <p class="review-text u-text-style-main u-margin-bottom-4" style="flex-grow: 1; font-style: italic;">"Un buen pollo al carbón con salsas espectaculares. Por favor, pedir asesoría del camarero, es extraordinario."</p>
+                    <h4 class="review-name u-text-style-h4 u-heading-style u-margin-bottom-3">ANDREA G.</h4>
+                    <div class="u-flex-horizontal-nowrap u-align-center u-width-full" style="justify-content: space-between;">
+                      <span class="u-text-style-main">Google</span>
+                      <div class="review-stars u-flex-horizontal-nowrap u-gap-1">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Review Card 2 -->
+                <div class="swiper-slide">
+                  <div class="review-card-inner u-flex-vertical-nowrap u-height-full u-border-main u-radius-main">
+                    <p class="review-text u-text-style-main u-margin-bottom-4" style="flex-grow: 1; font-style: italic;">El mejor pollo al carbon que he probado en mi vida. El sitio esta super chulo. La atencion insuperable y los sabores de ABSOLUTAMENTE TODOOOO DELICIOSO.</p>
+                    <h4 class="review-name u-text-style-h4 u-heading-style u-margin-bottom-3">SOFÍA LARA.</h4>
+                    <div class="u-flex-horizontal-nowrap u-align-center u-width-full" style="justify-content: space-between;">
+                      <span class="u-text-style-main">Google</span>
+                      <div class="review-stars u-flex-horizontal-nowrap u-gap-1">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Review Card 3 -->
+                <div class="swiper-slide">
+                  <div class="review-card-inner u-flex-vertical-nowrap u-height-full u-border-main u-radius-main">
+                    <p class="review-text u-text-style-main u-margin-bottom-4" style="flex-grow: 1; font-style: italic;">Espectacular el pollo piri piri! Brutal el punto del pollo, muy jugoso y sabroso. Las salsas geniales, pedid la extra picante si os gusta el picante de verdad.</p>
+                    <h4 class="review-name u-text-style-h4 u-heading-style u-margin-bottom-3">CARLOS M.</h4>
+                    <div class="u-flex-horizontal-nowrap u-align-center u-width-full" style="justify-content: space-between;">
+                      <span class="u-text-style-main">Google</span>
+                      <div class="review-stars u-flex-horizontal-nowrap u-gap-1">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Review Card 4 -->
+                <div class="swiper-slide">
+                  <div class="review-card-inner u-flex-vertical-nowrap u-height-full u-border-main u-radius-main">
+                    <p class="review-text u-text-style-main u-margin-bottom-4" style="flex-grow: 1; font-style: italic;">Sitio muy recomendable. Fuimos 4 personas y pedimos pollo entero con patatas y ensalada. Todo buenísimo y abundante. Volveremos seguro!</p>
+                    <h4 class="review-name u-text-style-h4 u-heading-style u-margin-bottom-3">MARÍA P.</h4>
+                    <div class="u-flex-horizontal-nowrap u-align-center u-width-full" style="justify-content: space-between;">
+                      <span class="u-text-style-main">Google</span>
+                      <div class="review-stars u-flex-horizontal-nowrap u-gap-1">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Review Card 5 -->
+                <div class="swiper-slide">
+                  <div class="review-card-inner u-flex-vertical-nowrap u-height-full u-border-main u-radius-main">
+                    <p class="review-text u-text-style-main u-margin-bottom-4" style="flex-grow: 1; font-style: italic;">Increíble descubrimiento! El ambiente es genial, la comida deliciosa y el personal super amable. Las patatas con salsa piri piri son adictivas.</p>
+                    <h4 class="review-name u-text-style-h4 u-heading-style u-margin-bottom-3">PABLO R.</h4>
+                    <div class="u-flex-horizontal-nowrap u-align-center u-width-full" style="justify-content: space-between;">
+                      <span class="u-text-style-main">Google</span>
+                      <div class="review-stars u-flex-horizontal-nowrap u-gap-1">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Review Card 6 -->
+                <div class="swiper-slide">
+                  <div class="review-card-inner u-flex-vertical-nowrap u-height-full u-border-main u-radius-main">
+                    <p class="review-text u-text-style-main u-margin-bottom-4" style="flex-grow: 1; font-style: italic;">De lo mejor que he probado en Madrid. El local de Lavapiés tiene un rollo muy auténtico. Repetiremos fijo, sobre todo por esas salsas!</p>
+                    <h4 class="review-name u-text-style-h4 u-heading-style u-margin-bottom-3">LAURA F.</h4>
+                    <div class="u-flex-horizontal-nowrap u-align-center u-width-full" style="justify-content: space-between;">
+                      <span class="u-text-style-main">Google</span>
+                      <div class="review-stars u-flex-horizontal-nowrap u-gap-1">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                        <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- Pill pagination indicators (populated by Swiper) -->
+          <div class="slider_bullet_list" aria-label="Navegación de reseñas"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+  (function() {
+    const col = document.getElementById('hearts-col');
+    const section = document.getElementById('reviews-section');
+    if (!col || !section) return;
+
+    const heartSrc = 'assets/resources/icons/heart-icon_alpha_512.svg';
+
+    function spawnBurst(count) {
+      for (let i = 0; i < count; i++) {
+        setTimeout(() => spawnHeart(), i * 100);
+      }
+    }
+
+    function spawnHeart() {
+      const img = document.createElement('img');
+      img.src = heartSrc;
+
+      // Modest size range — smaller skew keeps the section calm
+      const size = 18 + Math.random() * Math.random() * 90; // 18–108px, skewed small
+      // Medium float so a heart's presence overlaps the next one cleanly
+      const duration = 1.2 + Math.random() * Math.random() * 3; // 1.2–4.2s skewed short
+
+      // #hearts-col now lives entirely ABOVE the card row (it extends
+      // 8rem upward from the reviews_grid top and stops at the cards'
+      // upper half), so the full 0–100% spawn band is in the visible
+      // strip above the cards. Hearts drift further upward from there.
+      const startLeft = 5 + Math.random() * 90;
+      const startBottom = 5 + Math.random() * 90; // anywhere in the band above cards
+      const driftX = (Math.random() - 0.5) * 80;
+      const driftY = -(40 + Math.random() * 120); // gentle upward drift
+      const rot = (Math.random() - 0.5) * 60;
+
+      Object.assign(img.style, {
+        position: 'absolute',
+        width: size + 'px',
+        height: 'auto',
+        left: startLeft + '%',
+        bottom: startBottom + '%',
+        transform: 'translateX(-50%)',
+        filter: `brightness(${0.85 + Math.random() * 0.3}) saturate(2) hue-rotate(${(Math.random() - 0.5) * 15}deg)`,
+        pointerEvents: 'none',
+        zIndex: 10,
+      });
+
+      col.appendChild(img);
+
+      gsap.fromTo(img,
+        { opacity: 0.9, y: 0, rotation: rot, scale: 0.3 },
+        {
+          opacity: 0,
+          y: driftY,
+          x: driftX,
+          rotation: rot + (Math.random() - 0.5) * 40,
+          scale: 0.7 + Math.random() * 0.6,
+          duration: duration,
+          ease: 'power1.out',
+          onComplete: () => img.remove()
+        }
+      );
+    }
+
+    // Trigger a small burst per swiper slide change. Only the swiper
+     // instance hook fires — we drop the duplicate transitionend listener
+     // so each slide change spawns a single burst instead of two.
+    const hookSwiper = () => {
+      const sw = section.querySelector('.reviews_slider .swiper');
+      if (!sw) return;
+      if (sw.swiper) sw.swiper.on('slideChange', () => spawnBurst(2));
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', hookSwiper);
+    } else {
+      hookSwiper();
+    }
+
+    // Click/tap anywhere in the section — small burst, kept calm.
+    section.addEventListener('click', () => spawnBurst(3));
+    section.addEventListener('touchstart', (e) => { spawnBurst(3); }, { passive: true });
+
+    // Ambient drip — a heart every ~180ms while the section is visible.
+    // Hearts spawn in the top band above the cards only, so even at this
+    // rate the section keeps a steady ~12 hearts floating above the row
+    // without feeling noisy.
+    let ambientTimer = null;
+    const startAmbient = () => {
+      if (ambientTimer) return;
+      ambientTimer = setInterval(() => spawnHeart(), 180);
+    };
+    const stopAmbient = () => {
+      if (!ambientTimer) return;
+      clearInterval(ambientTimer);
+      ambientTimer = null;
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => e.isIntersecting ? startAmbient() : stopAmbient());
+    }, { threshold: 0.1 });
+    io.observe(section);
+  })();
+  </script>
+
+    </main>
+
+<script src="https://cdn.prod.website-files.com/gsap/3.14.2/gsap.min.js" type="text/javascript"></script>
+  <script src="https://cdn.prod.website-files.com/gsap/3.14.2/ScrollTrigger.min.js" type="text/javascript"></script>
+
+  <script>
+  // Scroll entrance animations
+  document.addEventListener("DOMContentLoaded", () => {
+    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ease = "power3.out";
+    const dur  = 0.9;
+    const stag = 0.12;
+
+    // Helper: fade+rise a set of elements with stagger
+    function reveal(targets, vars = {}) {
+      gsap.fromTo(targets,
+        { opacity: 0, y: vars.y ?? 40 },
+        {
+          opacity: 1, y: 0,
+          duration: vars.dur ?? dur,
+          ease: vars.ease ?? ease,
+          stagger: vars.stagger ?? 0,
+          scrollTrigger: {
+            trigger: vars.trigger ?? targets,
+            start: "top 88%",
+            once: true,
+          }
+        }
+      );
+    }
+
+    // ── Hero (already visible, just stagger children in) ──
+    gsap.fromTo(".hero_heading_col",
+      { opacity: 0, y: 50 },
+      { opacity: 1, y: 0, duration: 1.1, ease, delay: 0.2 }
+    );
+    gsap.fromTo(".hero_graphic_col",
+      { opacity: 0, x: 60 },
+      { opacity: 1, x: 0, duration: 1.2, ease, delay: 0.4 }
+    );
+    gsap.fromTo(".hero_footer",
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.9, ease, delay: 0.7 }
+    );
+
+    // ── Brand Values Slider ──
+    reveal(".brand_values .slider_wrap", { y: 60, dur: 1 });
+
+    // ── Platos Estrella ──
+    reveal(".section_platos .marquee_wrap", { y: 40 });
+    reveal(".section_platos .platos_heading", { y: 50, dur: 1 });
+    reveal(".section_platos .slider_offset", { y: 30, trigger: ".section_platos .slider_element" });
+
+    // ── Quienes Somos ──
+    reveal(".section_quienes .u-theme-brand h2",  { y: 50, dur: 1 });
+    reveal(".section_quienes .u-theme-brand p",   { y: 30, stagger: stag, trigger: ".section_quienes .u-theme-brand" });
+
+    // ── Reserva Tu Mesa ──
+    reveal(".section_reserva h2",           { y: 50 });
+    reveal(".section_reserva .u-position-sticky", { y: 40, stagger: 0.15, trigger: ".section_reserva .u-flex-vertical-nowrap" });
+
+    // ── Club Secreto ──
+    reveal("#club-secreto h2",              { y: 60, dur: 1 });
+    reveal("#club-secreto p",               { y: 30, stagger: stag, trigger: "#club-secreto" });
+    reveal("#club-secreto .u-flex-horizontal-nowrap", { y: 20, stagger: 0.1, trigger: "#club-secreto" });
+    reveal("#club-secreto img:last-child",  { opacity: 0, y: 0, dur: 1.2, trigger: "#club-secreto" });
+
+    // ── Reviews ──
+    reveal("#reviews-section #hearts-col", { x: -40, y: 0, dur: 1 });
+    reveal("#reviews-section .reviews_slider", { x: 60, y: 0, dur: 1 });
+
+    // ── CTA Reserva ──
+    reveal(".u-padding-block-12 .platos_heading", { y: 60, dur: 1.1 });
+    reveal(".u-padding-block-12 p",               { y: 30, trigger: ".u-padding-block-12" });
+    reveal(".u-padding-block-12 .button_main_wrap",{ y: 20, trigger: ".u-padding-block-12" });
+
+    // ── Contact ──
+    reveal("#contacto h2",                  { y: 50 });
+    reveal("#contacto .u-flex-vertical-nowrap > *", { y: 30, stagger: stag, trigger: "#contacto" });
+
+    // ── Gallery ──
+    reveal(".section_gallery .slider_wrap", { y: 40 });
+
+    // ── Footer ──
+    reveal(".footer_wrap",                  { y: 30, dur: 0.8 });
+
+    // ─── Parallax depth on floating images ───────────────────────────
+    // Wrap in matchMedia so the entire block is skipped for users who
+    // prefer reduced motion. Each tween scrubs y (or yPercent / rotation)
+    // against scroll, with `invalidateOnRefresh: true` so the distances
+    // recompute on resize.
+    gsap.matchMedia().add("(prefers-reduced-motion: no-preference)", () => {
+      const hero = document.querySelector(".hero") || document.querySelector("section");
+
+      // Top-right hero photo: drifts up SLOWER than scroll = recedes into
+      // the background. Negative y = travels up against the scroll.
+      gsap.to(".hero_topright_image", {
+        yPercent: -22,
+        ease: "none",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      // Bottom-left hero photo (local interior): drifts DOWN slightly so
+      // it stays anchored to the hero floor while the rest scrolls past —
+      // gives it foreground weight. Targets the wrapper (not the inner
+      // img) so the border/radius travel with the photo like the
+      // top-right one does.
+      gsap.to(".hero_bottomleft_image", {
+        yPercent: 18,
+        ease: "none",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      // SOMOS PIRI PIRI graphic: very subtle rise so it feels lighter and
+      // higher in the depth stack than the photo tiles.
+      gsap.to(".hero_graphic_col img", {
+        yPercent: -12,
+        rotate: -1.5,
+        ease: "none",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      // Hero top-right photo border: subtle scale tied to scroll so the
+      // image "breathes" as the user pulls away from the hero. Pairs with
+      // the y drift above (multiple ScrollTriggers on one element are
+      // fine as long as they don't fight for the same property).
+      gsap.to(".hero_topright_image_img", {
+        scale: 1.08,
+        ease: "none",
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6,
+          invalidateOnRefresh: true,
+        },
+      });
+
+      // ─── Mouse-driven parallax on hero ──────────────────────────────
+      // Each floating element shifts by a small amount in response to the
+      // cursor position. Deeper layers (the background photo) move LESS
+      // than the foreground; the SOMOS PIRI PIRI graphic drifts opposite
+      // to the cursor for a subtle "3D" depth feel.
+      //
+      // gsap.quickTo() returns a high-performance setter that batches
+      // updates into a single rAF — much cheaper than gsap.to() inside a
+      // mousemove handler.
+      if (hero) {
+        const layers = [
+          { sel: ".hero_topright_image", strength: 22 },
+          { sel: ".hero_bottomleft_image", strength: 30 },
+          { sel: ".hero_graphic_col img", strength: -16 },
+        ].map(({ sel, strength }) => {
+          const el = document.querySelector(sel);
+          if (!el) return null;
+          return {
+            el,
+            xTo: gsap.quickTo(el, "x", { duration: 0.8, ease: "power3.out" }),
+            yTo: gsap.quickTo(el, "y", { duration: 0.8, ease: "power3.out" }),
+            strength,
+          };
+        }).filter(Boolean);
+
+        const onMove = (event) => {
+          const rect = hero.getBoundingClientRect();
+          // Normalize to [-1, 1] from the hero center
+          const nx = (event.clientX - rect.left) / rect.width * 2 - 1;
+          const ny = (event.clientY - rect.top) / rect.height * 2 - 1;
+          layers.forEach(({ xTo, yTo, strength }) => {
+            xTo(nx * strength);
+            yTo(ny * strength);
+          });
+        };
+        const onLeave = () => {
+          layers.forEach(({ xTo, yTo }) => { xTo(0); yTo(0); });
+        };
+        hero.addEventListener("mousemove", onMove);
+        hero.addEventListener("mouseleave", onLeave);
+      }
+    });
+  });
+  </script>
+
+  <script>
+    // Lumos Modal Initialization
+    document.addEventListener("DOMContentLoaded", function () {
+      const modalSystem = ((window.lumos ??= {}).modal ??= {
+        list: {},
+        open(id) { this.list[id]?.open?.(); },
+        closeAll() { Object.values(this.list).forEach((m) => m.close?.()); },
+      });
+      function createModals() {
+        document.querySelectorAll(".modal_dialog").forEach(function (modal) {
+          if (modal.dataset.scriptInitialized) return;
+          modal.dataset.scriptInitialized = "true";
+          const modalId = modal.getAttribute("data-modal-target");
+          const variant = modal.getAttribute("data-wf--modal--variant");
+          let lastFocusedElement;
+          if (typeof gsap !== "undefined") {
+            gsap.context(() => {
+              let tl = gsap.timeline({ paused: true, onReverseComplete: resetModal });
+              if (variant === "side-panel") {
+                tl.fromTo(".modal_backdrop", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" });
+                tl.from(".modal_content", { xPercent: 100, duration: 0.3, ease: "power1.out" }, "<");
+              } else if (variant === "full-screen") {
+                tl.set(".modal_backdrop", { opacity: 0 });
+                tl.from(".modal_content", { opacity: 0, duration: 0.2, ease: "power1.out" });
+                tl.from(".modal_slot", { opacity: 0, y: "2rem", duration: 0.2, ease: "power1.out" }, "<0.1");
+              } else {
+                tl.fromTo(".modal_backdrop", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" });
+                tl.from(".modal_content", { opacity: 0, y: "6rem", duration: 0.3, ease: "power1.out" }, "<");
+              }
+              modal.tl = tl;
+            }, modal);
+          }
+          function resetModal() {
+            typeof lenis !== "undefined" && lenis.start ? lenis.start() : (document.body.style.overflow = "");
+            modal.close();
+            if (lastFocusedElement) lastFocusedElement.focus();
+            window.dispatchEvent(new CustomEvent("modal-close", { detail: { modal } }));
+          }
+          function openModal() {
+            typeof lenis !== "undefined" && lenis.stop ? lenis.stop() : (document.body.style.overflow = "hidden");
+            lastFocusedElement = document.activeElement;
+            modal.showModal();
+            if (typeof gsap !== "undefined") modal.tl.play();
+            modal.querySelectorAll("[data-modal-scroll]").forEach((el) => (el.scrollTop = 0));
+            window.dispatchEvent(new CustomEvent("modal-open", { detail: { modal } }));
+          }
+          function closeModal() {
+            typeof gsap !== "undefined" ? modal.tl.reverse() : resetModal();
+          }
+          if (new URLSearchParams(location.search).get("modal-id") === modalId) {
+            openModal();
+            history.replaceState({}, "", ((u) => (u.searchParams.delete("modal-id"), u))(new URL(location.href)));
+          }
+          modal.addEventListener("cancel", (e) => (e.preventDefault(), closeModal()));
+          modal.addEventListener("click", (e) => e.target.closest("[data-modal-close]") && closeModal());
+          document.addEventListener("click", (e) => e.target.closest("[data-modal-trigger='" + modalId + "']") && openModal());
+          modalSystem.list[modalId] = { open: openModal, close: closeModal };
+        });
+      }
+      createModals();
+    });
+  </script>
+
+  <!-- Hero Parallax Effect -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const parallaxElements = document.querySelectorAll("[data-parallax-speed]");
+      if (parallaxElements.length === 0) return;
+
+      function updateParallax() {
+        const scrollY = window.scrollY;
+        parallaxElements.forEach(function(el) {
+          const speed = parseFloat(el.dataset.parallaxSpeed) || 0.1;
+          const yOffset = scrollY * speed;
+          el.style.transform = "translateY(" + yOffset + "px)";
+        });
+      }
+
+      window.addEventListener("scroll", updateParallax, { passive: true });
+      updateParallax();
+    });
+  </script>
+
+  <!-- Swiper Library (Lumos Slider) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+  <script>
+    // Lumos Slider Initialization
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("[data-slider='component']:not([data-slider='component'] [data-slider='component'])").forEach((component) => {
+        if (component.dataset.scriptInitialized) return;
+        component.dataset.scriptInitialized = "true";
+        const swiperElement = component.querySelector(".slider_element");
+        const swiperWrapper = component.querySelector(".slider_list");
+        const progressBar = component.querySelector("[data-slider='progress']");
+        if (!swiperElement || !swiperWrapper) return;
+
+        [...swiperWrapper.children].forEach((el) => el.classList.add("swiper-slide"));
+
+        const followFinger = swiperElement.getAttribute("data-follow-finger") === "true",
+          freeMode = swiperElement.getAttribute("data-free-mode") === "true",
+          mousewheel = swiperElement.getAttribute("data-mousewheel") === "true",
+          slideToClickedSlide = swiperElement.getAttribute("data-slide-to-clicked") === "true",
+          loop = swiperElement.getAttribute("data-loop") === "true",
+          autoplay = swiperElement.getAttribute("data-autoplay") === "true",
+          autoplayDelay = +swiperElement.getAttribute("data-autoplay-delay") || 3000,
+          speed = +swiperElement.getAttribute("data-speed") || 600,
+          // Default the inter-slide gap to 16px on mobile (no data attribute set)
+          // so the peeking cards are clearly separated; honour an explicit
+          // data-space-between when one is provided.
+          spaceBetween = +swiperElement.getAttribute("data-space-between")
+            || (window.matchMedia("(max-width: 767px)").matches ? 16 : 0),
+          // On mobile every slider runs centered so the ~1.2-per-view CSS shows
+          // a peek of the previous AND next item around the centred active one.
+          centered = swiperElement.getAttribute("data-centered") === "true"
+            || window.matchMedia("(max-width: 767px)").matches;
+
+        const swiper = new Swiper(swiperElement, {
+          slidesPerView: "auto",
+          spaceBetween: spaceBetween,
+          followFinger: followFinger,
+          loop: loop,
+          loopAdditionalSlides: 10,
+          freeMode: freeMode,
+          slideToClickedSlide: slideToClickedSlide,
+          centeredSlides: centered,
+          autoHeight: false,
+          speed: speed,
+          autoplay: autoplay ? {
+            delay: autoplayDelay,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+          } : false,
+          grabCursor: true,
+          touchEventsTarget: "container",
+          mousewheel: {
+            enabled: mousewheel,
+            forceToAxis: true,
+          },
+          keyboard: {
+            enabled: true,
+            onlyInViewport: true,
+          },
+          navigation: {
+            nextEl: component.querySelector("[data-slider='next'] button"),
+            prevEl: component.querySelector("[data-slider='previous'] button"),
+          },
+          pagination: {
+            el: component.querySelector(".slider_bullet_list"),
+            bulletActiveClass: "is-active",
+            bulletClass: "slider_bullet_item",
+            bulletElement: "button",
+            clickable: true,
+          },
+          slideActiveClass: "is-active",
+          slideDuplicateActiveClass: "is-active",
+          on: {
+            init: function() {
+              if (progressBar) {
+                const progress = (this.activeIndex + 1) / this.slides.length * 100;
+                progressBar.style.width = progress + '%';
+              }
+            },
+            slideChange: function() {
+              if (progressBar) {
+                const progress = (this.activeIndex + 1) / this.slides.length * 100;
+                progressBar.style.width = progress + '%';
+              }
+            }
+          }
+        });
+      });
+    });
+  </script>
+
+  <script>
+    // Lumos Marquee Initialization
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("[data-marquee='component']").forEach((comp, index) => {
+        if (comp.dataset.marqueeInit) return;
+        comp.dataset.marqueeInit = "true";
+        const staggerDelay = index * 150;
+        setTimeout(() => {
+          initMarquee(comp);
+        }, staggerDelay);
+      });
+
+      function initMarquee(comp) {
+        const el = comp.querySelector(".marquee_element");
+        const list = comp.querySelector(".marquee_list");
+        if (!el || !list) return;
+        if (el.getAttribute("data-marquee-mode") !== "true") return;
+
+        const dirBool = el.getAttribute("data-marquee-direction") === "true";
+        const speedMs = parseInt(el.getAttribute("data-marquee-speed"), 10) || 12000;
+        const hoverPause = el.getAttribute("data-marquee-hover-pause") === "true";
+        const hoverEase = el.getAttribute("data-marquee-hover-ease") === "true";
+        const respectPRM = el.getAttribute("data-marquee-respect-prm") === "true";
+        const draggableEnabled = el.getAttribute("data-marquee-draggable") === "true";
+
+        const prm = window.matchMedia("(prefers-reduced-motion: reduce)");
+        const reduceMotion = respectPRM && prm.matches;
+
+        el.classList.add("is-marquee");
+        [...list.children].forEach(n => n.style.flex = "0 0 auto");
+
+        // Smart text sizing & auto-duplication
+        (function setupSmartText() {
+          if (!el.hasAttribute("data-marquee-text-width-multiplier")) return;
+          const textMultiplier = parseFloat(el.getAttribute("data-marquee-text-width-multiplier")) || 2;
+          const scalingEnabled = el.hasAttribute("data-marquee-scale-text") &&
+            el.getAttribute("data-marquee-scale-text") === "true";
+          if (!scalingEnabled) return;
+
+          const originalItems = [...list.children].filter(item => !item.classList.contains("marquee-clone"));
+
+          function waitForValidWidth(callback, maxAttempts = 100) {
+            let attempts = 0;
+            function check() {
+              attempts++;
+              const parentWidth = comp.offsetWidth;
+              if (parentWidth > 0) {
+                callback(parentWidth);
+              } else if (attempts < maxAttempts) {
+                requestAnimationFrame(check);
+              }
+            }
+            check();
+          }
+
+          if (originalItems.length === 1) {
+            waitForValidWidth((parentWidth) => {
+              const neededDuplicates = Math.ceil(parentWidth / (parentWidth / textMultiplier)) + 2;
+              for (let i = 0; i < neededDuplicates; i++) {
+                const clone = originalItems[0].cloneNode(true);
+                clone.setAttribute("data-auto-duplicate", "true");
+                list.appendChild(clone);
+              }
+            });
+          }
+
+          [...list.children].forEach((item) => {
+            if (item.classList.contains("marquee-clone")) return;
+            comp.classList.add("text-fill-container");
+            item.classList.add("u-text-fill-width");
+            item.style.whiteSpace = 'nowrap';
+            item.style.lineHeight = '1';
+          });
+
+          function adjustTextSize() {
+            const currentParentWidth = comp.offsetWidth;
+            if (currentParentWidth === 0) {
+              requestAnimationFrame(() => {
+                requestAnimationFrame(adjustTextSize);
+              });
+              return;
+            }
+
+            [...list.children].forEach((item) => {
+              if (item.classList.contains("marquee-clone")) return;
+              const targetWidth = currentParentWidth * textMultiplier;
+              const textElement = item.querySelector('p, h1, h2, h3, h4, h5, h6') || item;
+
+              const tempMeasure = textElement.cloneNode(true);
+              tempMeasure.style.cssText = 'position:absolute;visibility:hidden;width:auto;display:inline-block;white-space:nowrap;';
+              document.body.appendChild(tempMeasure);
+
+              const currentTextWidth = tempMeasure.offsetWidth;
+              const currentFontSize = parseFloat(getComputedStyle(tempMeasure).fontSize);
+              document.body.removeChild(tempMeasure);
+
+              const newFontSize = (targetWidth / currentTextWidth) * currentFontSize;
+              textElement.style.setProperty('font-size', `${newFontSize}px`, 'important');
+            });
+          }
+
+          function waitAndAdjust() {
+            const currentParentWidth = comp.offsetWidth;
+            if (currentParentWidth > 0) {
+              adjustTextSize();
+            } else {
+              requestAnimationFrame(waitAndAdjust);
+            }
+          }
+
+          waitAndAdjust();
+          setTimeout(adjustTextSize, 100);
+          setTimeout(adjustTextSize, 300);
+          setTimeout(adjustTextSize, 500);
+
+          if (document.fonts) {
+            document.fonts.ready.then(adjustTextSize);
+          }
+
+          let resizeTimeout;
+          window.addEventListener('resize', () => {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(() => {
+              if (comp.offsetWidth > 0) {
+                adjustTextSize();
+              }
+            }, 150);
+          });
+        })();
+
+        const waitAssets = () => Promise.all([
+          new Promise(res => {
+            const imgs = list.querySelectorAll("img");
+            let pending = imgs.length;
+            if (!pending) return res();
+            imgs.forEach(im => {
+              if (im.complete) {
+                if (--pending === 0) res();
+              } else {
+                im.addEventListener("load", () => { if (--pending === 0) res(); }, { once: true });
+                im.addEventListener("error", () => { if (--pending === 0) res(); }, { once: true });
+              }
+            });
+          }),
+          ("fonts" in document) ? document.fonts.ready.catch(() => { }) : Promise.resolve()
+        ]);
+
+        let packDistance = 0;
+        let offset = 0;
+        let targetPxPerMs = 0;
+        let currentPxPerMs = 0;
+        let playing = true;
+        let rafId = 0;
+        let lastTime = 0;
+        let dragging = false;
+        let lastPointerX = 0;
+        let dragMoved = 0;
+        const CLICK_SUPPRESS_PX = 3;
+
+        function measureAndClone() {
+          [...list.querySelectorAll(".marquee-clone")].forEach(n => n.remove());
+
+          const items = [...list.children].filter(n => !n.classList.contains("marquee-clone"));
+          if (!items.length) return 0;
+
+          const first = items[0];
+          const last = items[items.length - 1];
+          const firstLeft = first.offsetLeft;
+          const lastRight = last.offsetLeft + last.offsetWidth;
+          const dist = Math.round(lastRight - firstLeft);
+
+          items.forEach(n => {
+            const c = n.cloneNode(true);
+            c.classList.add("marquee-clone");
+            list.appendChild(c);
+          });
+
+          if (dirBool) {
+            for (let i = items.length - 1; i >= 0; i--) {
+              const c = items[i].cloneNode(true);
+              c.classList.add("marquee-clone");
+              list.insertBefore(c, list.firstChild);
+            }
+          }
+
+          offset = dirBool ? -dist + 0.001 : -0.001;
+          list.style.transform = `translate3d(${offset}px,0,0)`;
+          return dist;
+        }
+
+        function setSpeed() {
+          const cycle = reduceMotion ? Math.max(1, speedMs) * 3 : Math.max(1, speedMs);
+          const v = packDistance / cycle;
+          targetPxPerMs = dirBool ? v : -v;
+          if (!hoverEase) currentPxPerMs = targetPxPerMs;
+        }
+
+        function wrapOffset(span) {
+          if (dirBool) {
+            while (offset >= 0) offset -= span;
+            while (offset < -span) offset += span;
+          } else {
+            while (offset <= -span) offset += span;
+            while (offset > 0) offset -= span;
+          }
+        }
+
+        function tick(now) {
+          if (!lastTime) lastTime = now;
+          const dt = Math.min(now - lastTime, 100);
+          lastTime = now;
+
+          if (hoverEase) {
+            const ease = 0.15;
+            currentPxPerMs += (targetPxPerMs - currentPxPerMs) * ease;
+          }
+
+          const velocity = hoverEase ? currentPxPerMs : targetPxPerMs;
+
+          if ((playing && !dragging) || hoverEase) {
+            offset += velocity * dt;
+            const span = packDistance;
+            if (span > 0) wrapOffset(span);
+            const roundedOffset = Math.round(offset);
+            list.style.transform = `translate3d(${roundedOffset}px,0,0)`;
+          }
+
+          rafId = requestAnimationFrame(tick);
+        }
+
+        function start() { cancelAnimationFrame(rafId); lastTime = 0; rafId = requestAnimationFrame(tick); }
+        function pause() { playing = false; targetPxPerMs = 0; if (!hoverEase) { currentPxPerMs = 0; } }
+        function resume() { playing = true; setSpeed(); }
+
+        if (hoverPause) {
+          el.addEventListener("mouseenter", () => { if (!dragging) pause(); });
+          el.addEventListener("mouseleave", () => { if (!dragging) resume(); });
+        }
+
+        if (draggableEnabled) {
+          const suppressClick = (e) => {
+            if (dragMoved > CLICK_SUPPRESS_PX) {
+              e.stopPropagation();
+              e.preventDefault();
+            }
+          };
+          comp.addEventListener("click", suppressClick, true);
+
+          const onPointerDown = (e) => {
+            dragging = true;
+            dragMoved = 0;
+            lastPointerX = e.clientX ?? (e.touches && e.touches[0]?.clientX) ?? 0;
+            el.classList.add("is-dragging");
+            el.style.touchAction = "none";
+            pause();
+            try { el.setPointerCapture && el.setPointerCapture(e.pointerId); } catch (_) { }
+            window.addEventListener("pointermove", onPointerMove);
+            window.addEventListener("pointerup", onPointerUp, { once: true });
+            window.addEventListener("pointercancel", onPointerUp, { once: true });
+          };
+
+          const onPointerMove = (e) => {
+            if (!dragging) return;
+            const x = e.clientX ?? (e.touches && e.touches[0]?.clientX) ?? 0;
+            const dx = x - lastPointerX;
+            lastPointerX = x;
+            dragMoved += Math.abs(dx);
+            offset += dx;
+            if (packDistance > 0) wrapOffset(packDistance);
+            list.style.transform = `translate3d(${offset}px,0,0)`;
+          };
+
+          const onPointerUp = () => {
+            dragging = false;
+            el.classList.remove("is-dragging");
+            el.style.touchAction = "";
+            resume();
+            window.removeEventListener("pointermove", onPointerMove);
+          };
+
+          el.addEventListener("pointerdown", onPointerDown);
+        }
+
+        let t;
+        const rebuild = () => { packDistance = measureAndClone(); setSpeed(); };
+        const debounced = () => { clearTimeout(t); t = setTimeout(rebuild, 120); };
+
+        window.addEventListener("resize", debounced, { passive: true });
+        window.addEventListener("orientationchange", debounced, { passive: true });
+
+        function initAnimation() {
+          const checkDimensions = () => {
+            if (comp.offsetWidth > 0 && comp.offsetHeight > 0) {
+              rebuild();
+              start();
+            } else {
+              requestAnimationFrame(checkDimensions);
+            }
+          };
+          waitAssets().then(() => {
+            checkDimensions();
+          });
+        }
+
+        initAnimation();
+      }
+    });
+  </script>
+
+  <script>
+    // Brand-card 3D flip — click/tap a pillar card to reveal its illustration
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(".brand_card").forEach(card => {
+        const toggle = () => card.classList.toggle("is-flipped");
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("aria-pressed", "false");
+        card.addEventListener("click", () => {
+          toggle();
+          card.setAttribute("aria-pressed", card.classList.contains("is-flipped"));
+        });
+        card.addEventListener("keydown", (e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            toggle();
+            card.setAttribute("aria-pressed", card.classList.contains("is-flipped"));
+          }
+        });
+      });
+    });
+  </script>
+
+  <script>
+    // Brand-card corner-tilt affordance — only the four corner zones tilt the
+    // card, and the tilt direction follows the corner the cursor is in
+    // (top-left lifts that corner toward the viewer, etc.). Skipped on touch
+    // devices so a tap doesn't leave a tilt stuck.
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!window.matchMedia || !window.matchMedia("(hover: hover)").matches) return;
+
+      const MAX_TILT = 12;          // degrees at full corner
+      const CORNER_THRESHOLD = 0.4; // |nx| AND |ny| must exceed this to tilt
+
+      document.querySelectorAll(".brand_card").forEach(card => {
+        const group = card.querySelector(".card_primary_group") || card;
+        let rafId = 0;
+        let pendingX = 0, pendingY = 0;
+
+        const apply = () => {
+          rafId = 0;
+          group.style.setProperty("--tilt-x", pendingX.toFixed(2) + "deg");
+          group.style.setProperty("--tilt-y", pendingY.toFixed(2) + "deg");
+        };
+        const schedule = () => { if (!rafId) rafId = requestAnimationFrame(apply); };
+
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;   // -1..1, left..right
+          const ny = ((e.clientY - rect.top) / rect.height) * 2 - 1;   // -1..1, top..bottom
+          const inCorner = Math.abs(nx) > CORNER_THRESHOLD && Math.abs(ny) > CORNER_THRESHOLD;
+          if (inCorner) {
+            // Lift the corner closest to the cursor toward the viewer.
+            // rotateX(-ny * MAX) pulls the top edge forward when ny<0 (cursor at top);
+            // rotateY(nx * MAX) pulls the right edge forward when nx>0 (cursor at right).
+            pendingX = -ny * MAX_TILT;
+            pendingY = nx * MAX_TILT;
+          } else {
+            pendingX = 0;
+            pendingY = 0;
+          }
+          schedule();
+        });
+
+        card.addEventListener("mouseleave", () => {
+          pendingX = 0;
+          pendingY = 0;
+          schedule();
+        });
+      });
+    });
+  </script>
+
+  <!-- CoverManager iframe resizer -->
+  <script src="https://www.covermanager.com/js/iframeResizer/iframeResizer.min.js"></script>
+  <script type="text/javascript" src="https://www.covermanager.com/reservation/gtmcrossdomain/restaurante-piripiri"></script>
+
+  <script>
+    // Reservation Trigger System
+    document.addEventListener("DOMContentLoaded", function () {
+      const triggers = document.querySelectorAll("[reserva-trigger]");
+      const section = document.getElementById("reserva-section");
+
+      triggers.forEach(trigger => {
+        trigger.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = this.getAttribute("reserva-trigger");
+
+          // Show the reserva section
+          section.style.display = "block";
+
+          // Hide all containers
+          const containers = section.querySelectorAll("[reserva-iframe]");
+          containers.forEach(container => {
+            container.style.display = "none";
+          });
+
+          // Show the correct container
+          const targetContainer = section.querySelector(`[reserva-iframe="${target}"]`);
+          if (targetContainer) {
+            targetContainer.style.display = "block";
+
+            // Resize the iframe inside
+            const iframe = targetContainer.querySelector("iframe");
+            if (iframe && typeof iFrameResize === "function") {
+              iFrameResize({}, iframe);
+            }
+
+            // Scroll to section
+            section.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+    });
+  </script>
+
+  <!-- CTA RESERVA SECTION -->
+  <section class="u-section u-padding-block-12 u-theme-dark">
+    <div class="u-container">
+      <div class="u-flex-vertical-nowrap u-align-items-center u-text-align-center u-gap-8">
+        <!-- Salsita Outline Heading — matches the PLATOS ESTRELLA size scale.
+             The line-height: 0.7 tightens the title box visually but also makes
+             the next sibling sit right under the glyph descenders, so the
+             container uses u-gap-8 (instead of u-gap-6) to breathe properly. -->
+        <h2 class="platos_heading u-text-style-display u-margin-0" style="font-size: clamp(5.5rem, 11vw, 11rem); line-height: 0.7;">
+          Esto<br>EsFácil
+        </h2>
+
+        <!-- Subtext -->
+        <p class="u-text-style-large u-margin-0" style="text-align: center;">
+          No te lo pienses más. Ven a quemarte los dedos,<br>
+          no pasa nada, después te los chupas.
+        </p>
+
+        <!-- Secondary Button with Orange Shadow -->
+        <div class="u-margin-top-6">
+          <div class="button_main_wrap" data-trigger="hover focus">
+            <a href="#reserva" class="button_main_element" data-style="secondary">
+              <div class="button_main_text u-text-style-main">RESERVA YA</div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="u-section-spacer u-ignore-trim" data-style="main"></div>
+  </section>
+
+  <!-- GAME SECTION — PIRI PIRAOS, sticky scroll-expand (between "Esto EsFácil" and Contacto) -->
+  <style>
+    .game_scroll { position: relative; height: 210vh; background: var(--swatch--dark-900); }
+    .game_sticky { position: sticky; top: 0; height: 100svh; display: grid; place-items: center; overflow: hidden; }
+    .game_reveal {
+      position: relative; overflow: hidden;
+      border: var(--border-width--main) solid var(--swatch--light-400);
+      border-radius: var(--radius--main); background: var(--swatch--light-400);
+      box-shadow: 0 10px 0 0 color-mix(in srgb, #000 28%, transparent);
+      will-change: width, height;
+    }
+    .game_reveal .game_frame {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      border: 0; display: block; background: var(--swatch--light-400);
+      pointer-events: none;  /* enabled only once fully expanded, so scrolling passes through */
+    }
+  </style>
+  <section class="game_scroll" id="gameScroll" aria-label="Piri Piraos — el mini-juego de Piri Piri">
+    <div class="game_sticky">
+      <div class="game_reveal" id="gameReveal">
+        <iframe class="game_frame" id="gameFrame" src="./juego-embed.html" title="Piri Piraos — el mini-juego de Piri Piri" loading="lazy" scrolling="no" allowfullscreen allow="fullscreen"></iframe>
+      </div>
+    </div>
+  </section>
+  <script>
+    (function () {
+      var sec = document.getElementById('gameScroll');
+      var reveal = document.getElementById('gameReveal');
+      var frame = document.getElementById('gameFrame');
+      if (!sec || !reveal || !frame) return;
+      // Fraction of the pinned scroll spent growing; the rest is the play zone.
+      var GROW_END = 0.35;
+      var fullW, fullH, smallW, smallH, ticking = false;
+      function setDims() {
+        var portrait = window.innerHeight > window.innerWidth;
+        if (portrait) {
+          // Mobile / portrait: fill the screen vertically (tall box, game goes vertical)
+          fullW = Math.round(window.innerWidth * 0.92);
+          fullH = Math.round(window.innerHeight * 0.82);
+        } else {
+          // Desktop / landscape: 16:10, capped to viewport height
+          fullW = Math.min(68 * 16, window.innerWidth * 0.92);
+          fullH = Math.round(fullW * 10 / 16);
+          var maxH = window.innerHeight * 0.86;
+          if (fullH > maxH) { fullH = Math.round(maxH); fullW = Math.round(fullH * 16 / 10); }
+        }
+        frame.style.width = fullW + 'px';
+        frame.style.height = fullH + 'px';
+        // Starting box keeps the same aspect ratio as the full box. It used to
+        // open from a 300px thumbnail across ~62% of the scroll, which read as
+        // a screen unfolding rather than a section arriving. Starting close to
+        // full size and settling early keeps a hint of movement without the
+        // "cinema screen" effect.
+        smallW = Math.min(760, Math.round(fullW * (portrait ? 0.72 : 0.66)));
+        smallH = Math.round(smallW * fullH / fullW);
+      }
+      function render() {
+        var total = sec.offsetHeight - window.innerHeight;
+        var p = total > 0 ? (-sec.getBoundingClientRect().top) / total : 0;
+        p = Math.max(0, Math.min(1, p));
+        // reach full size early, then hold (a "play zone" while pinned)
+        var pe = Math.min(1, p / GROW_END);
+        var e = pe < 0.5 ? 2 * pe * pe : 1 - Math.pow(-2 * pe + 2, 2) / 2;
+        reveal.style.width = Math.round(smallW + (fullW - smallW) * e) + 'px';
+        reveal.style.height = Math.round(smallH + (fullH - smallH) * e) + 'px';
+        frame.style.pointerEvents = e > 0.995 ? 'auto' : 'none';
+      }
+      // The site uses smooth-scroll (Lenis), which suppresses native scroll events,
+      // so drive the effect with a rAF loop that runs only while the section is near view.
+      var running = false;
+      function loop() { if (!running) return; render(); requestAnimationFrame(loop); }
+      setDims(); render();
+      if ('IntersectionObserver' in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (en) {
+            if (en.isIntersecting) { if (!running) { running = true; requestAnimationFrame(loop); } }
+            else { running = false; render(); }
+          });
+        }, { rootMargin: '300px 0px' }).observe(sec);
+      } else { running = true; requestAnimationFrame(loop); }
+
+      // Click the game while it's still small/expanding → auto-scroll it open (into the
+      // play zone). When fully expanded the iframe captures the click instead (to play).
+      function progress() {
+        var total = sec.offsetHeight - window.innerHeight;
+        return total > 0 ? Math.max(0, Math.min(1, (-sec.getBoundingClientRect().top) / total)) : 0;
+      }
+      function smoothTo(y) {
+        var L = window.lenis || window.__lenis;
+        if (L && typeof L.scrollTo === 'function') { L.scrollTo(y, { duration: 1.1 }); return; }
+        try { window.scrollTo({ top: y, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, y); }
+      }
+      reveal.addEventListener('click', function () {
+        if (progress() < GROW_END) {
+          var total = sec.offsetHeight - window.innerHeight;
+          // land inside the play zone, clear of the growth phase
+          smoothTo(Math.round(sec.offsetTop + total * (GROW_END + 0.2)));
+        }
+      });
+
+      window.addEventListener('resize', function () { setDims(); render(); });
+    })();
+  </script>
+
+  <!-- CONTACT SECTION -->
+  <section id="contacto" class="u-section u-padding-block-12 u-theme-dark">
+    <div class="u-container">
+      <div class="u-flex-vertical-nowrap u-gap-8">
+        <!-- Heading — font-size is fit-to-container by JS at the bottom of <body>.
+             clamp() acts as the fallback before the script runs. -->
+        <h2 data-fit-text class="u-text-transform-uppercase u-margin-0" style="font-family: var(--_typography---font--primary-family); font-weight: 900; font-size: clamp(4rem, 14.5vw, 14.5rem); line-height: 1; width: 100%; white-space: nowrap;">CONTACTO</h2>
+
+        <!-- Contact Form -->
+        <div class="contact_form_wrap">
+          <div class="form_component">
+            <div class="form_wrap w-form">
+              <form id="wf-form-Contact-Form" name="wf-form-Contact-Form" data-name="Contact Form" method="post" class="form_element" style="gap: var(--_spacing---space--6);">
+                <!-- 2x2 Grid for inputs -->
+                <div class="contact_form_grid">
+                  <!-- Nombre -->
+                  <label data-trigger="focus" class="form_label_wrap">
+                    <span class="form_label_text" data-style="hidden">Nombre</span>
+                    <input name="Nombre" type="text" placeholder="Nombre" inputmode="text" autocomplete="given-name" class="form_field is-pill" value="" required>
+                  </label>
+                  <!-- Apellido -->
+                  <label data-trigger="focus" class="form_label_wrap">
+                    <span class="form_label_text" data-style="hidden">Apellido</span>
+                    <input name="Apellido" type="text" placeholder="Apellido" inputmode="text" autocomplete="family-name" class="form_field is-pill" value="">
+                  </label>
+                  <!-- Email -->
+                  <label data-trigger="focus" class="form_label_wrap">
+                    <span class="form_label_text" data-style="hidden">Email</span>
+                    <input name="Email" type="email" placeholder="Email" inputmode="email" autocomplete="email" class="form_field is-pill" value="" required>
+                  </label>
+                  <!-- Teléfono -->
+                  <label data-trigger="focus" class="form_label_wrap">
+                    <span class="form_label_text" data-style="hidden">Teléfono</span>
+                    <input name="Telefono" type="tel" placeholder="Teléfono" inputmode="tel" autocomplete="tel" class="form_field is-pill" value="">
+                  </label>
+                </div>
+
+                <!-- Message textarea (full width, underline style) -->
+                <label data-trigger="focus" class="form_label_wrap contact_form_full">
+                  <span class="form_label_text" data-style="hidden">Mensaje</span>
+                  <textarea name="Mensaje" placeholder="Tu mensaje..." class="form_field is-underline" required></textarea>
+                </label>
+
+                <!-- Submit Button -->
+                <div class="u-button-wrapper u-margin-top-4">
+                  <div class="button_main_wrap" data-trigger="hover focus">
+                    <button type="submit" class="button_main_element">
+                      <div class="button_main_text u-text-style-main">ENVIAR</div>
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <div class="form_success_wrap w-form-done">
+                <div class="form_success_text">¡Gracias! Tu mensaje ha sido enviado correctamente.</div>
+              </div>
+              <div class="form_error_wrap w-form-fail">
+                <div class="form_error_text">¡Ups! Algo salió mal al enviar el formulario.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM GALLERY SECTION -->
+  <section class="section_gallery u-theme-dark">
+    <!-- Gallery Slider -->
+    <div class="slider_wrap" data-slider="component">
+      <style>
+        /* Slider item sizing for gallery slides — share --swiper-gap with
+           the food + testimonial carousels for visual consistency. */
+        html .slider_list > .gallery_slide_item {
+          padding-inline: calc(var(--swiper-gap) / 2);
+          height: auto !important;
+          flex: 0 0 auto;
+          width: calc(100% / var(--slide-count));
+        }
+      </style>
+      <div style="--lg: 4; --md: 3; --sm: 2; --xs: 1.5;" class="slider_offset">
+        <div data-speed="600" data-follow-finger="true" data-free-mode="false" data-mousewheel="true" data-loop="true" data-autoplay="true" data-autoplay-delay="3000" class="slider_element swiper">
+          <div data-slot="" class="slider_list swiper-wrapper">
+
+            <!-- Slide 1: Group eating chicken -->
+            <div class="gallery_slide_item">
+              <div class="gallery_slide_image u-radius-main u-overflow-hidden u-border-main">
+                <img src="assets/resources/images/general/group-dining-02.webp" srcset="assets/resources/images/general/480w/group-dining-02_480w.webp 480w, assets/resources/images/general/768w/group-dining-02_768w.webp 768w" sizes="(max-width: 767px) 72vw, 30vw" loading="lazy" decoding="async" alt="Grupo disfrutando del pollo Piri Piri" class="u-object-fit-cover u-width-full u-height-full">
+              </div>
+            </div>
+
+            <!-- Slide 2: Restaurant interior -->
+            <div class="gallery_slide_item">
+              <div class="gallery_slide_image u-radius-main u-overflow-hidden u-border-main">
+                <img src="assets/resources/images/general/eating-closeup-01.webp" srcset="assets/resources/images/general/480w/eating-closeup-01_480w.webp 480w, assets/resources/images/general/768w/eating-closeup-01_768w.webp 768w" sizes="(max-width: 767px) 72vw, 30vw" loading="lazy" decoding="async" alt="Cliente disfrutando de unas alitas Piri Piri" class="u-object-fit-cover u-width-full u-height-full">
+              </div>
+            </div>
+
+            <!-- Slide 3: Sharing chicken bucket -->
+            <div class="gallery_slide_item">
+              <div class="gallery_slide_image u-radius-main u-overflow-hidden u-border-main">
+                <img src="assets/resources/images/general/product-bucket-hero.webp" srcset="assets/resources/images/general/480w/product-bucket-hero_480w.webp 480w, assets/resources/images/general/768w/product-bucket-hero_768w.webp 768w, assets/resources/images/general/1024w/product-bucket-hero_1024w.webp 1024w" sizes="(max-width: 767px) 72vw, 30vw" loading="lazy" decoding="async" alt="Cubo de pollo Piri Piri para llevar" class="u-object-fit-cover u-width-full u-height-full">
+              </div>
+            </div>
+
+            <!-- Slide 4: Fire grill -->
+            <div class="gallery_slide_item">
+              <div class="gallery_slide_image u-radius-main u-overflow-hidden u-border-main">
+                <img src="assets/resources/images/general/food-wings-topdown.webp" srcset="assets/resources/images/general/480w/food-wings-topdown_480w.webp 480w, assets/resources/images/general/768w/food-wings-topdown_768w.webp 768w" sizes="(max-width: 767px) 72vw, 30vw" loading="lazy" decoding="async" alt="Alitas Piri Piri al carbón" class="u-object-fit-cover u-width-full u-height-full">
+              </div>
+            </div>
+
+            <!-- Slide 5: Roasted cauliflower -->
+            <div class="gallery_slide_item">
+              <div class="gallery_slide_image u-radius-main u-overflow-hidden u-border-main">
+                <img src="assets/resources/images/general/portrait-plate-01.webp" srcset="assets/resources/images/general/480w/portrait-plate-01_480w.webp 480w, assets/resources/images/general/768w/portrait-plate-01_768w.webp 768w" sizes="(max-width: 767px) 72vw, 30vw" loading="lazy" decoding="async" alt="Cliente con su plato Piri Piri" class="u-object-fit-cover u-width-full u-height-full">
+              </div>
+            </div>
+
+            <!-- Slide 6: Branded packaging -->
+            <div class="gallery_slide_item">
+              <div class="gallery_slide_image u-radius-main u-overflow-hidden u-border-main">
+                <img src="assets/resources/images/general/food-burger-topdown.webp" srcset="assets/resources/images/general/480w/food-burger-topdown_480w.webp 480w, assets/resources/images/general/768w/food-burger-topdown_768w.webp 768w" sizes="(max-width: 767px) 72vw, 30vw" loading="lazy" decoding="async" alt="Burger y patatas Piri Piri" class="u-object-fit-cover u-width-full u-height-full">
+              </div>
+            </div>
+
+            <!-- Slide 7: Shrimp skewers -->
+            <div class="gallery_slide_item">
+              <div class="gallery_slide_image u-radius-main u-overflow-hidden u-border-main">
+                <img src="assets/resources/images/general/eating-candid-02.webp" srcset="assets/resources/images/general/480w/eating-candid-02_480w.webp 480w, assets/resources/images/general/768w/eating-candid-02_768w.webp 768w" sizes="(max-width: 767px) 72vw, 30vw" loading="lazy" decoding="async" alt="Disfrutando un cubo Piri Piri" class="u-object-fit-cover u-width-full u-height-full">
+              </div>
+            </div>
+
+            <!-- Slide 8: Branded napkins -->
+            <div class="gallery_slide_item">
+              <div class="gallery_slide_image u-radius-main u-overflow-hidden u-border-main">
+                <img src="assets/resources/images/general/food-chicken-side.webp" srcset="assets/resources/images/general/480w/food-chicken-side_480w.webp 480w, assets/resources/images/general/768w/food-chicken-side_768w.webp 768w" sizes="(max-width: 767px) 72vw, 30vw" loading="lazy" decoding="async" alt="Pollo al carbón Piri Piri" class="u-object-fit-cover u-width-full u-height-full">
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- Pill pagination (populated by Swiper) -->
+      <div class="slider_bullet_list" aria-label="Navegación de galería"></div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer_wrap u-section u-width-full u-theme-dark">
+    <h2 class="footer_title u-sr-only">Footer</h2>
+    <div class="footer_contain u-container-full" style="padding-bottom: 0;">
+      <div class="u-flex-horizontal-nowrap u-flex-column-mobile u-align-items-end u-gap-8 u-padding-block-8 u-justify-content-between" style="width: 100%;">
+        <!-- Logo & Social (Left Column) -->
+        <div class="u-flex-vertical-nowrap u-justify-content-end u-align-items-start u-gap-6" style="flex: 0 0 auto; min-width: 10rem;">
+          <a aria-label="Ir al inicio" href="/" class="footer_logo_wrap" style="width: 8rem;">
+            <svg viewBox="0 0 84 36" fill="currentColor" class="u-svg" aria-hidden="true">
+              <path d="M64.6885 3.86108C64.8623 3.85696 68.8297 3.80551 71.3027 6.45288C72.7493 8.00106 73.368 10.0776 73.1406 12.6257C72.6719 17.9369 69.8975 20.0423 67.582 20.6511C68.1416 23.1532 70.5841 31.2958 76.2754 31.5671L75.9121 34.7185C67.0161 34.2787 65.2897 23.7924 65.0752 23.1765L64.7695 29.8064L61.6992 29.0896L63.2637 3.89136L64.6885 3.86108ZM6.99707 6.59741C7.1744 6.5602 11.3916 5.70245 14.5674 8.13745C16.5419 9.65468 17.6341 12.0254 17.8066 15.1843C18.0975 20.4552 15.9866 23.2423 14.167 24.6531C13.0478 25.5171 11.9196 25.9707 11.1055 26.2058L11.8828 32.5837L8.66699 34.0203L5.5 6.91479L6.99707 6.59741ZM23.7842 28.95L20.7227 29.7302L19.8496 16.8943L22.9111 16.0925L23.7842 28.95ZM77.708 18.8767C77.7024 18.9162 77.1315 22.9073 76.3848 29.2234C75.4614 29.2971 74.0147 28.6829 73.3594 27.8357C74.2828 20.1906 74.6191 17.988 74.6191 17.988L77.708 18.8767ZM26.2275 2.73804C26.3931 2.71309 30.3224 2.16052 33.1104 4.47632C34.7391 5.82959 35.6176 7.81267 35.7129 10.3689C35.9085 15.4906 33.6156 17.9432 31.459 18.9207C32.992 22.0045 34.671 24.7838 37.4053 26.4001L35.8174 29.0886C32.6653 27.2244 30.7319 24.7374 28.9805 20.9119L29.3213 27.8894L26.2324 28.4646L24.8174 2.948L26.2275 2.73804ZM60.1846 15.5974L59.3477 28.6677L56.2539 28.1433L57.0908 15.0466L60.1846 15.5974ZM46.4678 1.40991C46.6407 1.39518 50.7305 1.08814 53.4736 3.81128C55.2252 5.55288 55.9944 8.04505 55.7578 11.2166C55.3667 16.4241 53.0008 18.8957 51.0811 20.0515C49.9027 20.7622 48.7608 21.0679 47.9463 21.198L47.8193 27.1238L44.5303 26.9734L44.9844 1.53296L46.4678 1.40991ZM42.0684 26.9402L38.9521 26.9451L38.9336 13.8318L42.0498 13.8259L42.0684 26.9402ZM10.2686 21.9119C11.8016 21.3161 14.2851 19.5618 14.0078 14.4773C13.8893 12.3529 13.2439 10.8225 12.0928 9.92944C11.0645 9.13292 9.76826 8.91972 8.76758 8.89429L10.2686 21.9119ZM65.4521 18.5671L65.916 18.6189C66.2663 18.6439 69.5602 18.6608 70.0381 13.2429C70.179 11.6009 69.8559 10.3735 69.0371 9.48999C68.2318 8.62195 67.0762 8.22024 66.166 8.03491L65.4521 18.5671ZM28.7168 17.4626L29.1855 17.4558C29.5381 17.4301 32.8014 17.0356 32.5967 11.6033C32.533 9.95635 32.0556 8.77933 31.1318 8.00562C30.2264 7.24561 29.0298 6.99322 28.1064 6.92358L28.7168 17.4626ZM47.7822 16.9441C49.3201 16.5362 51.8769 15.1011 52.25 10.0779C52.4137 7.91183 51.9678 6.2898 50.9307 5.25854C50.071 4.40364 48.9107 4.04378 48.001 3.89526L47.7822 16.9441ZM77.0303 11.8044C77.9537 11.8833 78.6048 13.0464 78.4863 14.4011C78.3726 15.7557 77.5312 16.7903 76.6123 16.7117C75.6933 16.6328 75.0426 15.4697 75.1562 14.115C75.2745 12.76 76.1115 11.726 77.0303 11.8044ZM20.8135 9.91772C21.7369 9.88309 22.5241 10.9571 22.5742 12.3162C22.6243 13.6753 21.9198 14.8052 20.9961 14.8396C20.0727 14.8739 19.2858 13.7994 19.2354 12.4402C19.1855 11.081 19.8903 9.95228 20.8135 9.91772ZM58.9297 8.60718C59.853 8.60741 60.5986 9.70994 60.5986 11.0701C60.5985 12.4296 59.8529 13.5318 58.9297 13.532C58.0064 13.532 57.2599 12.4298 57.2598 11.0701C57.2598 9.71016 58.0062 8.60718 58.9297 8.60718ZM40.5039 7.23022C41.4277 7.23022 42.1738 8.33284 42.1738 9.69312C42.1737 11.0528 41.4228 12.155 40.5039 12.155C39.585 12.155 38.8302 11.0532 38.8301 9.69312C38.8301 8.33287 39.5801 7.23026 40.5039 7.23022Z"/>
+            </svg>
+          </a>
+          <div class="footer_social_wrap u-margin-top-6">
+            <h3 class="footer_social_title u-text-style-h6 u-margin-bottom-4">Síguenos</h3>
+            <div role="list" class="footer_social_list u-flex-horizontal-nowrap u-gap-3">
+              <div role="listitem" class="footer_social_item">
+                <a aria-label="Instagram" href="https://www.instagram.com/piripirialcarbon" target="_blank" class="footer_social_link u-color-inherit u-transition-color-main u-hover-color-brand">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.2.1 4.7 1.7 4.8 4.8.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.1-1.6 4.7-4.8 4.8-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.2-.1-4.7-1.7-4.8-4.8-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3.1 1.6-4.7 4.8-4.8 1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zM12 16c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-11.8c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/>
+                  </svg>
+                </a>
+              </div>
+              <div role="listitem" class="footer_social_item">
+                <a aria-label="TikTok" href="https://www.tiktok.com/@piripirialcarbon" target="_blank" class="footer_social_link u-color-inherit u-transition-color-main u-hover-color-brand">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19.6 8.2c-2.3 0-4.2-1.9-4.2-4.2V3h-3.5v13.4c0 1.7-1.4 3.1-3.1 3.1s-3.1-1.4-3.1-3.1 1.4-3.1 3.1-3.1c.3 0 .6 0 .9.1V9.9c-.3 0-.6-.1-.9-.1-3.5 0-6.4 2.9-6.4 6.4s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4V9.3c1.4 1 3.1 1.6 4.9 1.6V7.6c-.3 0-.9.1-1.5.6z"/>
+                  </svg>
+                </a>
+              </div>
+</div>
+          </div>
+        </div>
+
+        <!-- Newsletter Signup (Center) — opens the PRENDE LA MECHA modal -->
+        <div class="u-flex-vertical-nowrap u-gap-4 u-align-items-center u-text-align-center" style="flex: 1 1 auto; max-width: 32rem;">
+          <p class="u-text-style-main" style="font-style: italic;">El Club Secreto de los Devoradores de Alas: cada compra suma plumas y cada pluma desbloquea recompensas.</p>
+          <div data-button-mode="orchid" class="button_main_wrap" data-trigger="hover focus">
+            <button type="button" class="button_main_element" data-style="secondary" onclick="openSuscribePopup();">
+              <div class="button_main_text u-text-style-main">ÚNETE AL CLUB</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Contacto (Right Side) -->
+        <section data-trigger="group" class="footer_group_wrap" style="flex: 0 0 auto;">
+          <h3 class="footer_group_title u-text-style-h5 u-margin-bottom-4">Contacto</h3>
+          <div role="list" class="footer_group_list u-flex-vertical-nowrap u-gap-2">
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+              <a href="tel:919192934" class="footer_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_link_text u-text-style-small" style="white-space: nowrap;">919 192 934 (Lavapiés)</div>
+              </a>
+            </div>
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+              <a href="tel:912629421" class="footer_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_link_text u-text-style-small" style="white-space: nowrap;">912 629 421 (Prosperidad)</div>
+              </a>
+            </div>
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+              <a href="tel:912563497" class="footer_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_link_text u-text-style-small" style="white-space: nowrap;">912 563 497 (Las Tablas)</div>
+              </a>
+            </div>
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+              <a href="mailto:info@somospiripiri.com" class="footer_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_link_text u-text-style-small">info@somospiripiri.com</div>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- LOGO + VOLVER ARRIBA (between footer content and subfooter) -->
+    <div class="u-position-relative u-overflow-hidden" style="margin: 0; padding: 0; line-height: 0; width: 100vw; margin-left: calc(50% - 50vw);">
+      <!-- Large PiRiPiRi Logo -->
+      <div style="display: flex; justify-content: center; width: 100%;">
+        <img src="assets/resources/logos/piripiri-logotipo_alpha_512.svg" alt="" aria-hidden="true" style="width: 106vw; max-width: none; height: auto; display: block;">
+      </div>
+      <!-- Volver Arriba Button -->
+      <div class="u-flex-horizontal-nowrap u-justify-content-center" style="margin-top: -6rem; margin-bottom: 6rem;">
+        <div class="button_main_wrap" data-trigger="hover focus">
+          <a href="#top" class="button_main_element" onclick="event.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'});" data-style="secondary">
+            <div class="button_main_text u-text-style-main">VOLVER ARRIBA</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar (centered) -->
+    <div class="footer_bottom_wrap u-border-top-main" style="border-color: var(--_theme---border);">
+      <div class="footer_bottom_contain u-container-full">
+        <div class="footer_bottom_layout u-flex-horizontal-wrap u-justify-content-center u-align-items-center u-padding-block-4 u-gap-5">
+          <div class="footer_bottom_text u-text-style-small u-opacity-75">
+            <span>© </span><span data-dynamic-year="">2025</span><span> Piri Piri. Todos los derechos reservados.</span>
+          </div>
+          <div data-trigger="group" role="list" class="footer_bottom_list u-flex-horizontal-nowrap u-gap-5">
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_bottom_item">
+              <a href="./legal.html#privacidad" class="footer_bottom_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_bottom_link_text u-text-style-small">Política de Privacidad</div>
+              </a>
+            </div>
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_bottom_item">
+              <a href="./legal.html#aviso-legal" class="footer_bottom_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_bottom_link_text u-text-style-small">Aviso Legal</div>
+              </a>
+            </div>
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_bottom_item">
+              <a href="./legal.html#cookies" class="footer_bottom_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_bottom_link_text u-text-style-small">Política de Cookies</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dynamic Year Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("[data-dynamic-year]").forEach(function (el) {
+          el.textContent = new Date().getFullYear();
+        });
+      });
+    </script>
+  </footer>
+
+  </div>
+
+  <!-- Site-wide flame cursor + button fire + inline-flame init (in site.js) -->
+  <script src="js/site.js?v=20260606x" defer></script>
+
+
+  <!-- Fit-to-container heading sizer.
+       Any element with [data-fit-text] will have its font-size scaled so the
+       text fills its parent's width exactly. Adapted from the marquee
+       setupSmartText() routine; clones the element off-screen to measure
+       intrinsic text width at a known font size, then scales accordingly. -->
+  <script>
+    (function () {
+      function fitOne(el) {
+        const container = el.parentElement;
+        if (!container) return;
+        const targetWidth = container.clientWidth;
+        if (targetWidth <= 0) return;
+        const probeSize = 100;
+        const clone = el.cloneNode(true);
+        clone.style.cssText =
+          "position:absolute; visibility:hidden; left:-9999px; top:-9999px; " +
+          "width:auto; display:inline-block; white-space:nowrap; " +
+          "font-size:" + probeSize + "px;";
+        document.body.appendChild(clone);
+        const measuredWidth = clone.offsetWidth;
+        document.body.removeChild(clone);
+        if (measuredWidth <= 0) return;
+        const max = parseFloat(el.dataset.fitTextMax) || Infinity;
+        const min = parseFloat(el.dataset.fitTextMin) || 0;
+        const newSize = Math.max(min, Math.min(max, (targetWidth / measuredWidth) * probeSize));
+        el.style.setProperty("font-size", newSize + "px", "important");
+      }
+      function fitAll() {
+        document.querySelectorAll("[data-fit-text]").forEach(fitOne);
+      }
+      function start() {
+        fitAll();
+        // Re-fit after fonts load (font metrics change)
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
+        // Re-fit a few times to catch async layout shifts
+        setTimeout(fitAll, 100);
+        setTimeout(fitAll, 400);
+        // Debounced resize handler
+        let raf = null;
+        window.addEventListener("resize", function () {
+          if (raf) cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(fitAll);
+        });
+      }
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", start);
+      } else {
+        start();
+      }
+    })();
+  </script>
+
+  <!-- Persistent floating CTAs: RESERVA + PIDE YA (use LUMOS button components) -->
+  <div class="floating-ctas">
+    <!-- RESERVA — matches the SUSCRIBIRSE button (orchid mode + secondary style) -->
+    <div data-button-mode="orchid" class="button_main_wrap" data-trigger="hover focus">
+      <a href="#reserva" class="button_main_element" data-style="secondary">
+        <div class="button_main_text u-text-style-main">RESERVA</div>
+      </a>
+    </div>
+    <!-- PIDE YA — matches the menu's PIDE YA button (secondary style) -->
+    <div class="button_main_wrap" data-trigger="hover focus">
+      <a href="https://carta.somospiripiri.com/" target="_blank" rel="noopener" class="button_main_element" data-style="secondary">
+        <div class="button_main_text u-text-style-main">PIDE YA</div>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

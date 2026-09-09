@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webflow Marquee Component - Standalone</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Mona+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================= */
+    /* CSS VARIABLES (from Webflow site)            */
+    /* ============================================= */
+    :root {
+      --_theme---background: var(--swatch--light-100);
+      --_text-style---font-family: var(--_typography---font--secondary-family);
+      --_theme---text: var(--swatch--dark-secondary-500);
+      --_text-style---font-size: var(--_typography---font-size--text-main);
+      --_text-style---line-height: var(--_typography---line-height--huge);
+      --_text-style---font-weight: var(--_typography---font--primary-regular);
+      --_text-style---letter-spacing: var(--_typography---letter-spacing--normal);
+      --_gap---size: var(--site--gutter);
+      --site--gutter: 1rem;
+      --_typography---font--primary-family: "Space Grotesk", sans-serif;
+      --_typography---font--primary-regular: 400;
+      --_typography---font--primary-medium: 500;
+      --_typography---font--primary-bold: 700;
+      --_typography---font--secondary-family: "Mona Sans", sans-serif;
+      --_typography---font--secondary-regular: 300;
+      --_typography---font-size--h3: clamp(2.25rem, 2.25rem + (3 - 2.25) / (90 - 20) * (100vw - 20rem), 3rem);
+      --_typography---line-height--medium: 1.1;
+      --_typography---line-height--huge: 1.5;
+      --_typography---letter-spacing--tight: -0.03em;
+      --_typography---letter-spacing--normal: 0em;
+      --_typography---text-transform--none: none;
+      --_typography---text-transform--uppercase: uppercase;
+      --_spacing---space--4: clamp(1.25rem, 1.25rem + (1.5 - 1.25) / (90 - 20) * (100vw - 20rem), 1.5rem);
+      --swatch--light-100: #e7e9e4;
+      --swatch--dark-secondary-500: #192738;
+      --swatch--dark-900: #111;
+      --site--viewport-max: 90;
+      --site--viewport-min: 20;
+    }
+
+    /* ============================================= */
+    /* BASE STYLES                                   */
+    /* ============================================= */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      background-color: var(--_theme---background);
+      font-family: var(--_text-style---font-family);
+      color: var(--_theme---text);
+      font-size: var(--_text-style---font-size);
+      line-height: var(--_text-style---line-height);
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+      margin: 0;
+      display: flow-root;
+    }
+
+    /* ============================================= */
+    /* MARQUEE WRAPPER STYLES                        */
+    /* ============================================= */
+    .marquee_wrap {
+      grid-column-gap: 0rem;
+      grid-row-gap: var(--_spacing---space--4);
+      flex-flow: column;
+      display: flex;
+      container-type: inline-size;
+    }
+
+    .marquee_wrap.u-gap-gutter {
+      gap: var(--_gap---size);
+    }
+
+    .marquee_wrap.u-height-full {
+      height: 100%;
+    }
+
+    .marquee_wrap.u-max-width-full {
+      max-width: 100%;
+    }
+
+    /* ============================================= */
+    /* MARQUEE OFFSET STYLES                         */
+    /* ============================================= */
+    .marquee_offset {
+      margin-left: calc(var(--_gap---size) * -0.5);
+      margin-right: calc(var(--_gap---size) * -0.5);
+      flex: 1;
+      display: flex;
+      --slide-count: var(--lg);
+      --lg: 3;
+      --md: var(--lg);
+      --sm: var(--md);
+      --xs: var(--sm);
+    }
+
+    @container (width < 50em) {
+      .marquee_offset { --slide-count: var(--md); }
+    }
+    @container (width < 35em) {
+      .marquee_offset { --slide-count: var(--sm); }
+    }
+    @container (width < 20em) {
+      .marquee_offset { --slide-count: var(--xs); }
+    }
+
+    /* ============================================= */
+    /* MARQUEE ELEMENT STYLES                        */
+    /* ============================================= */
+    .marquee_element.swiper {
+      width: 100%;
+      max-width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      overflow: visible;
+    }
+
+    /* Overflow hidden variant */
+    [data-wf--marquee--style="overflow-hidden"] .marquee_element.swiper {
+      overflow: hidden;
+    }
+
+    /* ============================================= */
+    /* MARQUEE LIST STYLES                           */
+    /* ============================================= */
+    .marquee_list {
+      height: 100%;
+    }
+
+    .marquee_list.swiper-wrapper {
+      display: flex;
+    }
+
+    /* ============================================= */
+    /* MARQUEE ESSENTIALS (Inline Styles)            */
+    /* ============================================= */
+    .marquee_element.is-marquee .marquee_list {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      will-change: transform;
+      backface-visibility: hidden;
+      transform: translate3d(0, 0, 0);
+      /* Mobile GPU optimization */
+      -webkit-transform: translate3d(0, 0, 0);
+      -webkit-backface-visibility: hidden;
+      perspective: 1000px;
+      -webkit-perspective: 1000px;
+    }
+
+    .marquee_element.is-marquee .marquee_list > * {
+      flex: 0 0 auto;
+      /* Promote each item to its own layer for smoother animation on mobile */
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
+    }
+
+    .marquee_element.is-marquee img {
+      display: block;
+    }
+
+    .marquee_element.is-marquee .marquee-clone {
+      pointer-events: none;
+    }
+
+    .marquee_list > .w-dyn-list,
+    .marquee_list > .w-dyn-list > *,
+    .marquee_list > .w-dyn-list > * > * {
+      display: contents;
+    }
+
+    .marquee_list > *,
+    .marquee_list > .w-dyn-list > * > * > * {
+      padding-inline: calc(var(--_gap---size) / 2);
+      height: auto !important;
+      flex: 0 0 auto;
+      width: calc(100% / var(--slide-count)) !important;
+    }
+
+    [data-slider].swiper-button-disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .marquee_element.is-marquee {
+      cursor: grab;
+    }
+
+    .marquee_element.is-marquee.is-dragging {
+      cursor: grabbing;
+      user-select: none;
+    }
+
+    /* Allow items with smart text sizing to be their natural width */
+    .marquee_list > .u-text-fill-width,
+    .marquee_list > [data-auto-duplicate] {
+      width: auto !important;
+      flex: 0 0 auto;
+    }
+
+    /* ============================================= */
+    /* TEXT FILL CONTAINER (for dynamic text scaling) */
+    /* ============================================= */
+    .text-fill-container {
+      container-type: inline-size;
+      width: 100%;
+    }
+
+    .u-text-fill-width {
+      white-space: nowrap !important;
+      line-height: 1 !important;
+    }
+
+    /* ============================================= */
+    /* HEADING COMPONENT STYLES                      */
+    /* ============================================= */
+    .c-heading {
+      font-family: var(--_text-style---font-family);
+      font-size: var(--_text-style---font-size);
+      line-height: var(--_text-style---line-height);
+      font-weight: var(--_text-style---font-weight);
+      letter-spacing: var(--_text-style---letter-spacing);
+      text-transform: var(--_text-style---text-transform, none);
+    }
+
+    /* H3 variant */
+    .c-heading.w-variant-701c4b6c-37cf-de59-d80d-80a1822c4994 {
+      --_text-style---font-family: var(--_typography---font--primary-family);
+      --_text-style---font-size: var(--_typography---font-size--h3);
+      --_text-style---line-height: var(--_typography---line-height--medium);
+      --_text-style---font-weight: var(--_typography---font--primary-regular);
+      --_text-style---letter-spacing: var(--_typography---letter-spacing--tight);
+    }
+
+    .u-text-transform-uppercase {
+      text-transform: uppercase !important;
+    }
+
+    /* ============================================= */
+    /* UTILITY CLASSES                               */
+    /* ============================================= */
+    .u-embed-css,
+    .u-embed-js {
+      display: none;
+    }
+
+    /* ============================================= */
+    /* DEMO PAGE STYLES                              */
+    /* ============================================= */
+    .demo-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .demo-section {
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .demo-title {
+      font-family: var(--_typography---font--primary-family);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--swatch--dark-900);
+    }
+
+    .demo-description {
+      font-size: 0.95rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .code-block {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      margin-top: 1rem;
+    }
+
+    .code-block .attr {
+      color: #9cdcfe;
+    }
+
+    .code-block .value {
+      color: #ce9178;
+    }
+  </style>
+</head>
+<body>
+  <div class="demo-container">
+    <h1 style="font-family: var(--_typography---font--primary-family); font-size: 2.5rem; margin-bottom: 0.5rem;">Webflow Marquee Component</h1>
+    <p style="color: #666; margin-bottom: 2rem;">Standalone extraction with all styles and JavaScript inlined</p>
+
+    <!-- ============================================= -->
+    <!-- MARQUEE EXAMPLE 1: Text Scaling Marquee      -->
+    <!-- ============================================= -->
+    <div class="demo-section">
+      <h2 class="demo-title">Example 1: Auto-Scaling Text Marquee</h2>
+      <p class="demo-description">
+        This marquee automatically scales text to fill the container width.
+        Uses <code>data-marquee-scale-text="true"</code> and <code>data-marquee-text-width-multiplier="2"</code>
+        to control the scaling behavior.
+      </p>
+
+      <div data-wf--marquee--style="overflow-visible" class="marquee_wrap u-gap-gutter u-height-full u-max-width-full" data-marquee="component">
+        <div style="--lg: 1" class="marquee_offset">
+          <div class="marquee_element swiper"
+               data-marquee-hover-ease="true"
+               data-marquee-direction="false"
+               data-marquee-mode="true"
+               data-marquee-respect-prm="true"
+               data-marquee-hover-pause="true"
+               data-marquee-speed="100000"
+               data-marquee-text-width-multiplier="2"
+               data-marquee-scale-text="true"
+               data-marquee-draggable="true">
+            <div class="marquee_list swiper-wrapper">
+              <div data-wf--typography-heading--font-style="h3" class="c-heading w-variant-701c4b6c-37cf-de59-d80d-80a1822c4994 u-text-transform-uppercase">
+                <p>Because a great idea needs a higher vision.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="code-block">
+        <span class="attr">data-marquee</span>="<span class="value">component</span>" - Wrapper identifier<br>
+        <span class="attr">data-marquee-mode</span>="<span class="value">true</span>" - Enable marquee<br>
+        <span class="attr">data-marquee-speed</span>="<span class="value">100000</span>" - Animation duration (ms)<br>
+        <span class="attr">data-marquee-scale-text</span>="<span class="value">true</span>" - Enable text scaling<br>
+        <span class="attr">data-marquee-text-width-multiplier</span>="<span class="value">2</span>" - Scale multiplier<br>
+        <span class="attr">data-marquee-hover-pause</span>="<span class="value">true</span>" - Pause on hover<br>
+        <span class="attr">data-marquee-hover-ease</span>="<span class="value">true</span>" - Smooth pause/resume<br>
+        <span class="attr">data-marquee-draggable</span>="<span class="value">true</span>" - Enable drag interaction<br>
+        <span class="attr">data-marquee-direction</span>="<span class="value">false</span>" - Direction (false=left, true=right)<br>
+        <span class="attr">data-marquee-respect-prm</span>="<span class="value">true</span>" - Respect prefers-reduced-motion
+      </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- MARQUEE EXAMPLE 2: Standard Marquee          -->
+    <!-- ============================================= -->
+    <div class="demo-section">
+      <h2 class="demo-title">Example 2: Standard Multi-Item Marquee</h2>
+      <p class="demo-description">
+        A standard marquee without text scaling, showing multiple items.
+        Uses <code>--lg: 3</code> CSS variable to show 3 items at a time.
+      </p>
+
+      <div data-wf--marquee--style="overflow-visible" class="marquee_wrap u-gap-gutter" data-marquee="component">
+        <div style="--lg: 3; --md: 2; --sm: 1" class="marquee_offset">
+          <div class="marquee_element swiper"
+               data-marquee-hover-ease="true"
+               data-marquee-direction="false"
+               data-marquee-mode="true"
+               data-marquee-respect-prm="true"
+               data-marquee-hover-pause="true"
+               data-marquee-speed="20000"
+               data-marquee-draggable="true">
+            <div class="marquee_list swiper-wrapper">
+              <div style="padding: 1rem; background: #ff3210; color: white; border-radius: 0.5rem; text-align: center;">
+                <p style="font-weight: 600;">Item 1</p>
+              </div>
+              <div style="padding: 1rem; background: #192738; color: white; border-radius: 0.5rem; text-align: center;">
+                <p style="font-weight: 600;">Item 2</p>
+              </div>
+              <div style="padding: 1rem; background: #4f4a44; color: white; border-radius: 0.5rem; text-align: center;">
+                <p style="font-weight: 600;">Item 3</p>
+              </div>
+              <div style="padding: 1rem; background: #9c9288; color: white; border-radius: 0.5rem; text-align: center;">
+                <p style="font-weight: 600;">Item 4</p>
+              </div>
+              <div style="padding: 1rem; background: #2f2b2d; color: white; border-radius: 0.5rem; text-align: center;">
+                <p style="font-weight: 600;">Item 5</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- MARQUEE EXAMPLE 3: Reverse Direction         -->
+    <!-- ============================================= -->
+    <div class="demo-section">
+      <h2 class="demo-title">Example 3: Reverse Direction Marquee</h2>
+      <p class="demo-description">
+        Same marquee but with <code>data-marquee-direction="true"</code> to reverse the scroll direction.
+      </p>
+
+      <div data-wf--marquee--style="overflow-visible" class="marquee_wrap u-gap-gutter" data-marquee="component">
+        <div style="--lg: 4; --md: 3; --sm: 2" class="marquee_offset">
+          <div class="marquee_element swiper"
+               data-marquee-hover-ease="true"
+               data-marquee-direction="true"
+               data-marquee-mode="true"
+               data-marquee-respect-prm="true"
+               data-marquee-hover-pause="true"
+               data-marquee-speed="15000"
+               data-marquee-draggable="true">
+            <div class="marquee_list swiper-wrapper">
+              <div style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #ff3210, #ff6040); color: white; border-radius: 2rem; text-align: center;">
+                <p style="font-weight: 500; font-size: 0.9rem;">Design</p>
+              </div>
+              <div style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #192738, #2a3f5f); color: white; border-radius: 2rem; text-align: center;">
+                <p style="font-weight: 500; font-size: 0.9rem;">Development</p>
+              </div>
+              <div style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #4f4a44, #6f6a64); color: white; border-radius: 2rem; text-align: center;">
+                <p style="font-weight: 500; font-size: 0.9rem;">Strategy</p>
+              </div>
+              <div style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #9c9288, #bcb2a8); color: white; border-radius: 2rem; text-align: center;">
+                <p style="font-weight: 500; font-size: 0.9rem;">Marketing</p>
+              </div>
+              <div style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #2f2b2d, #4f4b4d); color: white; border-radius: 2rem; text-align: center;">
+                <p style="font-weight: 500; font-size: 0.9rem;">Analytics</p>
+              </div>
+              <div style="padding: 0.75rem 1.5rem; background: linear-gradient(135deg, #ff3210, #ff6040); color: white; border-radius: 2rem; text-align: center;">
+                <p style="font-weight: 500; font-size: 0.9rem;">Branding</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!-- DATA ATTRIBUTES REFERENCE                    -->
+    <!-- ============================================= -->
+    <div class="demo-section">
+      <h2 class="demo-title">Data Attributes Reference</h2>
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+        <thead>
+          <tr style="background: #f5f5f5;">
+            <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #ddd;">Attribute</th>
+            <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #ddd;">Values</th>
+            <th style="padding: 0.75rem; text-align: left; border-bottom: 2px solid #ddd;">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;"><code>data-marquee</code></td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">"component"</td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">Identifies the marquee wrapper</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;"><code>data-marquee-mode</code></td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">"true" | "false"</td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">Enables/disables marquee animation</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;"><code>data-marquee-speed</code></td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">Number (ms)</td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">Duration for one complete cycle</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;"><code>data-marquee-direction</code></td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">"true" | "false"</td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">false = left, true = right</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;"><code>data-marquee-hover-pause</code></td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">"true" | "false"</td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">Pause animation on hover</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;"><code>data-marquee-hover-ease</code></td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">"true" | "false"</td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">Smooth easing on pause/resume</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;"><code>data-marquee-draggable</code></td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">"true" | "false"</td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">Enable drag interaction</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;"><code>data-marquee-scale-text</code></td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">"true" | "false"</td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">Enable dynamic text scaling</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;"><code>data-marquee-text-width-multiplier</code></td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">Number</td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">Text width multiplier (e.g., 2 = 2x parent width)</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;"><code>data-marquee-respect-prm</code></td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">"true" | "false"</td>
+            <td style="padding: 0.75rem; border-bottom: 1px solid #eee;">Respect prefers-reduced-motion setting</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ============================================= -->
+  <!-- MARQUEE JAVASCRIPT                            -->
+  <!-- ============================================= -->
+  <script>
+// ===================================================================
+// MARQUEE COMPONENT - FIXED VERSION (Initialization Timing Issue)
+// ===================================================================
+// Problem Fixed: Marquee now loads on initial page load without requiring window resize
+// Key Fix: Added width validation before adjustTextSize() runs
+// ===================================================================
+// USAGE:
+// 1. Add data-marquee="component" to wrapper
+// 2. Add data-marquee-text-width-multiplier="2" to marquee_element (e.g., "2" for 2x parent width)
+// 3. Add data-marquee-scale-text="true" to marquee_element to ENABLE text scaling
+//    - Without this attribute (or ="false"), regular marquee behavior (no scaling)
+//    - With ="true", automatically scales ALL text elements inside to fill the multiplier width
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll("[data-marquee='component']").forEach((comp, index) => {
+    if (comp.dataset.marqueeInit) return;
+    comp.dataset.marqueeInit = "true";
+    // ===== FIX: Stagger initialization for multiple marquees =====
+    const staggerDelay = index * 150; // 150ms delay between each marquee
+    setTimeout(() => {
+      initMarquee(comp);
+    }, staggerDelay);
+  });
+
+  function initMarquee(comp) {
+    const el = comp.querySelector(".marquee_element");
+    const list = comp.querySelector(".marquee_list");
+    if (!el || !list) return;
+    if (el.getAttribute("data-marquee-mode") !== "true") return;
+
+    // ---- options ----
+    const dirBool = el.getAttribute("data-marquee-direction") === "true";
+    const speedMs = parseInt(el.getAttribute("data-marquee-speed"), 10) || 12000;
+    const hoverPause = el.getAttribute("data-marquee-hover-pause") === "true";
+    const hoverEase = el.getAttribute("data-marquee-hover-ease") === "true";
+    const respectPRM = el.getAttribute("data-marquee-respect-prm") === "true";
+    const draggableEnabled = el.getAttribute("data-marquee-draggable") === "true";
+
+    const prm = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const reduceMotion = respectPRM && prm.matches;
+
+    el.classList.add("is-marquee");
+    [...list.children].forEach(n => n.style.flex = "0 0 auto");
+
+    // Unwrap CMS if needed
+    (function unwrap(slot) {
+      const dyn = Array.from(slot.children).find(c => c.classList.contains("w-dyn-list"));
+      if (!dyn) return;
+      const nested = dyn?.firstElementChild?.children;
+      if (!nested) return;
+      const toRemove = [...slot.children];
+      [...nested].forEach(it => it.firstElementChild && slot.appendChild(it.firstElementChild));
+      toRemove.forEach(r => r.remove());
+    })(list);
+
+    // ==== SMART TEXT SIZING & AUTO-DUPLICATION ====
+    (function setupSmartText() {
+      if (!el.hasAttribute("data-marquee-text-width-multiplier")) return;
+      const textMultiplier = parseFloat(el.getAttribute("data-marquee-text-width-multiplier")) || 2;
+
+      // Check if scaling is enabled via controller attribute
+      const scalingEnabled = el.hasAttribute("data-marquee-scale-text") &&
+        el.getAttribute("data-marquee-scale-text") === "true";
+      if (!scalingEnabled) return; // Exit if scaling is disabled
+
+      const originalItems = [...list.children].filter(item => !item.classList.contains("marquee-clone"));
+
+      // ===== FIX: Wait for valid width before duplicating items =====
+      function waitForValidWidth(callback, maxAttempts = 100) {
+        let attempts = 0;
+        function check() {
+          attempts++;
+          const parentWidth = comp.offsetWidth;
+          if (parentWidth > 0) {
+            callback(parentWidth);
+          } else if (attempts < maxAttempts) {
+            requestAnimationFrame(check);
+          } else {
+            console.warn('Marquee: Could not get valid parent width after', maxAttempts, 'attempts');
+          }
+        }
+        check();
+      }
+
+      // Duplicate items if needed (only for single item)
+      if (originalItems.length === 1) {
+        waitForValidWidth((parentWidth) => {
+          const neededDuplicates = Math.ceil(parentWidth / (parentWidth / textMultiplier)) + 2;
+          for (let i = 0; i < neededDuplicates; i++) {
+            const clone = originalItems[0].cloneNode(true);
+            clone.setAttribute("data-auto-duplicate", "true");
+            list.appendChild(clone);
+          }
+        });
+      }
+
+      // Apply smart sizing to all items (automatically finds text elements)
+      [...list.children].forEach((item, idx) => {
+        if (item.classList.contains("marquee-clone")) return;
+        comp.classList.add("text-fill-container");
+        item.classList.add("u-text-fill-width");
+        item.style.whiteSpace = 'nowrap';
+        item.style.lineHeight = '1';
+      });
+
+      // ===== FIX: Improved adjustTextSize function with width validation =====
+      function adjustTextSize() {
+        const currentParentWidth = comp.offsetWidth;
+
+        // CRITICAL FIX: Don't run if parent width is 0
+        if (currentParentWidth === 0) {
+          console.warn('Marquee: Parent width is 0, skipping adjustTextSize');
+          // Retry after a short delay
+          requestAnimationFrame(() => {
+            requestAnimationFrame(adjustTextSize);
+          });
+          return;
+        }
+
+        [...list.children].forEach((item, idx) => {
+          if (item.classList.contains("marquee-clone")) return;
+          const targetWidth = currentParentWidth * textMultiplier;
+
+          // Find the actual text element (p, h1, h2, etc) or use the item itself
+          const textElement = item.querySelector('p, h1, h2, h3, h4, h5, h6') || item;
+
+          const tempMeasure = textElement.cloneNode(true);
+          tempMeasure.style.cssText = 'position:absolute;visibility:hidden;width:auto;display:inline-block;white-space:nowrap;';
+          document.body.appendChild(tempMeasure);
+
+          const currentTextWidth = tempMeasure.offsetWidth;
+          const currentFontSize = parseFloat(getComputedStyle(tempMeasure).fontSize);
+          document.body.removeChild(tempMeasure);
+
+          const newFontSize = (targetWidth / currentTextWidth) * currentFontSize;
+          textElement.style.setProperty('font-size', `${newFontSize}px`, 'important');
+        });
+      }
+
+      // ===== FIX: Wait for valid width before first adjustTextSize call =====
+      function waitAndAdjust() {
+        const currentParentWidth = comp.offsetWidth;
+        if (currentParentWidth > 0) {
+          adjustTextSize();
+        } else {
+          requestAnimationFrame(waitAndAdjust);
+        }
+      }
+
+      // Start waiting for valid width
+      waitAndAdjust();
+
+      // Additional safety calls
+      setTimeout(adjustTextSize, 100);
+      setTimeout(adjustTextSize, 300);
+      setTimeout(adjustTextSize, 500);
+
+      if (document.fonts) {
+        document.fonts.ready.then(adjustTextSize);
+      }
+
+      // ===== FIX: Debounced resize handler =====
+      let resizeTimeout;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          if (comp.offsetWidth > 0) {
+            adjustTextSize();
+          }
+        }, 150);
+      });
+    })();
+
+    const waitAssets = () => Promise.all([
+      new Promise(res => {
+        const imgs = list.querySelectorAll("img");
+        let pending = imgs.length;
+        if (!pending) return res();
+        imgs.forEach(im => {
+          if (im.complete) {
+            if (--pending === 0) res();
+          } else {
+            im.addEventListener("load", () => { if (--pending === 0) res(); }, { once: true });
+            im.addEventListener("error", () => { if (--pending === 0) res(); }, { once: true });
+          }
+        });
+      }),
+      ("fonts" in document) ? document.fonts.ready.catch(() => { }) : Promise.resolve()
+    ]);
+
+    let packDistance = 0;
+    let offset = 0;
+    let targetPxPerMs = 0;
+    let currentPxPerMs = 0;
+    let playing = true;
+    let rafId = 0;
+    let lastTime = 0;
+    let dragging = false;
+    let lastPointerX = 0;
+    let dragMoved = 0;
+    const CLICK_SUPPRESS_PX = 3;
+
+    function measureAndClone() {
+      [...list.querySelectorAll(".marquee-clone")].forEach(n => n.remove());
+
+      const items = [...list.children].filter(n => !n.classList.contains("marquee-clone"));
+      if (!items.length) return 0;
+
+      const first = items[0];
+      const last = items[items.length - 1];
+      const firstLeft = first.offsetLeft;
+      const lastRight = last.offsetLeft + last.offsetWidth;
+      const dist = Math.round(lastRight - firstLeft);
+
+      items.forEach(n => {
+        const c = n.cloneNode(true);
+        c.classList.add("marquee-clone");
+        list.appendChild(c);
+      });
+
+      if (dirBool) {
+        for (let i = items.length - 1; i >= 0; i--) {
+          const c = items[i].cloneNode(true);
+          c.classList.add("marquee-clone");
+          list.insertBefore(c, list.firstChild);
+        }
+      }
+
+      offset = dirBool ? -dist + 0.001 : -0.001;
+      list.style.transform = `translate3d(${offset}px,0,0)`;
+      return dist;
+    }
+
+    function setSpeed() {
+      const cycle = reduceMotion ? Math.max(1, speedMs) * 3 : Math.max(1, speedMs);
+      const v = packDistance / cycle;
+      targetPxPerMs = dirBool ? v : -v;
+      if (!hoverEase) currentPxPerMs = targetPxPerMs;
+    }
+
+    function wrapOffset(span) {
+      if (dirBool) {
+        while (offset >= 0) offset -= span;
+        while (offset < -span) offset += span;
+      } else {
+        while (offset <= -span) offset += span;
+        while (offset > 0) offset -= span;
+      }
+    }
+
+    function tick(now) {
+      if (!lastTime) lastTime = now;
+      const dt = Math.min(now - lastTime, 100);
+      lastTime = now;
+
+      if (hoverEase) {
+        const ease = 0.15;
+        currentPxPerMs += (targetPxPerMs - currentPxPerMs) * ease;
+      }
+
+      const velocity = hoverEase ? currentPxPerMs : targetPxPerMs;
+
+      if ((playing && !dragging) || hoverEase) {
+        offset += velocity * dt;
+        const span = packDistance;
+        if (span > 0) wrapOffset(span);
+        // Use integer pixels for better GPU performance
+        const roundedOffset = Math.round(offset);
+        list.style.transform = `translate3d(${roundedOffset}px,0,0)`;
+      }
+
+      rafId = requestAnimationFrame(tick);
+    }
+
+    function start() { cancelAnimationFrame(rafId); lastTime = 0; rafId = requestAnimationFrame(tick); }
+    function pause() { playing = false; targetPxPerMs = 0; if (!hoverEase) { currentPxPerMs = 0; } }
+    function resume() { playing = true; setSpeed(); }
+
+    if (hoverPause) {
+      el.addEventListener("mouseenter", () => { if (!dragging) pause(); });
+      el.addEventListener("mouseleave", () => { if (!dragging) resume(); });
+    }
+
+    if (draggableEnabled) {
+      const suppressClick = (e) => {
+        if (dragMoved > CLICK_SUPPRESS_PX) {
+          e.stopPropagation();
+          e.preventDefault();
+        }
+      };
+      comp.addEventListener("click", suppressClick, true);
+
+      const onPointerDown = (e) => {
+        dragging = true;
+        dragMoved = 0;
+        lastPointerX = e.clientX ?? (e.touches && e.touches[0]?.clientX) ?? 0;
+        el.classList.add("is-dragging");
+        el.style.touchAction = "none";
+        pause();
+        try { el.setPointerCapture && el.setPointerCapture(e.pointerId); } catch (_) { }
+        window.addEventListener("pointermove", onPointerMove);
+        window.addEventListener("pointerup", onPointerUp, { once: true });
+        window.addEventListener("pointercancel", onPointerUp, { once: true });
+      };
+
+      const onPointerMove = (e) => {
+        if (!dragging) return;
+        const x = e.clientX ?? (e.touches && e.touches[0]?.clientX) ?? 0;
+        const dx = x - lastPointerX;
+        lastPointerX = x;
+        dragMoved += Math.abs(dx);
+        offset += dx;
+        if (packDistance > 0) wrapOffset(packDistance);
+        list.style.transform = `translate3d(${offset}px,0,0)`;
+      };
+
+      const onPointerUp = () => {
+        dragging = false;
+        el.classList.remove("is-dragging");
+        el.style.touchAction = "";
+        resume();
+        window.removeEventListener("pointermove", onPointerMove);
+      };
+
+      el.addEventListener("pointerdown", onPointerDown);
+    }
+
+    let t;
+    const rebuild = () => { packDistance = measureAndClone(); setSpeed(); };
+    const debounced = () => { clearTimeout(t); t = setTimeout(rebuild, 120); };
+
+    window.addEventListener("resize", debounced, { passive: true });
+    window.addEventListener("orientationchange", debounced, { passive: true });
+
+    // ===== FIX: Wait for valid dimensions before starting animation =====
+    function initAnimation() {
+      const checkDimensions = () => {
+        if (comp.offsetWidth > 0 && comp.offsetHeight > 0) {
+          rebuild();
+          start();
+        } else {
+          requestAnimationFrame(checkDimensions);
+        }
+      };
+      waitAssets().then(() => {
+        checkDimensions();
+      });
+    }
+
+    initAnimation();
+  } // end initMarquee function
+});
+  </script>
+</body>
+</html>

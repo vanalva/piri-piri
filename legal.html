@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO -->
+  <title>Información Legal | Piri Piri Madrid</title>
+  <meta name="description" content="Documentación legal de Piripiri España S.L. — Aviso Legal, Política de Privacidad y Política de Cookies del sitio web somospiripiri.com, en un solo lugar.">
+  <meta name="robots" content="noindex, follow">
+
+  <link rel="canonical" href="https://somospiripiri.com/legal.html">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  <!-- CSS -->
+  <link href="css/lumos.css?v=a040767e" rel="stylesheet" type="text/css">
+  <link href="css/site.css?v=20260606x" rel="stylesheet" type="text/css">
+  <link href="css/interactions.css?v=0dde50df" rel="stylesheet" type="text/css">
+
+  <!-- Legal hub styles (adapted to our design tokens) -->
+  <style>
+    .legal_page_wrap {
+      container-type: inline-size;
+      container-name: legal-page;
+    }
+    .legal_sidebar_wrap {
+      width: clamp(260px, 24vw, 340px);
+      height: fit-content;
+      flex-shrink: 0;
+      position: sticky;
+      top: var(--site--gutter, 2rem);
+    }
+    .legal_content_wrap {
+      flex: 1;
+      min-width: 0;
+    }
+    /* Search Bar */
+    .search_bar_wrap {
+      position: relative;
+      width: 100%;
+    }
+    .search_input {
+      width: 100%;
+      padding: var(--_spacing---space--4) var(--_spacing---space--5);
+      padding-left: calc(var(--_spacing---space--5) + 1.5rem);
+      padding-right: var(--_spacing---space--5);
+      background: color-mix(in srgb, var(--_theme---text) 3%, transparent);
+      border: 1px solid var(--_theme---border);
+      border-radius: var(--radius--round);
+      color: var(--_theme---text);
+      font-family: var(--_typography---font--secondary-family);
+      font-size: var(--_typography---font-size--text-small);
+      transition: all 0.3s ease;
+      outline: none;
+    }
+    .search_input:focus {
+      background: color-mix(in srgb, var(--_theme---text) 5%, transparent);
+      border-color: var(--swatch--brand-500);
+    }
+    .search_input::placeholder {
+      color: color-mix(in srgb, var(--_theme---text) 40%, transparent);
+    }
+    .search_input:not(:placeholder-shown),
+    .search_input:focus {
+      padding-right: 9rem;
+    }
+    .search_icon {
+      position: absolute;
+      left: var(--_spacing---space--4);
+      top: 50%;
+      transform: translateY(-50%);
+      color: color-mix(in srgb, var(--_theme---text) 40%, transparent);
+      pointer-events: none;
+      width: 1rem;
+      height: 1rem;
+    }
+    /* Search navigation controls */
+    .search_navigation {
+      position: absolute;
+      right: var(--_spacing---space--2);
+      top: 50%;
+      transform: translateY(-50%);
+      display: none;
+      align-items: center;
+      gap: 0.25rem;
+      background: color-mix(in srgb, var(--_theme---text) 5%, transparent);
+      border-radius: 6px;
+      padding: 0.125rem;
+    }
+    .search_navigation.active {
+      display: flex;
+    }
+    .search_clear_btn,
+    .search_nav_btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      background: transparent;
+      border: none;
+      border-radius: 4px;
+      color: color-mix(in srgb, var(--_theme---text) 60%, transparent);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      padding: 0;
+      font-size: 1rem;
+      line-height: 1;
+    }
+    .search_clear_btn:hover,
+    .search_nav_btn:hover {
+      background: color-mix(in srgb, var(--_theme---text) 10%, transparent);
+      color: var(--_theme---text);
+    }
+    .search_clear_btn:active,
+    .search_nav_btn:active {
+      transform: scale(0.9);
+    }
+    .search_match_counter {
+      font-size: 0.75rem;
+      color: var(--_theme---text);
+      font-weight: 500;
+      padding: 0 0.375rem;
+      white-space: nowrap;
+    }
+    /* Tab navigation */
+    .tab_nav_wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .tab_button {
+      display: flex;
+      align-items: center;
+      gap: var(--_spacing---space--3);
+      padding: var(--_spacing---space--3) var(--_spacing---space--4);
+      background: transparent;
+      border: none;
+      border-radius: var(--radius--small);
+      color: color-mix(in srgb, var(--_theme---text) 60%, transparent);
+      font-family: var(--_typography---font--secondary-family);
+      font-size: var(--_typography---font-size--text-small);
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+      position: relative;
+    }
+    .tab_button:hover {
+      background: color-mix(in srgb, var(--_theme---text) 5%, transparent);
+      color: color-mix(in srgb, var(--_theme---text) 85%, transparent);
+    }
+    .tab_button.active {
+      background: color-mix(in srgb, var(--_theme---text) 10%, transparent);
+      color: var(--_theme---text);
+      font-weight: 500;
+    }
+    .tab_icon {
+      flex-shrink: 0;
+      opacity: 0.8;
+      width: 1.125rem;
+      height: 1.125rem;
+    }
+    .tab_label {
+      text-align: left;
+      flex: 1;
+    }
+    .tab_match_indicator {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      min-width: 1.25rem;
+      height: 1.25rem;
+      padding: 0 0.25rem;
+      background: var(--swatch--brand-500);
+      color: var(--swatch--brand-text);
+      font-size: 0.625rem;
+      font-weight: 600;
+      border-radius: 10px;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+    .tab_match_indicator.active {
+      display: flex;
+    }
+    /* Content transitions */
+    .legal_content_inner {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .legal_content_inner.transitioning {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    /* Search highlight */
+    .search_highlight {
+      background: var(--swatch--brand-500);
+      color: var(--swatch--brand-text);
+      padding: 0.0625rem 0.1875rem;
+      border-radius: 2px;
+      font-weight: 500;
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--swatch--brand-500) 15%, transparent);
+      transition: all 0.2s ease;
+      opacity: 0.6;
+      position: relative;
+      z-index: 1;
+      line-height: 1;
+      display: inline;
+    }
+    .search_highlight_current {
+      background: var(--swatch--brand-600);
+      opacity: 1;
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--swatch--brand-600) 25%, transparent);
+      animation: legalPulse 0.5s ease;
+      z-index: 2;
+    }
+    @keyframes legalPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    /* Content */
+    .legal_content_body {
+      max-width: 900px;
+    }
+    .legal_panel_header {
+      border-bottom: 1px solid var(--_theme---border);
+    }
+    .legal_last_updated {
+      color: color-mix(in srgb, var(--_theme---text) 50%, transparent);
+      font-style: italic;
+    }
+    .legal_section_heading {
+      scroll-margin-top: var(--_spacing---space--8);
+    }
+    /* Responsive: collapse to single column */
+    @container legal-page (width < 1024px) {
+      .legal_page_wrap {
+        flex-direction: column;
+      }
+      .legal_sidebar_wrap {
+        position: static;
+        width: 100%;
+        height: auto;
+        margin-bottom: var(--_spacing---space--6);
+      }
+      .legal_content_wrap {
+        width: 100%;
+      }
+      .tab_nav_wrap {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      .tab_button {
+        flex: 1 1 auto;
+        min-width: fit-content;
+        white-space: nowrap;
+      }
+    }
+    /* The rule above sets .legal_page_wrap { flex-direction: column } inside an
+       @container query — but a container query can only style DESCENDANTS of its
+       container, never the container element itself. So the wrap stayed
+       flex-direction:row and its content column collapsed to 0 width (the whole
+       legal text was pushed off-screen and invisible). Switch to column with a
+       real media query that can target the wrap. */
+    @media (max-width: 1023px) {
+      .legal_page_wrap {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 768px) {
+      .search_input:not(:placeholder-shown),
+      .search_input:focus {
+        padding-right: 7rem !important;
+      }
+      .search_navigation {
+        right: 0.25rem;
+        gap: 0.125rem;
+        padding: 0.0625rem;
+      }
+      .search_clear_btn,
+      .search_nav_btn {
+        width: 1.375rem;
+        height: 1.375rem;
+        font-size: 0.875rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .search_input:not(:placeholder-shown),
+      .search_input:focus {
+        padding-right: 6.5rem !important;
+      }
+      .search_navigation { right: 0.125rem; gap: 0; }
+      .search_clear_btn,
+      .search_nav_btn { width: 1.25rem; height: 1.25rem; font-size: 0.75rem; }
+    }
+  </style>
+</head>
+
+<body class="u-theme-dark">
+
+  <div class="page_wrap">
+    <main class="page_main">
+
+      <!-- FULLSCREEN MENU -->
+      <dialog data-modal-target="menu" data-show-in-designer="false" class="modal_dialog u-theme-dark" data-wf--modal--variant="full-screen">
+        <div class="modal_inner u-position-relative u-bg-dark-900" data-style="full-screen">
+          <div data-modal-close="" class="modal_backdrop"></div>
+          <button type="button" data-modal-close class="popup-close-btn" aria-label="Cerrar menú">
+            <svg width="14" height="14" viewBox="0 0 39.276 39.277" fill="currentColor" aria-hidden="true">
+              <path d="M6.505,0.79L39.276,33.561l-6.505,4.926L0,5.716Z"/>
+              <path d="M38.486,6.506L5.715,39.277l-4.926-6.505L33.56,0Z"/>
+            </svg>
+            <span class="u-sr-only">Cerrar</span>
+          </button>
+          <div class="modal_content u-bg-transparent u-position-relative" style="overflow: visible;" data-style="full-screen">
+            <div data-lenis-prevent=" " data-modal-scroll="" class="modal_scroll u-zindex-1 u-flex-vertical-nowrap u-min-height-full" style="padding: var(--_spacing---space--4) var(--_spacing---space--3);" data-style="full-screen">
+              <!-- Top row: Logo left, Close button right -->
+              <div class="u-flex-horizontal-nowrap u-justify-content-between u-align-items-start u-width-full">
+                <a href="./index.html" class="hero_logo_wrap" aria-label="Ir al inicio" style="width: 8rem;">
+                  <svg viewBox="0 0 84 36" fill="currentColor" class="u-svg" aria-hidden="true">
+                    <path d="M64.6885 3.86108C64.8623 3.85696 68.8297 3.80551 71.3027 6.45288C72.7493 8.00106 73.368 10.0776 73.1406 12.6257C72.6719 17.9369 69.8975 20.0423 67.582 20.6511C68.1416 23.1532 70.5841 31.2958 76.2754 31.5671L75.9121 34.7185C67.0161 34.2787 65.2897 23.7924 65.0752 23.1765L64.7695 29.8064L61.6992 29.0896L63.2637 3.89136L64.6885 3.86108ZM6.99707 6.59741C7.1744 6.5602 11.3916 5.70245 14.5674 8.13745C16.5419 9.65468 17.6341 12.0254 17.8066 15.1843C18.0975 20.4552 15.9866 23.2423 14.167 24.6531C13.0478 25.5171 11.9196 25.9707 11.1055 26.2058L11.8828 32.5837L8.66699 34.0203L5.5 6.91479L6.99707 6.59741ZM23.7842 28.95L20.7227 29.7302L19.8496 16.8943L22.9111 16.0925L23.7842 28.95ZM77.708 18.8767C77.7024 18.9162 77.1315 22.9073 76.3848 29.2234C75.4614 29.2971 74.0147 28.6829 73.3594 27.8357C74.2828 20.1906 74.6191 17.988 74.6191 17.988L77.708 18.8767ZM26.2275 2.73804C26.3931 2.71309 30.3224 2.16052 33.1104 4.47632C34.7391 5.82959 35.6176 7.81267 35.7129 10.3689C35.9085 15.4906 33.6156 17.9432 31.459 18.9207C32.992 22.0045 34.671 24.7838 37.4053 26.4001L35.8174 29.0886C32.6653 27.2244 30.7319 24.7374 28.9805 20.9119L29.3213 27.8894L26.2324 28.4646L24.8174 2.948L26.2275 2.73804ZM60.1846 15.5974L59.3477 28.6677L56.2539 28.1433L57.0908 15.0466L60.1846 15.5974ZM46.4678 1.40991C46.6407 1.39518 50.7305 1.08814 53.4736 3.81128C55.2252 5.55288 55.9944 8.04505 55.7578 11.2166C55.3667 16.4241 53.0008 18.8957 51.0811 20.0515C49.9027 20.7622 48.7608 21.0679 47.9463 21.198L47.8193 27.1238L44.5303 26.9734L44.9844 1.53296L46.4678 1.40991ZM42.0684 26.9402L38.9521 26.9451L38.9336 13.8318L42.0498 13.8259L42.0684 26.9402ZM10.2686 21.9119C11.8016 21.3161 14.2851 19.5618 14.0078 14.4773C13.8893 12.3529 13.2439 10.8225 12.0928 9.92944C11.0645 9.13292 9.76826 8.91972 8.76758 8.89429L10.2686 21.9119ZM65.4521 18.5671L65.916 18.6189C66.2663 18.6439 69.5602 18.6608 70.0381 13.2429C70.179 11.6009 69.8559 10.3735 69.0371 9.48999C68.2318 8.62195 67.0762 8.22024 66.166 8.03491L65.4521 18.5671ZM28.7168 17.4626L29.1855 17.4558C29.5381 17.4301 32.8014 17.0356 32.5967 11.6033C32.533 9.95635 32.0556 8.77933 31.1318 8.00562C30.2264 7.24561 29.0298 6.99322 28.1064 6.92358L28.7168 17.4626ZM47.7822 16.9441C49.3201 16.5362 51.8769 15.1011 52.25 10.0779C52.4137 7.91183 51.9678 6.2898 50.9307 5.25854C50.071 4.40364 48.9107 4.04378 48.001 3.89526L47.7822 16.9441ZM77.0303 11.8044C77.9537 11.8833 78.6048 13.0464 78.4863 14.4011C78.3726 15.7557 77.5312 16.7903 76.6123 16.7117C75.6933 16.6328 75.0426 15.4697 75.1562 14.115C75.2745 12.76 76.1115 11.726 77.0303 11.8044ZM20.8135 9.91772C21.7369 9.88309 22.5241 10.9571 22.5742 12.3162C22.6243 13.6753 21.9198 14.8052 20.9961 14.8396C20.0727 14.8739 19.2858 13.7994 19.2354 12.4402C19.1855 11.081 19.8903 9.95228 20.8135 9.91772ZM58.9297 8.60718C59.853 8.60741 60.5986 9.70994 60.5986 11.0701C60.5985 12.4296 59.8529 13.5318 58.9297 13.532C58.0064 13.532 57.2599 12.4298 57.2598 11.0701C57.2598 9.71016 58.0062 8.60718 58.9297 8.60718ZM40.5039 7.23022C41.4277 7.23022 42.1738 8.33284 42.1738 9.69312C42.1737 11.0528 41.4228 12.155 40.5039 12.155C39.585 12.155 38.8302 11.0532 38.8301 9.69312C38.8301 8.33287 39.5801 7.23026 40.5039 7.23022Z"/>
+                  </svg>
+                </a>
+              </div>
+
+              <!-- Middle: Menu links -->
+              <div class="modal_slot u-flex-grow u-flex-vertical-nowrap u-justify-content-center u-padding-left-6">
+                <div class="u-flex-vertical-nowrap u-gap-4" data-menu-list>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./index.html" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">INICIO</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="https://carta.somospiripiri.com/" target="_blank" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">PEDIDOS</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./index.html#reserva" data-modal-close class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">RESERVA</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./historia.html" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">HISTORIA</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./club-secreto.html" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">CLUB SECRETO</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./carta.html" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">CARTA</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./juego.html" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">PIRI PIRAOS</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                  <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-3" data-menu-item>
+                    <a href="./contacto.html" class="u-text-style-display u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">CONTACTO</a>
+                    <img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="u-height-auto" style="height: 2.5em; width: auto;" data-menu-heart>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom row -->
+              <div class="u-flex-horizontal-nowrap u-justify-content-between u-align-items-end u-width-full u-gap-6 u-flex-column-mobile">
+                <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-4 u-padding-left-6">
+                  <ul class="u-flex-horizontal-nowrap u-gap-4 u-list-style-none">
+                    <li>
+                      <a href="https://www.instagram.com/piripirialcarbon" target="_blank" class="u-flex-horizontal-nowrap u-align-items-center u-justify-content-center u-color-inherit u-size-8 u-transition-color-main u-hover-color-brand" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.2.1 4.7 1.7 4.8 4.8.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.1-1.6 4.7-4.8 4.8-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.2-.1-4.7-1.7-4.8-4.8-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3.1 1.6-4.7 4.8-4.8 1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zM12 16c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-11.8c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/></svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://www.tiktok.com/@piripirialcarbon" target="_blank" class="u-flex-horizontal-nowrap u-align-items-center u-justify-content-center u-color-inherit u-size-8 u-transition-color-main u-hover-color-brand" aria-label="TikTok">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 8.2c-2.3 0-4.2-1.9-4.2-4.2V3h-3.5v13.4c0 1.7-1.4 3.1-3.1 3.1s-3.1-1.4-3.1-3.1 1.4-3.1 3.1-3.1c.3 0 .6 0 .9.1V9.9c-.3 0-.6-.1-.9-.1-3.5 0-6.4 2.9-6.4 6.4s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4V9.3c1.4 1 3.1 1.6 4.9 1.6V7.6c-.3 0-.9.1-1.5.6z"/></svg>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="u-flex-horizontal-nowrap u-gap-4">
+                  <div class="button_main_wrap" data-trigger="hover focus">
+                    <a href="./contacto.html" class="button_main_element">
+                      <div class="button_main_text u-text-style-main">CONTACTO</div>
+                    </a>
+                  </div>
+                  <div data-wf--button-main--variant="secondary" class="button_main_wrap" data-trigger="hover focus">
+                    <a href="https://carta.somospiripiri.com/" target="_blank" class="button_main_element">
+                      <div class="button_main_text u-text-style-main">PIDE YA</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+
+      <!-- Navigation Header -->
+      <nav class="hero_nav u-flex-horizontal-nowrap u-justify-content-center u-align-items-center u-padding-inline-gutter u-width-full" style="position: relative; z-index: 10; padding-block: var(--site--gutter);">
+        <a href="./index.html" class="hero_logo_wrap" aria-label="Ir al inicio" style="width: 8rem; position: absolute; top: var(--_spacing---space--4); left: var(--site--gutter);">
+          <svg viewBox="0 0 84 36" fill="currentColor" class="u-svg" aria-hidden="true">
+            <path d="M64.6885 3.86108C64.8623 3.85696 68.8297 3.80551 71.3027 6.45288C72.7493 8.00106 73.368 10.0776 73.1406 12.6257C72.6719 17.9369 69.8975 20.0423 67.582 20.6511C68.1416 23.1532 70.5841 31.2958 76.2754 31.5671L75.9121 34.7185C67.0161 34.2787 65.2897 23.7924 65.0752 23.1765L64.7695 29.8064L61.6992 29.0896L63.2637 3.89136L64.6885 3.86108ZM6.99707 6.59741C7.1744 6.5602 11.3916 5.70245 14.5674 8.13745C16.5419 9.65468 17.6341 12.0254 17.8066 15.1843C18.0975 20.4552 15.9866 23.2423 14.167 24.6531C13.0478 25.5171 11.9196 25.9707 11.1055 26.2058L11.8828 32.5837L8.66699 34.0203L5.5 6.91479L6.99707 6.59741ZM23.7842 28.95L20.7227 29.7302L19.8496 16.8943L22.9111 16.0925L23.7842 28.95ZM77.708 18.8767C77.7024 18.9162 77.1315 22.9073 76.3848 29.2234C75.4614 29.2971 74.0147 28.6829 73.3594 27.8357C74.2828 20.1906 74.6191 17.988 74.6191 17.988L77.708 18.8767ZM26.2275 2.73804C26.3931 2.71309 30.3224 2.16052 33.1104 4.47632C34.7391 5.82959 35.6176 7.81267 35.7129 10.3689C35.9085 15.4906 33.6156 17.9432 31.459 18.9207C32.992 22.0045 34.671 24.7838 37.4053 26.4001L35.8174 29.0886C32.6653 27.2244 30.7319 24.7374 28.9805 20.9119L29.3213 27.8894L26.2324 28.4646L24.8174 2.948L26.2275 2.73804ZM60.1846 15.5974L59.3477 28.6677L56.2539 28.1433L57.0908 15.0466L60.1846 15.5974ZM46.4678 1.40991C46.6407 1.39518 50.7305 1.08814 53.4736 3.81128C55.2252 5.55288 55.9944 8.04505 55.7578 11.2166C55.3667 16.4241 53.0008 18.8957 51.0811 20.0515C49.9027 20.7622 48.7608 21.0679 47.9463 21.198L47.8193 27.1238L44.5303 26.9734L44.9844 1.53296L46.4678 1.40991ZM42.0684 26.9402L38.9521 26.9451L38.9336 13.8318L42.0498 13.8259L42.0684 26.9402ZM10.2686 21.9119C11.8016 21.3161 14.2851 19.5618 14.0078 14.4773C13.8893 12.3529 13.2439 10.8225 12.0928 9.92944C11.0645 9.13292 9.76826 8.91972 8.76758 8.89429L10.2686 21.9119ZM65.4521 18.5671L65.916 18.6189C66.2663 18.6439 69.5602 18.6608 70.0381 13.2429C70.179 11.6009 69.8559 10.3735 69.0371 9.48999C68.2318 8.62195 67.0762 8.22024 66.166 8.03491L65.4521 18.5671ZM28.7168 17.4626L29.1855 17.4558C29.5381 17.4301 32.8014 17.0356 32.5967 11.6033C32.533 9.95635 32.0556 8.77933 31.1318 8.00562C30.2264 7.24561 29.0298 6.99322 28.1064 6.92358L28.7168 17.4626ZM47.7822 16.9441C49.3201 16.5362 51.8769 15.1011 52.25 10.0779C52.4137 7.91183 51.9678 6.2898 50.9307 5.25854C50.071 4.40364 48.9107 4.04378 48.001 3.89526L47.7822 16.9441ZM77.0303 11.8044C77.9537 11.8833 78.6048 13.0464 78.4863 14.4011C78.3726 15.7557 77.5312 16.7903 76.6123 16.7117C75.6933 16.6328 75.0426 15.4697 75.1562 14.115C75.2745 12.76 76.1115 11.726 77.0303 11.8044ZM20.8135 9.91772C21.7369 9.88309 22.5241 10.9571 22.5742 12.3162C22.6243 13.6753 21.9198 14.8052 20.9961 14.8396C20.0727 14.8739 19.2858 13.7994 19.2354 12.4402C19.1855 11.081 19.8903 9.95228 20.8135 9.91772ZM58.9297 8.60718C59.853 8.60741 60.5986 9.70994 60.5986 11.0701C60.5985 12.4296 59.8529 13.5318 58.9297 13.532C58.0064 13.532 57.2599 12.4298 57.2598 11.0701C57.2598 9.71016 58.0062 8.60718 58.9297 8.60718ZM40.5039 7.23022C41.4277 7.23022 42.1738 8.33284 42.1738 9.69312C42.1737 11.0528 41.4228 12.155 40.5039 12.155C39.585 12.155 38.8302 11.0532 38.8301 9.69312C38.8301 8.33287 39.5801 7.23026 40.5039 7.23022Z"/>
+          </svg>
+        </a>
+
+        <ul class="hero_nav_links u-flex-horizontal-nowrap u-gap-5 u-list-style-none u-hide-tablet">
+          <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="./index.html" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Inicio</a></li>
+          <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="./historia.html" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Historia</a></li>
+          <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="./club-secreto.html" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Club Secreto</a></li>
+          <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="./carta.html" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Carta</a></li>
+          <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="./juego.html" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Piri Piraos</a></li>
+          <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="./contacto.html" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Contacto</a></li>
+          <li class="hero_nav_item"><img src="assets/resources/icons/heart-icon_alpha_512.svg" alt="" class="hero_nav_item_heart" aria-hidden="true"><a href="https://carta.somospiripiri.com/" target="_blank" class="hero_nav_link u-text-style-small u-text-transform-uppercase u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">Pedidos</a></li>
+        </ul>
+      </nav>
+
+      <!-- MENÚ button: fixed so it follows on scroll. -->
+      <div data-modal-trigger="menu" class="button_main_wrap u-radius-round" data-trigger="hover focus" style="position: fixed; top: var(--_spacing---space--4); right: var(--site--gutter); z-index: 11;">
+        <button class="button_main_element" aria-label="Abrir menú" data-style="secondary">
+          <svg class="button_main_icon" viewBox="0 0 39.261 32.661" fill="currentColor" aria-hidden="true" style="width: 1.25rem; height: auto;">
+            <path d="M.924,25.974h38.337l-.924,6.687H0Z"/>
+            <path d="M.924,12.987h38.337l-.924,6.687H0Z"/>
+            <path d="M.924,0h38.337l-.924,6.686H0Z"/>
+          </svg>
+          <div class="button_main_text u-text-style-main">MENÚ</div>
+        </button>
+      </div>
+
+      <!-- LEGAL HUB -->
+      <section class="u-section u-theme-dark u-padding-block-8" style="padding-bottom: 10rem; min-height: 80vh;">
+        <div class="u-container">
+          <div class="legal_page_wrap u-flex-horizontal-nowrap u-align-items-start u-gap-8">
+
+            <!-- Sidebar: search + tabs -->
+            <aside class="legal_sidebar_wrap">
+              <div class="u-flex-vertical-nowrap u-gap-6">
+                <div class="search_bar_wrap">
+                  <input type="text" id="searchInput" placeholder="Buscar por palabra" class="search_input" aria-label="Buscar en los documentos legales">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="search_icon" aria-hidden="true">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                  </svg>
+                  <div id="searchNavigation" class="search_navigation">
+                    <button id="clearButton" type="button" aria-label="Limpiar búsqueda" title="Limpiar búsqueda" class="search_clear_btn">✕</button>
+                    <span id="matchCounter" class="search_match_counter"></span>
+                    <button id="prevButton" type="button" aria-label="Resultado anterior" title="Resultado anterior" class="search_nav_btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"></polyline></svg></button>
+                    <button id="nextButton" type="button" aria-label="Siguiente resultado" title="Siguiente resultado" class="search_nav_btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg></button>
+                  </div>
+                </div>
+                <nav id="tabNavigation" class="tab_nav_wrap" aria-label="Documentos legales">
+                  <button type="button" class="tab_button" data-hash="aviso-legal">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tab_icon" aria-hidden="true">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <polyline points="14 2 14 8 20 8"></polyline>
+                      <line x1="16" y1="13" x2="8" y2="13"></line>
+                      <line x1="16" y1="17" x2="8" y2="17"></line>
+                      <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span class="tab_label">Aviso Legal</span><span class="tab_match_indicator"></span>
+                  </button>
+                  <button type="button" class="tab_button" data-hash="privacidad">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tab_icon" aria-hidden="true">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                    </svg>
+                    <span class="tab_label">Política de Privacidad</span><span class="tab_match_indicator"></span>
+                  </button>
+                  <button type="button" class="tab_button" data-hash="cookies">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="tab_icon" aria-hidden="true">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                      <path d="M2 12h20"></path>
+                    </svg>
+                    <span class="tab_label">Política de Cookies</span><span class="tab_match_indicator"></span>
+                  </button>
+                </nav>
+              </div>
+            </aside>
+
+            <!-- Content -->
+            <div class="legal_content_wrap">
+              <div id="contentInner" class="legal_content_inner">
+
+                <!-- DEFAULT / INTRO -->
+                <div data-tab-index="default" class="tab_content_panel">
+                  <div class="u-flex-vertical-nowrap u-gap-6">
+                    <div class="legal_panel_header u-flex-vertical-nowrap u-gap-4 u-padding-bottom-6">
+                      <h1 class="u-text-style-h2 u-text-transform-uppercase u-margin-bottom-0">Información Legal</h1>
+                      <p class="u-text-style-large u-color-light-400 u-margin-bottom-0" style="font-style: italic; font-family: var(--_typography---font--primary-family);">
+                        Todo lo que necesitas saber sobre nuestras políticas y el cumplimiento normativo, en un solo lugar.
+                      </p>
+                    </div>
+                    <div class="legal_content_body u-flex-vertical-nowrap u-gap-4">
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-0">
+                        Aquí encontrarás el conjunto completo de documentos legales del sitio web <a href="https://somospiripiri.com" class="u-color-brand-500 u-text-decoration-underline">somospiripiri.com</a>, titularidad de Piripiri España S.L.: el <strong>Aviso Legal</strong>, la <strong>Política de Privacidad</strong> y la <strong>Política de Cookies</strong>.
+                      </p>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-0">
+                        Cada documento detalla cómo recogemos, utilizamos y protegemos los datos personales, cómo funcionan las cookies en este sitio web y las condiciones que regulan el uso de nuestros servicios, en cumplimiento de la Ley 34/2002 (LSSI-CE), el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD).
+                      </p>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-0">
+                        Selecciona un documento en el menú lateral o utiliza el buscador para localizar cualquier término dentro de todos los textos.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- AVISO LEGAL -->
+                <div style="display:none" data-tab-index="0" class="tab_content_panel">
+                  <div class="u-flex-vertical-nowrap u-gap-6">
+                    <div class="legal_panel_header u-flex-vertical-nowrap u-gap-4 u-padding-bottom-6">
+                      <h1 class="u-text-style-h2 u-text-transform-uppercase u-margin-bottom-0">Aviso Legal</h1>
+                      <p class="legal_last_updated u-text-style-small u-margin-bottom-0"><span>Última actualización: </span><span class="date-display">mayo de 2026</span></p>
+                    </div>
+                    <div class="legal_content_body">
+                      <p class="u-text-style-large u-color-light-400 u-margin-bottom-6" style="font-style: italic; font-family: var(--_typography---font--primary-family);">
+                        Información obligatoria conforme a la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE).
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">1. Identificación del titular</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-4">
+                        En cumplimiento de lo dispuesto en el artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa a los usuarios de los siguientes datos identificativos del titular del sitio web <a href="https://somospiripiri.com" class="u-color-brand-500 u-text-decoration-underline">somospiripiri.com</a>:
+                      </p>
+                      <ul class="u-text-style-body u-color-light-400 u-margin-bottom-6" style="padding-left: 1.5em;">
+                        <li><strong>Razón social:</strong> Piripiri España S.L.</li>
+                        <li><strong>CIF:</strong> B04946141</li>
+                        <li><strong>Domicilio fiscal:</strong> Calle Mesón de Paredes 15, 28012, Madrid (España)</li>
+                        <li><strong>Correo electrónico de contacto:</strong> <a href="mailto:info@somospiripiri.com" class="u-color-brand-500 u-text-decoration-underline">info@somospiripiri.com</a></li>
+                      </ul>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">2. Objeto</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        El presente Aviso Legal regula el uso del sitio web <a href="https://somospiripiri.com" class="u-color-brand-500 u-text-decoration-underline">somospiripiri.com</a> (en adelante, el "Sitio Web"), titularidad de Piripiri España S.L. (en adelante, "Piripiri", "nosotros" o "el titular"). El Sitio Web tiene como finalidad principal informar sobre la actividad de los restaurantes Piri Piri, sus locales, su carta y sus iniciativas, así como facilitar el contacto con los usuarios.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">3. Condiciones de uso</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-4">
+                        El acceso y la utilización del Sitio Web atribuye la condición de usuario (en adelante, el "Usuario") e implica la aceptación, desde dicho acceso, del presente Aviso Legal. En consecuencia, el Usuario debe leer atentamente el Aviso Legal en cada una de las ocasiones en que se proponga utilizar el Sitio Web.
+                      </p>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-4">
+                        El Usuario se compromete a utilizar el Sitio Web y sus contenidos de forma diligente, correcta y lícita, y, en particular, se compromete a abstenerse de:
+                      </p>
+                      <ul class="u-text-style-body u-color-light-400 u-margin-bottom-6" style="padding-left: 1.5em;">
+                        <li>Utilizar el Sitio Web con fines o efectos ilícitos, contrarios a lo establecido en este Aviso Legal, lesivos de los derechos e intereses de terceros, o que de cualquier forma puedan dañar, inutilizar, sobrecargar o deteriorar el Sitio Web.</li>
+                        <li>Introducir o difundir contenidos o propaganda de carácter racista, xenófobo, pornográfico, de apología del terrorismo o atentatorio contra los derechos humanos.</li>
+                        <li>Provocar daños en los sistemas físicos y lógicos del titular, de sus proveedores o de terceras personas.</li>
+                        <li>Intentar acceder y, en su caso, utilizar las cuentas de correo electrónico de otros usuarios y modificar o manipular sus mensajes.</li>
+                      </ul>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">4. Propiedad intelectual e industrial</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-4">
+                        Todos los contenidos del Sitio Web, entendiendo por estos a título meramente enunciativo los textos, fotografías, gráficos, imágenes, iconos, tecnología, software, así como su diseño gráfico y códigos fuente, constituyen una obra cuya propiedad pertenece a Piripiri España S.L. o, en su caso, a terceros que han autorizado expresamente su uso, sin que pueda entenderse cedido al Usuario ningún derecho de explotación sobre los mismos más allá de lo estrictamente necesario para el correcto uso del Sitio Web.
+                      </p>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        Las marcas, nombres comerciales o signos distintivos son titularidad de Piripiri España S.L. o de terceros, sin que pueda entenderse que el acceso al Sitio Web atribuya derecho alguno sobre los citados elementos. Queda expresamente prohibida la reproducción, distribución, comunicación pública y transformación, total o parcial, de los contenidos del Sitio Web sin la autorización expresa y por escrito del titular.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">5. Enlaces a terceros</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        En el Sitio Web pueden encontrarse enlaces hacia otras páginas web gestionadas por terceros (por ejemplo, plataformas de pedidos, reservas o redes sociales). El titular del Sitio Web no asume ninguna responsabilidad por los contenidos, informaciones o servicios que pudieran aparecer en dichos sitios, los cuales tendrán carácter exclusivamente informativo y en ningún caso implican relación alguna entre Piripiri España S.L. y las personas o entidades titulares de tales contenidos o de las webs en las que se encuentren.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">6. Exclusión de garantías y responsabilidad</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        Piripiri España S.L. no garantiza la disponibilidad y continuidad permanente del Sitio Web, ni la ausencia de errores en sus contenidos, ni que estos sean oportunamente actualizados. En la medida permitida por la legislación vigente, el titular del Sitio Web queda exonerado de cualquier responsabilidad por los daños y perjuicios de toda naturaleza que pudieran derivarse de la falta de disponibilidad o de continuidad del funcionamiento del Sitio Web, así como de los errores en el acceso a las distintas páginas web o a aquellas desde las que, en su caso, se presten servicios.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">7. Protección de datos</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        El tratamiento de los datos personales facilitados por los Usuarios a través del Sitio Web se rige por lo dispuesto en la <a href="./legal.html#privacidad" class="u-color-brand-500 u-text-decoration-underline">Política de Privacidad</a> y en la <a href="./legal.html#cookies" class="u-color-brand-500 u-text-decoration-underline">Política de Cookies</a>, que forman parte inseparable del presente Aviso Legal.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">8. Legislación aplicable y jurisdicción</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        El presente Aviso Legal se rige por la legislación española. Para la resolución de cualquier controversia que pudiera derivarse del acceso al Sitio Web, el Usuario y Piripiri España S.L. acuerdan someterse, con renuncia expresa a cualquier otro fuero que pudiera corresponderles, a los Juzgados y Tribunales de la ciudad de Madrid (España), salvo en los casos en que la normativa aplicable a consumidores y usuarios determine otra cosa.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">9. Modificación del Aviso Legal</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-0">
+                        Piripiri España S.L. se reserva el derecho a modificar el presente Aviso Legal en cualquier momento para adaptarlo a novedades legislativas o jurisprudenciales, así como a prácticas del sector. En tales supuestos, anunciará en esta página los cambios introducidos con una antelación razonable a la de su puesta en práctica.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- POLÍTICA DE PRIVACIDAD -->
+                <div style="display:none" data-tab-index="1" class="tab_content_panel">
+                  <div class="u-flex-vertical-nowrap u-gap-6">
+                    <div class="legal_panel_header u-flex-vertical-nowrap u-gap-4 u-padding-bottom-6">
+                      <h1 class="u-text-style-h2 u-text-transform-uppercase u-margin-bottom-0">Política de Privacidad</h1>
+                      <p class="legal_last_updated u-text-style-small u-margin-bottom-0"><span>Última actualización: </span><span class="date-display">mayo de 2026</span></p>
+                    </div>
+                    <div class="legal_content_body">
+                      <p class="u-text-style-large u-color-light-400 u-margin-bottom-6" style="font-style: italic; font-family: var(--_typography---font--primary-family);">
+                        Información sobre el tratamiento de datos personales conforme al Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018, de Protección de Datos Personales y Garantía de los Derechos Digitales (LOPDGDD).
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">1. Responsable del tratamiento</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-4">
+                        La presente Política de Privacidad describe cómo Piripiri España S.L. (en adelante, "Piripiri", "nosotros" o "el responsable") recoge y trata los datos personales de los usuarios del sitio web <a href="https://somospiripiri.com" class="u-color-brand-500 u-text-decoration-underline">somospiripiri.com</a>. Los datos identificativos del responsable del tratamiento son los siguientes:
+                      </p>
+                      <ul class="u-text-style-body u-color-light-400 u-margin-bottom-6" style="padding-left: 1.5em;">
+                        <li><strong>Razón social:</strong> Piripiri España S.L.</li>
+                        <li><strong>CIF:</strong> B04946141</li>
+                        <li><strong>Domicilio fiscal:</strong> Calle Mesón de Paredes 15, 28012, Madrid (España)</li>
+                        <li><strong>Correo electrónico de contacto:</strong> <a href="mailto:info@somospiripiri.com" class="u-color-brand-500 u-text-decoration-underline">info@somospiripiri.com</a></li>
+                      </ul>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">2. Datos que tratamos</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-4">
+                        Trataremos los datos personales que usted nos facilite voluntariamente a través de los formularios o canales habilitados en el Sitio Web, así como los que sean estrictamente necesarios para la prestación de los servicios solicitados. En particular, podemos tratar las siguientes categorías de datos:
+                      </p>
+                      <ul class="u-text-style-body u-color-light-400 u-margin-bottom-6" style="padding-left: 1.5em;">
+                        <li>Datos identificativos: nombre, apellidos.</li>
+                        <li>Datos de contacto: dirección de correo electrónico, teléfono.</li>
+                        <li>Contenido de los mensajes que nos envíe a través del formulario de contacto.</li>
+                        <li>Datos relativos a la suscripción al boletín informativo (newsletter).</li>
+                        <li>Datos técnicos relativos a la navegación, en los términos previstos en la <a href="./legal.html#cookies" class="u-color-brand-500 u-text-decoration-underline">Política de Cookies</a>.</li>
+                      </ul>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">3. Finalidades y bases jurídicas del tratamiento</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-4">
+                        Sus datos personales podrán ser tratados con las siguientes finalidades y conforme a las siguientes bases jurídicas:
+                      </p>
+                      <ul class="u-text-style-body u-color-light-400 u-margin-bottom-6" style="padding-left: 1.5em;">
+                        <li><strong>Formulario de contacto:</strong> atender y dar respuesta a las consultas, solicitudes de información o sugerencias que nos remita. Base jurídica: el consentimiento del interesado (art. 6.1.a RGPD) y la aplicación de medidas precontractuales a petición del mismo (art. 6.1.b RGPD).</li>
+                        <li><strong>Reservas y pedidos:</strong> facilitar la gestión de reservas y pedidos a través de los enlaces a plataformas externas. La gestión efectiva de dichas reservas o pedidos podrá ser realizada por terceros prestadores de servicios, con sus propias políticas de privacidad. Base jurídica: ejecución de un contrato o medidas precontractuales (art. 6.1.b RGPD).</li>
+                        <li><strong>Newsletter:</strong> remitirle comunicaciones comerciales electrónicas sobre nuestras novedades, eventos, promociones y lanzamientos. Base jurídica: el consentimiento del interesado (art. 6.1.a RGPD y art. 21 LSSI-CE).</li>
+                        <li><strong>Cumplimiento de obligaciones legales:</strong> atender los requerimientos de autoridades públicas competentes y cumplir las obligaciones legales aplicables a Piripiri España S.L. Base jurídica: el cumplimiento de una obligación legal (art. 6.1.c RGPD).</li>
+                      </ul>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">4. Plazos de conservación</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        Los datos personales se conservarán durante el tiempo necesario para cumplir con la finalidad para la que fueron recogidos y para determinar las posibles responsabilidades que se pudieran derivar de dicha finalidad y del tratamiento de los datos. Los datos recogidos a través del formulario de contacto serán conservados durante el tiempo estrictamente necesario para atender su solicitud y, posteriormente, durante el plazo de prescripción de las acciones legales que pudieran derivarse. Los datos relativos a la suscripción al boletín informativo se conservarán mientras el interesado no revoque su consentimiento.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">5. Destinatarios y cesiones de datos</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        Con carácter general, no cederemos sus datos personales a terceros, salvo obligación legal. Sin perjuicio de lo anterior, podrán acceder a sus datos los proveedores de servicios que actúen como encargados del tratamiento (por ejemplo, proveedores de alojamiento web, plataformas de envío de newsletter, sistemas de gestión de reservas o de pedidos), con quienes se habrán suscrito los correspondientes contratos de tratamiento de datos conforme al artículo 28 del RGPD. No están previstas transferencias internacionales de datos fuera del Espacio Económico Europeo más allá de las que, en su caso, puedan realizar dichos proveedores con las debidas garantías legales.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">6. Derechos del interesado</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-4">
+                        Como titular de los datos, usted puede ejercitar en cualquier momento los siguientes derechos:
+                      </p>
+                      <ul class="u-text-style-body u-color-light-400 u-margin-bottom-4" style="padding-left: 1.5em;">
+                        <li><strong>Acceso:</strong> conocer qué datos personales suyos estamos tratando.</li>
+                        <li><strong>Rectificación:</strong> solicitar la modificación de los datos inexactos o incompletos.</li>
+                        <li><strong>Supresión (derecho al olvido):</strong> solicitar la eliminación de sus datos cuando, entre otros motivos, ya no sean necesarios para la finalidad para la que fueron recogidos.</li>
+                        <li><strong>Oposición:</strong> oponerse al tratamiento de sus datos por motivos relacionados con su situación particular.</li>
+                        <li><strong>Limitación del tratamiento:</strong> solicitar la limitación del tratamiento de sus datos en los supuestos previstos por la normativa.</li>
+                        <li><strong>Portabilidad:</strong> recibir sus datos personales en un formato estructurado, de uso común y lectura mecánica, o solicitar su transmisión a otro responsable.</li>
+                        <li><strong>Revocación del consentimiento:</strong> retirar el consentimiento prestado en cualquier momento, sin que ello afecte a la licitud del tratamiento basado en el consentimiento previo a su retirada.</li>
+                      </ul>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        Puede ejercitar estos derechos enviando una comunicación escrita al correo electrónico <a href="mailto:info@somospiripiri.com" class="u-color-brand-500 u-text-decoration-underline">info@somospiripiri.com</a> o dirigida al domicilio del responsable indicado en el apartado 1, acompañando copia de un documento que acredite su identidad y especificando claramente el derecho que desea ejercitar.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">7. Reclamación ante la autoridad de control</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        Si considera que el tratamiento de sus datos personales vulnera la normativa aplicable, así como en caso de no ver satisfechos sus derechos, tiene derecho a presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD), con domicilio en C/ Jorge Juan 6, 28001, Madrid, o a través de su sede electrónica (<a href="https://www.aepd.es" target="_blank" rel="noopener" class="u-color-brand-500 u-text-decoration-underline">www.aepd.es</a>).
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">8. Medidas de seguridad</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        Piripiri España S.L. adoptará las medidas técnicas y organizativas apropiadas para garantizar un nivel de seguridad adecuado al riesgo del tratamiento, conforme al artículo 32 del RGPD, evitando la alteración, pérdida, tratamiento o acceso no autorizado de los datos personales tratados.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">9. Modificaciones</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-0">
+                        La presente Política de Privacidad puede ser modificada en cualquier momento para adaptarla a cambios legislativos, jurisprudenciales o de la propia práctica empresarial. Las modificaciones serán publicadas en esta página, por lo que recomendamos su consulta periódica.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- POLÍTICA DE COOKIES -->
+                <div style="display:none" data-tab-index="2" class="tab_content_panel">
+                  <div class="u-flex-vertical-nowrap u-gap-6">
+                    <div class="legal_panel_header u-flex-vertical-nowrap u-gap-4 u-padding-bottom-6">
+                      <h1 class="u-text-style-h2 u-text-transform-uppercase u-margin-bottom-0">Política de Cookies</h1>
+                      <p class="legal_last_updated u-text-style-small u-margin-bottom-0"><span>Última actualización: </span><span class="date-display">mayo de 2026</span></p>
+                    </div>
+                    <div class="legal_content_body">
+                      <p class="u-text-style-large u-color-light-400 u-margin-bottom-6" style="font-style: italic; font-family: var(--_typography---font--primary-family);">
+                        Información sobre el uso de cookies y tecnologías similares en somospiripiri.com.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">1. ¿Qué es una cookie?</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        Una cookie es un pequeño archivo de texto que un sitio web almacena en el navegador del usuario cuando este lo visita. Las cookies permiten al sitio web "recordar" información sobre la visita, como el idioma preferido u otras opciones, con el fin de facilitar la próxima visita y hacer que el sitio resulte más útil. La presente Política de Cookies se aplica al sitio web <a href="https://somospiripiri.com" class="u-color-brand-500 u-text-decoration-underline">somospiripiri.com</a>, titularidad de Piripiri España S.L. (CIF B04946141, con domicilio en Calle Mesón de Paredes 15, 28012 Madrid).
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">2. Cookies utilizadas en este sitio web</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-4">
+                        Este sitio web es, por su naturaleza, una página informativa estática y no dispone, en la fecha de la presente política, de herramientas propias de analítica, publicidad personalizada o seguimiento entre sitios. En consecuencia, las únicas cookies o tecnologías similares que pueden instalarse son las siguientes:
+                      </p>
+                      <ul class="u-text-style-body u-color-light-400 u-margin-bottom-4" style="padding-left: 1.5em;">
+                        <li><strong>Cookies técnicas o estrictamente necesarias:</strong> son aquellas que permiten al usuario la navegación a través del sitio web y la utilización de las diferentes opciones o servicios existentes. Por ejemplo, recordar el estado de aceptación del aviso de cookies, mantener una sesión activa o cargar correctamente determinados contenidos. Estas cookies no requieren consentimiento por estar exentas conforme al artículo 22.2 de la Ley 34/2002 (LSSI-CE).</li>
+                        <li><strong>Cookies de terceros incorporadas por servicios externos:</strong> si el usuario interactúa con contenidos servidos por proveedores externos (por ejemplo, mapas, vídeos, plataformas de reservas o pedidos, o redes sociales como Instagram o TikTok), dichos proveedores pueden instalar sus propias cookies en el navegador del usuario. Piripiri España S.L. no tiene control directo sobre esas cookies; se recomienda consultar las políticas de cookies y de privacidad de cada uno de esos proveedores.</li>
+                      </ul>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        En la fecha de la última actualización de esta política, el sitio web <strong>no utiliza cookies analíticas ni publicitarias propias</strong>. En el caso de que en el futuro se incorporen, esta Política de Cookies será actualizada y, cuando proceda, se solicitará el consentimiento previo e informado del usuario.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">3. Consentimiento</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        Al acceder al sitio web por primera vez, se muestra un aviso informativo sobre el uso de cookies. El usuario puede aceptar o rechazar el uso de las cookies no estrictamente necesarias desde dicho aviso. En cualquier momento, el usuario puede modificar la configuración de su navegador para gestionar, bloquear o eliminar las cookies instaladas en su equipo, conforme a lo previsto en el siguiente apartado.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">4. Cómo gestionar y desactivar las cookies</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-4">
+                        El usuario puede en todo momento permitir, bloquear o eliminar las cookies instaladas en su equipo mediante la configuración de las opciones de su navegador. A continuación se incluyen los enlaces a las guías oficiales de los principales navegadores:
+                      </p>
+                      <ul class="u-text-style-body u-color-light-400 u-margin-bottom-6" style="padding-left: 1.5em;">
+                        <li><a href="https://support.google.com/chrome/answer/95647" target="_blank" rel="noopener" class="u-color-brand-500 u-text-decoration-underline">Google Chrome</a></li>
+                        <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias" target="_blank" rel="noopener" class="u-color-brand-500 u-text-decoration-underline">Mozilla Firefox</a></li>
+                        <li><a href="https://support.apple.com/es-es/guide/safari/sfri11471/mac" target="_blank" rel="noopener" class="u-color-brand-500 u-text-decoration-underline">Apple Safari</a></li>
+                        <li><a href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09" target="_blank" rel="noopener" class="u-color-brand-500 u-text-decoration-underline">Microsoft Edge</a></li>
+                        <li><a href="https://help.opera.com/en/latest/web-preferences/" target="_blank" rel="noopener" class="u-color-brand-500 u-text-decoration-underline">Opera</a></li>
+                      </ul>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        La desactivación o el bloqueo de cookies técnicas puede afectar al correcto funcionamiento de algunas secciones del sitio web.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">5. Tratamiento de datos personales</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-6">
+                        La información obtenida a través de cookies que pueda considerarse dato personal se tratará conforme a lo previsto en nuestra <a href="./legal.html#privacidad" class="u-color-brand-500 u-text-decoration-underline">Política de Privacidad</a>. El responsable del tratamiento es Piripiri España S.L. y los datos serán tratados con las finalidades indicadas en dicha Política.
+                      </p>
+
+                      <h2 class="legal_section_heading u-text-style-h5 u-text-transform-uppercase u-margin-bottom-4">6. Actualización de la Política de Cookies</h2>
+                      <p class="u-text-style-body u-color-light-400 u-margin-bottom-0">
+                        La presente Política de Cookies puede ser modificada en función de exigencias legislativas, reglamentarias o con la finalidad de adaptar dicha política a las instrucciones dictadas por la Agencia Española de Protección de Datos. Cuando se produzcan cambios significativos, se publicarán en esta misma página con la fecha de su última actualización.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+  <footer class="footer_wrap u-section u-width-full u-theme-dark">
+    <h2 class="footer_title u-sr-only">Footer</h2>
+    <div class="footer_contain u-container-full" style="padding-bottom: 0;">
+      <div class="u-flex-horizontal-nowrap u-flex-column-mobile u-align-items-end u-gap-8 u-padding-block-8 u-justify-content-between" style="width: 100%;">
+        <!-- Logo & Social (Left Column) -->
+        <div class="u-flex-vertical-nowrap u-justify-content-end u-align-items-start u-gap-6" style="flex: 0 0 auto; min-width: 10rem;">
+          <a aria-label="Ir al inicio" href="/" class="footer_logo_wrap" style="width: 8rem;">
+            <svg viewBox="0 0 84 36" fill="currentColor" class="u-svg" aria-hidden="true">
+              <path d="M64.6885 3.86108C64.8623 3.85696 68.8297 3.80551 71.3027 6.45288C72.7493 8.00106 73.368 10.0776 73.1406 12.6257C72.6719 17.9369 69.8975 20.0423 67.582 20.6511C68.1416 23.1532 70.5841 31.2958 76.2754 31.5671L75.9121 34.7185C67.0161 34.2787 65.2897 23.7924 65.0752 23.1765L64.7695 29.8064L61.6992 29.0896L63.2637 3.89136L64.6885 3.86108ZM6.99707 6.59741C7.1744 6.5602 11.3916 5.70245 14.5674 8.13745C16.5419 9.65468 17.6341 12.0254 17.8066 15.1843C18.0975 20.4552 15.9866 23.2423 14.167 24.6531C13.0478 25.5171 11.9196 25.9707 11.1055 26.2058L11.8828 32.5837L8.66699 34.0203L5.5 6.91479L6.99707 6.59741ZM23.7842 28.95L20.7227 29.7302L19.8496 16.8943L22.9111 16.0925L23.7842 28.95ZM77.708 18.8767C77.7024 18.9162 77.1315 22.9073 76.3848 29.2234C75.4614 29.2971 74.0147 28.6829 73.3594 27.8357C74.2828 20.1906 74.6191 17.988 74.6191 17.988L77.708 18.8767ZM26.2275 2.73804C26.3931 2.71309 30.3224 2.16052 33.1104 4.47632C34.7391 5.82959 35.6176 7.81267 35.7129 10.3689C35.9085 15.4906 33.6156 17.9432 31.459 18.9207C32.992 22.0045 34.671 24.7838 37.4053 26.4001L35.8174 29.0886C32.6653 27.2244 30.7319 24.7374 28.9805 20.9119L29.3213 27.8894L26.2324 28.4646L24.8174 2.948L26.2275 2.73804ZM60.1846 15.5974L59.3477 28.6677L56.2539 28.1433L57.0908 15.0466L60.1846 15.5974ZM46.4678 1.40991C46.6407 1.39518 50.7305 1.08814 53.4736 3.81128C55.2252 5.55288 55.9944 8.04505 55.7578 11.2166C55.3667 16.4241 53.0008 18.8957 51.0811 20.0515C49.9027 20.7622 48.7608 21.0679 47.9463 21.198L47.8193 27.1238L44.5303 26.9734L44.9844 1.53296L46.4678 1.40991ZM42.0684 26.9402L38.9521 26.9451L38.9336 13.8318L42.0498 13.8259L42.0684 26.9402ZM10.2686 21.9119C11.8016 21.3161 14.2851 19.5618 14.0078 14.4773C13.8893 12.3529 13.2439 10.8225 12.0928 9.92944C11.0645 9.13292 9.76826 8.91972 8.76758 8.89429L10.2686 21.9119ZM65.4521 18.5671L65.916 18.6189C66.2663 18.6439 69.5602 18.6608 70.0381 13.2429C70.179 11.6009 69.8559 10.3735 69.0371 9.48999C68.2318 8.62195 67.0762 8.22024 66.166 8.03491L65.4521 18.5671ZM28.7168 17.4626L29.1855 17.4558C29.5381 17.4301 32.8014 17.0356 32.5967 11.6033C32.533 9.95635 32.0556 8.77933 31.1318 8.00562C30.2264 7.24561 29.0298 6.99322 28.1064 6.92358L28.7168 17.4626ZM47.7822 16.9441C49.3201 16.5362 51.8769 15.1011 52.25 10.0779C52.4137 7.91183 51.9678 6.2898 50.9307 5.25854C50.071 4.40364 48.9107 4.04378 48.001 3.89526L47.7822 16.9441ZM77.0303 11.8044C77.9537 11.8833 78.6048 13.0464 78.4863 14.4011C78.3726 15.7557 77.5312 16.7903 76.6123 16.7117C75.6933 16.6328 75.0426 15.4697 75.1562 14.115C75.2745 12.76 76.1115 11.726 77.0303 11.8044ZM20.8135 9.91772C21.7369 9.88309 22.5241 10.9571 22.5742 12.3162C22.6243 13.6753 21.9198 14.8052 20.9961 14.8396C20.0727 14.8739 19.2858 13.7994 19.2354 12.4402C19.1855 11.081 19.8903 9.95228 20.8135 9.91772ZM58.9297 8.60718C59.853 8.60741 60.5986 9.70994 60.5986 11.0701C60.5985 12.4296 59.8529 13.5318 58.9297 13.532C58.0064 13.532 57.2599 12.4298 57.2598 11.0701C57.2598 9.71016 58.0062 8.60718 58.9297 8.60718ZM40.5039 7.23022C41.4277 7.23022 42.1738 8.33284 42.1738 9.69312C42.1737 11.0528 41.4228 12.155 40.5039 12.155C39.585 12.155 38.8302 11.0532 38.8301 9.69312C38.8301 8.33287 39.5801 7.23026 40.5039 7.23022Z"/>
+            </svg>
+          </a>
+          <div class="footer_social_wrap u-margin-top-6">
+            <h3 class="footer_social_title u-text-style-h6 u-margin-bottom-4">Síguenos</h3>
+            <div role="list" class="footer_social_list u-flex-horizontal-nowrap u-gap-3">
+              <div role="listitem" class="footer_social_item">
+                <a aria-label="Instagram" href="https://www.instagram.com/piripirialcarbon" target="_blank" class="footer_social_link u-color-inherit u-transition-color-main u-hover-color-brand">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.2.1 4.7 1.7 4.8 4.8.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.1-1.6 4.7-4.8 4.8-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.2-.1-4.7-1.7-4.8-4.8-.1-1.2-.1-1.6-.1-4.8s0-3.6.1-4.8c.1-3.1 1.6-4.7 4.8-4.8 1.2-.1 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C15.7 0 15.3 0 12 0zm0 5.8c-3.4 0-6.2 2.8-6.2 6.2s2.8 6.2 6.2 6.2 6.2-2.8 6.2-6.2-2.8-6.2-6.2-6.2zM12 16c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4zm6.4-11.8c-.8 0-1.4.6-1.4 1.4s.6 1.4 1.4 1.4 1.4-.6 1.4-1.4-.6-1.4-1.4-1.4z"/>
+                  </svg>
+                </a>
+              </div>
+              <div role="listitem" class="footer_social_item">
+                <a aria-label="TikTok" href="https://www.tiktok.com/@piripirialcarbon" target="_blank" class="footer_social_link u-color-inherit u-transition-color-main u-hover-color-brand">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M19.6 8.2c-2.3 0-4.2-1.9-4.2-4.2V3h-3.5v13.4c0 1.7-1.4 3.1-3.1 3.1s-3.1-1.4-3.1-3.1 1.4-3.1 3.1-3.1c.3 0 .6 0 .9.1V9.9c-.3 0-.6-.1-.9-.1-3.5 0-6.4 2.9-6.4 6.4s2.9 6.4 6.4 6.4 6.4-2.9 6.4-6.4V9.3c1.4 1 3.1 1.6 4.9 1.6V7.6c-.3 0-.9.1-1.5.6z"/>
+                  </svg>
+                </a>
+              </div>
+</div>
+          </div>
+        </div>
+
+        <!-- Newsletter Signup (Center) — opens the PRENDE LA MECHA modal -->
+        <div class="u-flex-vertical-nowrap u-gap-4 u-align-items-center u-text-align-center" style="flex: 1 1 auto; max-width: 32rem;">
+          <p class="u-text-style-main" style="font-style: italic;">El Club Secreto de los Devoradores de Alas: cada compra suma plumas y cada pluma desbloquea recompensas.</p>
+          <div data-button-mode="orchid" class="button_main_wrap" data-trigger="hover focus">
+            <button type="button" class="button_main_element" data-style="secondary" onclick="openSuscribePopup();">
+              <div class="button_main_text u-text-style-main">ÚNETE AL CLUB</div>
+            </button>
+          </div>
+        </div>
+
+        <!-- Contacto (Right Side) -->
+        <section data-trigger="group" class="footer_group_wrap" style="flex: 0 0 auto;">
+          <h3 class="footer_group_title u-text-style-h5 u-margin-bottom-4">Contacto</h3>
+          <div role="list" class="footer_group_list u-flex-vertical-nowrap u-gap-2">
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+              <a href="tel:919192934" class="footer_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_link_text u-text-style-small" style="white-space: nowrap;">919 192 934 (Lavapiés)</div>
+              </a>
+            </div>
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+              <a href="tel:912629421" class="footer_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_link_text u-text-style-small" style="white-space: nowrap;">912 629 421 (Prosperidad)</div>
+              </a>
+            </div>
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+              <a href="tel:912563497" class="footer_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_link_text u-text-style-small" style="white-space: nowrap;">912 563 497 (Las Tablas)</div>
+              </a>
+            </div>
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_group_item">
+              <a href="mailto:info@somospiripiri.com" class="footer_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_link_text u-text-style-small">info@somospiripiri.com</div>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- LOGO + VOLVER ARRIBA (between footer content and subfooter) -->
+    <div class="u-position-relative u-overflow-hidden" style="margin: 0; padding: 0; line-height: 0; width: 100vw; margin-left: calc(50% - 50vw);">
+      <!-- Large PiRiPiRi Logo -->
+      <div style="display: flex; justify-content: center; width: 100%;">
+        <img src="assets/resources/logos/piripiri-logotipo_alpha_512.svg" alt="" aria-hidden="true" style="width: 106vw; max-width: none; height: auto; display: block;">
+      </div>
+      <!-- Volver Arriba Button -->
+      <div class="u-flex-horizontal-nowrap u-justify-content-center" style="margin-top: -6rem; margin-bottom: 6rem;">
+        <div class="button_main_wrap" data-trigger="hover focus">
+          <a href="#top" class="button_main_element" onclick="event.preventDefault(); window.scrollTo({top: 0, behavior: 'smooth'});" data-style="secondary">
+            <div class="button_main_text u-text-style-main">VOLVER ARRIBA</div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar (centered) -->
+    <div class="footer_bottom_wrap u-border-top-main" style="border-color: var(--_theme---border);">
+      <div class="footer_bottom_contain u-container-full">
+        <div class="footer_bottom_layout u-flex-horizontal-wrap u-justify-content-center u-align-items-center u-padding-block-4 u-gap-5">
+          <div class="footer_bottom_text u-text-style-small u-opacity-75">
+            <span>© </span><span data-dynamic-year="">2025</span><span> Piri Piri. Todos los derechos reservados.</span>
+          </div>
+          <div data-trigger="group" role="list" class="footer_bottom_list u-flex-horizontal-nowrap u-gap-5">
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_bottom_item">
+              <a href="./legal.html#privacidad" class="footer_bottom_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_bottom_link_text u-text-style-small">Política de Privacidad</div>
+              </a>
+            </div>
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_bottom_item">
+              <a href="./legal.html#aviso-legal" class="footer_bottom_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_bottom_link_text u-text-style-small">Aviso Legal</div>
+              </a>
+            </div>
+            <div data-trigger="hover-other focus-other" role="listitem" class="footer_bottom_item">
+              <a href="./legal.html#cookies" class="footer_bottom_link_wrap u-color-inherit u-text-decoration-none u-transition-color-main u-hover-color-brand">
+                <div class="footer_bottom_link_text u-text-style-small">Política de Cookies</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dynamic Year Script -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("[data-dynamic-year]").forEach(function (el) {
+          el.textContent = new Date().getFullYear();
+        });
+      });
+    </script>
+  </footer>
+
+    </main>
+  </div>
+
+  <!-- GSAP -->
+  <script src="https://cdn.prod.website-files.com/gsap/3.14.2/gsap.min.js" type="text/javascript"></script>
+
+  <!-- Lumos Modal Initialization -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const modalSystem = ((window.lumos ??= {}).modal ??= {
+        list: {},
+        open(id) { this.list[id]?.open?.(); },
+        closeAll() { Object.values(this.list).forEach((m) => m.close?.()); },
+      });
+      document.querySelectorAll(".modal_dialog").forEach(function (modal) {
+        if (modal.dataset.scriptInitialized) return;
+        modal.dataset.scriptInitialized = "true";
+        const modalId = modal.getAttribute("data-modal-target");
+        const variant = modal.getAttribute("data-wf--modal--variant");
+        let lastFocusedElement;
+        if (typeof gsap !== "undefined") {
+          gsap.context(() => {
+            let tl = gsap.timeline({ paused: true, onReverseComplete: resetModal });
+            if (variant === "full-screen") {
+              tl.set(".modal_backdrop", { opacity: 0 });
+              tl.from(".modal_content", { opacity: 0, duration: 0.2, ease: "power1.out" });
+              tl.from(".modal_slot", { opacity: 0, y: "2rem", duration: 0.2, ease: "power1.out" }, "<0.1");
+            } else {
+              tl.fromTo(".modal_backdrop", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power1.out" });
+              tl.from(".modal_content", { opacity: 0, y: "6rem", duration: 0.3, ease: "power1.out" }, "<");
+            }
+            modal.tl = tl;
+          }, modal);
+        }
+        function resetModal() {
+          document.body.style.overflow = "";
+          modal.close();
+          if (lastFocusedElement) lastFocusedElement.focus();
+        }
+        function openModal() {
+          document.body.style.overflow = "hidden";
+          lastFocusedElement = document.activeElement;
+          modal.showModal();
+          if (typeof gsap !== "undefined" && modal.tl) modal.tl.play();
+          modal.querySelectorAll("[data-modal-scroll]").forEach((el) => (el.scrollTop = 0));
+        }
+        function closeModal() {
+          if (typeof gsap !== "undefined" && modal.tl) {
+            modal.tl.reverse();
+          } else {
+            resetModal();
+          }
+        }
+        modal.addEventListener("cancel", (e) => (e.preventDefault(), closeModal()));
+        modal.addEventListener("click", (e) => e.target.closest("[data-modal-close]") && closeModal());
+        document.addEventListener("click", (e) => e.target.closest("[data-modal-trigger='" + modalId + "']") && openModal());
+        modalSystem.list[modalId] = { open: openModal, close: closeModal };
+      });
+    });
+  </script>
+
+  <!-- Legal hub: tabs + search -->
+  <script>
+    (function () {
+      // Hash order maps to tab/panel index
+      const tabHashes = ['aviso-legal', 'privacidad', 'cookies'];
+
+      // State
+      let activeTabIndex = null;
+      let searchQuery = '';
+      let allMatches = [];
+      let currentMatchIndex = 0;
+
+      // DOM
+      const contentInner = document.getElementById('contentInner');
+      const searchInput = document.getElementById('searchInput');
+      const searchNavigation = document.getElementById('searchNavigation');
+      const clearButton = document.getElementById('clearButton');
+      const matchCounter = document.getElementById('matchCounter');
+      const prevButton = document.getElementById('prevButton');
+      const nextButton = document.getElementById('nextButton');
+      const tabButtons = document.querySelectorAll('.tab_button');
+      const tabContentPanels = document.querySelectorAll('.tab_content_panel');
+      const matchIndicators = document.querySelectorAll('.tab_match_indicator');
+
+      if (!contentInner) return;
+
+      // Show/hide panels by index (0,1,2) or 'default'
+      function showTab(index, clearSearchOnChange = true) {
+        tabContentPanels.forEach(panel => { panel.style.display = 'none'; });
+        const targetPanel = document.querySelector('[data-tab-index="' + index + '"]');
+        if (targetPanel) {
+          contentInner.classList.add('transitioning');
+          setTimeout(() => {
+            targetPanel.style.display = 'block';
+            contentInner.classList.remove('transitioning');
+          }, 250);
+        }
+        tabButtons.forEach((btn, idx) => {
+          btn.classList.toggle('active', idx === index);
+        });
+        activeTabIndex = index;
+        // Reflect in the URL hash without triggering a jump/hashchange loop
+        if (typeof index === 'number' && tabHashes[index]) {
+          if (('#' + tabHashes[index]) !== location.hash) {
+            history.replaceState(null, '', '#' + tabHashes[index]);
+          }
+        }
+        if (clearSearchOnChange && searchInput.value) {
+          clearSearch();
+        }
+      }
+
+      // Tab clicks
+      tabButtons.forEach((button, index) => {
+        button.addEventListener('click', () => showTab(index));
+      });
+
+      // ----- Search -----
+      function countMatchesInPanel(panel, searchTerm) {
+        if (!panel || !searchTerm) return 0;
+        const lowerText = (panel.textContent || '').toLowerCase();
+        const lowerTerm = searchTerm.toLowerCase();
+        let count = 0;
+        let i = lowerText.indexOf(lowerTerm);
+        while (i !== -1) { count++; i = lowerText.indexOf(lowerTerm, i + 1); }
+        return count;
+      }
+
+      function updateMatchIndicators() {
+        if (!searchQuery.trim()) {
+          matchIndicators.forEach(ind => { ind.classList.remove('active'); ind.textContent = ''; });
+          return;
+        }
+        const searchTerm = searchQuery.trim();
+        tabContentPanels.forEach((panel, panelIndex) => {
+          if (panelIndex === 0) return; // Skip default panel
+          const count = countMatchesInPanel(panel, searchTerm);
+          const indicator = matchIndicators[panelIndex - 1];
+          if (indicator) {
+            if (count > 0) { indicator.textContent = count; indicator.classList.add('active'); }
+            else { indicator.classList.remove('active'); indicator.textContent = ''; }
+          }
+        });
+      }
+
+      function cleanupHighlights() {
+        const highlights = contentInner.querySelectorAll('.search_highlight');
+        highlights.forEach(el => {
+          const parent = el.parentNode;
+          if (parent) {
+            try { parent.replaceChild(document.createTextNode(el.textContent || ''), el); } catch (e) {}
+          }
+        });
+        try { contentInner.normalize(); } catch (e) {}
+      }
+
+      function performSearch() {
+        cleanupHighlights();
+        if (!searchQuery.trim()) {
+          allMatches = [];
+          currentMatchIndex = 0;
+          searchNavigation.classList.remove('active');
+          matchCounter.textContent = '0/0';
+          updateMatchIndicators();
+          return;
+        }
+        const searchTerm = searchQuery.trim().toLowerCase();
+        const textNodes = [];
+        const walker = document.createTreeWalker(contentInner, NodeFilter.SHOW_TEXT, null);
+        let node;
+        while ((node = walker.nextNode())) {
+          if (node.textContent && node.textContent.toLowerCase().includes(searchTerm)) {
+            textNodes.push(node);
+          }
+        }
+        const matches = [];
+        textNodes.forEach(node => {
+          const parent = node.parentNode;
+          if (!parent || parent.nodeName === 'SCRIPT' || parent.nodeName === 'STYLE') return;
+          const text = node.textContent || '';
+          const lowerText = text.toLowerCase();
+          let lastIndex = 0;
+          const fragment = document.createDocumentFragment();
+          let index = lowerText.indexOf(searchTerm);
+          while (index !== -1) {
+            if (index > lastIndex) fragment.appendChild(document.createTextNode(text.substring(lastIndex, index)));
+            const mark = document.createElement('mark');
+            mark.className = 'search_highlight';
+            mark.textContent = text.substring(index, index + searchTerm.length);
+            fragment.appendChild(mark);
+            matches.push(mark);
+            lastIndex = index + searchTerm.length;
+            index = lowerText.indexOf(searchTerm, lastIndex);
+          }
+          if (lastIndex < text.length) fragment.appendChild(document.createTextNode(text.substring(lastIndex)));
+          parent.replaceChild(fragment, node);
+        });
+        allMatches = matches;
+        currentMatchIndex = matches.length > 0 ? 0 : -1;
+        if (matches.length > 0) {
+          searchNavigation.classList.add('active');
+          matchCounter.textContent = '1/' + matches.length;
+          // Make sure the panel of the first match is visible
+          switchToMatchPanel(matches[0]);
+          matches[0].classList.add('search_highlight_current');
+          setTimeout(() => { matches[0].scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 120);
+        } else {
+          searchNavigation.classList.remove('active');
+          matchCounter.textContent = '0/0';
+        }
+        updateMatchIndicators();
+      }
+
+      function navigateToNextMatch() {
+        if (allMatches.length === 0) return;
+        const current = allMatches[currentMatchIndex];
+        if (current) current.classList.remove('search_highlight_current');
+        currentMatchIndex = (currentMatchIndex + 1) % allMatches.length;
+        const next = allMatches[currentMatchIndex];
+        if (next) {
+          next.classList.add('search_highlight_current');
+          switchToMatchPanel(next);
+          next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          matchCounter.textContent = (currentMatchIndex + 1) + '/' + allMatches.length;
+        }
+      }
+
+      function navigateToPreviousMatch() {
+        if (allMatches.length === 0) return;
+        const current = allMatches[currentMatchIndex];
+        if (current) current.classList.remove('search_highlight_current');
+        currentMatchIndex = currentMatchIndex - 1 < 0 ? allMatches.length - 1 : currentMatchIndex - 1;
+        const prev = allMatches[currentMatchIndex];
+        if (prev) {
+          prev.classList.add('search_highlight_current');
+          switchToMatchPanel(prev);
+          prev.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          matchCounter.textContent = (currentMatchIndex + 1) + '/' + allMatches.length;
+        }
+      }
+
+      function switchToMatchPanel(matchElement) {
+        const panel = matchElement.closest('.tab_content_panel');
+        if (panel) {
+          const panelIndex = panel.getAttribute('data-tab-index');
+          if (panelIndex && panelIndex !== 'default' && parseInt(panelIndex) !== activeTabIndex) {
+            showTab(parseInt(panelIndex), false);
+            panel.style.display = 'block'; // ensure immediately visible for scroll
+          }
+        }
+      }
+
+      function clearSearch() {
+        searchInput.value = '';
+        searchQuery = '';
+        performSearch();
+      }
+
+      // Listeners
+      searchInput.addEventListener('input', (e) => { searchQuery = e.target.value; performSearch(); });
+      clearButton.addEventListener('click', clearSearch);
+      prevButton.addEventListener('click', navigateToPreviousMatch);
+      nextButton.addEventListener('click', navigateToNextMatch);
+      searchInput.addEventListener('keydown', (e) => {
+        e.stopPropagation();
+        if (e.key === 'Enter') { e.preventDefault(); e.shiftKey ? navigateToPreviousMatch() : navigateToNextMatch(); }
+        else if (e.key === 'Escape') { e.preventDefault(); clearSearch(); }
+      });
+      searchInput.addEventListener('keyup', (e) => e.stopPropagation());
+
+      // Deep-linking via hash
+      function openFromHash() {
+        const h = (location.hash || '').replace('#', '');
+        const idx = tabHashes.indexOf(h);
+        if (idx !== -1) { showTab(idx, false); return true; }
+        return false;
+      }
+      window.addEventListener('hashchange', () => {
+        const h = (location.hash || '').replace('#', '');
+        const idx = tabHashes.indexOf(h);
+        if (idx !== -1 && idx !== activeTabIndex) showTab(idx, false);
+      });
+
+      // Init
+      document.addEventListener('DOMContentLoaded', function () {
+        const dateString = new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long' });
+        document.querySelectorAll('.date-display').forEach(el => { el.textContent = dateString; });
+        openFromHash(); // leaves default panel if no/unknown hash
+      });
+      // In case DOMContentLoaded already fired
+      if (document.readyState !== 'loading') {
+        const dateString = new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long' });
+        document.querySelectorAll('.date-display').forEach(el => { el.textContent = dateString; });
+        openFromHash();
+      }
+    })();
+  </script>
+
+  <!-- Persistent floating CTAs -->
+  <div class="floating-ctas">
+    <div data-button-mode="orchid" class="button_main_wrap" data-trigger="hover focus">
+      <a href="./index.html#reserva" class="button_main_element" data-style="secondary">
+        <div class="button_main_text u-text-style-main">RESERVA</div>
+      </a>
+    </div>
+    <div class="button_main_wrap" data-trigger="hover focus">
+      <a href="https://carta.somospiripiri.com/" target="_blank" rel="noopener" class="button_main_element" data-style="secondary">
+        <div class="button_main_text u-text-style-main">PIDE YA</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- COOKIE BANNER -->
+  <div id="cookie-banner" class="popup-cookie u-theme-dark u-border-top-main" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background-color: var(--_theme---background); backdrop-filter: blur(8px);">
+    <div class="u-container u-padding-block-4">
+      <div class="u-flex-horizontal-nowrap u-flex-column-mobile u-justify-content-between u-align-items-center u-gap-4">
+        <p class="u-text-style-small u-color-light-400 u-margin-0">Usamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra <a href="./legal.html#cookies" class="u-color-brand-500 u-text-decoration-underline">política de cookies</a>.</p>
+        <div class="u-flex-horizontal-nowrap u-gap-3">
+          <button onclick="document.getElementById('cookie-banner').style.display='none';" class="u-text-style-small u-color-light-400 u-bg-transparent u-border-none" style="cursor: pointer;">Rechazar</button>
+          <div class="button_main_wrap" data-trigger="hover focus" style="--_button---size: var(--_spacing---space--4);">
+            <button onclick="document.getElementById('cookie-banner').style.display='none';" class="button_main_element">
+              <div class="button_main_text u-text-style-small">Aceptar</div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site-wide flame cursor + button fire + floating-CTA dock -->
+  <script src="js/site.js?v=20260606x" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Canvas Slider</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        .viewport {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            cursor: grab;
+        }
+
+        .viewport.dragging {
+            cursor: grabbing;
+        }
+
+        .grid-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .grid-item {
+            position: absolute;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #1a1a1a;
+            transition: transform 0.3s ease, z-index 0s;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+            z-index: 100;
+        }
+
+        .grid-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 13px;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.2));
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .grid-item.progress-active::before {
+            opacity: 1;
+        }
+
+        .grid-item svg.progress-ring {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            pointer-events: none;
+            z-index: 101;
+        }
+
+        .grid-item svg.progress-ring rect {
+            fill: none;
+            stroke: white;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-dasharray: 0 10000;
+            transform-origin: center;
+        }
+
+        .grid-item.animating svg.progress-ring rect {
+            animation: drawProgress 2s linear forwards;
+        }
+
+        @keyframes drawProgress {
+            to {
+                stroke-dasharray: var(--circumference) 10000;
+            }
+        }
+
+        .grid-item.complete svg.progress-ring rect {
+            stroke-dasharray: var(--circumference) 10000 !important;
+            stroke-width: 3;
+            animation: pulseComplete 0.5s ease-out forwards;
+        }
+
+        @keyframes pulseComplete {
+            0% {
+                stroke-width: 2;
+                stroke: white;
+                opacity: 1;
+            }
+            50% {
+                stroke-width: 4;
+                stroke: white;
+                opacity: 1;
+            }
+            100% {
+                stroke-width: 3;
+                stroke: white;
+                opacity: 0.9;
+            }
+        }
+
+        .item-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .item-bg {
+            position: absolute;
+            inset: 0;
+        }
+
+        .item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.7) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .grid-item:hover .item-overlay {
+            opacity: 1;
+        }
+
+        .item-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px;
+            color: white;
+            font-weight: 600;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .grid-item:hover .item-title {
+            transform: translateY(0);
+        }
+
+        /* Controls */
+        .controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 12px;
+            padding: 24px;
+            color: white;
+            z-index: 1000;
+        }
+
+        .controls h3 {
+            margin-bottom: 20px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.7;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+
+        .control-value {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #4CAF50;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .toggle-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 48px;
+            height: 24px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.2);
+            transition: 0.3s;
+            border-radius: 12px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background: #4CAF50;
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(24px);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.2s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stats {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 11px;
+            opacity: 0.6;
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="viewport">
+        <div class="grid-container"></div>
+    </div>
+
+    <div class="controls">
+        <h3>Infinite Grid Controls</h3>
+
+        <div class="toggle-group">
+            <span>Auto Scroll</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="autoScroll">
+                <span class="toggle-slider"></span>
+            </label>
+        </div>
+
+        <div class="control-group">
+            <div class="control-label">
+                <span>Speed X</span>
+                <span class="control-value" id="speedXValue">0</span>
+            </div>
+            <input type="range" id="speedX" min="-5" max="5" step="0.1" value="0">
+        </div>
+
+        <div class="control-group">
+            <div class="control-label">
+                <span>Speed Y</span>
+                <span class="control-value" id="speedYValue">0</span>
+            </div>
+            <input type="range" id="speedY" min="-5" max="5" step="0.1" value="0">
+        </div>
+
+        <div class="control-group">
+            <div class="control-label">
+                <span>Item Size</span>
+                <span class="control-value" id="sizeValue">200px</span>
+            </div>
+            <input type="range" id="size" min="100" max="400" step="10" value="200">
+        </div>
+
+        <div class="control-group">
+            <div class="control-label">
+                <span>Gap</span>
+                <span class="control-value" id="gapValue">20px</span>
+            </div>
+            <input type="range" id="gap" min="0" max="50" step="5" value="20">
+        </div>
+
+        <button id="resetBtn">Reset Position</button>
+
+        <div class="stats">
+            <div class="stat">
+                <span>Visible Items</span>
+                <span id="visibleItems">0</span>
+            </div>
+            <div class="stat">
+                <span>Position</span>
+                <span id="position">0, 0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class InfiniteGrid {
+            constructor() {
+                this.viewport = document.querySelector('.viewport');
+                this.container = document.querySelector('.grid-container');
+
+                // Configuration
+                this.itemSize = 200;
+                this.gap = 20;
+                this.autoScroll = false;
+                this.speedX = 0;
+                this.speedY = 0;
+
+                // State
+                this.offsetX = 0;
+                this.offsetY = 0;
+                this.velocityX = 0;
+                this.velocityY = 0;
+                this.isDragging = false;
+                this.dragStartX = 0;
+                this.dragStartY = 0;
+                this.lastMouseX = 0;
+                this.lastMouseY = 0;
+
+                // Grid tracking
+                this.visibleItems = new Map();
+                this.itemPool = [];
+
+                // Hover progress tracking
+                this.hoverTimers = new Map();
+                this.progressAnimations = new Map();
+
+                // Sample data - using picsum for dummy images
+                this.imageCategories = [
+                    'nature', 'city', 'technology', 'food', 'animals',
+                    'architecture', 'people', 'abstract', 'travel', 'business'
+                ];
+
+                this.titles = [
+                    'Aurora Borealis', 'Mountain Vista', 'Urban Dreams', 'Ocean Depths', 'Forest Path',
+                    'Desert Mirage', 'City Lights', 'Digital World', 'Sunset Boulevard', 'Morning Mist'
+                ];
+
+                this.init();
+            }
+
+            init() {
+                this.setupEventListeners();
+                this.updateGrid();
+                this.animate();
+            }
+
+            getItemData(x, y) {
+                // Generate consistent data based on grid position
+                const index = Math.abs(x * 1000 + y) % 10;
+                // Create unique seed for each position to get different images
+                const seed = Math.abs(x * 7919 + y * 6271) % 1000;
+                return {
+                    imageUrl: `https://picsum.photos/seed/${seed}/400/400`,
+                    title: this.titles[index]
+                };
+            }
+
+            createGridItem(x, y) {
+                // Reuse pooled element or create new one
+                let item = this.itemPool.pop();
+                if (!item) {
+                    item = document.createElement('div');
+                    item.className = 'grid-item';
+                    item.innerHTML = `
+                        <div class="item-content">
+                            <div class="item-bg"></div>
+                            <div class="item-overlay"></div>
+                            <div class="item-title"></div>
+                        </div>
+                    `;
+
+                    // Add hover event listeners
+                    item.addEventListener('mouseenter', this.onItemHoverStart.bind(this));
+                    item.addEventListener('mouseleave', this.onItemHoverEnd.bind(this));
+                }
+
+                const data = this.getItemData(x, y);
+                const bg = item.querySelector('.item-bg');
+                const title = item.querySelector('.item-title');
+
+                // Set background image
+                bg.style.backgroundImage = `url(${data.imageUrl})`;
+                bg.style.backgroundSize = 'cover';
+                bg.style.backgroundPosition = 'center';
+                title.textContent = data.title;
+
+                // Position the item
+                const posX = x * (this.itemSize + this.gap) - this.offsetX;
+                const posY = y * (this.itemSize + this.gap) - this.offsetY;
+
+                item.style.left = `${posX + window.innerWidth / 2}px`;
+                item.style.top = `${posY + window.innerHeight / 2}px`;
+                item.style.width = `${this.itemSize}px`;
+                item.style.height = `${this.itemSize}px`;
+
+                item.dataset.gridX = x;
+                item.dataset.gridY = y;
+
+                // Create unique ID for tracking
+                item.dataset.itemId = `${x}_${y}`;
+
+                return item;
+            }
+
+            updateGrid() {
+                const cellSize = this.itemSize + this.gap;
+                const halfWidth = window.innerWidth / 2;
+                const halfHeight = window.innerHeight / 2;
+
+                // Calculate visible grid bounds
+                const startX = Math.floor((this.offsetX - halfWidth - this.itemSize) / cellSize);
+                const endX = Math.ceil((this.offsetX + halfWidth + this.itemSize) / cellSize);
+                const startY = Math.floor((this.offsetY - halfHeight - this.itemSize) / cellSize);
+                const endY = Math.ceil((this.offsetY + halfHeight + this.itemSize) / cellSize);
+
+                // Track which items should be visible
+                const newVisible = new Set();
+
+                for (let x = startX; x <= endX; x++) {
+                    for (let y = startY; y <= endY; y++) {
+                        const key = `${x},${y}`;
+                        newVisible.add(key);
+
+                        if (!this.visibleItems.has(key)) {
+                            // Create new item
+                            const item = this.createGridItem(x, y);
+                            this.container.appendChild(item);
+                            this.visibleItems.set(key, item);
+                        } else {
+                            // Update existing item position
+                            const item = this.visibleItems.get(key);
+                            const posX = x * cellSize - this.offsetX;
+                            const posY = y * cellSize - this.offsetY;
+                            item.style.left = `${posX + halfWidth}px`;
+                            item.style.top = `${posY + halfHeight}px`;
+                        }
+                    }
+                }
+
+                // Remove items that are no longer visible
+                for (const [key, item] of this.visibleItems) {
+                    if (!newVisible.has(key)) {
+                        this.container.removeChild(item);
+                        this.itemPool.push(item);
+                        this.visibleItems.delete(key);
+                    }
+                }
+
+                // Update stats
+                document.getElementById('visibleItems').textContent = this.visibleItems.size;
+                document.getElementById('position').textContent =
+                    `${Math.round(this.offsetX)}, ${Math.round(this.offsetY)}`;
+            }
+
+            setupEventListeners() {
+                // Drag events
+                this.viewport.addEventListener('mousedown', this.onDragStart.bind(this));
+                document.addEventListener('mousemove', this.onDragMove.bind(this));
+                document.addEventListener('mouseup', this.onDragEnd.bind(this));
+
+                this.viewport.addEventListener('touchstart', this.onDragStart.bind(this), { passive: false });
+                document.addEventListener('touchmove', this.onDragMove.bind(this), { passive: false });
+                document.addEventListener('touchend', this.onDragEnd.bind(this));
+
+                // Prevent context menu
+                this.viewport.addEventListener('contextmenu', e => e.preventDefault());
+
+                // Window resize
+                window.addEventListener('resize', () => this.updateGrid());
+
+                // Controls
+                document.getElementById('autoScroll').addEventListener('change', (e) => {
+                    this.autoScroll = e.target.checked;
+                    if (this.autoScroll) {
+                        this.speedX = parseFloat(document.getElementById('speedX').value);
+                        this.speedY = parseFloat(document.getElementById('speedY').value);
+                    }
+                });
+
+                document.getElementById('speedX').addEventListener('input', (e) => {
+                    this.speedX = parseFloat(e.target.value);
+                    document.getElementById('speedXValue').textContent = e.target.value;
+                });
+
+                document.getElementById('speedY').addEventListener('input', (e) => {
+                    this.speedY = parseFloat(e.target.value);
+                    document.getElementById('speedYValue').textContent = e.target.value;
+                });
+
+                document.getElementById('size').addEventListener('input', (e) => {
+                    this.itemSize = parseInt(e.target.value);
+                    document.getElementById('sizeValue').textContent = `${e.target.value}px`;
+                    this.clearGrid();
+                    this.updateGrid();
+                });
+
+                document.getElementById('gap').addEventListener('input', (e) => {
+                    this.gap = parseInt(e.target.value);
+                    document.getElementById('gapValue').textContent = `${e.target.value}px`;
+                    this.clearGrid();
+                    this.updateGrid();
+                });
+
+                document.getElementById('resetBtn').addEventListener('click', () => {
+                    this.offsetX = 0;
+                    this.offsetY = 0;
+                    this.velocityX = 0;
+                    this.velocityY = 0;
+                    this.updateGrid();
+                });
+            }
+
+            clearGrid() {
+                for (const item of this.visibleItems.values()) {
+                    this.container.removeChild(item);
+                    this.itemPool.push(item);
+                }
+                this.visibleItems.clear();
+            }
+
+            onDragStart(e) {
+                this.isDragging = true;
+                this.viewport.classList.add('dragging');
+
+                const point = e.touches ? e.touches[0] : e;
+                this.dragStartX = point.clientX;
+                this.dragStartY = point.clientY;
+                this.lastMouseX = point.clientX;
+                this.lastMouseY = point.clientY;
+
+                this.velocityX = 0;
+                this.velocityY = 0;
+
+                e.preventDefault();
+            }
+
+            onDragMove(e) {
+                if (!this.isDragging) return;
+
+                const point = e.touches ? e.touches[0] : e;
+                const deltaX = point.clientX - this.lastMouseX;
+                const deltaY = point.clientY - this.lastMouseY;
+
+                this.offsetX -= deltaX;
+                this.offsetY -= deltaY;
+
+                this.velocityX = -deltaX * 0.5;
+                this.velocityY = -deltaY * 0.5;
+
+                this.lastMouseX = point.clientX;
+                this.lastMouseY = point.clientY;
+
+                this.updateGrid();
+                e.preventDefault();
+            }
+
+            onDragEnd(e) {
+                if (!this.isDragging) return;
+
+                this.isDragging = false;
+                this.viewport.classList.remove('dragging');
+
+                e.preventDefault();
+            }
+
+            onItemHoverStart(e) {
+                const item = e.currentTarget;
+                const itemId = item.dataset.itemId;
+
+                // Clear any existing timer for this item
+                if (this.hoverTimers.has(itemId)) {
+                    clearTimeout(this.hoverTimers.get(itemId));
+                }
+
+                // Start a 2-second timer before animation
+                const timer = setTimeout(() => {
+                    this.startProgressAnimation(item);
+                }, 2000);
+
+                this.hoverTimers.set(itemId, timer);
+            }
+
+            onItemHoverEnd(e) {
+                const item = e.currentTarget;
+                const itemId = item.dataset.itemId;
+
+                // Clear timer if hovering stopped
+                if (this.hoverTimers.has(itemId)) {
+                    clearTimeout(this.hoverTimers.get(itemId));
+                    this.hoverTimers.delete(itemId);
+                }
+
+                // Stop any ongoing animation
+                this.stopProgressAnimation(item);
+            }
+
+            startProgressAnimation(item) {
+                const itemId = item.dataset.itemId;
+
+                // Remove any existing SVG
+                const existingSvg = item.querySelector('.progress-ring');
+                if (existingSvg) {
+                    existingSvg.remove();
+                }
+
+                // Create SVG progress ring
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.classList.add('progress-ring');
+
+                const radius = 6; // Border radius of the item
+                const width = this.itemSize + 4;
+                const height = this.itemSize + 4;
+
+                // Create rounded rectangle path
+                const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                rect.setAttribute('x', '2');
+                rect.setAttribute('y', '2');
+                rect.setAttribute('width', (width - 4).toString());
+                rect.setAttribute('height', (height - 4).toString());
+                rect.setAttribute('rx', '12');
+                rect.setAttribute('ry', '12');
+
+                // Calculate circumference
+                const circumference = 2 * (width + height - 8) + Math.PI * radius * 4;
+                item.style.setProperty('--circumference', circumference);
+                rect.style.strokeDasharray = `0 ${circumference}`;
+
+                svg.appendChild(rect);
+                item.appendChild(svg);
+
+                // Start animation
+                item.classList.add('progress-active');
+
+                // Start the animation immediately
+                setTimeout(() => {
+                    item.classList.add('animating');
+                }, 10);
+
+                // Set timer for animation completion
+                const animTimer = setTimeout(() => {
+                    item.classList.remove('animating');
+                    item.classList.add('complete');
+                    // Animation now pauses with the complete line visible
+                    // The line stays until hover ends
+                }, 2010);
+
+                this.progressAnimations.set(itemId, animTimer);
+            }
+
+            stopProgressAnimation(item) {
+                const itemId = item.dataset.itemId;
+
+                // Clear animation timer
+                if (this.progressAnimations.has(itemId)) {
+                    clearTimeout(this.progressAnimations.get(itemId));
+                    this.progressAnimations.delete(itemId);
+                }
+
+                // Remove classes and SVG
+                item.classList.remove('progress-active', 'animating', 'complete');
+                const svg = item.querySelector('.progress-ring');
+                if (svg) {
+                    svg.remove();
+                }
+            }
+
+            animate() {
+                // Auto-scroll
+                if (this.autoScroll && !this.isDragging) {
+                    this.offsetX += this.speedX;
+                    this.offsetY += this.speedY;
+                    this.updateGrid();
+                }
+                // Momentum
+                else if (!this.isDragging && (Math.abs(this.velocityX) > 0.1 || Math.abs(this.velocityY) > 0.1)) {
+                    this.offsetX += this.velocityX;
+                    this.offsetY += this.velocityY;
+
+                    this.velocityX *= 0.95;
+                    this.velocityY *= 0.95;
+
+                    if (Math.abs(this.velocityX) < 0.1) this.velocityX = 0;
+                    if (Math.abs(this.velocityY) < 0.1) this.velocityY = 0;
+
+                    this.updateGrid();
+                }
+
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        // Initialize
+        const grid = new InfiniteGrid();
+    </script>
+</body>
+</html>

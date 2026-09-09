@@ -1,0 +1,5324 @@
+/* Site-specific styles extracted from Webflow export */
+
+@font-face {
+  font-family: Salsita Funk;
+  src: url('../assets/resources/fonts/Salsita-Funk.woff2') format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --_theme---background: var(--swatch--light-400);
+  --_text-style---font-family: var(--_typography---font--secondary-family);
+  --_theme---text: var(--swatch--dark-900);
+  --_text-style---font-size: var(--_typography---font-size--text-main);
+  --_text-style---line-height: var(--_typography---line-height--huge);
+  --_text-style---font-weight: var(--_typography---font--primary-regular);
+  --_text-style---letter-spacing: var(--_typography---letter-spacing--normal);
+  --site--gutter: clamp(1 * 1rem, ((1 - ((2 - 1) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((2 - 1) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 2 * 1rem);
+  --_spacing---space--8: clamp(2 * 1rem, ((2 - ((3 - 2) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((3 - 2) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 3 * 1rem);
+  --radius--main: 2.2rem;
+  /* Minimal gap between swiper items, shared by all sliders so testimonial
+     and image carousels stay visually consistent. Stays small across all
+     viewports — overrides should be rare. */
+  --swiper-gap: clamp(0.2rem, 0.3vw, 0.4rem);
+  --_theme---background-2: var(--swatch--light-500);
+  --site--column-count: 12;
+  --site--column-width: calc((min(var(--max-width--main), 100% - var(--site--margin) * 2)  - (var(--site--gutter) * (var(--site--column-count)  - 1))) / var(--site--column-count));
+  --_responsive---large: 1;
+  --_responsive---medium: 0;
+  --_responsive---small: 0;
+  --_responsive---xsmall: 0;
+  --_spacing---space--6: clamp(1.5 * 1rem, ((1.5 - ((2 - 1.5) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((2 - 1.5) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 2 * 1rem);
+  --_spacing---section-space--main: clamp(3 * 1rem, ((3 - ((5 - 3) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((5 - 3) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 5 * 1rem);
+  --_spacing---space--5: clamp(1.75 * 1rem, ((1.75 - ((2 - 1.75) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((2 - 1.75) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 2 * 1rem);
+  --max-width--small: 50rem;
+  --site--margin: clamp(1 * 1rem, ((1 - ((3 - 1) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((3 - 1) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 3 * 1rem);
+  --_gap---size: var(--site--gutter);
+  --_column-count---value: 1;
+  --_theme---background-skeleton: color-mix(in lab, currentcolor 10%, transparent);
+  --_spacing---space--3: clamp(.875 * 1rem, ((.875 - ((1 - .875) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((1 - .875) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 1 * 1rem);
+  --border-width--main: .125rem;
+  --_text-style---margin-bottom: var(--_spacing---space--4);
+  --_text-style---text-wrap: pretty;
+  --_spacing---space--2: clamp(.625 * 1rem, ((.625 - ((.75 - .625) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((.75 - .625) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), .75 * 1rem);
+  --_spacing---section-space--none: 0px;
+  --_spacing---section-space--small: clamp(2 * 1rem, ((2 - ((3.5 - 2) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((3.5 - 2) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 3.5 * 1rem);
+  --_spacing---section-space--large: clamp(4 * 1rem, ((4 - ((7 - 4) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((7 - 4) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 7 * 1rem);
+  --_spacing---section-space--page-top: clamp(7 * 1rem, ((7 - ((10 - 7) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((10 - 7) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 10 * 1rem);
+  --max-width--main: 90rem;
+  --max-width--full: 100vw;
+  --_text-style---margin-top: var(--_spacing---space--4);
+  --_text-style---trim-top: var(--_typography---font--primary-trim-top);
+  --_text-style---trim-bottom: var(--_typography---font--primary-trim-bottom);
+  --_spacing---space--7: clamp(1.75 * 1rem, ((1.75 - ((2.5 - 1.75) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((2.5 - 1.75) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 2.5 * 1rem);
+  --_typography---line-height--small: 0.95;
+  --_typography---line-height--medium: 1;
+  --_typography---line-height--large: 1.15;
+  --_typography---line-height--huge: 1.25;
+  --_typography---letter-spacing--tight: -.03em;
+  --_typography---letter-spacing--normal: 0em;
+  --_theme---heading-accent: var(--swatch--brand-500);
+  --_spacing---space--1: clamp(.375 * 1rem, ((.375 - ((.5 - .375) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((.5 - .375) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), .5 * 1rem);
+  --_spacing---space--4: clamp(1.25 * 1rem, ((1.25 - ((1.5 - 1.25) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((1.5 - 1.25) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 1.5 * 1rem);
+  --_typography---font--primary-family: "Neulis Neue", sans-serif;
+  --_typography---font--primary-regular: 400;
+  --_typography---font--primary-medium: 500;
+  --_typography---font--primary-bold: 700;
+  --radius--small: .5rem;
+  --radius--round: 100vw;
+  --_theme---border: var(--swatch--dark-900-o20);
+  /* Standard width for centered single-column info blocks (tagline + display
+     heading + lead paragraph + body). Lifted from the canonical "Desplumemos
+     tu recompensa" section in club-secreto so all similar sections share the
+     exact same measure. Combine with the "Centered info block" composition:
+     padding-block: space-12 / tagline mb-4 / h2 mb-6 / lead mb-5 / body mb-4. */
+  --cs-measure: 64rem;
+  /* text-large: 1.125-2.5rem (18-40px). Uses a dedicated viewport-max of 160
+     (= 2560px) rather than the global 120 so big screens (2K/4K) keep ramping
+     up past the small-desktop sweet spot instead of pinning early. At 1440px
+     this still lands ~29px (close to where the previous 2rem max landed) but
+     at 2560px+ it reaches 40px. Basis stays `min(100vw, 220vh)` so unusually
+     short viewports rein in by height. */
+  --_typography---font-size--text-large: clamp(1.125 * 1rem, ((1.125 - ((2.5 - 1.125) / (160 - 20) * 20)) * 1rem + ((2.5 - 1.125) / (160 - 20)) * min(100vw, 220vh)), 2.5 * 1rem);
+  --swatch--transparent: transparent;
+  --_trigger---on: 1;
+  --_trigger---off: 0;
+  --_theme---button-primary--background: var(--swatch--brand-500);
+  --_button-style---text: var(--_theme---button-primary--text);
+  --_button-style---text-hover: var(--_theme---button-primary--text-hover);
+  --_button-style---background: var(--_theme---button-primary--background);
+  --_button-style---background-hover: var(--_theme---button-primary--background-hover);
+  --_theme---text-link--border: var(--_theme---border);
+  --_theme---text-link--text: var(--_theme---text);
+  --_theme---text-link--text-hover: var(--_theme---text-link--text);
+  --button-size--medium: 3.75rem;
+  --_button-style---border: var(--_theme---button-primary--border);
+  --_button-style---border-hover: var(--_theme---button-primary--border-hover);
+  --button-size--large: 6rem;
+  --_state---false: 0;
+  --_state---true: 1;
+  --focus--offset-inner: calc(var(--focus--width) * -1);
+  --nav--max-width-outer: 0px;
+  --nav--spacing-outer-horizontal: var(--site--margin);
+  --nav--radius: var(--radius--small);
+  --_theme---nav--background: var(--_theme---background-2);
+  --nav--max-width-inner: 0px;
+  --nav--height-total: calc(var(--nav--height)  + var(--nav--spacing-outer-vertical));
+  --nav--spacing-outer-vertical: var(--site--margin);
+  --swatch--dark-900: #1d1d1b;
+  --nav--height: 4rem;
+  --nav--hamburger-thickness: var(--border-width--main);
+  --nav--hamburger-gap: var(--_spacing---space--2);
+  --nav--spacing-inner-horizontal: var(--_spacing---space--5);
+  --focus--width: .125rem;
+  --_theme---text-link--border-hover: var(--_theme---text);
+  --_text-style---text-transform: var(--_typography---text-transform--none);
+  --_text-style---text-style: var(--_typography---text-transform--none);
+  /* Was 90 (= 1440px). Lumos uses this as the upper end of the fluid-type
+     ramp, so any viewport ≥ this value pins every clamp to its MAX. At 1440
+     the whole system was already at max → "small desktops" (1440-1920) had
+     no headroom and everything felt oversized. Bumping to 120 (= 1920px)
+     extends the interpolation so 1440 lands ~70% of the way up the ramp. */
+  --site--viewport-max: 120;
+  --_theme---text-2: var(--swatch--dark-900);
+  --site--viewport-min: 20;
+  --_theme---heading-accent-2: var(--swatch--orchid-500);
+  --_theme---selection--background: var(--swatch--brand-300);
+  --_theme---selection--text: var(--swatch--brand-text);
+  --focus--offset-outer: .1875rem;
+  --swatch--light-100: #fdfbfa;
+  --swatch--light-100-o20: color-mix(in srgb, var(--swatch--light-100) 20%, transparent);
+  --swatch--light-200: #fbf8f5;
+  --swatch--dark-800: #2a2a27;
+  --swatch--dark-900-o20: color-mix(in srgb, var(--swatch--dark-900) 20%, transparent);
+  --swatch--brand-100: #ffede9;
+  --swatch--brand-200: #ffdcd3;
+  --swatch--brand-400: color-mix(in srgb, var(--swatch--brand-500), white 20%);
+  --swatch--brand-300: #ff8565;
+  --swatch--brand-500: #ff5224;
+  --swatch--brand-900: color-mix(in srgb, var(--swatch--brand-500), black 80%);
+  --swatch--brand-800: #4c180a;
+  --swatch--brand-700: #66200e;
+  --swatch--brand-600: #cc411c;
+  --swatch--brand-text: var(--swatch--dark-900);
+  --swatch--brand-text-o20: color-mix(in srgb, var(--swatch--brand-text) 20%, transparent);
+  --_theme---button-primary--border: var(--_theme---button-primary--background);
+  --_theme---button-primary--text: var(--swatch--brand-text);
+  --_theme---button-primary--background-hover: var(--_theme---text);
+  --_theme---button-primary--border-hover: var(--_theme---button-primary--background-hover);
+  --_theme---button-primary--text-hover: var(--_theme---background);
+  --_theme---button-secondary--background: var(--_theme---text-2);
+  --_theme---button-secondary--border: var(--_theme---border);
+  --_theme---button-secondary--text: var(--_theme---background);
+  --_theme---button-secondary--background-hover: var(--_theme---text);
+  --_theme---button-secondary--border-hover: var(--_theme---button-secondary--background-hover);
+  --_theme---button-secondary--text-hover: var(--_theme---text-2);
+  --nav--banner-height: 2.4rem;
+  --_typography---font--primary-trim-top: .33em;
+  --_typography---font--primary-trim-bottom: .38em;
+  --_typography---font--secondary-family: "Neulis Neue", sans-serif;
+  --_typography---font--secondary-trim-top: .33em;
+  --_typography---font--secondary-trim-bottom: .38em;
+  --_typography---font--secondary-regular: 400;
+  --_typography---font--secondary-medium: 500;
+  --_typography---font--secondary-bold: 700;
+  --_typography---font-size--text-tiny: clamp(.6875 * 1rem, ((.6875 - ((.75 - .6875) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((.75 - .6875) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), .75 * 1rem);
+  --_typography---font-size--text-small: clamp(.8125 * 1rem, ((.8125 - ((.875 - .8125) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((.875 - .8125) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), .875 * 1rem);
+  /* text-main: 1-1.5rem (16-24px). Same dedicated viewport-max of 160 as
+     text-large so the body type keeps growing into 2K/4K territory. At
+     1440px lands ~20px (where small desktops felt right); at 1920px ~22px;
+     at 2560px+ tops out at 24px. */
+  --_typography---font-size--text-main: clamp(1 * 1rem, ((1 - ((1.5 - 1) / (160 - 20) * 20)) * 1rem + ((1.5 - 1) / (160 - 20)) * min(100vw, 220vh)), 1.5 * 1rem);
+  --_typography---font-size--h6: clamp(1 * 1rem, ((1 - ((1.125 - 1) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((1.125 - 1) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 1.125 * 1rem);
+  --_typography---font-size--h5: clamp(1.375 * 1rem, ((1.375 - ((1.5 - 1.375) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((1.5 - 1.375) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 1.5 * 1rem);
+  --_typography---font-size--h4: clamp(1.75 * 1rem, ((1.75 - ((2 - 1.75) / (var(--site--viewport-max)  - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((2 - 1.75) / (var(--site--viewport-max)  - var(--site--viewport-min))) * 100vw), 2 * 1rem);
+  --_typography---font-size--h3: clamp(2 * 1rem, ((2 - ((2.5 - 2) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((2.5 - 2) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), 2.5 * 1rem);
+  --_typography---font-size--h2: clamp(2.5 * 1rem, ((2.5 - ((3.25 - 2.5) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((3.25 - 2.5) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), 3.25 * 1rem);
+  --_typography---font-size--h1: clamp(3 * 1rem, ((3 - ((4 - 3) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((4 - 3) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), 4 * 1rem);
+  --_typography---font-size--display: clamp(4 * 1rem, ((4 - ((5.5 - 4) / (var(--site--viewport-max) - var(--site--viewport-min)) * var(--site--viewport-min))) * 1rem + ((5.5 - 4) / (var(--site--viewport-max) - var(--site--viewport-min))) * 100vw), 5.5 * 1rem);
+  --_typography---text-transform--none: var(--text-transform, none);
+  --_typography---text-transform--uppercase: uppercase;
+  --_typography---text-transform--capitalize: capitalize;
+  --_typography---text-transform--lowercase: lowercase;
+  --radius--large: 1.5rem;
+  --_typography---text-transform--italic: italic;
+  --border-width--thick: .1875rem;
+  --swatch--light-400: #efdece;
+  --swatch--light-600: #5f5852;
+  --swatch--dark-200: #d1d1d1;
+  --swatch--light-700: #47423d;
+  --swatch--orchid-100: #fcf1fb;
+  --swatch--light-300: #f3e7dc;
+  --swatch--orchid-600: #b763b3;
+  --swatch--orchid-200: #f9e4f8;
+  --swatch--dark-100: #e8e8e8;
+  --swatch--gold: #f29100;
+  --swatch--hierba: #12a438;
+  --swatch--red-500: #E20413;
+  --swatch--orchid-800: #442543;
+  --swatch--orchid-700: #5b3159;
+  --swatch--orchid-text: var(--swatch--dark-900);
+  --swatch--light-500: #bfb1a4;
+  --swatch--orchid-300: #eca3e9;
+  --swatch--orchid-500: #e57ce0;
+  --swatch--dark-700: #1d1d1b;
+  --swatch--dark-300: #60605f;
+  --swatch--dark-850: #0b0b0a;
+}
+.styleguide_subheading {
+  margin-bottom: 0;
+}
+.styleguide_card_wrap {
+  padding: var(--_spacing---space--5);
+  grid-column-gap: var(--_spacing---space--6);
+  grid-row-gap: var(--_spacing---space--6);
+  border-radius: var(--radius--main);
+  background-color: var(--_theme---background);
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.styleguide_footer {
+  border-top: var(--border-width--main) solid var(--_theme---border);
+  text-align: center;
+}
+.tag_wrap {
+  border-radius: var(--radius--small);
+  background-color: var(--_theme---text);
+  color: var(--_theme---background);
+  line-height: var(--_typography---line-height--small);
+  text-align: center;
+  min-width: 4rem;
+  padding: .5rem .75rem;
+  display: inline-block;
+}
+.styleguide_font_item {
+  padding-top: var(--_spacing---space--5);
+  padding-bottom: var(--_spacing---space--5);
+  grid-column-gap: var(--_spacing---space--4);
+  grid-row-gap: var(--_spacing---space--4);
+  border-bottom: var(--border-width--main) solid var(--_theme---border);
+  flex-flow: column;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-columns: 1fr;
+  justify-content: center;
+  align-items: flex-start;
+  display: flex;
+}
+.form_label_wrap {
+  text-align: left;
+  flex-flow: column;
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+.form_label_text {
+  margin-bottom: var(--_spacing---space--1);
+  display: inline-block;
+}
+.form_label_text[data-style="hidden"] {
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+  border-width: 0;
+  width: 1px;
+  height: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  position: absolute;
+  inset: 0% 0% auto;
+  overflow: hidden;
+}
+.form_label_text[data-style="bold"] {
+  margin-bottom: var(--_spacing---space--2);
+  font-size: var(--_typography---font-size--text-large);
+  font-weight: var(--_typography---font--primary-bold);
+}
+.form_wrap {
+  flex-flow: wrap;
+  width: 100%;
+  margin-bottom: 0;
+  display: flex;
+}
+.form_success_wrap {
+  border: var(--border-width--main) solid var(--_theme---border);
+  border-radius: var(--radius--main);
+  background-color: var(--swatch--transparent);
+  width: 100%;
+  padding: 1.2rem;
+}
+.form_element {
+  grid-column-gap: var(--_spacing---space--8);
+  grid-row-gap: var(--_spacing---space--8);
+  flex-flow: column;
+  width: 100%;
+  display: flex;
+}
+.form_error_wrap {
+  border: var(--border-width--main) solid var(--_theme---border);
+  background-color: #0000;
+  align-self: flex-start;
+  width: 100%;
+  margin-top: 0;
+  padding: .8rem 1.4rem;
+}
+.form_field {
+  border-top-style: solid;
+  border-top-width: var(--border-width--main);
+  border-top-color: #000;
+  border-right-style: solid;
+  border-right-width: var(--border-width--main);
+  border-bottom-style: solid;
+  border-right-color: #000;
+  border-bottom-width: var(--border-width--main);
+  border-bottom-color: #000;
+  border-left-style: solid;
+  border-left-width: var(--border-width--main);
+  border-top-left-radius: var(--radius--small);
+  border-top-right-radius: var(--radius--small);
+  border-bottom-left-radius: var(--radius--small);
+  border-bottom-right-radius: var(--radius--small);
+  font-family: var(--_text-style---font-family);
+  font-size: var(--_text-style---font-size);
+  line-height: var(--_text-style---line-height);
+  font-weight: var(--_text-style---font-weight);
+  letter-spacing: var(--_text-style---letter-spacing);
+  --_text-style---font-family: var(--_typography---font--secondary-family);
+  --_text-style---font-size: var(--_typography---font-size--text-large);
+  --_text-style---line-height: var(--_typography---line-height--huge);
+  --_text-style---font-weight: var(--_typography---font--primary-regular);
+  --_text-style---letter-spacing: var(--_typography---letter-spacing--normal);
+  --_text-style---margin-bottom: var(--_spacing---space--4);
+  --_text-style---text-wrap: pretty;
+  --_text-style---margin-top: var(--_spacing---space--4);
+  --_text-style---trim-top: var(--_typography---font--primary-trim-top);
+  --_text-style---trim-bottom: var(--_typography---font--primary-trim-bottom);
+  --_text-style---text-transform: var(--_typography---text-transform--none);
+  --_text-style---text-style: var(--_typography---text-transform--none);
+  color: inherit;
+  text-transform: var(--_text-style---text-transform, none);
+  -webkit-appearance: none;
+  appearance: none;
+  border-left-color: #000;
+  border-color: color-mix(in srgb, var(--_theme---border) calc(100% * var(--_trigger---on)), var(--_theme---text) calc(100% * var(--_trigger---off)));
+  background-color: #0000;
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 0;
+  padding: 0 .9rem;
+  display: block;
+  outline: none !important;
+}
+.form_field::placeholder {
+  color: color-mix(in srgb, var(--_theme---text) 60%, transparent);
+}
+.form_field.is-textarea {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 5rem;
+  padding-top: .5rem;
+  padding-left: .9rem;
+  padding-right: .9rem;
+}
+.button_main_element {
+  grid-column-gap: .5rem;
+  grid-row-gap: .5rem;
+  border-top-style: solid;
+  border-top-width: var(--border-width--main);
+  border-right-style: solid;
+  border-right-width: var(--border-width--main);
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-width--main);
+  border-left-style: solid;
+  border-left-width: var(--border-width--main);
+  box-shadow: 0 5px 0 0 var(--_theme---button-primary--background);
+  text-align: center;
+  vertical-align: middle;
+  --_column-count---value: 1;
+  --_button-style---text: var(--_theme---button-primary--text);
+  --_button-style---text-hover: var(--_theme---button-primary--text-hover);
+  --_button-style---background: var(--_theme---button-primary--background);
+  --_button-style---background-hover: var(--_theme---button-primary--background-hover);
+  --_button-style---border: var(--_theme---button-primary--border);
+  --_button-style---border-hover: var(--_theme---button-primary--border-hover);
+  color: color-mix(in srgb, var(--_button-style---text) calc(100% * var(--_trigger---on)), var(--_button-style---text-hover) calc(100% * var(--_trigger---off)));
+  background-color: color-mix(in srgb, var(--_button-style---background) calc(100% * var(--_trigger---on)), var(--_button-style---background-hover) calc(100% * var(--_trigger---off)));
+  border-radius: inherit;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  /* Vertical padding bumped (1.125rem → 1.85rem) so buttons feel chunkier;
+     horizontal padding unchanged. */
+  padding: 1.85rem 1.875rem;
+  line-height: 1;
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+  display: flex;
+  position: relative;
+}
+.button_main_element[data-style="secondary"] {
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_main_element[data-style="link"] {
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-color: var(--_theme---text-link--border);
+  color: color-mix(in srgb, var(--_theme---text-link--text) calc(100% * var(--_trigger---on)), var(--_theme---text-link--text-hover) calc(100% * var(--_trigger---off)));
+  background-color: #0000;
+  border-left-style: none;
+  padding: .5rem 0;
+}
+.button_main_element:hover {
+  box-shadow: 0 0 0 0 var(--_theme---button-primary--background);
+  transform: translate(0, 5px);
+}
+/* Dark-on-brand primary buttons (e.g. the historia/menu CONTACTO and the
+   club CTAs) should keep their solid dark fill on hover — only the 5px
+   shadow/press interaction, no brightness shift. Lumos defaults the brand
+   hover fill to a white-10% mix; pin it back to the base fill. */
+.u-theme-brand {
+  --_theme---button-primary--background-hover: var(--_theme---button-primary--background);
+}
+.button_main_text {
+  line-height: inherit;
+  position: relative;
+  /* Default button label is clearly larger than body copy. site.css loads
+     after lumos.css so this beats utility classes like u-text-style-main at
+     the same specificity; smaller variants (u-text-style-small / -tiny)
+     still win on the few places that opt out (e.g. cookie banner buttons). */
+  font-size: 1.375rem;
+}
+.button_main_element .button_main_text.u-text-style-small {
+  font-size: var(--_typography---font-size--text-small);
+}
+.button_main_element .button_main_text.u-text-style-tiny {
+  font-size: var(--_typography---font-size--text-tiny);
+}
+.button_toggle_element {
+  width: var(--button-size--medium);
+  aspect-ratio: 1;
+  border-top-style: solid;
+  border-top-width: var(--border-width--main);
+  border-right-style: solid;
+  border-right-width: var(--border-width--main);
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-width--main);
+  border-left-style: solid;
+  border-left-width: var(--border-width--main);
+  vertical-align: middle;
+  --_button-style---text: var(--_theme---button-primary--text);
+  --_button-style---text-hover: var(--_theme---button-primary--text-hover);
+  --_button-style---background: var(--_theme---button-primary--background);
+  --_button-style---background-hover: var(--_theme---button-primary--background-hover);
+  --_button-style---border: var(--_theme---button-primary--border);
+  --_button-style---border-hover: var(--_theme---button-primary--border-hover);
+  color: color-mix(in srgb, var(--_button-style---text) calc(100% * var(--_trigger---on)), var(--_button-style---text-hover) calc(100% * var(--_trigger---off)));
+  background-color: color-mix(in srgb, var(--_button-style---background) calc(100% * var(--_trigger---on)), var(--_button-style---background-hover) calc(100% * var(--_trigger---off)));
+  border-top-color: color-mix(in srgb, var(--_button-style---border) calc(100% * var(--_trigger---on)), var(--_button-style---border-hover) calc(100% * var(--_trigger---off)));
+  border-right-color: color-mix(in srgb, var(--_button-style---border) calc(100% * var(--_trigger---on)), var(--_button-style---border-hover) calc(100% * var(--_trigger---off)));
+  border-bottom-color: color-mix(in srgb, var(--_button-style---border) calc(100% * var(--_trigger---on)), var(--_button-style---border-hover) calc(100% * var(--_trigger---off)));
+  border-left-color: color-mix(in srgb, var(--_button-style---border) calc(100% * var(--_trigger---on)), var(--_button-style---border-hover) calc(100% * var(--_trigger---off)));
+  border-radius: inherit;
+  justify-content: center;
+  align-items: center;
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+  display: flex;
+  position: relative;
+}
+.button_toggle_element[data-style="secondary-medium"] {
+  width: var(--button-size--medium);
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_toggle_element[data-style="secondary-medium"] {
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_toggle_element[data-style="primary-large"] {
+  width: var(--button-size--large);
+}
+.button_toggle_element[data-style="secondary-large"] {
+  width: var(--button-size--large);
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_toggle_element[data-style="secondary-large"] {
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_toggle_icon {
+  aspect-ratio: 1;
+  width: 36%;
+  position: relative;
+}
+.page_wrap {
+  flex-flow: column;
+  min-height: 100svh;
+  display: flex;
+  overflow: clip;
+}
+.page_main {
+  flex-flow: column;
+  flex: 1;
+  display: flex;
+}
+.styleguide_group {
+  padding-top: var(--_spacing---space--7);
+  grid-column-gap: var(--_spacing---space--5);
+  grid-row-gap: var(--_spacing---space--5);
+  flex-flow: column;
+  display: flex;
+}
+.styleguide_visual {
+  padding: var(--_spacing---space--1);
+  aspect-ratio: 3 / 1.5;
+  border: var(--border-width--main) solid var(--_theme---border);
+  border-radius: var(--radius--small);
+  text-align: center;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-height: 7rem;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+.styleguide_icon {
+  width: 3rem;
+  height: 3rem;
+}
+.hero_utility-page_wrap {
+  text-align: center;
+}
+.hero_utility-page_contain {
+  padding-top: var(--_spacing---section-space--page-top);
+  padding-bottom: var(--_spacing---section-space--main);
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100svh;
+  margin-bottom: 0;
+  display: flex;
+}
+.hero_utility-page_content {
+  grid-column-gap: var(--_spacing---space--8);
+  grid-row-gap: var(--_spacing---space--8);
+  flex-flow: column;
+  max-width: 26rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+.styleguide_contain {
+  padding-top: var(--_spacing---section-space--small);
+  padding-bottom: var(--_spacing---section-space--small);
+}
+.guide_wrap {
+  z-index: 2000;
+  pointer-events: none;
+  display: none;
+  position: fixed;
+  inset: 0% 0% auto;
+  overflow: hidden;
+}
+.guide_layout {
+  grid-column-gap: var(--site--gutter);
+  grid-row-gap: var(--site--gutter);
+  grid-template-rows: auto;
+  grid-auto-columns: 1fr;
+  grid-template-columns: repeat(var(--site--column-count), minmax(0, 1fr));
+  display: grid;
+}
+.guide_column {
+  color: #8a8a8a80;
+  background-color: #9292920f;
+  flex-flow: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100vh;
+  padding-top: .6rem;
+  padding-bottom: .6rem;
+  display: flex;
+}
+.styleguide_list {
+  grid-column-gap: var(--site--gutter);
+  grid-row-gap: var(--site--gutter);
+  flex-flow: column;
+  align-items: stretch;
+  display: flex;
+}
+.styleguide_card_visual {
+  border-top-left-radius: var(--radius--round);
+  border-top-right-radius: var(--radius--round);
+  border-bottom-left-radius: var(--radius--round);
+  border-bottom-right-radius: var(--radius--round);
+  opacity: .1;
+  pointer-events: none;
+  background-color: currentColor;
+  width: 100%;
+  min-width: 3rem;
+  min-height: 3rem;
+  padding: 0;
+}
+.styleguide_flex_wrap {
+  aspect-ratio: 1;
+  background-image: url('../assets/resources/images/dots.svg');
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 88%;
+  flex-flow: column;
+  width: 100%;
+  display: flex;
+  container-type: inline-size;
+}
+.styleguide_flex_dot {
+  opacity: .1;
+  pointer-events: none;
+  background-color: currentColor;
+  border-radius: 100vw;
+  min-width: 16cqw;
+  min-height: 16cqw;
+  padding: 0;
+}
+.styleguide_scroll {
+  padding-right: var(--site--margin);
+  padding-left: var(--site--margin);
+  grid-column-gap: var(--site--gutter);
+  grid-row-gap: var(--site--gutter);
+  margin-left: calc(var(--site--margin) * -1);
+  scrollbar-color: var(--_theme---text) transparent;
+  margin-right: calc(var(--site--margin) * -1);
+  grid-template-rows: auto;
+  grid-template-columns: minmax(15rem, 1fr);
+  grid-auto-columns: minmax(16rem, 1fr);
+  grid-auto-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: grid;
+  overflow: auto clip;
+  -webkit-mask-image: linear-gradient(to right, #0000, #000 3% 97%, #0000);
+  mask-image: linear-gradient(to right, #0000, #000 3% 97%, #0000);
+}
+.styleguide_section {
+  padding-top: var(--_spacing---space--8);
+}
+.clickable_wrap {
+  z-index: 3;
+  border-radius: inherit;
+}
+.clickable_link {
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  inset: 0%;
+}
+.clickable_btn {
+  border-radius: inherit;
+  width: 100%;
+  height: 100%;
+  display: none;
+  position: absolute;
+  inset: 0%;
+}
+.styleguide_layout {
+  grid-column-gap: var(--site--gutter);
+  grid-row-gap: var(--_spacing---space--8);
+  flex-flow: column;
+  grid-auto-columns: 1fr;
+  align-items: start;
+}
+.styleguide_content {
+  grid-column: 1 / span 8;
+  width: 100%;
+}
+.styleguide_nav_card {
+  border-top-left-radius: var(--radius--small);
+  border-top-right-radius: var(--radius--small);
+  border-bottom-left-radius: var(--radius--small);
+  border-bottom-right-radius: var(--radius--small);
+  width: 100%;
+  padding: 1rem;
+  overflow: clip auto;
+}
+.styleguide_nav_list {
+  border-left: var(--border-width--main) solid var(--_theme---border);
+}
+.styleguide_nav_item {
+  margin-left: calc(var(--border-width--main) * -.5);
+}
+.styleguide_nav_link {
+  outline-offset: var(--focus--offset-inner);
+  padding-top: .125rem;
+  padding-bottom: .125rem;
+  padding-left: .75rem;
+  display: block;
+}
+.styleguide_nav_link.w--current {
+  border-left-style: solid;
+  border-left-width: var(--border-width--main);
+  border-left-color: currentColor;
+}
+.styleguide_nav_sub_list {
+  overflow: hidden;
+}
+.styleguide_nav_sub_link {
+  --_trigger---on: 1;
+  --_trigger---off: 0;
+  outline-offset: var(--focus--offset-inner);
+  opacity: calc(1 - .4 * var(--_trigger---on));
+  padding: .125rem 1.1rem;
+  line-height: 1.3em;
+  display: block;
+}
+.styleguide_nav_sub_link.w--current {
+  opacity: 1;
+}
+.styleguide_nav_sub_wrap {
+  grid-template-rows: 0fr;
+  grid-template-columns: minmax(0, 1fr);
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+  display: grid;
+}
+.button_toggle_pause {
+  opacity: var(--_state---false);
+  display: block;
+}
+.button_toggle_play {
+  opacity: var(--_state---true);
+  display: block;
+}
+.styleguide_card_inner {
+  grid-column-gap: var(--_spacing---space--3);
+  grid-row-gap: var(--_spacing---space--3);
+  flex-flow: wrap;
+  place-content: center;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+.styleguide_card_hidden {
+  display: none;
+}
+.hero_utility-page_header {
+  grid-column-gap: var(--_spacing---space--5);
+  grid-row-gap: var(--_spacing---space--5);
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.form_fieldset_wrap {
+  align-items: inherit;
+  justify-content: inherit;
+  width: 100%;
+  position: relative;
+  container-type: inline-size;
+}
+.form_fieldset_list {
+  grid-column-gap: var(--_spacing---space--2);
+  grid-row-gap: var(--_spacing---space--2);
+  align-items: stretch;
+  justify-content: inherit;
+  flex-flow: column;
+  display: flex;
+}
+.form_fieldset_list[data-style="grid-2-column"] {
+  grid-column-gap: var(--site--gutter);
+  grid-row-gap: var(--_spacing---space--2);
+  grid-template-rows: auto;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+.form_fieldset_list[data-style="grid-3-column"] {
+  grid-column-gap: var(--site--gutter);
+  grid-row-gap: var(--_spacing---space--2);
+  grid-template-rows: auto;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+.form_fieldset_list[data-style="flex-horizontal"] {
+  justify-content: inherit;
+  flex-flow: wrap;
+}
+.form_ui_label {
+  grid-column-gap: .5rem;
+  grid-row-gap: .5rem;
+  font-weight: inherit;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 0;
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+  display: flex;
+  position: relative;
+}
+.form_ui_label[data-style="button"] {
+  border-top-style: solid;
+  border-top-width: var(--border-width--main);
+  border-right-style: solid;
+  border-right-width: var(--border-width--main);
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-width--main);
+  border-left-style: solid;
+  border-left-width: var(--border-width--main);
+  border-top-left-radius: var(--radius--round);
+  border-top-right-radius: var(--radius--round);
+  border-bottom-left-radius: var(--radius--round);
+  border-bottom-right-radius: var(--radius--round);
+  border-top-color: color-mix(in srgb, var(--_theme---border) calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+  border-right-color: color-mix(in srgb, var(--_theme---border) calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+  border-bottom-color: color-mix(in srgb, var(--_theme---border) calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+  border-left-color: color-mix(in srgb, var(--_theme---border) calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+  background-color: color-mix(in srgb, var(--swatch--transparent) calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+  color: color-mix(in srgb, currentColor calc(100% * var(--_state---true)), var(--_theme---background) calc(100% * var(--_state---false)));
+  padding: .6rem 1rem .6rem .6rem;
+}
+.form_ui_input {
+  z-index: 2;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  outline-style: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0%;
+}
+.form_ui_visual_wrap {
+  aspect-ratio: 1;
+  border-top-style: solid;
+  border-top-width: var(--border-width--main);
+  border-right-style: solid;
+  border-right-width: var(--border-width--main);
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-width--main);
+  border-left-style: solid;
+  border-left-width: var(--border-width--main);
+  border-top-left-radius: var(--radius--small);
+  border-top-right-radius: var(--radius--small);
+  border-bottom-left-radius: var(--radius--small);
+  border-bottom-right-radius: var(--radius--small);
+  color: var(--_theme---background);
+  border-top-color: color-mix(in srgb, var(--_theme---border) calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+  border-right-color: color-mix(in srgb, var(--_theme---border) calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+  border-bottom-color: color-mix(in srgb, var(--_theme---border) calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+  border-left-color: color-mix(in srgb, var(--_theme---border) calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+  background-color: color-mix(in srgb, var(--swatch--transparent) calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  width: 1.6rem;
+  padding: 0;
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+  display: flex;
+}
+.form_ui_visual_wrap[data-style="toggle"] {
+  aspect-ratio: auto;
+  border-top-left-radius: var(--radius--round);
+  border-top-right-radius: var(--radius--round);
+  border-bottom-left-radius: var(--radius--round);
+  border-bottom-right-radius: var(--radius--round);
+  background-color: color-mix(in srgb, var(--_theme---border) calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+  border-style: none;
+  justify-content: flex-start;
+  align-items: center;
+  width: 3.1rem;
+  height: 1.6rem;
+  padding: .2rem;
+}
+.form_ui_visual_wrap[data-style="button"] {
+  border-top-left-radius: var(--radius--round);
+  border-top-right-radius: var(--radius--round);
+  border-bottom-left-radius: var(--radius--round);
+  border-bottom-right-radius: var(--radius--round);
+  background-color: color-mix(in srgb, var(--swatch--transparent) calc(100% * var(--_state---true)), var(--_theme---background) calc(100% * var(--_state---false)));
+  color: color-mix(in srgb, currentColor calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+}
+.form_ui_visual_wrap[data-style="radio"] {
+  border-color: var(--_theme---border);
+  border-radius: var(--radius--round);
+  background-color: #0000;
+}
+.form_ui_visual_icon {
+  opacity: var(--_state---false);
+  width: 100%;
+  display: block;
+  overflow: visible !important;
+}
+.form_ui_visual_icon[data-style="toggle"], .form_ui_visual_icon[data-style="radio"] {
+  display: none;
+}
+.form_select_wrap {
+  border-radius: 0;
+  justify-content: flex-end;
+  align-items: center;
+  display: flex;
+  position: relative;
+}
+.form_select_icon {
+  pointer-events: none;
+  width: .8em;
+  margin-right: .9rem;
+  display: block;
+  position: absolute;
+  overflow: visible !important;
+}
+.section_wrap[data-style="light"] {
+  --_theme---background: var(--swatch--light-400);
+  --_theme---text: var(--swatch--dark-900);
+  --_theme---background-2: var(--swatch--light-500);
+  --_theme---background-skeleton: color-mix(in lab, currentcolor 10%, transparent);
+  --_theme---heading-accent: var(--swatch--brand-500);
+  --_theme---border: var(--swatch--dark-900-o20);
+  --_theme---button-primary--background: var(--swatch--brand-500);
+  --_theme---text-link--border: var(--_theme---border);
+  --_theme---text-link--text: var(--_theme---text);
+  --_theme---text-link--text-hover: var(--_theme---text-link--text);
+  --_theme---nav--background: var(--_theme---background-2);
+  --_theme---text-link--border-hover: var(--_theme---text);
+  --_theme---text-2: var(--swatch--dark-900);
+  --_theme---heading-accent-2: var(--swatch--orchid-500);
+  --_theme---selection--background: var(--swatch--brand-300);
+  --_theme---selection--text: var(--swatch--brand-text);
+  --_theme---button-primary--border: var(--_theme---button-primary--background);
+  --_theme---button-primary--text: var(--swatch--brand-text);
+  --_theme---button-primary--background-hover: var(--_theme---text);
+  --_theme---button-primary--border-hover: var(--_theme---button-primary--background-hover);
+  --_theme---button-primary--text-hover: var(--_theme---background);
+  --_theme---button-secondary--background: var(--_theme---text-2);
+  --_theme---button-secondary--border: var(--_theme---border);
+  --_theme---button-secondary--text: var(--_theme---background);
+  --_theme---button-secondary--background-hover: var(--_theme---text);
+  --_theme---button-secondary--border-hover: var(--_theme---button-secondary--background-hover);
+  --_theme---button-secondary--text-hover: var(--_theme---text-2);
+}
+.section_wrap[data-style="dark"] {
+  --_theme---background: var(--swatch--dark-900);
+  --_theme---text: var(--swatch--light-400);
+  --_theme---background-2: var(--swatch--dark-800);
+  --_theme---background-skeleton: color-mix(in lab, currentcolor 10%, transparent);
+  --_theme---heading-accent: var(--swatch--brand-500);
+  --_theme---border: var(--swatch--light-100-o20);
+  --_theme---button-primary--background: var(--swatch--brand-500);
+  --_theme---text-link--border: var(--_theme---border);
+  --_theme---text-link--text: var(--_theme---text);
+  --_theme---text-link--text-hover: var(--_theme---text-link--text);
+  --_theme---nav--background: var(--_theme---background-2);
+  --_theme---text-link--border-hover: var(--swatch--brand-500);
+  --_theme---text-2: var(--swatch--brand-500);
+  --_theme---heading-accent-2: var(--swatch--orchid-500);
+  --_theme---selection--background: var(--swatch--brand-300);
+  --_theme---selection--text: var(--swatch--brand-text);
+  --_theme---button-primary--border: var(--_theme---button-primary--background);
+  --_theme---button-primary--text: var(--swatch--brand-text);
+  --_theme---button-primary--background-hover: var(--_theme---text-2);
+  --_theme---button-primary--border-hover: var(--_theme---background-2);
+  --_theme---button-primary--text-hover: var(--_theme---background);
+  --_theme---button-secondary--background: var(--_theme---text-2);
+  --_theme---button-secondary--border: var(--_theme---border);
+  --_theme---button-secondary--text: var(--_theme---background);
+  --_theme---button-secondary--background-hover: var(--_theme---text);
+  --_theme---button-secondary--border-hover: var(--_theme---button-secondary--background-hover);
+  --_theme---button-secondary--text-hover: var(--_theme---text-2);
+}
+.section_wrap[data-style="brand"] {
+  --_theme---background: var(--swatch--brand-500);
+  --_theme---text: var(--swatch--brand-text);
+  --_theme---background-2: var(--swatch--brand-700);
+  --_theme---background-skeleton: color-mix(in lab, currentcolor 10%, transparent);
+  --_theme---heading-accent: color-mix(in srgb, var(--_theme---text), white 20%);
+  --_theme---border: var(--swatch--brand-text-o20);
+  --_theme---button-primary--background: var(--swatch--brand-text);
+  --_theme---text-link--border: var(--_theme---border);
+  --_theme---text-link--text: var(--_theme---text);
+  --_theme---text-link--text-hover: var(--_theme---text-link--text);
+  --_theme---nav--background: var(--_theme---background);
+  --_theme---text-link--border-hover: var(--_theme---text);
+  --_theme---text-2: var(--swatch--brand-text);
+  --_theme---heading-accent-2: color-mix(in srgb, var(--_theme---text), white 20%);
+  --_theme---selection--background: var(--swatch--brand-300);
+  --_theme---selection--text: var(--swatch--brand-text);
+  --_theme---button-primary--border: var(--_theme---button-primary--background);
+  --_theme---button-primary--text: var(--swatch--brand-500);
+  --_theme---button-primary--background-hover: color-mix(in srgb, var(--_theme---button-primary--background), white 10%);
+  --_theme---button-primary--border-hover: var(--_theme---button-primary--background-hover);
+  --_theme---button-primary--text-hover: var(--_theme---button-primary--text);
+  --_theme---button-secondary--background: var(--_theme---text-2);
+  --_theme---button-secondary--border: var(--_theme---border);
+  --_theme---button-secondary--text: var(--_theme---background);
+  --_theme---button-secondary--background-hover: var(--_theme---text);
+  --_theme---button-secondary--border-hover: var(--_theme---button-secondary--background-hover);
+  --_theme---button-secondary--text-hover: var(--_theme---text-2);
+}
+.slider_bullet_list {
+  grid-column-gap: var(--_spacing---space--1);
+  grid-row-gap: var(--_spacing---space--1);
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+  width: auto !important;
+}
+.swiper-wrapper {
+  display: flex;
+}
+.slider_bullet_item {
+  aspect-ratio: 1;
+  border: .09rem solid var(--_theme---border);
+  background-color: #eee0;
+  border-radius: 100vw;
+  width: 1rem;
+  min-width: 0;
+  padding: 0;
+}
+.slider_bullet_item.is-active {
+  border-color: var(--_theme---text);
+  background-color: var(--_theme---text);
+}
+
+/* ─── Shared pill-style pagination ────────────────────────────────────────
+   Sliders that have a `.slider_bullet_list` get an elongated-pill nav by
+   default (cream inactive + brand-orange active). Individual sliders can
+   override this for a different accent color — the reviews carousel uses
+   pink/orchid for its active pill, defined in its inline section style. */
+.slider_bullet_list {
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: var(--_spacing---space--6);
+  width: 100% !important;
+  flex-wrap: wrap;
+}
+.slider_bullet_item {
+  aspect-ratio: auto;
+  width: 1.25rem;
+  height: 0.5rem;
+  background-color: var(--swatch--light-400);
+  border: none;
+  border-radius: 100vw;
+  padding: 0;
+  cursor: pointer;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+.slider_bullet_item.is-active {
+  width: 3rem;
+  background-color: var(--swatch--brand-500);
+  border: none;
+}
+.slider_wrap {
+  grid-column-gap: 0rem;
+  grid-row-gap: var(--_spacing---space--4);
+  flex-flow: column;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.slider_offset {
+  margin-left: calc(var(--_gap---size) * -.5);
+  margin-right: calc(var(--_gap---size) * -.5);
+  flex: 1;
+  display: flex;
+}
+.slider_list {
+  height: 100%;
+}
+.slider_list.swiper-wrapper {
+  display: flex;
+}
+.slider_controls {
+  grid-column-gap: var(--_spacing---space--3);
+  grid-row-gap: var(--_spacing---space--3);
+  flex-flow: wrap;
+  place-content: center space-between;
+  align-items: center;
+  display: flex;
+}
+.slider_button_layout {
+  grid-column-gap: var(--_spacing---space--2);
+  grid-row-gap: var(--_spacing---space--2);
+  flex-flow: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.slider_element.swiper {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+}
+.slider_element.swiper[data-style="default"] {
+  overflow: hidden;
+}
+.slider_element.swiper[data-style="crop-left"] {
+  -webkit-clip-path: polygon(0 0, calc(100% + 100vw) 0, calc(100% + 100vw) 100%, 0% 100%);
+  clip-path: polygon(0 0, calc(100% + 100vw) 0, calc(100% + 100vw) 100%, 0% 100%);
+}
+.card_primary_wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.card_primary_element {
+  grid-column-gap: var(--_spacing---space--4);
+  grid-row-gap: var(--_spacing---space--4);
+  border-top-style: solid;
+  border-top-width: var(--border-width--main);
+  border-right-style: solid;
+  border-right-width: var(--border-width--main);
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-width--main);
+  border-left-style: solid;
+  border-left-width: var(--border-width--main);
+  background-color: var(--_theme---background-2);
+  border-top-color: color-mix(in srgb, transparent calc(100% * var(--_trigger---on)), var(--_theme---text) calc(100% * var(--_trigger---off)));
+  border-right-color: color-mix(in srgb, transparent calc(100% * var(--_trigger---on)), var(--_theme---text) calc(100% * var(--_trigger---off)));
+  border-bottom-color: color-mix(in srgb, transparent calc(100% * var(--_trigger---on)), var(--_theme---text) calc(100% * var(--_trigger---off)));
+  border-left-color: color-mix(in srgb, transparent calc(100% * var(--_trigger---on)), var(--_theme---text) calc(100% * var(--_trigger---off)));
+  border-radius: inherit;
+  padding-top: calc(var(--_spacing---space--7) * max(var(--_responsive---large), var(--_responsive---medium))  + var(--_spacing---space--5) * max(var(--_responsive---small), var(--_responsive---xsmall)));
+  padding-left: calc(var(--_spacing---space--7) * max(var(--_responsive---large), var(--_responsive---medium))  + var(--_spacing---space--4) * max(var(--_responsive---small), var(--_responsive---xsmall)));
+  padding-right: calc(var(--_spacing---space--7) * max(var(--_responsive---large), var(--_responsive---medium))  + var(--_spacing---space--4) * max(var(--_responsive---small), var(--_responsive---xsmall)));
+  padding-bottom: calc(var(--_spacing---space--7) * max(var(--_responsive---large), var(--_responsive---medium))  + var(--_spacing---space--5) * max(var(--_responsive---small), var(--_responsive---xsmall)));
+  flex-flow: column;
+  align-items: stretch;
+  width: 100%;
+  transition-property: border-color;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+  display: flex;
+}
+.card_primary_element[data-style="cover"] {
+  background-color: var(--_theme---background);
+  color: var(--_theme---text);
+  --_theme---background: var(--swatch--dark-900);
+  --_theme---text: var(--swatch--light-400);
+  --_theme---background-2: var(--swatch--dark-800);
+  --_theme---background-skeleton: color-mix(in lab, currentcolor 10%, transparent);
+  --_theme---heading-accent: var(--swatch--brand-500);
+  --_theme---border: var(--swatch--light-100-o20);
+  --_theme---button-primary--background: var(--swatch--brand-500);
+  --_theme---text-link--border: var(--_theme---border);
+  --_theme---text-link--text: var(--_theme---text);
+  --_theme---text-link--text-hover: var(--_theme---text-link--text);
+  --_theme---nav--background: var(--_theme---background-2);
+  --_theme---text-link--border-hover: var(--swatch--brand-500);
+  --_theme---text-2: var(--swatch--brand-500);
+  --_theme---heading-accent-2: var(--swatch--orchid-500);
+  --_theme---selection--background: var(--swatch--brand-300);
+  --_theme---selection--text: var(--swatch--brand-text);
+  --_theme---button-primary--border: var(--_theme---button-primary--background);
+  --_theme---button-primary--text: var(--swatch--brand-text);
+  --_theme---button-primary--background-hover: var(--_theme---text-2);
+  --_theme---button-primary--border-hover: var(--_theme---background-2);
+  --_theme---button-primary--text-hover: var(--_theme---background);
+  --_theme---button-secondary--background: var(--_theme---text-2);
+  --_theme---button-secondary--border: var(--_theme---border);
+  --_theme---button-secondary--text: var(--_theme---background);
+  --_theme---button-secondary--background-hover: var(--_theme---text);
+  --_theme---button-secondary--border-hover: var(--_theme---button-secondary--background-hover);
+  --_theme---button-secondary--text-hover: var(--_theme---text-2);
+  border-style: none;
+}
+.card_primary_element[data-style="stacked"] {
+  background-color: var(--swatch--transparent);
+  border-style: none;
+  padding: 0;
+}
+.button_arrow_element {
+  width: var(--button-size--medium);
+  aspect-ratio: 1;
+  border-top-style: solid;
+  border-top-width: var(--border-width--main);
+  border-right-style: solid;
+  border-right-width: var(--border-width--main);
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-width--main);
+  border-left-style: solid;
+  border-left-width: var(--border-width--main);
+  vertical-align: middle;
+  --_button-style---text: var(--_theme---button-primary--text);
+  --_button-style---text-hover: var(--_theme---button-primary--text-hover);
+  --_button-style---background: var(--_theme---button-primary--background);
+  --_button-style---background-hover: var(--_theme---button-primary--background-hover);
+  --_button-style---border: var(--_theme---button-primary--border);
+  --_button-style---border-hover: var(--_theme---button-primary--border-hover);
+  background-color: color-mix(in srgb, var(--_button-style---background) calc(100% * var(--_trigger---on)), var(--_button-style---background-hover) calc(100% * var(--_trigger---off)));
+  color: color-mix(in srgb, var(--_button-style---text) calc(100% * var(--_trigger---on)), var(--_button-style---text-hover) calc(100% * var(--_trigger---off)));
+  border-top-color: color-mix(in srgb, var(--_button-style---border) calc(100% * var(--_trigger---on)), var(--_button-style---border-hover) calc(100% * var(--_trigger---off)));
+  border-right-color: color-mix(in srgb, var(--_button-style---border) calc(100% * var(--_trigger---on)), var(--_button-style---border-hover) calc(100% * var(--_trigger---off)));
+  border-bottom-color: color-mix(in srgb, var(--_button-style---border) calc(100% * var(--_trigger---on)), var(--_button-style---border-hover) calc(100% * var(--_trigger---off)));
+  border-left-color: color-mix(in srgb, var(--_button-style---border) calc(100% * var(--_trigger---on)), var(--_button-style---border-hover) calc(100% * var(--_trigger---off)));
+  border-radius: inherit;
+  justify-content: center;
+  align-items: center;
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+  display: flex;
+  position: relative;
+}
+.button_arrow_element[data-style="secondary-medium"] {
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_arrow_element[data-style="secondary-medium"] {
+  width: var(--button-size--medium);
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_arrow_element[data-style="secondary-medium"], .button_arrow_element[data-style="secondary-large"] {
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_arrow_element[data-style="primary-large"] {
+  width: var(--button-size--large);
+}
+.button_arrow_element[data-style="secondary-large"] {
+  width: var(--button-size--large);
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_arrow_element[data-style="secondary-large"] {
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_arrow_icon {
+  aspect-ratio: 1;
+  width: 36%;
+  position: relative;
+}
+.accordion_wrap {
+  padding-top: 1px;
+}
+.accordion_toggle_icon {
+  aspect-ratio: 1;
+  transform: rotate(calc(-180deg * var(--_state---false)));
+  flex: none;
+  width: 1.4rem;
+  transition-property: transform;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+}
+.accordion_content_wrap {
+  width: 100%;
+  display: none;
+  position: relative;
+  overflow: visible clip;
+}
+.accordion_content_padding {
+  padding-bottom: var(--_spacing---space--5);
+}
+.accordion_component {
+  border-bottom: var(--border-width--main) solid var(--_theme---border);
+}
+.accordion_toggle_heading {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.accordion_list {
+  margin-top: calc(var(--_spacing---space--4) * -1);
+}
+.accordion_toggle_button {
+  padding-top: var(--_spacing---space--4);
+  padding-bottom: var(--_spacing---space--4);
+  grid-column-gap: var(--_spacing---space--3);
+  grid-row-gap: var(--_spacing---space--3);
+  outline-offset: var(--focus--offset-inner);
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  display: flex;
+}
+.nav_links_svg {
+  transform: rotate(calc(-180deg * var(--_state---false)));
+  flex: none;
+  width: 1rem;
+  margin-left: auto;
+  transition-property: transform;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+  overflow: visible !important;
+}
+.nav_mobile_contain {
+  max-width: var(--nav--max-width-outer);
+  width: calc(100% - var(--nav--spacing-outer-horizontal) * 2);
+  margin-left: auto;
+  margin-right: auto;
+}
+.nav_banner_close_wrap {
+  outline-offset: var(--focus--offset-inner);
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  position: relative;
+  outline-color: var(--_theme---background) !important;
+}
+.nav_links_wrap {
+  flex: 1;
+}
+.nav_links_wrap[data-style="desktop"] {
+  flex-flow: row;
+  justify-content: center;
+  align-items: stretch;
+  display: flex;
+}
+.nav_banner_wrap {
+  z-index: 1;
+  background-color: var(--_theme---text);
+  pointer-events: auto;
+  color: var(--_theme---background);
+  font-size: var(--text-small--font-size);
+  height: var(--nav--banner-height);
+  position: relative;
+}
+.nav_links_item {
+  display: flex;
+}
+.nav_dropdown_mega_content {
+  position: relative;
+}
+.nav_dropdown_mega_content[data-style="desktop"] {
+  border-radius: var(--nav--radius);
+  background-color: var(--_theme---nav--background);
+}
+.nav_dropdown_mega_contain {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.nav_dropdown_mega_contain[data-style="desktop"] {
+  max-width: var(--nav--max-width-inner);
+  padding-top: var(--_spacing---space--7);
+  padding-bottom: var(--_spacing---space--8);
+}
+.nav_dropdown_main_scroll[data-style="desktop"] {
+  border-top-left-radius: var(--nav--radius);
+  border-top-right-radius: var(--nav--radius);
+  border-bottom-left-radius: var(--nav--radius);
+  border-bottom-right-radius: var(--nav--radius);
+  background-color: var(--_theme---nav--background);
+  max-height: calc(100svh - var(--nav--height-total)  - var(--nav--spacing-outer-vertical) * 2);
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+}
+.nav_component {
+  z-index: 1000;
+  pointer-events: none;
+  background-color: #0000;
+  position: sticky;
+  inset: 0% 0% auto;
+  container-type: inline-size;
+}
+.nav_component[data-style="overlap"] {
+  position: fixed;
+}
+.nav_dropdown_main_wrap {
+  background-color: #0000;
+  min-width: 0;
+  position: relative;
+}
+.nav_dropdown_main_wrap[data-style="desktop"] {
+  padding-top: var(--_spacing---space--1);
+  width: 10rem;
+  position: absolute;
+}
+.nav_dropdown_backdrop {
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  background-color: color-mix(in srgb, var(--swatch--dark-900) 20%, transparent);
+  width: 100%;
+  height: 100vh;
+  display: none;
+  position: absolute;
+  inset: 0%;
+}
+.nav_search_field {
+  font-size: inherit;
+  color: inherit;
+  background-color: #0000;
+  border-style: none;
+  border-width: 0;
+  border-radius: 0;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  height: 2.9em;
+  margin-bottom: 0;
+  padding: 0 0;
+}
+.nav_search_field::placeholder {
+  color: color-mix(in srgb, var(--_theme---text) 60%, transparent);
+}
+.nav_dropdown_mega_layout {
+  grid-column-gap: var(--_spacing---space--6);
+  grid-row-gap: var(--_spacing---space--6);
+}
+.nav_dropdown_mega_layout[data-style="desktop"] {
+  grid-column-gap: var(--site--gutter);
+  grid-row-gap: var(--_spacing---space--6);
+  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  grid-auto-columns: 1fr;
+  display: grid;
+}
+.nav_desktop_layout {
+  height: var(--nav--height);
+  max-width: var(--nav--max-width-inner);
+  grid-column-gap: var(--_spacing---space--3);
+  pointer-events: auto;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+  position: static;
+}
+.nav_dropdown_component {
+  z-index: unset;
+  width: 100%;
+  height: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  position: static;
+}
+.nav_dropdown_link {
+  z-index: 2;
+  padding-top: var(--_spacing---space--1);
+  padding-right: 0;
+  padding-bottom: var(--_spacing---space--1);
+  grid-column-gap: var(--_spacing---space--2);
+  cursor: pointer;
+  color: inherit;
+  font-size: var(--text-small--font-size);
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding-left: 0;
+  display: flex;
+  position: relative;
+  outline-offset: var(--focus--offset-inner) !important;
+}
+.nav_dropdown_link[data-style="desktop"] {
+  padding-top: var(--_spacing---space--2);
+  padding-bottom: var(--_spacing---space--2);
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-width--main);
+  border-bottom-color: var(--_theme---border);
+  padding-left: calc(var(--_spacing---space--6) / 2);
+  padding-right: calc(var(--_spacing---space--6) / 2);
+  font-size: inherit;
+  display: block;
+}
+.nav_mobile_menu_wrap {
+  max-width: var(--nav--max-width-outer);
+  padding-top: var(--nav--height);
+  border-top-left-radius: var(--nav--radius);
+  border-top-right-radius: var(--nav--radius);
+  border-bottom-left-radius: var(--nav--radius);
+  border-bottom-right-radius: var(--nav--radius);
+  background-color: var(--_theme---nav--background);
+  pointer-events: auto;
+  text-align: left;
+  width: calc(100% - var(--nav--spacing-outer-horizontal) * 2);
+  margin-left: auto;
+  margin-right: auto;
+  inset: 0% 0% auto;
+  transform: none !important;
+}
+.nav_links_search_icon {
+  width: 1.1rem;
+}
+.nav_dropdown_text {
+  transition: opacity .1s;
+}
+.nav_button_line {
+  height: var(--nav--hamburger-thickness);
+  pointer-events: auto;
+  background-color: currentColor;
+  flex: none;
+  width: 100%;
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+}
+.nav_button_line.is-1 {
+  transform: translateY(calc((var(--nav--hamburger-thickness) * .5 + var(--nav--hamburger-gap) * .5) * var(--_state---false))) rotate(calc(-45deg * var(--_state---false)));
+}
+.nav_button_line.is-2 {
+  transform: translateY(calc((var(--nav--hamburger-thickness) * -.5 + var(--nav--hamburger-gap) * -.5) * var(--_state---false))) rotate(calc(45deg * var(--_state---false)));
+}
+.nav_mobile_layout {
+  z-index: 2;
+  height: var(--nav--height);
+  padding: 0px var(--nav--spacing-inner-horizontal);
+  grid-column-gap: var(--_spacing---space--3);
+  border-radius: var(--nav--radius);
+  background-color: var(--_theme---nav--background);
+  pointer-events: auto;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  position: relative;
+}
+.nav_menu_backdrop {
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+  background-color: color-mix(in srgb, var(--swatch--dark-900) 20%, transparent);
+  width: 100%;
+  height: 100vh;
+  display: block;
+  position: absolute;
+  inset: 0%;
+}
+.nav_banner_close_svg {
+  width: 100%;
+  overflow: visible !important;
+}
+.nav_screen-reader-text {
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+  border-width: 0;
+  width: 1px;
+  height: 1px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  position: absolute;
+  inset: 0% 0% auto;
+  overflow: hidden;
+}
+.nav_buttons_item {
+  z-index: 2;
+  text-align: center;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+  display: flex;
+  position: relative;
+}
+.nav_buttons_item.is-main {
+  margin-top: var(--_spacing---space--6);
+  margin-bottom: var(--_spacing---space--3);
+}
+.nav_buttons_item.is-main[data-style="desktop"] {
+  margin: 0px var(--_spacing---space--3);
+}
+.nav_links_link {
+  z-index: 2;
+  padding-top: var(--_spacing---space--2);
+  padding-right: 0;
+  padding-bottom: var(--_spacing---space--2);
+  grid-column-gap: var(--_spacing---space--2);
+  cursor: pointer;
+  color: inherit;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  padding-left: 0;
+  display: flex;
+  position: relative;
+  outline-offset: var(--focus--offset-inner) !important;
+}
+.nav_links_link[data-style="desktop"] {
+  padding: 0px var(--_spacing---space--3);
+  height: 100%;
+}
+.nav_mobile_wrap {
+  z-index: 1;
+  margin-top: var(--nav--spacing-outer-vertical);
+  background-color: #0000;
+  position: relative;
+}
+.nav_banner_svg {
+  transform: rotate(calc(-45deg * var(--_state---false)));
+  width: 1rem;
+  overflow: visible !important;
+}
+.nav_banner_link {
+  grid-column-gap: var(--_spacing---space--2);
+  grid-column-start: 2;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  outline-offset: var(--focus--offset-inner) !important;
+  outline-color: var(--_theme---background) !important;
+}
+.nav_button_wrap {
+  z-index: 2;
+  flex: none;
+  width: 2rem;
+  padding: 0;
+  outline-width: var(--focus--width) !important;
+  outline-color: var(--_theme---text) !important;
+  outline-offset: var(--focus--offset-inner) !important;
+}
+.nav_button_wrap.w--open {
+  color: inherit;
+  background-color: #0000;
+}
+.nav_search_label {
+  width: 100%;
+}
+.nav_mobile_logo {
+  z-index: 2;
+  outline-offset: var(--focus--offset-inner);
+  justify-content: flex-start;
+  align-items: center;
+  width: 6rem;
+  display: flex;
+  position: relative;
+}
+.nav_skip_wrap {
+  z-index: 2;
+  border-width: var(--border-width--main);
+  border-radius: var(--nav--radius);
+  background-color: var(--_theme---background);
+  outline-offset: var(--focus--offset-inner);
+  pointer-events: auto;
+  color: var(--_theme---text);
+  margin: .5rem;
+  padding: .5rem;
+  position: absolute;
+  inset: 0% auto auto 0%;
+  transform: translate(-200%);
+}
+.nav_skip_wrap:focus {
+  transform: translate(0%);
+}
+.nav_button_layout {
+  grid-column-gap: var(--nav--hamburger-gap);
+  grid-row-gap: var(--nav--hamburger-gap);
+  pointer-events: none;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+.nav_actions_wrap {
+  flex-flow: column;
+  flex: none;
+  display: flex;
+}
+.nav_actions_wrap[data-style="desktop"] {
+  flex-flow: row;
+  justify-content: flex-start;
+}
+.nav_search_btn_icon {
+  width: 1.1rem;
+  overflow: visible !important;
+}
+.nav_links_component {
+  padding-top: var(--_spacing---space--3);
+  padding-bottom: var(--_spacing---space--8);
+  grid-column-gap: var(--_spacing---space--3);
+  flex-flow: column;
+  flex: 1;
+  display: flex;
+}
+.nav_links_component[data-style="desktop"] {
+  flex-flow: row;
+  padding-top: 0;
+  padding-bottom: 0;
+  display: flex;
+}
+.nav_dropdown_mega_scroll {
+  position: relative;
+}
+.nav_dropdown_mega_scroll[data-style="desktop"] {
+  margin-top: var(--nav--height);
+  padding-right: var(--nav--spacing-inner-horizontal);
+  padding-left: var(--nav--spacing-inner-horizontal);
+  max-height: calc(100svh - var(--nav--height-total)  - var(--nav--spacing-outer-vertical) * 2);
+  overflow: hidden auto;
+}
+.nav_banner_contain {
+  grid-column-gap: var(--_spacing---space--4);
+  grid-template-rows: auto;
+  grid-template-columns: minmax(1.1rem, 1.1rem) minmax(0, 1fr) minmax(1.1rem, 1.1rem);
+  grid-auto-columns: 1fr;
+  width: 100%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: grid;
+}
+.nav_dropdown_mega_wrap {
+  z-index: 1;
+  background-color: #0000;
+  width: 100%;
+  position: relative;
+  inset: 0% auto auto 0%;
+}
+.nav_dropdown_mega_wrap[data-style="desktop"] {
+  max-width: var(--nav--max-width-outer);
+  width: calc(100% - var(--nav--spacing-outer-horizontal) * 2);
+  min-width: 0;
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  inset: 0% 0% auto;
+}
+.nav_search_btn_wrap {
+  outline-offset: var(--focus--offset-inner);
+  justify-content: center;
+  align-items: center;
+  margin-left: -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+}
+.nav_mobile_menu_scroll {
+  padding-right: var(--nav--spacing-inner-horizontal);
+  padding-left: var(--nav--spacing-inner-horizontal);
+  max-height: calc(100svh - var(--nav--height-total)  - var(--nav--spacing-outer-vertical) * 2);
+  overflow: hidden auto;
+}
+.nav_links_locales_hide {
+  display: none;
+}
+.nav_search_wrap {
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-width--main);
+  border-bottom-color: color-mix(in srgb, var(--_theme---border) calc(100% * var(--_trigger---on)), var(--_theme---text) calc(100% * var(--_trigger---off)));
+  display: flex;
+}
+.nav_desktop_wrap {
+  z-index: 1;
+  margin-top: var(--nav--spacing-outer-vertical);
+  background-color: #0000;
+  display: none;
+  position: relative;
+}
+.nav_desktop_contain {
+  max-width: var(--nav--max-width-outer);
+  padding-right: var(--nav--spacing-inner-horizontal);
+  padding-left: var(--nav--spacing-inner-horizontal);
+  border-top-left-radius: var(--nav--radius);
+  border-top-right-radius: var(--nav--radius);
+  border-bottom-left-radius: var(--nav--radius);
+  border-bottom-right-radius: var(--nav--radius);
+  background-color: var(--_theme---nav--background);
+  width: calc(100% - var(--nav--spacing-outer-horizontal) * 2);
+  margin-left: auto;
+  margin-right: auto;
+}
+.nav_desktop_logo {
+  z-index: 2;
+  outline-offset: var(--focus--offset-inner);
+  justify-content: flex-start;
+  align-items: center;
+  width: 6rem;
+  display: flex;
+  position: relative;
+}
+.modal_backdrop {
+  background-color: color-mix(in srgb, var(--swatch--dark-900) 50%, var(--swatch--transparent));
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  inset: 0% 0% auto;
+}
+.modal_scroll {
+  padding-top: var(--_spacing---space--5);
+  padding-right: var(--_spacing---space--5);
+  padding-bottom: var(--_spacing---space--5);
+  padding-left: var(--_spacing---space--5);
+  grid-column-gap: var(--_spacing---space--5);
+  grid-row-gap: var(--_spacing---space--5);
+  border-radius: inherit;
+  flex-flow: column;
+  height: 100%;
+  display: flex;
+  position: relative;
+  overflow: hidden auto;
+}
+.modal_scroll[data-style="full-screen"], .modal_scroll[data-style="side-panel"] {
+  padding: var(--site--margin);
+}
+.modal_dialog {
+  z-index: 1010;
+  color: inherit;
+  background-color: #0000;
+  border-style: none;
+  border-width: 0;
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  inset: 0% 0% auto;
+  overflow: clip;
+}
+.modal_content {
+  border-radius: var(--radius--main);
+  background-color: var(--_theme---background-2);
+  color: var(--_theme---text);
+  width: 100%;
+  max-width: 38rem;
+  max-height: 100%;
+  position: relative;
+}
+.modal_content[data-style="full-screen"] {
+  border-radius: 0;
+  max-width: none;
+  height: 100vh;
+}
+.modal_content[data-style="side-panel"] {
+  border-radius: 0;
+  max-width: 31rem;
+  height: 100vh;
+}
+.modal_inner {
+  padding: var(--site--margin);
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100dvh;
+  display: flex;
+}
+.modal_inner[data-style="full-screen"] {
+  padding: 0;
+}
+.modal_inner[data-style="side-panel"] {
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0;
+}
+.modal_slot {
+  flex-flow: column;
+  flex: 1;
+  justify-content: center;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+.modal_slot[data-style="full-screen"], .modal_slot[data-style="side-panel"] {
+  max-width: var(--max-width--main);
+}
+.button_close_element {
+  width: var(--button-size--medium);
+  aspect-ratio: 1;
+  border-top-style: solid;
+  border-top-width: var(--border-width--main);
+  border-right-style: solid;
+  border-right-width: var(--border-width--main);
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-width--main);
+  border-left-style: solid;
+  border-left-width: var(--border-width--main);
+  vertical-align: middle;
+  --_button-style---text: var(--_theme---button-primary--text);
+  --_button-style---text-hover: var(--_theme---button-primary--text-hover);
+  --_button-style---background: var(--_theme---button-primary--background);
+  --_button-style---background-hover: var(--_theme---button-primary--background-hover);
+  --_button-style---border: var(--_theme---button-primary--border);
+  --_button-style---border-hover: var(--_theme---button-primary--border-hover);
+  background-color: color-mix(in srgb, var(--_button-style---background) calc(100% * var(--_trigger---on)), var(--_button-style---background-hover) calc(100% * var(--_trigger---off)));
+  color: color-mix(in srgb, var(--_button-style---text) calc(100% * var(--_trigger---on)), var(--_button-style---text-hover) calc(100% * var(--_trigger---off)));
+  border-top-color: color-mix(in srgb, var(--_button-style---border) calc(100% * var(--_trigger---on)), var(--_button-style---border-hover) calc(100% * var(--_trigger---off)));
+  border-right-color: color-mix(in srgb, var(--_button-style---border) calc(100% * var(--_trigger---on)), var(--_button-style---border-hover) calc(100% * var(--_trigger---off)));
+  border-bottom-color: color-mix(in srgb, var(--_button-style---border) calc(100% * var(--_trigger---on)), var(--_button-style---border-hover) calc(100% * var(--_trigger---off)));
+  border-left-color: color-mix(in srgb, var(--_button-style---border) calc(100% * var(--_trigger---on)), var(--_button-style---border-hover) calc(100% * var(--_trigger---off)));
+  border-radius: inherit;
+  justify-content: center;
+  align-items: center;
+  transition-property: all;
+  transition-duration: .2s;
+  transition-timing-function: ease;
+  display: flex;
+  position: relative;
+}
+.button_close_element[data-style="secondary-medium"], .button_close_element[data-style="secondary-medium"] {
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_close_element[data-style="secondary-medium"] {
+  width: var(--button-size--medium);
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_close_element[data-style="secondary-large"], .button_close_element[data-style="secondary-large"] {
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_close_element[data-style="primary-large"] {
+  width: var(--button-size--large);
+}
+.button_close_element[data-style="secondary-large"] {
+  width: var(--button-size--large);
+  --_button-style---text: var(--_theme---button-secondary--text);
+  --_button-style---text-hover: var(--_theme---button-secondary--text-hover);
+  --_button-style---background: var(--_theme---button-secondary--background);
+  --_button-style---background-hover: var(--_theme---button-secondary--background-hover);
+  --_button-style---border: var(--_theme---button-secondary--border);
+  --_button-style---border-hover: var(--_theme---button-secondary--border-hover);
+}
+.button_close_icon {
+  aspect-ratio: 1;
+  width: 36%;
+  position: relative;
+}
+.footer_contain {
+  padding-top: var(--_spacing---section-space--main);
+  padding-bottom: var(--_spacing---section-space--main);
+}
+.footer_content {
+  grid-column-gap: var(--site--gutter);
+  grid-row-gap: inherit;
+  flex: auto;
+  grid-column: span 4;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  grid-auto-columns: 1fr;
+  height: 100%;
+  display: grid;
+}
+.footer_social_link {
+  width: 2.5rem;
+  padding: .5rem;
+  display: block;
+}
+.footer_social_list {
+  flex-flow: wrap;
+  place-content: center flex-start;
+  align-items: center;
+  margin: -.5rem;
+  display: flex;
+}
+.footer_logo_wrap {
+  align-self: start;
+  width: 8rem;
+}
+.footer_bottom_list {
+  flex-flow: wrap;
+  place-content: center flex-start;
+  align-items: center;
+  margin: -.5rem;
+  display: flex;
+}
+.footer_social_wrap {
+  margin-top: auto;
+}
+.footer_layout {
+  grid-row-gap: var(--_spacing---space--8);
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+.footer_bottom_link_wrap {
+  opacity: calc(1 - .5 * var(--_trigger---off));
+  padding: .5rem;
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-timing-function: ease;
+}
+.footer_bottom_layout {
+  grid-column-gap: var(--_spacing---space--4);
+  grid-row-gap: var(--_spacing---space--4);
+  /* Border-top removed — the parent .footer_bottom_wrap already provides it
+     via .u-border-top-main, so keeping one here drew a second line just
+     below the first (visible in the screenshot). */
+  flex-flow: wrap;
+  place-content: center;
+  align-items: center;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  display: flex;
+}
+.footer_group_item {
+  display: flex;
+}
+.footer_group_list {
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  display: flex;
+}
+.footer_bottom_item {
+  display: flex;
+}
+.footer_link_wrap {
+  padding-top: var(--_spacing---space--2);
+  padding-bottom: var(--_spacing---space--2);
+  opacity: calc(1 - .5 * var(--_trigger---off));
+  transition-property: opacity;
+  transition-duration: .1s;
+  transition-timing-function: ease;
+}
+.modal_close {
+  z-index: 2;
+  align-self: flex-end;
+  position: sticky;
+  inset: 0 auto auto 0%;
+}
+.tab_control_wrap {
+  grid-column-gap: var(--_spacing---space--2);
+  grid-row-gap: var(--_spacing---space--2);
+  flex-flow: wrap;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+.tab_button_item {
+  padding-top: var(--_spacing---space--4);
+  padding-right: var(--_spacing---space--4);
+  padding-bottom: var(--_spacing---space--4);
+  padding-left: var(--_spacing---space--4);
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-width--main);
+  border-bottom-color: var(--_theme---border);
+  text-align: center;
+  cursor: pointer;
+  outline-offset: var(--focus--offset-inner);
+  outline-width: var(--focus--width);
+  width: 100%;
+  min-width: 10rem;
+  position: relative;
+}
+.tab_button_item[data-style="button"] {
+  padding-top: var(--_spacing---space--3);
+  padding-bottom: var(--_spacing---space--3);
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: var(--_theme---border);
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: var(--_theme---border);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: var(--_theme---border);
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: var(--_theme---border);
+  border-top-left-radius: var(--radius--round);
+  border-top-right-radius: var(--radius--round);
+  border-bottom-left-radius: var(--radius--round);
+  border-bottom-right-radius: var(--radius--round);
+  background-color: color-mix(in srgb, transparent calc(100% * var(--_state---true)), var(--_theme---text) calc(100% * var(--_state---false)));
+  color: color-mix(in srgb, currentColor calc(100% * var(--_state---true)), var(--_theme---background) calc(100% * var(--_state---false)));
+  flex-flow: column;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  min-width: auto;
+  display: flex;
+}
+.tab_button_list {
+  padding-right: var(--site--margin);
+  padding-left: var(--site--margin);
+  grid-column-gap: .5rem;
+  grid-row-gap: .5rem;
+  margin-left: calc(var(--site--margin) * -1);
+  margin-right: calc(var(--site--margin) * -1);
+  display: flex;
+  overflow: auto clip;
+}
+.tab_button_list[data-style="horizontal"] {
+  flex-direction: var(--row-medium, column);
+}
+.tab_content_list {
+  grid-column-gap: var(--_spacing---space--8);
+  grid-row-gap: var(--_spacing---space--8);
+  flex-flow: column;
+  display: flex;
+  position: relative;
+}
+.tab_button_text {
+  opacity: calc(1 - .3 * var(--_state---true));
+}
+.tab_button_text.u-text-style-main {
+  font-weight: calc(var(--_typography---font--primary-regular) * var(--_state---true)  + var(--_typography---font--primary-bold) * var(--_state---false));
+}
+.tab_wrap {
+  grid-column-gap: var(--site--gutter);
+  grid-row-gap: var(--_spacing---space--5);
+  flex-flow: column;
+  display: flex;
+}
+.tab_wrap[data-style="horizontal"] {
+  display: var(--flex-medium, grid);
+  flex-flow: column;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+.tab_button_line {
+  height: var(--border-width--main);
+  opacity: var(--_state---false);
+  width: calc(100% * var(--progress, 1));
+  background-color: currentColor;
+  position: absolute;
+  inset: auto auto 0% 0%;
+  transform: translate(0, 100%);
+}
+.tab_button_line[data-style="button"] {
+  width: calc(100% * var(--progress, 0));
+  border-radius: inherit;
+  background-color: color-mix(in srgb, currentColor 10%, transparent);
+  height: 100%;
+  inset: 0% auto 0% 0%;
+  transform: none;
+}
+.tab_content_wrap {
+  padding-right: var(--site--margin);
+  padding-left: var(--site--margin);
+  margin-left: calc(var(--site--margin) * -1);
+  margin-right: calc(var(--site--margin) * -1);
+  overflow-x: clip;
+}
+.tab_arrow_wrap {
+  grid-column-gap: var(--_spacing---space--2);
+  grid-row-gap: var(--_spacing---space--2);
+  flex-flow: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  display: flex;
+}
+.card_primary_image {
+  transform: scale(calc(1 + .1 * var(--_trigger---off)));
+  height: 100%;
+  transition-property: transform;
+  transition-duration: .3s;
+  transition-timing-function: ease;
+  position: absolute;
+  inset: 0%;
+}
+.card_primary_image[data-style="cover"] {
+  display: block;
+}
+.card_primary_group {
+  border-radius: var(--radius--main);
+  width: 100%;
+  display: flex;
+  position: relative;
+}
+.card_primary_group[data-style="stacked"] {
+  border-radius: 0;
+}
+.card_primary_visual {
+  z-index: 1;
+  border-radius: inherit;
+  display: none;
+  position: relative;
+  overflow: clip;
+}
+.card_primary_visual[data-style="cover"] {
+  opacity: .6;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  inset: 0%;
+}
+.card_primary_visual[data-style="stacked"] {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius--small);
+  background-color: var(--_theme---background-skeleton);
+  display: block;
+}
+.card_primary_title {
+  margin-bottom: var(--_text-style---margin-bottom);
+}
+.card_primary_title.u-text-style-h4[data-style="stacked"] {
+  margin-bottom: var(--_spacing---space--3);
+  --_text-style---font-family: var(--_typography---font--secondary-family);
+  --_text-style---font-size: var(--_typography---font-size--h5);
+  --_text-style---line-height: var(--_typography---line-height--medium);
+  --_text-style---font-weight: var(--_typography---font--primary-regular);
+  --_text-style---letter-spacing: var(--_typography---letter-spacing--normal);
+  --_text-style---margin-bottom: var(--_spacing---space--4);
+  --_text-style---text-wrap: balance;
+  --_text-style---margin-top: var(--_spacing---space--7);
+  --_text-style---trim-top: var(--_typography---font--primary-trim-top);
+  --_text-style---trim-bottom: var(--_typography---font--primary-trim-bottom);
+  --_text-style---text-transform: var(--_typography---text-transform--none);
+  --_text-style---text-style: var(--_typography---text-transform--none);
+}
+.card_primary_content {
+  z-index: 1;
+  position: relative;
+}
+.button_main_wrap {
+  border-radius: var(--radius--round);
+  display: inline-block;
+  position: relative;
+}
+.button_main_wrap[data-style="link"] {
+  border-radius: 0;
+}
+.button_toggle_wrap, .button_arrow_wrap, .button_close_wrap {
+  border-radius: var(--radius--round);
+  display: inline-block;
+  position: relative;
+}
+.button_main_icon {
+  aspect-ratio: 1;
+  flex-flow: column;
+  flex: none;
+  justify-content: center;
+  align-items: center;
+  width: .8rem;
+  margin-top: -.5rem;
+  margin-bottom: -.5rem;
+  display: flex;
+}
+.form_range_input {
+  border-radius: inherit;
+  background-color: #0000;
+  width: 100%;
+  height: .7rem;
+  display: block;
+}
+.form_range_element {
+  border-radius: var(--radius--round);
+  background-color: var(--_theme---background-2);
+  margin-top: .3rem;
+  display: block;
+  position: relative;
+}
+.form_range_fill {
+  background-color: var(--_theme---text);
+  pointer-events: none;
+  width: calc(var(--progress) * 100% + var(--thumb-size) * -1 * (var(--progress)  - .5));
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+  height: 100%;
+  position: absolute;
+  inset: 0% auto 0% 0%;
+}
+.form_range_thumb_wrap {
+  pointer-events: none;
+  transform: translateX(calc((var(--progress)  - .5) * 100% - (var(--progress)  - .5) * var(--thumb-size)));
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  inset: 0%;
+}
+.form_range_thumb_element {
+  aspect-ratio: 1;
+  border-top-style: solid;
+  border-top-width: .3rem;
+  border-top-color: var(--_theme---text);
+  border-right-style: solid;
+  border-right-width: .3rem;
+  border-right-color: var(--_theme---text);
+  border-bottom-style: solid;
+  border-bottom-width: .3rem;
+  border-bottom-color: var(--_theme---text);
+  border-left-style: solid;
+  border-left-width: .3rem;
+  border-left-color: var(--_theme---text);
+  background-color: var(--_theme---background);
+  width: var(--thumb-size);
+  border-radius: var(--thumb-radius);
+}
+.form_range_output_wrap {
+  pointer-events: none;
+  transform: translateX(calc((var(--progress)  - .5) * 100% - (var(--progress)  - .5) * var(--thumb-size)));
+  justify-content: center;
+  align-items: center;
+  padding-top: 1rem;
+  display: flex;
+}
+.form_range_output_element {
+  border-radius: var(--radius--small);
+  background-color: var(--_theme---background-2);
+  pointer-events: auto;
+  padding: .1rem .6rem;
+}
+.tab_left {
+  grid-column-gap: var(--_spacing---space--6);
+  grid-row-gap: var(--_spacing---space--6);
+  flex-flow: column;
+  display: flex;
+}
+.tab_left[data-style="horizontal"] {
+  grid-column: span 3;
+}
+.tab_right {
+  grid-column-gap: var(--_spacing---space--5);
+  grid-row-gap: var(--_spacing---space--5);
+  flex-flow: column;
+  display: flex;
+}
+.tab_right[data-style="horizontal"] {
+  grid-column: span 9;
+}
+.form_ui_visual_inner {
+  width: 63%;
+  height: auto;
+  transition: all .2s;
+}
+.form_ui_visual_inner[data-style="toggle"] {
+  border-top-left-radius: var(--radius--round);
+  border-top-right-radius: var(--radius--round);
+  border-bottom-left-radius: var(--radius--round);
+  border-bottom-right-radius: var(--radius--round);
+  background-color: color-mix(in srgb, var(--_theme---background) calc(100% * var(--_state---true)), var(--_theme---background) calc(100% * var(--_state---false)));
+  transform: translateX(calc(43% * var(--_state---false)));
+  width: 70%;
+  height: 100%;
+}
+.form_ui_visual_inner[data-style="radio"] {
+  background-color: var(--_theme---text);
+  opacity: var(--_state---false);
+  border-radius: inherit;
+  width: 70%;
+  height: 70%;
+}
+.styleguide_nav_wrap {
+  top: var(--site--margin);
+  max-height: calc(100svh - var(--site--margin) * 2);
+  order: 1;
+  grid-column: 10 / -1;
+  display: flex;
+  position: sticky;
+}
+.button_main_line {
+  height: var(--border-width--main);
+  pointer-events: none;
+  transform: translateY(100%) scaleX(calc(100% * var(--_trigger---off)));
+  transform-origin: calc(100% * var(--_trigger---on)) 100%;
+  transition-property: transform;
+  transition-duration: .3s;
+  transition-timing-function: cubic-bezier(.25, .46, .45, .94);
+  position: absolute;
+  inset: auto 0% 0%;
+}
+.button_main_line[data-style="link"] {
+  background-color: var(--_theme---text-link--border-hover);
+}
+.form_component {
+  flex-flow: row;
+  display: flex;
+}
+.utility-page-wrap {
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  max-width: 100%;
+  height: 100vh;
+  max-height: 100%;
+  display: flex;
+}
+.utility-page-content {
+  text-align: center;
+  flex-direction: column;
+  width: 260px;
+  display: flex;
+}
+.utility-page-form {
+  flex-direction: column;
+  align-items: stretch;
+  display: flex;
+}
+@font-face {
+  font-family: 'Salsita Funk';
+  src: url('../assets/resources/fonts/Salsita-Funk.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─── Custom utilities and fonts (piripiri-custom.css) ─── */
+
+/* =====================================================================
+   PIRIPIRI CUSTOM UTILITIES
+   Extended utilities following Lumos naming conventions
+   ===================================================================== */
+
+/* =====================================================================
+   FALLBACK FONT METRIC OVERRIDES
+   Makes Arial match Montserrat's vertical metrics so spacing stays
+   consistent before Montserrat loads (or when using fallback).
+   Delete MontserratFallback if/when Montserrat is served locally.
+   ===================================================================== */
+
+@font-face {
+  font-family: 'MontserratFallback';
+  src: local('Arial');
+  size-adjust: 113%;
+  ascent-override: 85%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+/* =====================================================================
+   CUSTOM FONTS
+   Neulis Neue - Primary/Heading font (replaces Paytone One)
+   ===================================================================== */
+
+/* Neulis Neue Regular (400) */
+@font-face {
+  font-family: "Neulis Neue";
+  src: url("../assets/resources/fonts/Nulis/fonnts.com-Neulis_Neue_Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Neulis Neue Regular Italic (400) */
+@font-face {
+  font-family: "Neulis Neue";
+  src: url("../assets/resources/fonts/Nulis/fonnts.com-Neulis_Neue_Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Neulis Neue Medium (500) */
+@font-face {
+  font-family: "Neulis Neue";
+  src: url("../assets/resources/fonts/Nulis/fonnts.com-Neulis_Neue_Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Neulis Neue Medium Italic (500) */
+@font-face {
+  font-family: "Neulis Neue";
+  src: url("../assets/resources/fonts/Nulis/fonnts.com-Neulis_Neue_Medium_Italic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Neulis Neue Bold (700) */
+@font-face {
+  font-family: "Neulis Neue";
+  src: url("../assets/resources/fonts/Nulis/fonnts.com-Neulis_Neue_Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Neulis Neue Bold Italic (700) */
+@font-face {
+  font-family: "Neulis Neue";
+  src: url("../assets/resources/fonts/Nulis/fonnts.com-Neulis_Neue_Bold_Italic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Neulis Neue Black (900) - for extra bold/black weight */
+@font-face {
+  font-family: "Neulis Neue";
+  src: url("../assets/resources/fonts/Nulis/fonnts.com-Neulis_Neue_Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Neulis Neue Black Italic (900) */
+@font-face {
+  font-family: "Neulis Neue";
+  src: url("../assets/resources/fonts/Nulis/fonnts.com-Neulis_Neue_Black_Italic.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Salsita Funk - Tertiary/Display font */
+@font-face {
+  font-family: "Salsita Funk";
+  src: url("../assets/resources/fonts/Salsita-Funk.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Override primary font family variable and add black weight + tertiary font */
+:root {
+  --_typography---font--primary-family: "Neulis Neue", sans-serif;
+  --_typography---font--primary-black: 900;
+  --_typography---font--tertiary-family: "Salsita Funk", cursive;
+  --_typography---font--tertiary-regular: 400;
+  --_typography---font--tertiary-trim-top: .33em;
+  --_typography---font--tertiary-trim-bottom: .38em;
+  --_typography---font--tertiary-line-height: 0.7;
+
+  /* Extended spacing variables (following Lumos fluid clamp pattern) */
+  --_spacing---space--9: clamp(3rem, 3rem + 1.5vw, 5rem);
+  --_spacing---space--10: clamp(3.5rem, 3.5rem + 2vw, 6rem);
+  --_spacing---space--12: clamp(4rem, 4rem + 2.5vw, 7rem);
+
+  /* Negative gap for border overlap (borders blend instead of doubling) */
+  --border-width--overlap: calc(var(--border-width--main) * -1);
+}
+
+/* Extended padding utilities */
+.u-padding-9 {
+  padding: var(--_spacing---space--9);
+}
+
+.u-padding-10 {
+  padding: var(--_spacing---space--10);
+}
+
+.u-padding-12 {
+  padding: var(--_spacing---space--12);
+}
+
+.u-padding-block-8 {
+  padding-block: var(--_spacing---space--8);
+}
+
+.u-padding-block-10 {
+  padding-block: var(--_spacing---space--10);
+}
+
+.u-padding-block-12 {
+  padding-block: var(--_spacing---space--12);
+}
+
+.u-padding-inline-12 {
+  padding-inline: var(--_spacing---space--12);
+}
+
+/* Gap overlap utility - for elements with borders that need to blend */
+.u-gap-overlap {
+  gap: var(--border-width--overlap);
+}
+
+.u-margin-left-overlap {
+  margin-left: var(--border-width--overlap);
+}
+
+/* =====================================================================
+   TEXT STYLE WEIGHT OVERRIDES
+   Make headings use heavier weights for Neulis Neue
+   ===================================================================== */
+
+/* Containers: minimum 80vw width */
+.u-container, .u-container-small {
+  min-width: min(80vw, 100%);
+}
+
+/* Cream borders on dark theme — the default uses a 20%-opacity cream that
+   reads as muddy grey on dark backgrounds. Use the full brand cream
+   (--swatch--light-400) instead so card outlines are crisp. */
+.u-theme-dark,
+.section_wrap[data-style="dark"] {
+  --_theme---border: var(--swatch--light-400);
+}
+
+/* Hide hero nav links on small desktop too — the centered link strip
+   collides with the top-right hero image until viewport ≥1920px. The
+   MENÚ button remains the primary nav at every breakpoint. */
+@media (max-width: 1919px) {
+  .hero_nav_links {
+    display: none !important;
+  }
+}
+
+/* Hero: tablet + mobile (≤991px)
+   - Top-right image becomes a full-width 50vh banner at the top
+   - Logo and MENÚ button float over the banner (fixed, mirrored corners)
+   - Heading drops below the banner, single column, no negative pull-up
+   - Right-side graphic column is hidden (kept for desktop only)
+   - Floating CTAs centered + lifted so social/address sit visibly below */
+@media (max-width: 991px) {
+  /* Top image: full-width banner across the top, fixed 50vh height */
+  .hero_topright_image {
+    left: var(--site--gutter) !important;
+    right: var(--site--gutter) !important;
+    width: auto !important;
+    height: 50vh;
+  }
+  .hero_topright_image_inner {
+    height: 100%;
+  }
+  .hero_topright_image_img {
+    height: 100% !important;
+    aspect-ratio: auto !important;
+  }
+
+  /* Logo: float at top-left of the banner with comfortable breathing room from
+     the top + left edges (deeper inset so it doesn't crowd the corner). */
+  .hero_nav .hero_logo_wrap {
+    position: fixed !important;
+    top: calc(2 * var(--site--gutter)) !important;
+    left: calc(2 * var(--site--gutter)) !important;
+    z-index: 11 !important;
+  }
+
+  /* Canvas: single column, content starts below the banner */
+  .hero_canvas {
+    grid-template-columns: 1fr !important;
+    align-items: start !important;
+    padding-top: calc(50vh + var(--site--gutter)) !important;
+  }
+  .hero_graphic_col {
+    display: none !important;
+  }
+
+  /* Heading column: kill the desktop pull-up so it sits below the banner */
+  .hero_heading_col {
+    margin-top: 0 !important;
+    align-self: start !important;
+    width: 100% !important;
+  }
+
+  .hero_title_slide {
+    font-size: clamp(4rem, 14vw, 7rem) !important;
+  }
+
+  /* Floating CTAs: centered and pinned near the bottom edge (was 5rem, which
+     sat too high). The collapsed FAB / expanded pair now sit in the natural
+     thumb zone. */
+  .floating-ctas {
+    left: 0 !important;
+    right: 0 !important;
+    justify-content: center !important;
+    bottom: calc(1.5rem + var(--pp-cookie-offset, 0px)) !important;
+  }
+}
+
+/* No italic paragraphs, force Montserrat on all paragraphs */
+p {
+  font-style: normal !important;
+  font-family: var(--_typography---font--secondary-family) !important;
+}
+
+/* Brand cards slider: earlier breakpoints */
+@container (width < 70em) {
+  .slider_offset { --slide-count: var(--md) !important; }
+}
+@container (width < 50em) {
+  .slider_offset { --slide-count: var(--sm) !important; }
+}
+
+/* Brand cards: title top-left, content pushes to bottom */
+.card_primary_title {
+  align-self: flex-start;
+  margin-bottom: auto !important;
+  padding-bottom: var(--_spacing---space--6);
+}
+
+/* Display and H1: Use Black (900) for maximum impact */
+.u-text-style-display {
+  --_text-style---font-weight: 900;
+  font-weight: 900 !important;
+}
+
+.u-text-style-h1 {
+  --_text-style---font-weight: 900;
+  font-weight: 900 !important;
+}
+
+/* H2: Use Black (900) */
+.u-text-style-h2 {
+  --_text-style---font-weight: 900;
+  font-weight: 900 !important;
+}
+
+/* H3: Use Bold (700) */
+.u-text-style-h3 {
+  --_text-style---font-weight: 700;
+  font-weight: 700 !important;
+}
+
+/* H4: Use Bold (700) */
+.u-text-style-h4 {
+  --_text-style---font-weight: 700;
+  font-weight: 700 !important;
+}
+
+/* H5: Use Bold (700) for menu button and similar elements */
+.u-text-style-h5 {
+  --_text-style---font-weight: 700;
+  font-weight: 700 !important;
+}
+
+/* =====================================================================
+   BUTTON OVERRIDES
+   Make button text use primary font with Black weight, fix secondary style
+   ===================================================================== */
+
+/* All native buttons inherit text color from their context */
+button { color: inherit; }
+
+/* Button text: Use primary font (Neulis Neue) with Black weight */
+.button_main_text {
+  font-family: var(--_typography---font--primary-family);
+  font-weight: 900 !important;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+/* Secondary button: Outline style (transparent bg, no shadow, border visible) */
+.button_main_element[data-style="secondary"] {
+  --_button-style---background: transparent;
+  --_button-style---border: var(--_theme---text);
+  --_button-style---text: var(--_theme---text);
+  --_button-style---background-hover: var(--_theme---text);
+  --_button-style---border-hover: var(--_theme---text);
+  --_button-style---text-hover: var(--_theme---background);
+  box-shadow: none;
+}
+
+.button_main_element[data-style="secondary"]:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+/* =====================================================================
+   LIST STYLE
+   ===================================================================== */
+.u-list-style-none {
+  list-style: none;
+}
+
+.u-list-style-disc {
+  list-style: disc;
+}
+
+.u-list-style-decimal {
+  list-style: decimal;
+}
+
+.u-list-style-inside {
+  list-style-position: inside;
+}
+
+.u-list-style-outside {
+  list-style-position: outside;
+}
+
+/* =====================================================================
+   FONT FAMILY
+   ===================================================================== */
+.u-font-primary {
+  font-family: var(--_typography---font--primary-family);
+}
+
+.u-font-secondary {
+  font-family: var(--_typography---font--secondary-family);
+}
+
+.u-font-tertiary {
+  font-family: var(--_typography---font--tertiary-family);
+  line-height: var(--_typography---font--tertiary-line-height);
+}
+
+
+/* =====================================================================
+   TEXT DECORATION
+   ===================================================================== */
+.u-text-decoration-none {
+  text-decoration: none;
+}
+
+.u-text-decoration-underline {
+  text-decoration: underline;
+}
+
+.u-text-decoration-line-through {
+  text-decoration: line-through;
+}
+
+/* =====================================================================
+   CURSOR
+   ===================================================================== */
+.u-cursor-auto {
+  cursor: auto;
+}
+
+.u-cursor-default {
+  cursor: default;
+}
+
+.u-cursor-pointer {
+  cursor: pointer;
+}
+
+.u-cursor-grab {
+  cursor: grab;
+}
+
+.u-cursor-grabbing {
+  cursor: grabbing;
+}
+
+.u-cursor-not-allowed {
+  cursor: not-allowed;
+}
+
+.u-cursor-text {
+  cursor: text;
+}
+
+.u-cursor-move {
+  cursor: move;
+}
+
+/* =====================================================================
+   BORDER WIDTH
+   Uses existing Lumos variables: --border-width--main, --border-width--thick
+   ===================================================================== */
+.u-border-none {
+  border: none;
+}
+
+.u-border-main {
+  border: var(--border-width--main) solid var(--_theme---border);
+}
+
+.u-border-thick {
+  border: var(--border-width--thick) solid var(--_theme---border);
+}
+
+/* Directional borders - main width */
+.u-border-top-main {
+  border-top: var(--border-width--main) solid var(--_theme---border);
+}
+
+.u-border-right-main {
+  border-right: var(--border-width--main) solid var(--_theme---border);
+}
+
+.u-border-bottom-main {
+  border-bottom: var(--border-width--main) solid var(--_theme---border);
+}
+
+.u-border-left-main {
+  border-left: var(--border-width--main) solid var(--_theme---border);
+}
+
+/* Directional borders - thick width */
+.u-border-top-thick {
+  border-top: var(--border-width--thick) solid var(--_theme---border);
+}
+
+.u-border-right-thick {
+  border-right: var(--border-width--thick) solid var(--_theme---border);
+}
+
+.u-border-bottom-thick {
+  border-bottom: var(--border-width--thick) solid var(--_theme---border);
+}
+
+.u-border-left-thick {
+  border-left: var(--border-width--thick) solid var(--_theme---border);
+}
+
+/* Inline/Block borders */
+.u-border-block-main {
+  border-block: var(--border-width--main) solid var(--_theme---border);
+}
+
+.u-border-inline-main {
+  border-inline: var(--border-width--main) solid var(--_theme---border);
+}
+
+/* Border colors - using theme swatches */
+.u-border-color-inherit {
+  border-color: inherit;
+}
+
+.u-border-color-current {
+  border-color: currentColor;
+}
+
+.u-border-color-brand {
+  border-color: var(--swatch--brand-500);
+}
+
+.u-border-color-light {
+  border-color: var(--swatch--light-400);
+}
+
+.u-border-color-dark {
+  border-color: var(--swatch--dark-900);
+}
+
+.u-border-color-orchid {
+  border-color: var(--swatch--orchid-500);
+}
+
+/* =====================================================================
+   BORDER RADIUS (extends existing u-radius-*)
+   ===================================================================== */
+.u-radius-large {
+  border-radius: var(--radius--large);
+}
+
+/* Directional radius */
+.u-radius-top-none {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.u-radius-top-small {
+  border-top-left-radius: var(--radius--small);
+  border-top-right-radius: var(--radius--small);
+}
+
+.u-radius-top-main {
+  border-top-left-radius: var(--radius--main);
+  border-top-right-radius: var(--radius--main);
+}
+
+.u-radius-top-large {
+  border-top-left-radius: var(--radius--large);
+  border-top-right-radius: var(--radius--large);
+}
+
+.u-radius-bottom-none {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.u-radius-bottom-small {
+  border-bottom-left-radius: var(--radius--small);
+  border-bottom-right-radius: var(--radius--small);
+}
+
+.u-radius-bottom-main {
+  border-bottom-left-radius: var(--radius--main);
+  border-bottom-right-radius: var(--radius--main);
+}
+
+.u-radius-bottom-large {
+  border-bottom-left-radius: var(--radius--large);
+  border-bottom-right-radius: var(--radius--large);
+}
+
+.u-radius-left-none {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.u-radius-left-main {
+  border-top-left-radius: var(--radius--main);
+  border-bottom-left-radius: var(--radius--main);
+}
+
+.u-radius-right-none {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.u-radius-right-main {
+  border-top-right-radius: var(--radius--main);
+  border-bottom-right-radius: var(--radius--main);
+}
+
+/* =====================================================================
+   BOX SHADOW
+   ===================================================================== */
+.u-shadow-none {
+  box-shadow: none;
+}
+
+.u-shadow-small {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.u-shadow-main {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.u-shadow-large {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.u-shadow-xl {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Inset shadows */
+.u-shadow-inset-small {
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.u-shadow-inset-main {
+  box-shadow: inset 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+/* =====================================================================
+   TRANSITION
+   ===================================================================== */
+.u-transition-none {
+  transition: none;
+}
+
+.u-transition-all-fast {
+  transition: all 0.15s ease;
+}
+
+.u-transition-all-main {
+  transition: all 0.2s ease;
+}
+
+.u-transition-all-slow {
+  transition: all 0.3s ease;
+}
+
+.u-transition-color-fast {
+  transition: color 0.15s ease;
+}
+
+.u-transition-color-main {
+  transition: color 0.2s ease;
+}
+
+.u-transition-color-slow {
+  transition: color 0.3s ease;
+}
+
+.u-transition-opacity-fast {
+  transition: opacity 0.15s ease;
+}
+
+.u-transition-opacity-main {
+  transition: opacity 0.2s ease;
+}
+
+.u-transition-opacity-slow {
+  transition: opacity 0.3s ease;
+}
+
+.u-transition-transform-fast {
+  transition: transform 0.15s ease;
+}
+
+.u-transition-transform-main {
+  transition: transform 0.2s ease;
+}
+
+.u-transition-transform-slow {
+  transition: transform 0.3s ease;
+}
+
+.u-transition-background-main {
+  transition: background-color 0.2s ease;
+}
+
+/* =====================================================================
+   TRANSFORM
+   ===================================================================== */
+.u-transform-none {
+  transform: none;
+}
+
+/* Scale */
+.u-scale-95 {
+  transform: scale(0.95);
+}
+
+.u-scale-100 {
+  transform: scale(1);
+}
+
+.u-scale-105 {
+  transform: scale(1.05);
+}
+
+.u-scale-110 {
+  transform: scale(1.1);
+}
+
+/* Translate Y */
+.u-translate-y-0 {
+  transform: translateY(0);
+}
+
+.u-translate-y-up-1 {
+  transform: translateY(calc(var(--_spacing---space--1) * -1));
+}
+
+.u-translate-y-up-2 {
+  transform: translateY(calc(var(--_spacing---space--2) * -1));
+}
+
+.u-translate-y-up-3 {
+  transform: translateY(calc(var(--_spacing---space--3) * -1));
+}
+
+.u-translate-y-down-1 {
+  transform: translateY(var(--_spacing---space--1));
+}
+
+.u-translate-y-down-2 {
+  transform: translateY(var(--_spacing---space--2));
+}
+
+/* Rotate */
+.u-rotate-0 {
+  transform: rotate(0deg);
+}
+
+.u-rotate-45 {
+  transform: rotate(45deg);
+}
+
+.u-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.u-rotate-180 {
+  transform: rotate(180deg);
+}
+
+/* =====================================================================
+   MAX WIDTH
+   ===================================================================== */
+.u-max-width-25 {
+  max-width: 25%;
+}
+
+.u-max-width-33 {
+  max-width: 33.333%;
+}
+
+.u-max-width-50 {
+  max-width: 50%;
+}
+
+.u-max-width-66 {
+  max-width: 66.666%;
+}
+
+.u-max-width-75 {
+  max-width: 75%;
+}
+
+/* Fixed max-widths using spacing scale */
+.u-max-width-prose {
+  max-width: 65ch;
+}
+
+.u-max-width-small {
+  max-width: 24rem;
+}
+
+.u-max-width-main {
+  max-width: 32rem;
+}
+
+.u-max-width-large {
+  max-width: 48rem;
+}
+
+.u-max-width-xl {
+  max-width: 64rem;
+}
+
+/* =====================================================================
+   MIN HEIGHT
+   ===================================================================== */
+.u-min-height-0 {
+  min-height: 0;
+}
+
+.u-min-height-full {
+  min-height: 100%;
+}
+
+.u-min-height-25vh {
+  min-height: 25vh;
+}
+
+.u-min-height-50vh {
+  min-height: 50vh;
+}
+
+.u-min-height-75vh {
+  min-height: 75vh;
+}
+
+/* =====================================================================
+   SIZING (width/height using rem)
+   ===================================================================== */
+.u-size-4 {
+  width: 1rem;
+  height: 1rem;
+}
+
+.u-size-5 {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.u-size-6 {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.u-size-8 {
+  width: 2rem;
+  height: 2rem;
+}
+
+.u-size-10 {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.u-size-12 {
+  width: 3rem;
+  height: 3rem;
+}
+
+.u-size-16 {
+  width: 4rem;
+  height: 4rem;
+}
+
+/* =====================================================================
+   FONT STYLE
+   ===================================================================== */
+.u-font-style-normal {
+  font-style: normal;
+}
+
+.u-font-style-italic {
+  font-style: italic;
+}
+
+/* =====================================================================
+   BACKGROUND COLOR (using theme swatches)
+   ===================================================================== */
+.u-bg-transparent {
+  background-color: transparent;
+}
+
+.u-bg-current {
+  background-color: currentColor;
+}
+
+.u-bg-inherit {
+  background-color: inherit;
+}
+
+.u-bg-brand {
+  background-color: var(--swatch--brand-500);
+}
+
+.u-bg-orchid {
+  background-color: var(--swatch--orchid-500);
+}
+
+.u-bg-gold {
+  background-color: var(--swatch--gold);
+}
+
+.u-bg-hierba {
+  background-color: var(--swatch--hierba);
+}
+
+.u-bg-light-100 {
+  background-color: var(--swatch--light-100);
+}
+
+.u-bg-light-200 {
+  background-color: var(--swatch--light-200);
+}
+
+.u-bg-light-300 {
+  background-color: var(--swatch--light-300);
+}
+
+.u-bg-light-400 {
+  background-color: var(--swatch--light-400);
+}
+
+.u-bg-dark-700 {
+  background-color: var(--swatch--dark-700);
+}
+
+.u-bg-dark-800 {
+  background-color: var(--swatch--dark-800);
+}
+
+.u-bg-dark-900 {
+  background-color: var(--swatch--dark-900);
+}
+
+/* =====================================================================
+   TEXT COLOR (using theme swatches)
+   ===================================================================== */
+.u-text-brand {
+  color: var(--swatch--brand-500);
+}
+
+.u-text-orchid {
+  color: var(--swatch--orchid-500);
+}
+
+.u-text-gold {
+  color: var(--swatch--gold);
+}
+
+.u-text-hierba {
+  color: var(--swatch--hierba);
+}
+
+.u-text-light-100 {
+  color: var(--swatch--light-100);
+}
+
+.u-text-light-200 {
+  color: var(--swatch--light-200);
+}
+
+.u-text-light-400 {
+  color: var(--swatch--light-400);
+}
+
+.u-text-dark-700 {
+  color: var(--swatch--dark-700);
+}
+
+.u-text-dark-800 {
+  color: var(--swatch--dark-800);
+}
+
+.u-text-dark-900 {
+  color: var(--swatch--dark-900);
+}
+
+/* =====================================================================
+   USER SELECT
+   ===================================================================== */
+.u-select-none {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.u-select-text {
+  user-select: text;
+  -webkit-user-select: text;
+}
+
+.u-select-all {
+  user-select: all;
+  -webkit-user-select: all;
+}
+
+.u-select-auto {
+  user-select: auto;
+  -webkit-user-select: auto;
+}
+
+/* =====================================================================
+   POINTER EVENTS
+   ===================================================================== */
+.u-pointer-events-none {
+  pointer-events: none;
+}
+
+.u-pointer-events-auto {
+  pointer-events: auto;
+}
+
+/* =====================================================================
+   SCROLL BEHAVIOR
+   ===================================================================== */
+
+/* Global smooth scroll — applies to anchor link navigation
+   (href="#section") and window.scrollTo() calls. Browsers automatically
+   fall back to instant if the user has prefers-reduced-motion set. */
+html {
+  scroll-behavior: smooth;
+}
+
+.u-scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+.u-scroll-auto {
+  scroll-behavior: auto;
+}
+
+/* Hide scrollbar */
+.u-scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.u-scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* =====================================================================
+   OVERFLOW-X / OVERFLOW-Y (extends existing u-overflow-*)
+   ===================================================================== */
+.u-overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.u-overflow-x-scroll {
+  overflow-x: scroll;
+}
+
+.u-overflow-y-hidden {
+  overflow-y: hidden;
+}
+
+.u-overflow-y-scroll {
+  overflow-y: scroll;
+}
+
+/* =====================================================================
+   OPACITY
+   ===================================================================== */
+.u-opacity-0 {
+  opacity: 0;
+}
+
+.u-opacity-25 {
+  opacity: 0.25;
+}
+
+.u-opacity-50 {
+  opacity: 0.5;
+}
+
+.u-opacity-75 {
+  opacity: 0.75;
+}
+
+.u-opacity-100 {
+  opacity: 1;
+}
+
+/* =====================================================================
+   VISIBILITY
+   ===================================================================== */
+.u-visible {
+  visibility: visible;
+}
+
+.u-invisible {
+  visibility: hidden;
+}
+
+/* =====================================================================
+   HOVER STATES
+   Common hover patterns for interactive elements
+   ===================================================================== */
+.u-hover-color-brand:hover {
+  color: var(--swatch--brand-500);
+}
+
+.u-hover-color-orchid:hover {
+  color: var(--swatch--orchid-500);
+}
+
+.u-hover-opacity-75:hover {
+  opacity: 0.75;
+}
+
+.u-hover-scale-105:hover {
+  transform: scale(1.05);
+}
+
+.u-hover-translate-y-up-1:hover {
+  transform: translateY(calc(var(--_spacing---space--1) * -1));
+}
+
+.u-hover-shadow-large:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* =====================================================================
+   RESPONSIVE DISPLAY UTILITIES
+   Show/hide at breakpoints (following Lumos tablet/mobile-landscape/mobile pattern)
+   ===================================================================== */
+@media (max-width: 991px) {
+  .u-hide-tablet {
+    display: none;
+  }
+
+  .u-show-tablet {
+    display: block;
+  }
+
+  .u-show-tablet-flex {
+    display: flex;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-hide-mobile {
+    display: none;
+  }
+
+  .u-show-mobile {
+    display: block;
+  }
+
+  .u-show-mobile-flex {
+    display: flex;
+  }
+
+  /* Mobile-specific max-width override */
+  .u-max-width-full-mobile {
+    max-width: 100%;
+  }
+
+  /* Mobile-specific flex direction */
+  .u-flex-column-mobile {
+    flex-direction: column;
+  }
+
+  /* Mobile-specific flex wrap — overrides u-flex-horizontal-nowrap's
+     flex-flow:row (nowrap) so heading+CTA rows can stack instead of
+     pushing the CTA off-screen. Same specificity, declared later, so it
+     wins over lumos.css without !important. */
+  .u-flex-wrap-mobile {
+    flex-wrap: wrap;
+  }
+
+}
+
+/* ─── Footer layout on mobile + tablet (≤991px) ────────────────────────────
+   The desktop footer is a 3-column row that only collapses at ≤767px, leaving
+   tablet cramped, and it carries two logos plus a VOLVER ARRIBA button pulled
+   up over the big wordmark. Here we: drop the small top logo (the big PIRIPIRI
+   wordmark is the brand mark), stack the columns into one tidy centred column
+   with real breathing room, and sit VOLVER ARRIBA cleanly below the wordmark. */
+@media (max-width: 991px) {
+  /* one logo only */
+  .footer_wrap .footer_logo_wrap {
+    display: none;
+  }
+
+  /* stack + centre the three columns (the row's u-align-items-end otherwise
+     left them cramped / right-aligned at this width) */
+  .footer_contain > .u-flex-horizontal-nowrap {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: var(--_spacing---space--9) !important;
+    padding-block: var(--_spacing---space--9) !important;
+  }
+  .footer_contain .footer_social_wrap,
+  .footer_contain .footer_group_wrap {
+    text-align: center;
+  }
+  .footer_contain .footer_social_list,
+  .footer_contain .footer_group_list {
+    align-items: center;
+  }
+  .footer_contain .u-flex-vertical-nowrap.u-align-items-start {
+    align-items: center;
+  }
+
+  /* VOLVER ARRIBA sits below the big wordmark instead of the desktop -6rem
+     pull-up that overlaps the letters on small screens */
+  .footer_wrap .u-position-relative.u-overflow-hidden > .u-flex-horizontal-nowrap.u-justify-content-center {
+    margin-top: 1.25rem !important;
+    margin-bottom: 3rem !important;
+  }
+}
+
+/* Footer newsletter column — more breathing room between the boletín line and
+   the SUSCRIBIRSE button (the button carries a -10px shadow-offset transform,
+   which otherwise leaves them looking cramped). */
+.footer_contain .u-flex-vertical-nowrap.u-text-align-center {
+  gap: var(--_spacing---space--6);
+}
+
+/* Hero footer (social icons + address) — on mobile/tablet there are no bottom
+   corner images flanking it, so left-align it instead of centering it between
+   the (desktop-only) images. The desktop 1fr/auto/1fr centering is kept above. */
+@media (max-width: 991px) {
+  .hero_footer {
+    grid-template-columns: auto 1fr !important;
+    column-gap: 0 !important; /* don't let the grid gap inset the content past the gutter */
+  }
+  .hero_footer > div:last-child {
+    justify-content: flex-start !important;
+  }
+}
+
+/* ─── Fullscreen menu on mobile/tablet ─────────────────────────────────────
+   The nav links were pushed off-centre by the modal_slot's left padding plus
+   the invisible hover-heart icons taking up space. Drop both so the items sit
+   dead-centre. */
+@media (max-width: 991px) {
+  [data-modal-target="menu"] .modal_slot {
+    padding-left: 0 !important;
+  }
+  [data-modal-target="menu"] [data-menu-heart] {
+    display: none;
+  }
+  /* center wrapped link text too (e.g. CLUB SECRETO breaking onto two lines) */
+  [data-modal-target="menu"] [data-menu-item] a {
+    text-align: center;
+  }
+}
+/* Location cards (Reserva tu mesa) on mobile — make each a single bordered,
+   rounded card instead of two separately-rounded pieces. The wrapper takes the
+   border + radius AND a unified background so the whole card is one solid
+   surface; the image and content halves drop their own radius/border so the
+   image rounds only at the top and the content only at the bottom — one
+   continuous card. Without the wrapper background, the seam between the two
+   halves (and the rounded corners during the sticky-scroll transform) let you
+   see straight through to the section behind. */
+@media (max-width: 767px) {
+  .section_reserva .u-position-sticky > .u-flex-horizontal-nowrap {
+    border: var(--border-width--main) solid var(--_theme---border);
+    border-radius: var(--radius--main);
+    background: var(--_theme---background-2);
+    overflow: hidden;
+  }
+  .section_reserva .u-position-sticky > .u-flex-horizontal-nowrap > div:first-child {
+    border-radius: 0 !important;
+  }
+  .section_reserva .u-position-sticky > .u-flex-horizontal-nowrap > div:last-child {
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+  }
+}
+
+/* Bottom row stacks on mobile — center the social/address and put RESERVA on
+   the left and PIDE YA on the right (one on each side). */
+@media (max-width: 767px) {
+  [data-modal-target="menu"] .u-flex-column-mobile.u-justify-content-between > * {
+    width: 100%;
+  }
+  [data-modal-target="menu"] .u-flex-column-mobile.u-justify-content-between > div:first-child {
+    padding-left: 0 !important;
+    justify-content: center;
+  }
+  [data-modal-target="menu"] .u-flex-column-mobile.u-justify-content-between > div:last-child {
+    justify-content: space-between;
+  }
+}
+
+/* ─── Footer on desktop (≥992px) ───────────────────────────────────────────
+   The 3-column row was bottom-aligned (jagged top edge) and stretched the full
+   width, flinging the narrow side columns to the screen edges with huge gaps.
+   Top-align the columns and cap the row width so they stay grouped and tidy. */
+@media (min-width: 992px) {
+  .footer_contain > .u-flex-horizontal-nowrap {
+    align-items: flex-start;
+    max-width: 72rem;
+    margin-inline: auto;
+  }
+}
+
+/* Subfooter (© + legal links) on mobile — the row otherwise wraps the links
+   left-aligned. Stack the copyright above the links and centre everything, and
+   let the links themselves wrap centred. */
+@media (max-width: 767px) {
+  .footer_bottom_layout {
+    flex-direction: column;
+    gap: var(--_spacing---space--3);
+    text-align: center;
+  }
+  .footer_bottom_list {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 479px) {
+  .u-hide-mobile-portrait {
+    display: none;
+  }
+
+  .u-show-mobile-portrait {
+    display: block;
+  }
+}
+
+/* =====================================================================
+   ASPECT RATIO
+   ===================================================================== */
+.u-aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.u-aspect-video {
+  aspect-ratio: 16 / 9;
+}
+
+.u-aspect-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+.u-aspect-landscape {
+  aspect-ratio: 4 / 3;
+}
+
+/* =====================================================================
+   OBJECT FIT
+   ===================================================================== */
+.u-object-cover {
+  object-fit: cover;
+}
+
+.u-object-contain {
+  object-fit: contain;
+}
+
+.u-object-fill {
+  object-fit: fill;
+}
+
+.u-object-none {
+  object-fit: none;
+}
+
+/* Object position */
+.u-object-center {
+  object-position: center;
+}
+
+.u-object-top {
+  object-position: top;
+}
+
+.u-object-bottom {
+  object-position: bottom;
+}
+
+/* =====================================================================
+   SLIDER RESPONSIVE (Container Queries)
+   Lumos slider uses --slide-count variable that switches at breakpoints
+   ===================================================================== */
+
+/* Enable container queries on slider wrapper */
+.slider_wrap {
+  container-type: inline-size;
+}
+
+/* Base slider offset defaults */
+.slider_offset {
+  --slide-count: var(--lg);
+  --lg: 3;
+  --md: var(--lg);
+  --sm: var(--md);
+  --xs: var(--sm);
+}
+
+/* Medium breakpoint (< 50em / ~800px) */
+@container (width < 50em) {
+  .slider_offset {
+    --slide-count: var(--md);
+  }
+}
+
+/* Small breakpoint (< 35em / ~560px) */
+@container (width < 35em) {
+  .slider_offset {
+    --slide-count: var(--sm);
+  }
+}
+
+/* Extra small breakpoint (< 20em / ~320px) */
+@container (width < 20em) {
+  .slider_offset {
+    --slide-count: var(--xs);
+  }
+}
+
+/* Mobile: one slide per view (single column) for every --slide-count slider.
+   Several sliders default to 1.1–2 per view at small sizes (--sm / --xs), which
+   reads as a cramped 2-up peek on phones. The brand-cards container queries
+   higher up set --slide-count with !important, so this must use !important too;
+   being later in source it wins among the !important author rules. The reviews
+   slider uses its own width rules (already 100% ≤767px) and is unaffected. */
+@media (max-width: 767px) {
+  /* One main item per view with a peek of the previous and next slides, at
+     full-bleed (100vw). ~1.2 per view → active ≈ 83vw with an ~8.5vw sliver of
+     each neighbour. centeredSlides is enabled on mobile in the swiper init
+     (index.html / club-secreto.html) so BOTH neighbours show, symmetrically.
+     margin-inline:0 drops the desktop peek offset and lets the slider span the
+     full wrap; since the wraps are already full-width sections, the overflow
+     clip lands at the screen edge — so there's no noticeable mask. The reviews
+     slider keeps its own bespoke layout, so it's excluded. */
+  .slider_offset:not(.reviews_slider *) {
+    --slide-count: 1.2 !important;
+    margin-inline: 0 !important;
+  }
+  /* Full-bleed every slider wrap so slider_element == 100vw and the active
+     slide width is identical across sliders (the food wrap otherwise keeps
+     u-padding-inline-3 and ends up ~23px narrower than the gallery). */
+  .slider_wrap:not(.reviews_slider *) {
+    padding-inline: 0 !important;
+  }
+}
+
+/* =====================================================================
+   MARQUEE - Lumos Infinite Scroll Component
+   ===================================================================== */
+
+/* Marquee wrapper */
+.marquee_wrap {
+  grid-column-gap: 0rem;
+  grid-row-gap: var(--_spacing---space--4);
+  flex-flow: column;
+  display: flex;
+  container-type: inline-size;
+}
+
+/* Marquee offset - responsive slide count */
+.marquee_offset {
+  margin-left: calc(var(--_gap---size) * -0.5);
+  margin-right: calc(var(--_gap---size) * -0.5);
+  flex: 1;
+  display: flex;
+  --slide-count: var(--lg);
+  --lg: 3;
+  --md: var(--lg);
+  --sm: var(--md);
+  --xs: var(--sm);
+}
+
+@container (width < 50em) {
+  .marquee_offset { --slide-count: var(--md); }
+}
+@container (width < 35em) {
+  .marquee_offset { --slide-count: var(--sm); }
+}
+@container (width < 20em) {
+  .marquee_offset { --slide-count: var(--xs); }
+}
+
+/* Marquee element (Swiper container) */
+.marquee_element.swiper {
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  overflow: visible;
+}
+
+/* Overflow hidden variant */
+[data-wf--marquee--style="overflow-hidden"] .marquee_element.swiper {
+  overflow: hidden;
+}
+
+/* Marquee list */
+.marquee_list {
+  height: 100%;
+}
+
+.marquee_list.swiper-wrapper {
+  display: flex;
+}
+
+/* Marquee essentials - animation styles */
+.marquee_element.is-marquee .marquee_list {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+.marquee_element.is-marquee .marquee_list > * {
+  flex: 0 0 auto;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.marquee_element.is-marquee .marquee-clone {
+  pointer-events: none;
+}
+
+/* Marquee item sizing */
+.marquee_list > *,
+.marquee_list > .w-dyn-list > * > * > * {
+  padding-inline: calc(var(--_gap---size) / 2);
+  height: auto !important;
+  flex: 0 0 auto;
+  width: calc(100% / var(--slide-count)) !important;
+}
+
+/* Allow smart text sizing items to be natural width */
+.marquee_list > .u-text-fill-width,
+.marquee_list > [data-auto-duplicate] {
+  width: auto !important;
+  flex: 0 0 auto;
+}
+
+/* Text fill container for dynamic scaling */
+.text-fill-container {
+  container-type: inline-size;
+  width: 100%;
+}
+
+.u-text-fill-width {
+  white-space: nowrap !important;
+  line-height: 1 !important;
+}
+
+/* Drag cursor states */
+.marquee_element.is-marquee {
+  cursor: grab;
+}
+
+.marquee_element.is-marquee.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+/* =====================================================================
+   FOOD SLIDER - Platos Estrella
+   ===================================================================== */
+.food_slide_item {
+  padding-inline: calc(var(--_gap---size) / 2);
+  height: auto !important;
+  flex: 0 0 auto;
+  width: calc(100% / var(--slide-count));
+}
+
+.food_slide_image {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+}
+
+.food_slide_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.food_slide_item:hover .food_slide_image img {
+  transform: scale(1.05);
+}
+
+/* Gallery slide styles */
+.gallery_slide_image {
+  aspect-ratio: 4 / 5;
+  width: 100%;
+}
+
+.gallery_slide_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery_slide_item:hover .gallery_slide_image img {
+  transform: scale(1.05);
+}
+
+/* =====================================================================
+   SLIDER PROGRESS BAR
+   ===================================================================== */
+.slider_progress_wrap {
+  height: 4px;
+  background-color: var(--_theme---border);
+  border-radius: 100vw;
+  overflow: hidden;
+}
+
+.slider_progress_bar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--swatch--brand-500);
+  border-radius: inherit;
+  transition: width 0.3s ease;
+}
+
+/* Text-alignment utility. Lumos defines u-align-items-* but no
+   text-align utility — markup already references .u-text-align-center
+   in a few places, so this fills the gap. */
+.u-text-align-center { text-align: center; }
+.u-text-align-left { text-align: left; }
+.u-text-align-right { text-align: right; }
+
+/* =====================================================================
+   OUTLINE TEXT - Stroke/Hollow Heading
+   ===================================================================== */
+.platos_heading {
+  font-family: var(--_typography---font--tertiary-family);
+  font-style: normal;
+  font-weight: var(--_typography---font--tertiary-regular) !important;
+  line-height: var(--_typography---font--tertiary-line-height);
+  -webkit-text-stroke: var(--border-width--main) currentColor;
+  -webkit-text-fill-color: transparent;
+  paint-order: stroke fill;
+}
+
+/* =====================================================================
+   BUTTON SIZE OVERRIDE
+   Make all buttons 1.5x bigger
+   ===================================================================== */
+.button_main_element {
+  padding: 1rem 2rem;
+}
+
+.button_main_text {
+  font-size: 1.6875rem; /* 1.125rem * 1.5 */
+}
+
+.button_main_icon {
+  width: 1.75rem !important;
+  height: auto !important;
+}
+
+/* =====================================================================
+   SECONDARY BUTTON STYLES
+   Two modes: Orange (default) and Orchid Pink
+   ===================================================================== */
+
+/* Secondary button - Orange mode (default) */
+.button_main_element[data-style="secondary"] {
+  --_button-shadow-color: var(--swatch--brand-500);
+  background-color: var(--swatch--dark-900);
+  border-color: var(--swatch--light-400);
+  color: var(--swatch--light-400);
+  box-shadow: 0 5px 0 0 var(--_button-shadow-color);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.button_main_element[data-style="secondary"]:hover {
+  background-color: var(--swatch--dark-800);
+  box-shadow: 0 0 0 0 var(--_button-shadow-color);
+  transform: translate(0, 5px);
+}
+
+/* Secondary button - Orchid Pink mode */
+.button_main_element[data-style="secondary"].is-orchid {
+  --_button-shadow-color: var(--swatch--orchid-500);
+}
+
+/* Alternative class for orchid mode */
+[data-button-mode="orchid"] .button_main_element[data-style="secondary"],
+.button_main_wrap[data-button-mode="orchid"] .button_main_element[data-style="secondary"] {
+  --_button-shadow-color: var(--swatch--orchid-500);
+}
+
+/* Secondary button style using data attribute */
+[data-wf--button-main--variant="secondary"] .button_main_element {
+  background-color: transparent;
+  border-color: var(--_theme---text);
+  color: var(--_theme---text);
+  box-shadow: 0 5px 0 0 var(--swatch--brand-500);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+[data-wf--button-main--variant="secondary"] .button_main_element:hover {
+  background-color: transparent;
+  box-shadow: 0 0 0 0 var(--swatch--brand-500);
+  transform: translate(0, 5px);
+}
+
+/* Orchid mode for secondary buttons */
+[data-wf--button-main--variant="secondary"][data-button-mode="orchid"] .button_main_element {
+  box-shadow: 0 5px 0 0 var(--swatch--orchid-500);
+}
+
+[data-wf--button-main--variant="secondary"][data-button-mode="orchid"] .button_main_element:hover {
+  box-shadow: 0 0 0 0 var(--swatch--orchid-500);
+}
+
+/* =====================================================================
+   VALUES TABS - Interactive Section
+   ===================================================================== */
+
+/* Tab button reset and styling */
+.values-tab {
+  background: none;
+  border: none;
+  padding: var(--_spacing---space--4);
+  border-radius: var(--radius--main);
+  color: var(--swatch--brand-500);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.values-tab svg {
+  width: clamp(5rem, 12vw, 9rem);
+  height: clamp(5rem, 12vw, 9rem);
+}
+
+.values-tab:hover {
+  background-color: var(--swatch--dark-800);
+}
+
+.values-tab.is-active {
+  background-color: var(--swatch--dark-800);
+}
+
+/* Panel transitions */
+.values-panel,
+.values-content {
+  transition: opacity 0.3s ease;
+}
+
+.values-panel:not(.is-active),
+.values-content:not(.is-active) {
+  opacity: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.values-panel.is-active,
+.values-content.is-active {
+  opacity: 1;
+  position: relative;
+  pointer-events: auto;
+}
+
+/* =====================================================================
+   MASONRY GRID - Photo Grid Section
+   ===================================================================== */
+
+.masonry-grid {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.masonry-row {
+  display: flex;
+}
+
+.masonry-row + .masonry-row {
+  margin-top: var(--border-width--overlap);
+}
+
+.masonry-item {
+  overflow: hidden;
+  border-radius: var(--radius--main);
+  border: var(--border-width--main) solid currentColor;
+  aspect-ratio: 1 / 1;
+}
+
+.masonry-item + .masonry-item {
+  margin-left: var(--border-width--overlap);
+}
+
+.masonry-item--half {
+  flex: 1 1 50%;
+}
+
+.masonry-item--wide {
+  flex: 1 1 60%;
+}
+
+.masonry-item--narrow {
+  flex: 1 1 40%;
+}
+
+.masonry-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Marquee styling for masonry section - overlapping bottom row, full viewport width */
+.masonry-marquee {
+  color: var(--swatch--brand-500);
+  position: absolute;
+  bottom: 0;
+  left: calc(var(--site--margin) * -1);
+  right: calc(var(--site--margin) * -1);
+  transform: translateY(50%);
+  z-index: 2;
+}
+
+.masonry-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.masonry-marquee-text {
+  font-family: var(--_typography---font--tertiary-family);
+  font-weight: var(--_typography---font--tertiary-regular);
+  color: currentColor;
+}
+
+.masonry-marquee-icon {
+  width: 0.5em;
+  height: 0.6em;
+  display: inline-block;
+  margin-inline: var(--_spacing---space--4);
+  fill: currentColor;
+}
+
+/* =====================================================================
+   HERO SECTION - Striped Background
+   ===================================================================== */
+
+.hero_bg_stripes {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 4rem,
+    var(--swatch--dark-800) 4rem,
+    var(--swatch--dark-800) 4.125rem
+  );
+}
+
+/* =====================================================================
+   IFRAME WRAPPER - Reservation System
+   ===================================================================== */
+
+.iframe-wrapper {
+  border-radius: var(--radius--main);
+  overflow: hidden;
+  max-width: 100%;
+  background: var(--swatch--dark-900);
+  border: var(--border-width--main) solid var(--swatch--brand-500);
+  padding: 0;
+}
+
+.iframe-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* =====================================================================
+   CONTACT FORM - Piri Piri Custom Styles
+   Pill inputs + underline textarea
+   ===================================================================== */
+
+/* Contact form wrapper */
+.contact_form_wrap {
+  container-type: inline-size;
+}
+
+/* Pill-style input fields */
+.form_field.is-pill {
+  border-radius: var(--radius--round);
+  border-color: color-mix(in srgb, var(--_theme---text) 50%, transparent);
+  background-color: transparent;
+  height: 3.5rem;
+  padding: 0 1.5rem;
+  font-style: italic;
+}
+
+.form_field.is-pill:focus {
+  border-color: var(--_theme---text);
+}
+
+.form_field.is-pill::placeholder {
+  color: color-mix(in srgb, var(--_theme---text) 50%, transparent);
+  font-style: italic;
+}
+
+/* Underline-style textarea */
+.form_field.is-underline {
+  border: none;
+  border-bottom: var(--border-width--main) solid color-mix(in srgb, var(--_theme---text) 50%, transparent);
+  border-radius: 0;
+  background-color: transparent;
+  padding: var(--_spacing---space--4) 0;
+  min-height: 4rem;
+  resize: vertical;
+  font-style: italic;
+}
+
+.form_field.is-underline:focus {
+  border-bottom-color: var(--_theme---text);
+}
+
+.form_field.is-underline::placeholder {
+  color: color-mix(in srgb, var(--_theme---text) 50%, transparent);
+  font-style: italic;
+}
+
+/* =====================================================================
+   POPUP CLOSE BUTTON
+   ===================================================================== */
+
+.popup-close-btn {
+  position: absolute;
+  top: var(--_spacing---space--4);
+  right: var(--_spacing---space--4);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: transparent;
+  border: var(--border-width--main) solid currentColor;
+  padding: 0;
+  cursor: pointer;
+  color: currentColor;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* In the fullscreen menus the close button sits over an animated corner
+   decoration; give it the menu's surface colour so the X stays legible on
+   every theme. Pinned to the viewport corner with equal top/right offsets
+   (independent of the menu's asymmetric content padding) and a touch larger.
+   The homepage popup keeps its transparent look. */
+.modal_dialog .modal_close {
+  position: static;
+}
+.modal_dialog .popup-close-btn {
+  position: absolute;
+  top: var(--_spacing---space--4);
+  right: var(--_spacing---space--4);
+  width: 3rem;
+  height: 3rem;
+  background-color: var(--_theme---background);
+}
+.modal_dialog .popup-close-btn svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.popup-close-btn:hover {
+  background-color: var(--swatch--light-400);
+  color: var(--swatch--dark-900);
+}
+
+/* Contact form 2-column grid */
+.contact_form_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--_spacing---space--4);
+}
+
+@container (width < 35em) {
+  .contact_form_grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Full width element in grid */
+.contact_form_full {
+  grid-column: 1 / -1;
+}
+
+/* =====================================================================
+   NEWSLETTER CHECKBOX - Custom Square Tick
+   ===================================================================== */
+
+/* Override the u-align-items-start on the label so the box centers with the
+   first line of text (instead of top-aligning, which leaves it visually low
+   because the text glyph sits below the line-height top). */
+.newsletter-consent {
+  align-items: center;
+}
+
+.newsletter-checkbox-box {
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: var(--radius--small);
+  border: 2px solid currentColor;
+  background: transparent;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.newsletter-checkbox-box .newsletter_checkbox {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.newsletter-checkbox-box .newsletter-checkbox-check {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 1;
+  color: var(--swatch--dark-900);
+}
+
+.newsletter-consent:hover .newsletter-checkbox-box {
+  border-color: var(--swatch--orchid-500);
+}
+
+.newsletter-checkbox-box:has(.newsletter_checkbox:checked) {
+  background-color: var(--swatch--orchid-500);
+  border-color: var(--swatch--orchid-500);
+}
+
+.newsletter-checkbox-box:has(.newsletter_checkbox:checked) .newsletter-checkbox-check {
+  opacity: 1;
+}
+
+.newsletter-checkbox-box:has(.newsletter_checkbox:focus-visible) {
+  outline: 2px solid var(--swatch--orchid-500);
+  outline-offset: 2px;
+}
+
+/* =====================================================================
+   HISTORIA PAGE - Hero Section
+   ===================================================================== */
+
+.section_historia-hero {
+  overflow: hidden;
+  container-type: inline-size;
+}
+
+/* Edge-to-edge 2-column grid: image fills left column, text on right.
+   Capped at 75vh so the hero never dominates the viewport on tall screens. */
+.historia_hero_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  min-height: 75vh;
+  max-height: 75vh;
+}
+
+.historia_hero_visual {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Absolutely positioned image fills the visual cell exactly — image's natural
+   aspect ratio can't push the grid row past 100vh anymore. */
+.historia_hero_image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.historia_hero_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Symmetric padding all sides so `justify-content: center` actually
+     centers the text vertically (the previous +5rem on top dragged the
+     whole column visually off-center). */
+  padding: var(--_spacing---space--10);
+}
+
+/* Responsive: stack columns at narrower viewports */
+@container (width < 50em) {
+  .historia_hero_grid {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    /* Let the stacked card grow to fit the image + content instead of being
+       capped at 75vh (which clipped the lede on mobile). */
+    max-height: none;
+  }
+
+  .historia_hero_visual {
+    /* Fill the full card width (align-items:stretch + aspect-ratio alone was
+       shrinking the visual's width, leaving a strip of card showing beside the
+       image). width:100% + align-self:start lets the aspect-ratio set the
+       height from the full width, so the image spans edge-to-edge like the
+       home hero banner. */
+    width: 100%;
+    align-self: start;
+    aspect-ratio: 4 / 3;
+  }
+
+  .historia_hero_content {
+    padding: var(--_spacing---space--8) var(--site--gutter);
+  }
+}
+
+/* Historia hero: the empty nav row (logo is positioned out of flow, links
+   hidden ≤1919px) collapses so it adds no height of its own. */
+.hero_nav.is-historia-hero {
+  padding-block: 0 !important;
+  min-height: 0 !important;
+}
+
+/* ...and because that row has zero height, the link strip has nowhere to go.
+   The hide rule above only covers <=1919px, so on a wide screen the links
+   rendered jammed at y:0, over the cream band and the hero card. On these two
+   pages the logo and MENU float over the banner and MENU is the nav, exactly
+   like .is-minimal on carta. Hide the strip at every width. */
+.hero_nav.is-historia-hero .hero_nav_links {
+  display: none !important;
+}
+
+/* The banner slides up to one gutter from the top at every breakpoint, so the
+   hero container sits RIGHT BEHIND the logo + MENÚ (they float on top of it) —
+   exactly like the HOME hero image. */
+.section_historia-hero {
+  padding-top: var(--site--gutter) !important;
+}
+
+/* Desktop/tablet ≥992px: float the logo + MENÚ on the banner, inset one gutter
+   from the card edges (so the logo sits cleanly on the photo instead of
+   straddling the rounded border corner) and at the home-hero vertical inset. */
+@media (min-width: 992px) {
+  .hero_nav.is-historia-hero .hero_logo_wrap {
+    top: calc(2 * var(--site--gutter)) !important;
+    left: calc(2 * var(--site--gutter)) !important;
+  }
+  .hero_nav.is-historia-hero ~ [data-modal-trigger="menu"] {
+    top: calc(2 * var(--site--gutter)) !important;
+    right: calc(2 * var(--site--gutter)) !important;
+  }
+}
+
+/* Historia MENÚ button: the u-theme-brand button's border resolves to a stray
+   white outline in this fixed context. Pin it to brand-orange so it blends with
+   the orange banner — a clean dark pill with orange text, exactly like the
+   VER MÁS button (which has the same brand-orange border). Scoped to the
+   brand-themed menu button (historia); contacto's menu is the home-style
+   secondary button and keeps its own border. */
+.hero_nav.is-historia-hero ~ [data-modal-trigger="menu"].u-theme-brand .button_main_element {
+  border-color: var(--swatch--brand-500) !important;
+}
+
+/* =====================================================================
+   HISTORIA PAGE - Quote Section
+   ===================================================================== */
+
+.historia_quote_box {
+  container-type: inline-size;
+}
+
+.historia_quote_image {
+  max-width: 40%;
+}
+
+.historia_quote_image img {
+  aspect-ratio: 4 / 3;
+}
+
+@container (width < 50em) {
+  .historia_quote_box .u-flex-horizontal-nowrap {
+    flex-direction: column;
+  }
+
+  .historia_quote_image {
+    max-width: 100%;
+  }
+}
+
+/* =====================================================================
+   HISTORIA PAGE - Intro Section
+   ===================================================================== */
+
+.historia_intro_box {
+  container-type: inline-size;
+}
+
+/* Title column. Grows into whatever the copy column leaves over, but never
+   shrinks below the widest word of the display title (EVOLUCION) — that
+   min-content floor is what keeps the heading from ever overflowing. */
+.historia_intro_lead {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+  min-width: min-content;
+}
+
+/* Copy column. The measure is the whole point: left to itself the paragraph
+   runs the full 845px of the container (~82 characters a line) and reads as a
+   wall. 40rem is the preferred width, not a grow target — the title column
+   takes whatever is left over. */
+.historia_intro_copy {
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: 40rem;
+  min-width: 0;
+}
+
+/* The real guard. `ch` on the column would resolve against its 16px font, not
+   the paragraph's ~20px one, so the cap lives on the text itself. */
+.historia_intro_copy p {
+  max-width: 62ch;
+}
+
+/* Let the pair wrap to a second line on narrow screens rather than squeeze,
+   which was breaking "VER MAS" across two lines inside its own pill. */
+.historia_intro_copy .button_main_wrap {
+  flex-shrink: 0;
+}
+
+/* Stack before the copy column gets squeezed under ~45 characters — below
+   ~62rem the display title alone eats more than half the row. Note: `em` in a
+   container query resolves against the CONTAINER's font-size (14px here), not
+   the root, so the old `50em` was really 700px. rem keeps it honest. */
+@container (width < 62rem) {
+  /* Direct child only. Without the `>` this also flipped the button row into a
+     column and stacked VER MAS / DETALLES on top of each other. */
+  .historia_intro_box > .u-flex-horizontal-nowrap {
+    flex-direction: column;
+    /* The row's flex-start alignment becomes shrink-to-fit once the axis
+       flips, which sizes both columns to the widest word of the title and
+       pushes the copy past the dashed border. Stretch plus an explicit
+       width: 100% below keeps them inside — stretch alone still floors the
+       item at its min-content width. */
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .historia_intro_box .u-flex-horizontal-nowrap .u-flex-horizontal-nowrap {
+    justify-content: center;
+  }
+
+  /* Title and lede center; the long detail paragraph does not — nine centered
+     lines are a ragged mess to read. */
+  .historia_intro_copy p {
+    text-align: left;
+  }
+
+  /* flex-basis is a height once the row turns into a column — hand it back.
+     The cap is in rem for the same reason as the query above: `ch` here would
+     resolve against the column's 14px font, not the paragraph's ~19px one. */
+  .historia_intro_lead,
+  .historia_intro_copy {
+    flex-basis: auto;
+    width: 100%;
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* The min-content floor only exists to protect the two-column split. Left on
+     here it makes the column wider than the box on phones and the lede text
+     bleeds past the dashed border. */
+  .historia_intro_lead {
+    min-width: 0;
+  }
+}
+
+/* =====================================================================
+   TIMELINE COMPONENT
+   Vertical timeline with alternating image/content layout
+   ===================================================================== */
+
+.timeline_item {
+  position: relative;
+  container-type: inline-size;
+}
+
+.timeline_item + .timeline_item {
+  margin-top: var(--_spacing---space--8);
+}
+
+.timeline_row {
+  align-items: flex-start;
+}
+
+/* Column sizing */
+.timeline_col--image,
+.timeline_col--content {
+  flex: 1 1 45%;
+}
+
+.timeline_col--divider {
+  flex: 0 0 auto;
+  width: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Timeline line */
+.timeline_line {
+  flex: 1;
+  width: 2px;
+  background-color: var(--swatch--dark-900);
+}
+
+/* Timeline dot */
+.timeline_dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: var(--swatch--dark-900);
+  border: 3px solid var(--swatch--brand-500);
+  flex-shrink: 0;
+}
+
+/* Image styles */
+.timeline_image_wrap {
+  aspect-ratio: 3 / 4;
+}
+
+.timeline_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Content styles */
+.timeline_content {
+  padding-block: var(--_spacing---space--6);
+}
+
+/* Sticky content column — pins while image scrolls past */
+.timeline_col--content {
+  position: sticky;
+  top: 6rem;
+  align-self: start;
+}
+
+/* Year styling */
+.timeline_year {
+  display: block;
+  line-height: 0.9;
+  margin-bottom: var(--_spacing---space--2);
+}
+
+/* Reverse layout for alternating items */
+.timeline_item--reverse .timeline_row {
+  flex-direction: row-reverse;
+}
+
+/* Mobile: Stack vertically */
+@container (width < 50em) {
+  .timeline_row {
+    flex-direction: column !important;
+  }
+
+  .timeline_col--image {
+    order: 1;
+  }
+
+  .timeline_col--divider {
+    order: 2;
+    flex-direction: row;
+    width: 100%;
+    height: 3rem;
+    margin-block: var(--_spacing---space--4);
+  }
+
+  .timeline_col--content {
+    order: 3;
+    text-align: center;
+  }
+
+  .timeline_col--content .u-flex-horizontal-nowrap {
+    justify-content: center;
+  }
+
+  .timeline_line {
+    width: auto;
+    height: 2px;
+  }
+
+  .timeline_image_wrap {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+
+
+
+/* ─── Hide native scrollbar on textareas (form messages)
+   Keeps the field scrollable via keyboard/wheel/touch but removes the
+   browser-default scrollbar chrome. */
+textarea.form_field {
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* IE / legacy Edge */
+}
+textarea.form_field::-webkit-scrollbar {
+  display: none;                  /* Chrome / Safari / new Edge */
+}
+
+/* ─── Site navigation system ───────────────────────────────────────────────
+   Canonical nav pattern (mirrors what was inline on index.html).
+   Variants are applied via modifier classes on the <nav> element:
+     .hero_nav                   → base
+     .hero_nav.u-theme-brand     → brand-orange bg with dark text (historia hero)
+     .hero_nav.is-minimal        → hide the nav links list; only the MENU
+                                    button (which is a separate fixed element)
+                                    remains visible. Use on pages like carta.
+
+   Each link should be wrapped with:
+     <li class="hero_nav_item">
+       <img class="hero_nav_item_heart" ...>
+       <a class="hero_nav_link" ...>
+   so the heart-on-hover behaves consistently across pages. */
+
+.hero_nav_item { position: relative; }
+
+/* The top navbar's hover heart is off: it popped up behind the middle of the
+   link and fought the fire, which is the hover cue we're keeping. The fire is
+   driven separately off .hero_nav_link:hover (see .hero_nav_fire), so it is
+   unaffected.
+
+   This is ONLY the navbar heart (.hero_nav_item_heart). The full-screen MENU
+   keeps its heart, which is a different element on a different selector
+   ([data-menu-heart]) and is not touched here.
+
+   The markup is left in place, so restoring this is a matter of deleting the
+   rule below and restoring the two it replaced. */
+.hero_nav_item_heart {
+  display: none;
+}
+
+/* Minimal layout: hide nav links entirely. The MENU button stays
+   visible because it's a separate fixed element (.button_main_wrap
+   with data-modal-trigger="menu"), not a child of the nav. */
+.hero_nav.is-minimal .hero_nav_links {
+  display: none !important;
+}
+
+/* ─── Desktop nav row (≥1920px) ────────────────────────────────────────────
+   1920px is the only width where the link strip is visible at all; below it
+   the MENÚ button is the whole navigation. Up here the logo and the links
+   share one line, aligned left.
+
+   The logo carries an inline position:absolute so it can float over the hero
+   banner on narrower screens (and becomes fixed under 992px, where the
+   scroll-hide JS takes over — that JS is gated on max-width:767px and on the
+   logo computing to 'fixed', so none of it applies at this breakpoint).
+   Rejoining the flow lets the row's align-items:center line the logo up with
+   the links; while it was out of flow its centre sat 54px below them.
+
+   Excluded: .is-historia-hero (historia, contacto) and .is-minimal (carta)
+   deliberately float the logo over a banner and hide the strip. */
+@media (min-width: 1920px) {
+  .hero_nav:not(.is-historia-hero):not(.is-minimal) {
+    justify-content: flex-start;
+    gap: var(--_spacing---space--6);
+  }
+  .hero_nav:not(.is-historia-hero):not(.is-minimal) .hero_logo_wrap {
+    position: static !important;
+    flex: 0 0 auto;
+  }
+  /* strip sits next to the logo; the rest of the row stays clear for the
+     MENÚ button, which is fixed to the top-right corner */
+  .hero_nav:not(.is-historia-hero):not(.is-minimal) .hero_nav_links {
+    /* the ul carries a 10px bottom margin, and flex centres the MARGIN box,
+       so the visible strip rode 5px above the logo's centre line */
+    margin-block: 0;
+    margin-right: auto;
+  }
+  /* one step up from --text-small (14px), which read as too small at this size */
+  .hero_nav:not(.is-historia-hero):not(.is-minimal) .hero_nav_link {
+    font-size: 1.0625rem;
+  }
+}
+
+
+
+
+/* ─── Custom site cursor (arrow + active fire-red state) ───────────────────
+   Cream arrow + dark border on dark themes; dark arrow + cream border on
+   light/brand themes. :active swaps the fill to brand orange.
+   Nested .u-theme-dark inside a light/brand parent gets the cream variant. */
+
+*, *::before, *::after {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 80 80'%3E%3Cg transform='translate(40, 40) rotate(-135) translate(-23, -28)'%3E%3Cpath d='M2.927,36.379l20.5-8.11-18.247-8.108L8.0,0l37.84,19.147-2.59,18.246L0,56.535Z' fill='%23efdece' stroke='%231d1d1b' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E") 12 12, auto !important;
+}
+*:active, *:active::before, *:active::after {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 80 80'%3E%3Cg transform='translate(40, 40) rotate(-135) translate(-23, -28)'%3E%3Cpath d='M2.927,36.379l20.5-8.11-18.247-8.108L8.0,0l37.84,19.147-2.59,18.246L0,56.535Z' fill='%23ff5224' stroke='%231d1d1b' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E") 12 12, auto !important;
+}
+
+.u-theme-light *, .u-theme-light *::before, .u-theme-light *::after,
+.u-theme-brand *, .u-theme-brand *::before, .u-theme-brand *::after {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 80 80'%3E%3Cg transform='translate(40, 40) rotate(-135) translate(-23, -28)'%3E%3Cpath d='M2.927,36.379l20.5-8.11-18.247-8.108L8.0,0l37.84,19.147-2.59,18.246L0,56.535Z' fill='%231d1d1b' stroke='%23efdece' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E") 12 12, auto !important;
+}
+.u-theme-light *:active, .u-theme-light *:active::before, .u-theme-light *:active::after,
+.u-theme-brand *:active, .u-theme-brand *:active::before, .u-theme-brand *:active::after {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 80 80'%3E%3Cg transform='translate(40, 40) rotate(-135) translate(-23, -28)'%3E%3Cpath d='M2.927,36.379l20.5-8.11-18.247-8.108L8.0,0l37.84,19.147-2.59,18.246L0,56.535Z' fill='%23ff5224' stroke='%23efdece' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E") 12 12, auto !important;
+}
+
+.u-theme-light .u-theme-dark *, .u-theme-light .u-theme-dark *::before, .u-theme-light .u-theme-dark *::after,
+.u-theme-brand .u-theme-dark *, .u-theme-brand .u-theme-dark *::before, .u-theme-brand .u-theme-dark *::after {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 80 80'%3E%3Cg transform='translate(40, 40) rotate(-135) translate(-23, -28)'%3E%3Cpath d='M2.927,36.379l20.5-8.11-18.247-8.108L8.0,0l37.84,19.147-2.59,18.246L0,56.535Z' fill='%23efdece' stroke='%231d1d1b' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E") 12 12, auto !important;
+}
+.u-theme-light .u-theme-dark *:active, .u-theme-light .u-theme-dark *:active::before, .u-theme-light .u-theme-dark *:active::after,
+.u-theme-brand .u-theme-dark *:active, .u-theme-brand .u-theme-dark *:active::before, .u-theme-brand .u-theme-dark *:active::after {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 80 80'%3E%3Cg transform='translate(40, 40) rotate(-135) translate(-23, -28)'%3E%3Cpath d='M2.927,36.379l20.5-8.11-18.247-8.108L8.0,0l37.84,19.147-2.59,18.246L0,56.535Z' fill='%23ff5224' stroke='%231d1d1b' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E") 12 12, auto !important;
+}
+
+/* Touch devices (no hover-capable, precise pointer) have no on-screen cursor,
+   so drop the custom arrow and fall back to the native default. The cursor
+   rules above — plus their duplicates in interactions.css and a few page
+   <style> blocks — all use !important; repeating :root inflates this selector
+   to (0,4,0) specificity so it beats every one of them regardless of source
+   order, without needing a JS-added class on <html>. The JS flame-cursor and
+   button-hover fire are disabled separately in site.js (PP_IS_TOUCH). */
+@media (hover: none), (pointer: coarse) {
+  :root:root:root:root *,
+  :root:root:root:root *::before,
+  :root:root:root:root *::after {
+    cursor: auto !important;
+  }
+}
+
+
+/* ─── Muted text without killing ::selection ─────────────────────────────
+   `u-opacity-75` / `u-opacity-50` apply `opacity` to the whole element, and
+   element opacity cascades into the ::selection background (so highlights
+   look washed out). For text elements specifically, mute the color via
+   color-mix instead — the selection background then renders at full
+   opacity. SVGs / images / non-text elements with u-opacity-* keep their
+   original behavior. */
+p.u-opacity-75,
+span.u-opacity-75,
+.u-text-style-main.u-opacity-75,
+.u-text-style-large.u-opacity-75,
+.u-text-style-small.u-opacity-75,
+.u-text-style-tiny.u-opacity-75,
+.u-text-style-h1.u-opacity-75,
+.u-text-style-h2.u-opacity-75,
+.u-text-style-h3.u-opacity-75,
+.u-text-style-h4.u-opacity-75 {
+  opacity: 1;
+  color: color-mix(in srgb, currentColor 75%, transparent);
+}
+p.u-opacity-50,
+span.u-opacity-50,
+.u-text-style-main.u-opacity-50,
+.u-text-style-large.u-opacity-50,
+.u-text-style-small.u-opacity-50,
+.u-text-style-tiny.u-opacity-50,
+.u-text-style-h1.u-opacity-50,
+.u-text-style-h2.u-opacity-50,
+.u-text-style-h3.u-opacity-50,
+.u-text-style-h4.u-opacity-50 {
+  opacity: 1;
+  color: color-mix(in srgb, currentColor 50%, transparent);
+}
+
+
+/* ─── Text selection: theme-aware ─────────────────────────────────────────
+   Default / dark / light themes → full brand-orange selection with dark
+   text (avoids the washed-out browser default).
+   Brand-themed sections → dark selection + cream text so the highlight
+   reads against the orange background.
+   Notes:
+   • Hex literal `#ff5224` (= --swatch--brand-500) used directly to avoid any
+     edge-case in browsers blending CSS variables inside ::selection.
+   • `!important` keeps any element-level opacity / mix-blend-mode from
+     re-tinting the highlight.
+   • Both `::selection` (modern) and `::-moz-selection` (older Firefox builds)
+     are kept in sync. */
+::selection,
+::-moz-selection {
+  background-color: #ff5224 !important;
+  color: #1d1d1b !important;
+  text-shadow: none !important;
+}
+.u-theme-brand ::selection,
+.u-theme-brand::selection,
+.u-theme-brand ::-moz-selection,
+.u-theme-brand::-moz-selection {
+  background-color: #1d1d1b !important;
+  color: #efdece !important;
+  text-shadow: none !important;
+}
+/* Nested dark/light theme inside a brand parent reverts to the default
+   brand-orange selection (mirrors the cursor cascade). */
+.u-theme-brand .u-theme-dark ::selection,
+.u-theme-brand .u-theme-light ::selection,
+.u-theme-brand .u-theme-dark ::-moz-selection,
+.u-theme-brand .u-theme-light ::-moz-selection {
+  background-color: #ff5224 !important;
+  color: #1d1d1b !important;
+}
+
+
+/* ─── Page scrollbar: narrow brand-orange thumb, dark gutter ──────────────
+   Lumos paints `<html>` cream via `html { background-color: var(--_theme---background) }`
+   which leaks through any "transparent" scrollbar track on Windows/Linux —
+   so we pin the html background to dark with !important AND paint the
+   scrollbar gutter explicitly dark in every layer (Firefox `scrollbar-color`
+   track, WebKit `::-webkit-scrollbar` track, color-scheme hint). Result:
+   single orange pill on a flush dark gutter. */
+html {
+  scrollbar-width: thin !important;
+  scrollbar-color: #ff5224 #1d1d1b !important;
+  color-scheme: dark;
+  background-color: #1d1d1b !important;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+  background: #1d1d1b;
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-corner {
+  background: #1d1d1b;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ff5224;
+  border-radius: 999px;
+  border: none;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: color-mix(in srgb, #ff5224 80%, #fff);
+}
+::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+  width: 0;
+}
+
+
+/* ─── Button shadow compensation ───────────────────────────────────────────
+   .button_main_element renders with a 5px drop shadow (`box-shadow: 0 5px 0 0`).
+   The shadow lives outside the layout box, so positioning the wrapper flush
+   against a neighbor (e.g. a fixed MENÚ button next to a card border) leaves
+   the shadow visually overlapping that neighbor. Shift the wrapper up by 5px
+   (visual only, no layout impact) so the shadow's bottom edge aligns with
+   where the element's bottom used to be — alignment matches what you see. */
+.button_main_wrap {
+  transform: translateY(-10px);
+}
+
+
+/* ─── Fullscreen menu hover color on brand themes ─────────────────────────
+   Menu links use u-hover-color-brand (brand orange) on hover. On the
+   brand-themed dialog variants (orange / pink) the bg is already brand-
+   colored, so the hover would be invisible. Flip the hover color to cream
+   so it actually reads against the brand background. */
+.modal_dialog.u-theme-brand a.u-hover-color-brand:hover,
+.modal_dialog.u-theme-brand-2 a.u-hover-color-brand:hover {
+  color: var(--swatch--light-200);
+}
+
+
+/* ─── Inline flame color (theme-aware) ────────────────────────────────────
+   Flame SVGs are filled with `currentColor`. Default is brand orange so
+   they read against dark/light backgrounds. On brand-themed parents
+   (orange or pink) the orange flames would disappear into the bg, so they
+   switch to the theme's text color (the same dark used for the links). */
+.pp-inline-fire {
+  color: var(--swatch--brand-500);
+}
+.u-theme-brand .pp-inline-fire,
+.u-theme-brand-2 .pp-inline-fire {
+  color: var(--_theme---text);
+}
+
+/* Flame frame visibility — site.js (initInlineFlames) cycles the .pp-active
+   class so only one frame shows at a time, which IS the fire animation. This
+   rule used to be injected by the cursor-flame init, but that's skipped on
+   touch devices, so without it here every frame showed at once and the inline
+   flames (e.g. the Reserva tu mesa fan) didn't animate on mobile. */
+.pp-flame-wrap svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.pp-flame-wrap svg.pp-active {
+  opacity: 1;
+}
+
+
+/* ─── Fullscreen menu: drop the modal backdrop dim ─────────────────────────
+   .modal_backdrop sits inside .modal_inner and adds a 50% dark wash so the
+   standard modal pattern has a dim layer around the centered card. For
+   data-style="full-screen" menus the modal fills the viewport, so the
+   wash just dims the themed background. Make it transparent there; the
+   click-to-close target still works because it has no fill. */
+.modal_inner[data-style="full-screen"] .modal_backdrop {
+  background-color: transparent;
+}
+
+
+/* ─── Persistent floating CTAs (RESERVA + PIDE YA) ─────────────────────────
+   Sit at bottom-right of every page so the primary actions follow the user
+   as they scroll. Uses the standard LUMOS button_main_* components so they
+   inherit the site's button styling automatically. */
+.floating-ctas {
+  position: fixed;
+  /* --pp-cookie-offset is set by site.js while the cookie banner is open,
+     so the CTAs sit above the banner. Resets to 0 once the banner is closed. */
+  bottom: calc(var(--site--margin) + var(--pp-cookie-offset, 0px));
+  right: var(--site--margin);
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  z-index: 1000; /* above cookie banner (z-index: 999) */
+  pointer-events: none;
+  align-items: center;
+  transition: bottom 0.25s ease, right 0.25s ease, left 0.25s ease, transform 0.25s ease;
+}
+
+.floating-ctas > * {
+  pointer-events: auto;
+}
+
+/* When the page subfooter (legal strip) scrolls into view — i.e. the user has
+   reached the very bottom — fade the floating RESERVA/PIDE YA bar (and its
+   collapsed FAB) out; site.js toggles this class. */
+.floating-ctas {
+  transition: bottom 0.25s ease, right 0.25s ease, left 0.25s ease,
+    transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
+}
+.floating-ctas.is-hidden-at-footer {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .floating-ctas {
+    bottom: calc(1rem + var(--pp-cookie-offset, 0px));
+    right: 1rem;
+    gap: 0.5rem;
+  }
+}
+
+/* ─── Mobile: collapse the floating CTA pair to a single FAB ────────────────
+   The RESERVA + PIDE YA pair is bulky on phones. site.js injects
+   .floating-ctas-fab and toggles .is-collapsed by scroll direction: collapsed
+   (FAB only) while scrolling down / at rest, expanded (full pair) on scroll-up
+   or when the FAB is tapped. Hidden entirely on desktop. */
+.floating-ctas-fab {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  padding: 0;
+  border-radius: 100vw;
+  border: var(--border-width--main, 2px) solid var(--_theme---border, #1d1d1b);
+  background: var(--swatch--brand-500, #ff5224);
+  color: var(--swatch--dark-900, #1d1d1b);
+  pointer-events: auto;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.28);
+  transition: transform 0.2s ease;
+}
+.floating-ctas-fab:active { transform: scale(0.92); }
+/* Fuego Interior glyph is taller than wide (viewBox 33.73x38.05) — size by
+   height so it keeps its aspect and reads as the flame, not a squished box. */
+.floating-ctas-fab svg { width: auto; height: 1.85rem; display: block; }
+
+@media (max-width: 767px) {
+  /* collapsed → show only the FAB, hide the two pills */
+  .floating-ctas.is-collapsed .button_main_wrap { display: none; }
+  .floating-ctas.is-collapsed .floating-ctas-fab { display: flex; }
+  /* expanded → show the pills (their normal display), hide the FAB, and give
+     the pair a quick fade-in. Opacity only — the pills carry a
+     translateY(-10px) shadow offset we must not clobber. */
+  .floating-ctas:not(.is-collapsed) .floating-ctas-fab { display: none; }
+  .floating-ctas:not(.is-collapsed) .button_main_wrap {
+    animation: pp-cta-fade-in 0.28s ease both;
+  }
+}
+@keyframes pp-cta-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ─── Logo + MENÚ stay on top of every section ─────────────────────────────
+   The fixed logo + MENÚ button live inside the hero, whose own stacking context
+   (u-zindex-1) traps them BELOW later sections. Lifting the hero's z-index above
+   the highest section (reviews uses 20) frees the fixed children to sit on top —
+   WITHOUT moving or repositioning anything, so their on-load placement is
+   exactly as authored. The hero is full-height and scrolls fully out of view, so
+   raising its z-index has no effect on the sections that follow it. */
+.hero {
+  z-index: 30;
+}
+
+/* Mobile scroll-collapse for the logo + MENÚ (classes toggled by site.js).
+   Default (on load) = nothing applied, so placement is untouched. */
+.hero_nav .hero_logo_wrap {
+  transition: opacity 0.25s ease, transform 0.25s ease, color 0.2s ease;
+}
+[data-modal-trigger="menu"] .button_main_text {
+  transition: opacity 0.2s ease;
+}
+@media (max-width: 767px) {
+  /* scrolling down → logo fades out */
+  .hero_nav .hero_logo_wrap.is-nav-hidden {
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+  }
+  /* scrolling down → MENÚ button drops its label, leaving just the icon */
+  [data-modal-trigger="menu"].is-nav-collapsed .button_main_text {
+    display: none;
+  }
+}
+
+/* ─── u-text-style-tiny utility ─── */
+.u-text-style-tiny {
+  font-family: var(--_text-style---font-family);
+  font-size: var(--_text-style---font-size);
+  line-height: var(--_text-style---line-height);
+  font-weight: var(--_text-style---font-weight);
+  letter-spacing: var(--_text-style---letter-spacing);
+  --_text-style---font-family: var(--_typography---font--secondary-family);
+  --_text-style---font-size: var(--_typography---font-size--text-tiny);
+  --_text-style---line-height: var(--_typography---line-height--huge);
+  --_text-style---font-weight: var(--_typography---font--primary-regular);
+  --_text-style---letter-spacing: var(--_typography---letter-spacing--normal);
+  --_text-style---margin-bottom: var(--_spacing---space--3);
+  --_text-style---text-wrap: pretty;
+}
+
+/* Mobile: standardise the floating MENÚ button position across all pages to
+   match the home page (more inset from the top-right corner). Desktop keeps
+   each page's own inline position. carta.html's menu button is static (inside
+   a fixed nav), so top/right are inert there — left untouched. */
+@media (max-width: 767px) {
+  /* +0.625rem on top to offset the button's -10px shadow lift, so the MENÚ
+     button visually lines up with the logo (which has no lift). */
+  [data-modal-trigger="menu"] {
+    top: calc(2 * var(--site--gutter) + 0.625rem) !important;
+    right: calc(2 * var(--site--gutter)) !important;
+  }
+
+  /* Trim the chrome a bit on mobile: smaller buttons (label, padding, icon)
+     and a smaller nav logo, so they don't dominate the small viewport. */
+  .button_main_element { padding: 0.85rem 1.5rem; }
+  .button_main_text { font-size: 1.35rem; }
+  .button_main_icon { width: 1.4rem !important; }
+  .hero_nav .hero_logo_wrap { width: 6.5rem !important; }
+}
