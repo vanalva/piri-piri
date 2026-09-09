@@ -3693,6 +3693,27 @@ html {
     text-align: center;
   }
 }
+
+/* ─── Fullscreen menu: fit eight items on a phone ─────────────────────────
+   Eight display-size links plus the top bar and the bottom button row ran
+   ~92px past a 667px viewport, and CLUB SECRETO wraps on narrow phones which
+   made it worse. Step the type down and tighten the rhythm. Still fluid,
+   still uppercase, still heavy - the brutalist weight is in the 900 weight
+   and the full-bleed block, not in the raw pixel size.
+   Measured after: 43px at 390w, 41px at 375w, 40px at 360w, 35px at 320w,
+   no overflow at any of them and CLUB SECRETO stays on one line. */
+@media (max-width: 767px) {
+  [data-modal-target="menu"] [data-menu-item] a {
+    --_text-style---font-size: clamp(2.125rem, 11vw, 3.25rem);
+  }
+  [data-modal-target="menu"] [data-menu-list] {
+    --_gap---size: var(--_spacing---space--3);
+  }
+  /* the three stacked regions (logo row / links / buttons) sat 28px apart */
+  [data-modal-target="menu"] .modal_scroll {
+    row-gap: var(--_spacing---space--4);
+  }
+}
 /* Location cards (Reserva tu mesa) on mobile — make each a single bordered,
    rounded card instead of two separately-rounded pieces. The wrapper takes the
    border + radius AND a unified background so the whole card is one solid
