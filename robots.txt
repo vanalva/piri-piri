@@ -1,0 +1,67 @@
+# somospiripiri.com
+#
+# Hand-authored. build-web.js copies src/static/** to the web root verbatim
+# and leaves a hand-authored robots.txt alone rather than generating one, so
+# this file is the live policy. Keep it in sync with src/static/sitemap.xml.
+#
+# Nothing here is blocked. The pages that must stay out of the index say so
+# themselves with <meta name="robots" content="noindex"> — /legal,
+# /carta-item, /juego-embed and the 4xx/5xx pages. That is deliberate: a
+# path blocked in robots.txt is never fetched, so its noindex is never read,
+# and Google can end up indexing the URL anyway from inbound links alone.
+
+User-agent: *
+Allow: /
+
+# ── AI assistants ────────────────────────────────────────────────────
+# Answer engines are a discovery surface for a restaurant: someone asking an
+# assistant where to eat pollo al carbón in Madrid should be able to get this
+# answer. Listed one by one rather than left to the wildcard so the policy is
+# explicit and a single line flips any of them.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+Sitemap: https://www.somospiripiri.com/sitemap.xml

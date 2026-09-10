@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ff5224">
 
   <!-- SEO: title + description -->
-  <title>Piri Piri | Pollo al carbón a domicilio y en Madrid · Lavapiés · Prosperidad · Las Tablas</title>
-  <meta name="description" content="Pollo al carbón asado en horno Josper con carbón Marabú. Pide pollo a domicilio o reserva mesa en Lavapiés, Prosperidad o Las Tablas. Burgers, bowls, alitas y nuestras salsas Piri Piri.">
+  <title>Piri Piri | Pollo al carbón a domicilio en Madrid</title>
+  <meta name="description" content="Pollo al carbón asado en horno Josper con carbón marabú. Pide a domicilio o reserva mesa en Lavapiés, Prosperidad o Las Tablas. Burgers, bowls y alitas.">
   <meta name="keywords" content="pollo al carbón Madrid, pollo a domicilio, pollo asado, restaurante Lavapiés, restaurante Prosperidad, Las Tablas, comer pollo Madrid, Piri Piri">
   <meta name="robots" content="index, follow">
   <meta name="author" content="Piri Piri">
@@ -17,59 +18,330 @@
   <meta property="og:title" content="Piri Piri | Pollo al carbón a domicilio en Madrid">
   <meta property="og:description" content="Pollo al carbón asado en horno Josper con carbón Marabú. Lavapiés · Prosperidad · Las Tablas. Pide a domicilio o reserva mesa.">
   <meta property="og:url" content="https://www.somospiripiri.com/">
-  <meta property="og:image" content="https://www.somospiripiri.com/resources/images/general/1366w/cocina-horno-carbon_1366w.webp">
+  <meta property="og:image" content="https://www.somospiripiri.com/og/og-home.jpg">
+  <meta property="og:image:secure_url" content="https://www.somospiripiri.com/og/og-home.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Bucket de pollo al carbón Piri Piri sobre pared de azulejo blanco">
   <meta property="og:locale" content="es_ES">
 
   <!-- Twitter card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Piri Piri | Pollo al carbón a domicilio en Madrid">
   <meta name="twitter:description" content="Pollo al carbón asado en horno Josper. Lavapiés · Prosperidad · Las Tablas. Pide a domicilio o reserva mesa.">
-  <meta name="twitter:image" content="https://www.somospiripiri.com/resources/images/general/1366w/cocina-horno-carbon_1366w.webp">
+  <meta name="twitter:image" content="https://www.somospiripiri.com/og/og-home.jpg">
+  <meta name="twitter:image:alt" content="Bucket de pollo al carbón Piri Piri sobre pared de azulejo blanco">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://www.somospiripiri.com/">
 
-  <!-- Schema.org Restaurant structured data -->
+  <!-- Structured data (JSON-LD). Generated — see notes/SEO-AEO-2026-09.md. -->
+  <!-- Opening hours are NOT declared here on purpose.
+       They are published nowhere on this site, and the values floating
+       around third-party listings disagree with each other (press pieces
+       from the 2020 opening vs. delivery-platform windows, which are not
+       the same thing as door hours). Wrong hours in structured data are
+       worse than none: Google will surface them and send people to a
+       closed door.
+
+       To add them, take the real hours from each location's Google
+       Business Profile and drop this inside each Restaurant node:
+
+       "openingHoursSpecification": [
+         { "@type": "OpeningHoursSpecification",
+           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+           "opens": "13:00", "closes": "16:00" },
+         { "@type": "OpeningHoursSpecification",
+           "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+           "opens": "20:00", "closes": "23:00" }
+       ],
+  -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": "Piri Piri",
-    "image": "https://www.somospiripiri.com/resources/images/general/1366w/cocina-horno-carbon_1366w.webp",
-    "url": "https://www.somospiripiri.com/",
-    "servesCuisine": ["Pollo al carbón", "Burgers", "Bowls", "Comida portuguesa"],
-    "priceRange": "€€",
-    "acceptsReservations": true,
-    "sameAs": [
-      "https://www.instagram.com/piripirialcarbon",
-      "https://www.tiktok.com/@piripirialcarbon"
-    ],
-    "department": [
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.somospiripiri.com/#organization",
+        "name": "Piri Piri",
+        "legalName": "Piripiri España S.L.",
+        "vatID": "ESB04946141",
+        "taxID": "B04946141",
+        "url": "https://www.somospiripiri.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.somospiripiri.com/assets/resources/logos/piripiri-logotipo_alpha_512.svg",
+          "caption": "Piri Piri"
+        },
+        "image": "https://www.somospiripiri.com/og/og-home.jpg",
+        "email": "info@somospiripiri.com",
+        "telephone": "+34919192934",
+        "foundingDate": "2020-06",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Calle Mesón de Paredes 15",
+          "addressLocality": "Madrid",
+          "addressRegion": "Madrid",
+          "postalCode": "28012",
+          "addressCountry": "ES"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Madrid"
+        },
+        "sameAs": [
+          "https://www.instagram.com/piripirialcarbon",
+          "https://www.tiktok.com/@piripirialcarbon"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.somospiripiri.com/#website",
+        "url": "https://www.somospiripiri.com/",
+        "name": "Piri Piri",
+        "inLanguage": "es-ES",
+        "publisher": {
+          "@id": "https://www.somospiripiri.com/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.somospiripiri.com/#webpage",
+        "url": "https://www.somospiripiri.com/",
+        "name": "Piri Piri | Pollo al carbón a domicilio en Madrid",
+        "description": "Pollo al carbón asado en horno Josper con carbón marabú en Lavapiés, Prosperidad y Las Tablas.",
+        "isPartOf": {
+          "@id": "https://www.somospiripiri.com/#website"
+        },
+        "about": {
+          "@id": "https://www.somospiripiri.com/#organization"
+        },
+        "inLanguage": "es-ES",
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://www.somospiripiri.com/og/og-home.jpg"
+        }
+      },
       {
         "@type": "Restaurant",
+        "@id": "https://www.somospiripiri.com/#lavapies",
         "name": "Piri Piri Lavapiés",
-        "telephone": "+34 919 192 934",
-        "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressRegion": "Madrid", "addressCountry": "ES" }
+        "parentOrganization": {
+          "@id": "https://www.somospiripiri.com/#organization"
+        },
+        "url": "https://www.somospiripiri.com/contacto",
+        "image": "https://www.somospiripiri.com/assets/resources/images/1920w/lavapies.png",
+        "telephone": "+34919192934",
+        "email": "info@somospiripiri.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Calle del Mesón de Paredes 15",
+          "addressLocality": "Madrid",
+          "addressRegion": "Madrid",
+          "postalCode": "28012",
+          "addressCountry": "ES"
+        },
+        "hasMap": "https://www.google.com/maps?cid=4853788067506515583",
+        "servesCuisine": [
+          "Pollo al carbón",
+          "Portuguesa",
+          "Brasas",
+          "Hamburguesas"
+        ],
+        "priceRange": "€€",
+        "currenciesAccepted": "EUR",
+        "acceptsReservations": "True",
+        "hasMenu": "https://www.somospiripiri.com/carta",
+        "menu": "https://www.somospiripiri.com/carta",
+        "sameAs": [
+          "https://www.instagram.com/piripirialcarbon",
+          "https://www.tiktok.com/@piripirialcarbon"
+        ],
+        "potentialAction": [
+          {
+            "@type": "OrderAction",
+            "name": "Pedir a domicilio",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://carta.somospiripiri.com/",
+              "inLanguage": "es-ES",
+              "actionPlatform": [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform"
+              ]
+            },
+            "deliveryMethod": [
+              "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet",
+              "http://purl.org/goodrelations/v1#DeliveryModePickUp"
+            ]
+          },
+          {
+            "@type": "ReserveAction",
+            "name": "Reservar mesa",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.covermanager.com/reservation/module_restaurant/restaurante-piripiri/spanish",
+              "inLanguage": "es-ES",
+              "actionPlatform": [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform"
+              ]
+            },
+            "result": {
+              "@type": "FoodEstablishmentReservation",
+              "name": "Reserva"
+            }
+          }
+        ]
       },
       {
         "@type": "Restaurant",
+        "@id": "https://www.somospiripiri.com/#prosperidad",
         "name": "Piri Piri Prosperidad",
-        "telephone": "+34 912 629 421",
-        "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressRegion": "Madrid", "addressCountry": "ES" }
+        "parentOrganization": {
+          "@id": "https://www.somospiripiri.com/#organization"
+        },
+        "url": "https://www.somospiripiri.com/contacto",
+        "image": "https://www.somospiripiri.com/assets/resources/images/1920w/prosperidad.png",
+        "telephone": "+34912629421",
+        "email": "info@somospiripiri.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Calle de López de Hoyos 127",
+          "addressLocality": "Madrid",
+          "addressRegion": "Madrid",
+          "postalCode": "28002",
+          "addressCountry": "ES"
+        },
+        "hasMap": "https://maps.app.goo.gl/1Mu1NntzimFFkd7bA",
+        "servesCuisine": [
+          "Pollo al carbón",
+          "Portuguesa",
+          "Brasas",
+          "Hamburguesas"
+        ],
+        "priceRange": "€€",
+        "currenciesAccepted": "EUR",
+        "acceptsReservations": "True",
+        "hasMenu": "https://www.somospiripiri.com/carta",
+        "menu": "https://www.somospiripiri.com/carta",
+        "sameAs": [
+          "https://www.instagram.com/piripirialcarbon",
+          "https://www.tiktok.com/@piripirialcarbon"
+        ],
+        "potentialAction": [
+          {
+            "@type": "OrderAction",
+            "name": "Pedir a domicilio",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://carta.somospiripiri.com/",
+              "inLanguage": "es-ES",
+              "actionPlatform": [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform"
+              ]
+            },
+            "deliveryMethod": [
+              "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet",
+              "http://purl.org/goodrelations/v1#DeliveryModePickUp"
+            ]
+          },
+          {
+            "@type": "ReserveAction",
+            "name": "Reservar mesa",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.covermanager.com/reservation/module_restaurant/restaurante-piripiri/spanish",
+              "inLanguage": "es-ES",
+              "actionPlatform": [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform"
+              ]
+            },
+            "result": {
+              "@type": "FoodEstablishmentReservation",
+              "name": "Reserva"
+            }
+          }
+        ]
       },
       {
         "@type": "Restaurant",
+        "@id": "https://www.somospiripiri.com/#las-tablas",
         "name": "Piri Piri Las Tablas",
-        "telephone": "+34 912 563 497",
-        "address": { "@type": "PostalAddress", "addressLocality": "Madrid", "addressRegion": "Madrid", "addressCountry": "ES" }
+        "parentOrganization": {
+          "@id": "https://www.somospiripiri.com/#organization"
+        },
+        "url": "https://www.somospiripiri.com/contacto",
+        "image": "https://www.somospiripiri.com/og/og-contacto.jpg",
+        "telephone": "+34912563497",
+        "email": "info@somospiripiri.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Paseo de la Tierra de Melide 27",
+          "addressLocality": "Madrid",
+          "addressRegion": "Madrid",
+          "postalCode": "28050",
+          "addressCountry": "ES"
+        },
+        "hasMap": "https://maps.app.goo.gl/dPkXc8XPTvbbbnRK7",
+        "servesCuisine": [
+          "Pollo al carbón",
+          "Portuguesa",
+          "Brasas",
+          "Hamburguesas"
+        ],
+        "priceRange": "€€",
+        "currenciesAccepted": "EUR",
+        "acceptsReservations": "True",
+        "hasMenu": "https://www.somospiripiri.com/carta",
+        "menu": "https://www.somospiripiri.com/carta",
+        "sameAs": [
+          "https://www.instagram.com/piripirialcarbon",
+          "https://www.tiktok.com/@piripirialcarbon"
+        ],
+        "potentialAction": [
+          {
+            "@type": "OrderAction",
+            "name": "Pedir a domicilio",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://carta.somospiripiri.com/",
+              "inLanguage": "es-ES",
+              "actionPlatform": [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform"
+              ]
+            },
+            "deliveryMethod": [
+              "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet",
+              "http://purl.org/goodrelations/v1#DeliveryModePickUp"
+            ]
+          },
+          {
+            "@type": "ReserveAction",
+            "name": "Reservar mesa",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.covermanager.com/reservation/module_restaurant/restaurante-piripiri/spanish",
+              "inLanguage": "es-ES",
+              "actionPlatform": [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/MobileWebPlatform"
+              ]
+            },
+            "result": {
+              "@type": "FoodEstablishmentReservation",
+              "name": "Reserva"
+            }
+          }
+        ]
       }
     ]
   }
-  </script>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
+  </script>  <!-- Google Fonts -->
 <!-- CSS -->
   <!-- Site icons. Client masters from Identity/Site Icons: Webflow's
        favicon (32x32) + webclip (256x256) pair. Vector sources live in
@@ -304,22 +576,6 @@
 
 
 
-  <!-- COOKIE BANNER - Bottom -->
-  <div id="cookie-banner" class="popup-cookie u-theme-dark u-border-top-main" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 999; background-color: var(--_theme---background); backdrop-filter: blur(8px);">
-    <div class="u-container u-padding-block-4">
-      <div class="u-flex-horizontal-nowrap u-flex-column-mobile u-justify-content-between u-align-items-center u-gap-4">
-        <p class="u-text-style-small u-color-light-400 u-margin-0">Usamos cookies para mejorar tu experiencia. Al continuar navegando, aceptas nuestra <a href="legal#cookies" class="u-color-brand-500 u-text-decoration-underline">política de cookies</a>.</p>
-        <div class="u-flex-horizontal-nowrap u-gap-3">
-          <button onclick="document.getElementById('cookie-banner').style.display='none';" class="u-text-style-small u-color-light-400 u-bg-transparent u-border-none" style="cursor: pointer;">Rechazar</button>
-          <div class="button_main_wrap" data-trigger="hover focus" style="--_button---size: var(--_spacing---space--4);">
-            <button onclick="document.getElementById('cookie-banner').style.display='none';" class="button_main_element">
-              <div class="button_main_text u-text-style-small">Aceptar</div>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="page_wrap">
     <main class="page_main">
@@ -569,6 +825,14 @@
           }
         </style>
         <h1 id="hero-title" class="hero-title u-color-inherit u-font-style-italic" aria-label="CARBÓN A LO BESTIA.">
+          <!-- The slot machine interleaves both phrases word by word, so the
+               h1's DOM text reads "CARBÓNSALSEOAALOLOBESTIA.BRUTO." — fine for
+               a screen reader (aria-label overrides it) but gibberish to
+               anything that extracts text by stripping tags, which is how most
+               AI crawlers read a page. This carries the same words a visitor
+               actually sees over one animation cycle, clipped to 1x1px. Not a
+               separate message: it is the visible headline, in order. -->
+          <span class="u-sr-only">Carbón a lo bestia. Salseo a lo bruto.</span>
           <span class="hero-line">
             <span class="hero-slot"><span class="hero-slot-inner"><span class="hero-slot-word">CARBÓN</span><span class="hero-slot-word">SALSEO</span></span></span><span class="hero-slot"><span class="hero-slot-inner"><span class="hero-slot-word">A</span><span class="hero-slot-word">A</span></span></span>
           </span>
@@ -1330,7 +1594,10 @@
       <div reserva-iframe="lavapies" class="u-margin-bottom-6" style="display: none;">
         <h4 class="u-text-style-h4 u-margin-bottom-4">Estas reservando en Lavapiés</h4>
         <div class="iframe-wrapper">
-          <iframe id="iframe-lavapies" title="Reservas Lavapiés" src="https://www.covermanager.com/reservation/module_restaurant/restaurante-piripiri/spanish" allow="payment" frameborder="0" width="100%" height="550" scrolling="no" onload="if (typeof iFrameResize === 'function') iFrameResize({}, this);"></iframe>
+          <!-- Consent gate: the CoverManager widget carries Google/Meta/Stripe/New Relic
+                 tags, so it stays inert until the visitor consents. site.js
+                 swaps this for the real <iframe>. Do not restore a bare src. -->
+          <div class="pp-embed-gate" data-pp-embed="covermanager" data-pp-id="iframe-lavapies" data-pp-title="Reservas Lavapiés" data-pp-src="https://www.covermanager.com/reservation/module_restaurant/restaurante-piripiri/spanish" data-pp-height="550"></div>
         </div>
       </div>
 
@@ -1338,7 +1605,10 @@
       <div reserva-iframe="prosperidad" class="u-margin-bottom-6" style="display: none;">
         <h4 class="u-text-style-h4 u-margin-bottom-4">Estas reservando en Prosperidad</h4>
         <div class="iframe-wrapper">
-          <iframe id="iframe-prosperidad" title="Reservas Prosperidad" src="https://www.covermanager.com/reservation/module_restaurant/restaurante-piripirifrango-prosperidad/spanish" allow="payment" frameborder="0" width="100%" height="550" scrolling="no" onload="if (typeof iFrameResize === 'function') iFrameResize({}, this);"></iframe>
+          <!-- Consent gate: the CoverManager widget carries Google/Meta/Stripe/New Relic
+                 tags, so it stays inert until the visitor consents. site.js
+                 swaps this for the real <iframe>. Do not restore a bare src. -->
+          <div class="pp-embed-gate" data-pp-embed="covermanager" data-pp-id="iframe-prosperidad" data-pp-title="Reservas Prosperidad" data-pp-src="https://www.covermanager.com/reservation/module_restaurant/restaurante-piripirifrango-prosperidad/spanish" data-pp-height="550"></div>
         </div>
       </div>
 
@@ -1346,7 +1616,10 @@
       <div reserva-iframe="las-tablas" class="u-margin-bottom-6" style="display: none;">
         <h4 class="u-text-style-h4 u-margin-bottom-4">Estas reservando en Las Tablas</h4>
         <div class="iframe-wrapper">
-          <iframe id="iframe-las-tablas" title="Reservas Las Tablas" src="https://www.covermanager.com/reservation/module_restaurant/Grupo-Piri-Piri/spanish" allow="payment" frameborder="0" width="100%" height="550" scrolling="no" onload="if (typeof iFrameResize === 'function') iFrameResize({}, this);"></iframe>
+          <!-- Consent gate: the CoverManager widget carries Google/Meta/Stripe/New Relic
+                 tags, so it stays inert until the visitor consents. site.js
+                 swaps this for the real <iframe>. Do not restore a bare src. -->
+          <div class="pp-embed-gate" data-pp-embed="covermanager" data-pp-id="iframe-las-tablas" data-pp-title="Reservas Las Tablas" data-pp-src="https://www.covermanager.com/reservation/module_restaurant/Grupo-Piri-Piri/spanish" data-pp-height="550"></div>
         </div>
       </div>
     </div>
@@ -1858,8 +2131,8 @@
 
     </main>
 
-<script src="https://cdn.prod.website-files.com/gsap/3.14.2/gsap.min.js" type="text/javascript"></script>
-  <script src="https://cdn.prod.website-files.com/gsap/3.14.2/ScrollTrigger.min.js" type="text/javascript"></script>
+<script src="assets/vendor/gsap.min.js" type="text/javascript"></script>
+  <script src="assets/vendor/ScrollTrigger.min.js" type="text/javascript"></script>
 
   <script>
   // Scroll entrance animations
@@ -2143,8 +2416,12 @@
   </script>
 
   <!-- Swiper Library (Lumos Slider) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <link rel="stylesheet" href="assets/vendor/swiper-bundle.min.css">
+  <script src="assets/vendor/swiper-bundle.min.js"></script>
+  <!-- CoverManager's parent-side iframe resizer, self-hosted. First-party and
+       inert (no storage, no network), so it may load before consent; the
+       reservation widgets it resizes may not. -->
+  <script src="assets/vendor/iframeResizer.min.js" defer></script>
 
   <script>
     // Lumos Slider Initialization
@@ -2312,9 +2589,6 @@
   </script>
 
   <!-- CoverManager iframe resizer -->
-  <script src="https://www.covermanager.com/js/iframeResizer/iframeResizer.min.js"></script>
-  <script type="text/javascript" src="https://www.covermanager.com/reservation/gtmcrossdomain/restaurante-piripiri"></script>
-
   <script>
     // Reservation Trigger System
     document.addEventListener("DOMContentLoaded", function () {

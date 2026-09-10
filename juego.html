@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#ff5224">
 
   <!-- SEO -->
   <title>¡Vuela, Pollo! | El juego de Piri Piri</title>
@@ -14,6 +15,17 @@
   <meta property="og:site_name" content="Piri Piri">
   <meta property="og:title" content="¡Vuela, Pollo! | El juego de Piri Piri">
   <meta property="og:description" content="Vuela con el gallo de fuego, escupe fuego y cocina la carta. El mini-juego de Piri Piri.">
+  <meta property="og:image" content="https://www.somospiripiri.com/og/og-juego.jpg">
+  <meta property="og:image:secure_url" content="https://www.somospiripiri.com/og/og-juego.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="El gallo de fuego de ¡Vuela, Pollo! rodeado de llamas">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="¡Vuela, Pollo! | El juego de Piri Piri">
+  <meta name="twitter:description" content="¡Vuela, Pollo! El mini-juego arcade de Piri Piri: vuela con el gallo de fuego, escupe fuego, cocina la carta y conviértete en EL GRIFO.">
+  <meta name="twitter:image" content="https://www.somospiripiri.com/og/og-juego.jpg">
+  <meta name="twitter:image:alt" content="El gallo de fuego de ¡Vuela, Pollo! rodeado de llamas">
   <meta property="og:url" content="https://www.somospiripiri.com/juego">
   <meta property="og:locale" content="es_ES">
 
@@ -27,9 +39,84 @@
   <link href="css/lumos.css?v=a040767e" rel="stylesheet" type="text/css">
   <link href="css/site.css?v=20260606x" rel="stylesheet" type="text/css">
   <link href="css/interactions.css?v=0dde50df" rel="stylesheet" type="text/css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-</head>
+
+  <!-- Structured data (JSON-LD). Generated — see notes/SEO-AEO-2026-09.md. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.somospiripiri.com/#website",
+        "url": "https://www.somospiripiri.com/",
+        "name": "Piri Piri",
+        "inLanguage": "es-ES",
+        "publisher": {
+          "@id": "https://www.somospiripiri.com/#organization"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.somospiripiri.com/juego#webpage",
+        "url": "https://www.somospiripiri.com/juego",
+        "name": "¡Vuela, Pollo! | El juego de Piri Piri",
+        "description": "El mini-juego arcade de Piri Piri: vuela con el gallo de fuego, escupe fuego y cocina la carta.",
+        "isPartOf": {
+          "@id": "https://www.somospiripiri.com/#website"
+        },
+        "about": {
+          "@id": "https://www.somospiripiri.com/#organization"
+        },
+        "inLanguage": "es-ES",
+        "primaryImageOfPage": {
+          "@type": "ImageObject",
+          "url": "https://www.somospiripiri.com/og/og-juego.jpg"
+        },
+        "mainEntity": {
+          "@id": "https://www.somospiripiri.com/juego#game"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.somospiripiri.com/juego#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Inicio",
+            "item": "https://www.somospiripiri.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Piri Piraos",
+            "item": "https://www.somospiripiri.com/juego"
+          }
+        ]
+      },
+      {
+        "@type": "VideoGame",
+        "@id": "https://www.somospiripiri.com/juego#game",
+        "name": "¡Vuela, Pollo!",
+        "url": "https://www.somospiripiri.com/juego",
+        "description": "Mini-juego arcade de Piri Piri jugable en el navegador.",
+        "image": "https://www.somospiripiri.com/og/og-juego.jpg",
+        "inLanguage": "es-ES",
+        "gamePlatform": "Navegador web",
+        "applicationCategory": "Game",
+        "playMode": "SinglePlayer",
+        "publisher": {
+          "@id": "https://www.somospiripiri.com/#organization"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      }
+    ]
+  }
+  </script></head>
 <body>
   <style>
     /* Custom cursor (matches the rest of the site) */
@@ -61,6 +148,76 @@
       box-shadow: 0 3px 0 0 var(--swatch--brand-500);
     }
     .pp-fs-btn svg { width: 1.15rem; height: 1.15rem; }
+
+    /* Instructions button, sitting next to the fullscreen one. */
+    .pp-info-btn {
+      position: fixed; top: calc(2 * var(--site--gutter));
+      left: calc(2 * var(--site--gutter) + 3.75rem); z-index: 11;
+      width: 3rem; height: 3rem; border-radius: 999px;
+      border: var(--border-width--main) solid var(--swatch--dark-900);
+      background: var(--swatch--dark-900); color: var(--swatch--light-400);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 3px 0 0 var(--swatch--brand-500);
+    }
+    .pp-info-btn svg { width: 1.15rem; height: 1.15rem; }
+
+    /* Real fullscreen drops these controls into the strip along the top edge
+       that the browser keeps for itself: the "pulsa Esc" toast, and the toolbar
+       that slides down when the pointer reaches the top. Clicks there land on
+       browser chrome instead of the button, which is why Esc was the only way
+       back out. Bring them clear of that strip while fullscreen is active. */
+    .is-fs .pp-fs-btn,
+    .is-fs .pp-info-btn { top: clamp(3.5rem, 9vh, 6rem); z-index: 2147483000; }
+    .is-fs .pp-fs-btn { left: clamp(1rem, 3vw, 2rem); }
+    .is-fs .pp-info-btn { left: calc(clamp(1rem, 3vw, 2rem) + 3.75rem); }
+
+    /* MENU sat permanently on top of the game. On pointer devices it now fades
+       in when the cursor reaches that corner: the ::before is an invisible
+       catch area that keeps hit-testing while the button itself is inert, so
+       hovering the corner is what brings it back. Touch devices have no hover,
+       so there it stays visible as before. */
+    @media (hover: hover) {
+      .game_page [data-modal-trigger="menu"] {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.18s ease;
+      }
+      .game_page [data-modal-trigger="menu"]::before {
+        content: "";
+        position: absolute;
+        top: -2.5rem; right: -2.5rem; bottom: -3rem; left: -4rem;
+        pointer-events: auto;
+      }
+      .game_page [data-modal-trigger="menu"]:hover,
+      .game_page [data-modal-trigger="menu"]:focus-within {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    /* Instructions dialog. Same chrome as the site popups: .modal_content and
+       .popup-close-btn both come from site.css, which this page already loads. */
+    .pp-help {
+      position: fixed; inset: 0; z-index: 2147483001; display: none;
+      align-items: center; justify-content: center; padding: 1rem;
+      background: color-mix(in srgb, var(--swatch--dark-900) 85%, transparent);
+    }
+    .pp-help.is-open { display: flex; }
+    .pp-help .modal_content { width: min(26rem, 92vw); padding: clamp(1.4rem, 5vw, 2.2rem); }
+    .pp-help h2 {
+      font-family: "Neulis Neue", sans-serif; font-weight: 900; text-transform: uppercase;
+      font-size: clamp(1.6rem, 6vw, 2.1rem); line-height: 0.95; margin: 0 0 1.1rem;
+    }
+    .pp-help dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 0.55rem 1rem; align-items: baseline; }
+    .pp-help dt {
+      font-family: "Neulis Neue", sans-serif; font-weight: 900; text-transform: uppercase;
+      font-size: 0.78rem; letter-spacing: 0.06em; white-space: nowrap; opacity: 0.65;
+    }
+    .pp-help dd { margin: 0; font-size: 0.95rem; line-height: 1.35; }
+    .pp-help kbd {
+      font-family: inherit; font-size: 0.85em; border: 1px solid currentColor;
+      border-radius: 0.35em; padding: 0.05em 0.4em; opacity: 0.9;
+    }
 
     .game_section {
       flex: 1 1 auto;
@@ -187,6 +344,11 @@
   <div class="page_wrap game_page">
     <main class="page_main">
 
+      <!-- The page is a canvas: no visible heading anywhere, which left it
+           with no h1 at all. This names the page for search engines and
+           screen readers without adding anything to the layout. -->
+      <h1 class="u-sr-only">¡Vuela, Pollo! El juego de Piri Piri</h1>
+
       <!-- FULLSCREEN MENU -->
       <dialog data-modal-target="menu" data-show-in-designer="false" class="modal_dialog u-theme-dark">
         <div class="modal_inner u-position-relative u-bg-dark-900" data-style="full-screen">
@@ -300,6 +462,58 @@
           <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"></path>
         </svg>
       </button>
+
+      <!-- Instructions -->
+      <button type="button" class="pp-info-btn" id="ppInfoBtn" aria-label="Cómo se juega" title="Cómo se juega" aria-haspopup="dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"></circle><path d="M12 11v5"></path><path d="M12 7.6v.1"></path>
+        </svg>
+      </button>
+      <div class="pp-help" id="ppHelp" role="dialog" aria-modal="true" aria-labelledby="ppHelpTitle">
+        <div class="modal_content u-theme-dark u-border-main u-radius-main">
+          <button type="button" class="popup-close-btn" id="ppHelpClose" aria-label="Cerrar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true" style="width: 1rem; height: 1rem;">
+              <path d="M5 5l14 14M19 5L5 19"></path>
+            </svg>
+          </button>
+          <h2 id="ppHelpTitle">C&oacute;mo se juega</h2>
+          <dl>
+            <dt>Volar</dt>
+            <dd>Clic o toque en la pantalla, o <kbd>Espacio</kbd> / <kbd>&uarr;</kbd> / <kbd>W</kbd></dd>
+            <dt>Fuego</dt>
+            <dd>El bot&oacute;n naranja de abajo a la derecha, o <kbd>F</kbd> / <kbd>Shift</kbd></dd>
+            <dt>Objetivo</dt>
+            <dd>Esquiva los obst&aacute;culos y qu&eacute;malos para sumar puntos.</dd>
+            <dt>Dificultad</dt>
+            <dd>Elige F&Aacute;CIL o NORMAL en la pantalla de inicio.</dd>
+            <dt>Sonido</dt>
+            <dd>El bot&oacute;n de abajo a la izquierda silencia el juego.</dd>
+            <dt>Pantalla</dt>
+            <dd>El bot&oacute;n de arriba a la izquierda abre pantalla completa. <kbd>Esc</kbd> tambi&eacute;n sale.</dd>
+          </dl>
+        </div>
+      </div>
+      <script>
+        // Instructions dialog. juego.js listens for keys on window, so while
+        // this is open we swallow them in the capture phase: otherwise Space
+        // flaps the bird behind the panel while the player is reading.
+        (function () {
+          var help = document.getElementById('ppHelp');
+          var openBtn = document.getElementById('ppInfoBtn');
+          var closeBtn = document.getElementById('ppHelpClose');
+          if (!help || !openBtn) return;
+          function open() { help.classList.add('is-open'); closeBtn.focus(); }
+          function close() { help.classList.remove('is-open'); openBtn.focus(); }
+          openBtn.addEventListener('click', open);
+          closeBtn.addEventListener('click', close);
+          help.addEventListener('click', function (e) { if (e.target === help) close(); });
+          window.addEventListener('keydown', function (e) {
+            if (!help.classList.contains('is-open')) return;
+            if (e.key === 'Escape') { close(); return; }
+            e.stopImmediatePropagation();
+          }, true);
+        })();
+      </script>
       <script>
         (function () {
           var btn = document.getElementById('ppFsBtn'), icon = document.getElementById('ppFsIcon');
@@ -313,7 +527,12 @@
             else { (root.requestFullscreen || root.webkitRequestFullscreen).call(root); }
           });
           function sync() {
-            icon.innerHTML = fsEl()
+            var on = !!fsEl();
+            // Drives the .is-fs rules that move the controls off the top edge.
+            document.documentElement.classList.toggle('is-fs', on);
+            btn.setAttribute('aria-label', on ? 'Salir de pantalla completa' : 'Pantalla completa');
+            btn.setAttribute('title', on ? 'Salir de pantalla completa' : 'Pantalla completa');
+            icon.innerHTML = on
               ? '<path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"></path>'
               : '<path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"></path>';
           }
@@ -471,7 +690,7 @@
   </div>
 
   <!-- GSAP (for the fullscreen menu modal animation) -->
-  <script src="https://cdn.prod.website-files.com/gsap/3.14.2/gsap.min.js" type="text/javascript"></script>
+  <script src="assets/vendor/gsap.min.js" type="text/javascript"></script>
 
   <!-- Lumos Modal Initialization -->
   <script>

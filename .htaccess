@@ -70,8 +70,24 @@ AcceptPathInfo Off
     RewriteRule ^ - [R=404,L]
 </IfModule>
 
-# Served internally, so it does not re-enter the redirect rules above.
+# Served internally, so these do not re-enter the redirect rules above — which
+# is also why every asset reference on an error page is root-absolute: the
+# address bar still holds the URL that failed, so `css/site.css` would resolve
+# against that URL's directory. See internal/build-error-pages.mjs.
+#
+# 403 fires on a directory request (Options -Indexes above). 500 is not
+# hypothetical here either: the KNOWN UNFIXED note on rule 5b means
+# /<existing-page>/anything still reaches LiteSpeed as trailing path info and
+# answers 500. Both now land on a branded page instead of the server default.
+ErrorDocument 400 /400.html
+ErrorDocument 401 /401.html
+ErrorDocument 403 /403.html
 ErrorDocument 404 /404.html
+ErrorDocument 405 /405.html
+ErrorDocument 500 /500.html
+ErrorDocument 502 /502.html
+ErrorDocument 503 /503.html
+ErrorDocument 504 /504.html
 
 <IfModule mod_headers.c>
     # Matches the header Webflow was already sending, so browsers that cached

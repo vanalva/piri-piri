@@ -283,11 +283,18 @@
       [523, 659, 880].forEach(function (f, i) { tone(f, 0.28, 'square', 0.13, null, t0 + i * 0.11); });
     }
   };
-  function applyMute() {
+  // `persist` only on a real toggle. The initial render used to write the
+  // default straight to localStorage, so simply opening the game left a stored
+  // "preference" the player had never expressed. It is exempt storage either
+  // way (a UI setting for the service the visitor asked for), but the exemption
+  // reads a lot better when every stored value is one the player actually chose.
+  function applyMute(persist) {
     muteBtn.setAttribute('aria-pressed', String(muted));
     muteBtn.classList.toggle('is-muted', muted);
     muteBtn.innerHTML = muted ? ICON_MUTE : ICON_SOUND;
-    localStorage.setItem('pp_juego_mute', muted ? '1' : '0');
+    if (persist) {
+      try { localStorage.setItem('pp_juego_mute', muted ? '1' : '0'); } catch (e) {}
+    }
   }
   const ICON_SOUND = '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M16.5 12a4 4 0 0 0-2.2-3.6v7.2A4 4 0 0 0 16.5 12z"/><path d="M14.3 3.2v2.1A6.6 6.6 0 0 1 14.3 18.7v2.1A8.7 8.7 0 0 0 14.3 3.2z"/></svg>';
   const ICON_MUTE  = '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3z"/><path d="M22 9.4 20.6 8l-2.6 2.6L15.4 8 14 9.4l2.6 2.6L14 14.6l1.4 1.4 2.6-2.6 2.6 2.6 1.4-1.4-2.6-2.6z"/></svg>';
@@ -515,7 +522,7 @@
     e.preventDefault(); initAudio(); fire();
   }, { passive: false });
   muteBtn.addEventListener('click', function (e) {
-    e.preventDefault(); initAudio(); muted = !muted; applyMute();
+    e.preventDefault(); initAudio(); muted = !muted; applyMute(true);
   });
   // Listen on window (no canvas focus needed) so Shift/F fire reliably WHILE the
   // player flaps with mouse/Space. Space stays its own branch → never swallowed.

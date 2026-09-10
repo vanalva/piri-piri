@@ -112,26 +112,16 @@
 
   /* ── third-party embeds ────────────────────────────────────────────────── */
 
-  // iframeResizer is CoverManager's own parent-side script (v3.6.1, self-hosted
-  // so no request reaches covermanager.com before consent). Loaded lazily, once,
-  // at the moment a widget is actually being hydrated.
-  var resizerState = 0; // 0 = untouched, 1 = loading, 2 = ready
-  var resizerQueue = [];
-
-  function withResizer(fn) {
-    if (resizerState === 2 || typeof window.iFrameResize === 'function') { fn(); return; }
-    resizerQueue.push(fn);
-    if (resizerState === 1) return;
-    resizerState = 1;
-    var s = document.createElement('script');
-    s.src = 'assets/vendor/iframeResizer.min.js';
-    s.async = true;
-    s.onload = s.onerror = function () {
-      // onerror too: the widget still works unresized, which beats not loading.
-      resizerState = 2;
-      resizerQueue.splice(0).forEach(function (q) { try { q(); } catch (e) {} });
-    };
-    document.head.appendChild(s);
+  // iframeResizer is CoverManager's own parent-side script (v3.6.1), self-hosted
+  // so that nothing reaches covermanager.com before consent. It ships as a plain
+  // deferred first-party <script> on the page that carries the widgets — it sets
+  // no storage and contacts nobody, so loading it early has no consent cost, and
+  // both build pipelines inventory a <script src> reliably (a path referenced
+  // only from inside a JS string is silently dropped from the export).
+  // If it is absent the widget still loads; it just keeps its fixed height.
+  function withResizer(frame) {
+    if (typeof window.iFrameResize !== 'function') return;
+    try { window.iFrameResize({}, frame); } catch (e) {}
   }
 
   function hydrateEmbed(gate) {
@@ -150,13 +140,7 @@
     frame.width = '100%';
     frame.height = gate.getAttribute('data-pp-height') || '550';
     if (gate.getAttribute('data-pp-id')) frame.id = gate.getAttribute('data-pp-id');
-    frame.addEventListener('load', function () {
-      withResizer(function () {
-        if (typeof window.iFrameResize === 'function') {
-          try { window.iFrameResize({}, frame); } catch (e) {}
-        }
-      });
-    });
+    frame.addEventListener('load', function () { withResizer(frame); });
 
     gate.textContent = '';
     gate.classList.add('is-loaded');
@@ -176,26 +160,38 @@
   function renderGate(gate) {
     var title = gate.getAttribute('data-pp-title') || 'Contenido de terceros';
     gate.textContent = '';
+    gate.className = 'pp-embed-gate u-theme-dark u-border-main u-radius-main';
 
-    var inner = el('div', 'pp-embed-gate-inner');
-    inner.appendChild(el('h3', 'pp-embed-gate-title u-text-style-h5', title));
-    inner.appendChild(el('p', 'pp-embed-gate-text u-text-style-small',
+    var inner = el('div',
+      'pp-embed-gate-inner u-flex-vertical-nowrap u-align-items-center u-gap-5 ' +
+      'u-padding-block-7 u-padding-inline-6');
+
+    inner.appendChild(el('h3', 'u-text-style-h4 u-text-transform-uppercase u-margin-0', title));
+
+    var lead = el('p', 'u-text-style-main u-margin-0 pp-embed-gate-text',
       'El motor de reservas lo sirve CoverManager e incorpora cookies de terceros '
       + '(Google, Meta y Stripe) que envían datos a Estados Unidos. No se carga '
-      + 'hasta que tú lo pidas.'));
+      + 'hasta que tú lo pidas.');
+    inner.appendChild(lead);
 
-    var btn = el('button', 'pp-cc-btn pp-cc-btn--solid', 'Cargar el módulo de reservas');
+    var wrap = el('div', 'button_main_wrap');
+    wrap.setAttribute('data-trigger', 'hover focus');
+    var btn = el('button', 'button_main_element');
     btn.type = 'button';
+    btn.setAttribute('data-style', 'secondary');
     btn.setAttribute('data-pp-embed-load', '');
-    inner.appendChild(btn);
+    btn.appendChild(el('div', 'button_main_text u-text-style-main', 'CARGAR RESERVAS'));
+    wrap.appendChild(btn);
+    inner.appendChild(wrap);
 
-    var note = el('p', 'pp-embed-gate-note u-text-style-small',
-      'Al cargarlo aceptas esas cookies para esta finalidad. También puedes reservar '
-      + 'por teléfono. ');
-    var a = el('a', 'pp-cc-a', 'Política de cookies');
-    a.href = 'legal#cookies';
-    note.appendChild(a);
+    var note = el('p', 'u-text-style-small u-margin-0 pp-embed-gate-note',
+      'Al cargarlo aceptas esas cookies para esta finalidad. También puedes reservar por teléfono.');
     inner.appendChild(note);
+
+    var a = el('a', 'u-text-style-small u-color-inherit u-text-decoration-underline pp-cc-fineprint',
+      'Política de cookies');
+    a.href = 'legal#cookies';
+    inner.appendChild(a);
 
     gate.appendChild(inner);
   }
@@ -242,60 +238,94 @@
     return n;
   }
 
+  // The site's button is a wrap + element + text triplet with a hover trigger
+  // attribute; `data-style="secondary"` is the dark fill with the offset brand
+  // shadow used everywhere else on the site. Reject and Accept are built by the
+  // same call with the same arguments so they come out identical, which is what
+  // Guía AEPD 3.2.3 requires ("al mismo nivel y con la misma visibilidad").
+  function brandButton(label, key, textClass) {
+    var wrap = el('div', 'button_main_wrap pp-cc-btnwrap');
+    wrap.setAttribute('data-trigger', 'hover focus');
+    var btn = el('button', 'button_main_element pp-cc-btn-compact');
+    btn.type = 'button';
+    btn.setAttribute('data-style', 'secondary');
+    btn.setAttribute('data-pp-cc', key);
+    btn.appendChild(el('div', 'button_main_text ' + (textClass || 'u-text-style-small'), label));
+    wrap.appendChild(btn);
+    return wrap;
+  }
+
+  // The quiet third option, styled like the "¿Cómo funciona?" link under the
+  // promo popup's CTA. Never used for Reject — only for "Configurar".
+  function quietLink(label, key) {
+    var b = el('button', 'pp-cc-link u-text-style-small u-color-inherit u-text-decoration-underline', label);
+    b.type = 'button';
+    b.setAttribute('data-pp-cc', key);
+    return b;
+  }
+
+  // Same X as the promo popup's close button.
+  function closeButton(key, aria) {
+    var b = el('button', 'popup-close-btn');
+    b.type = 'button';
+    b.setAttribute('data-pp-cc', key);
+    b.innerHTML = '<svg width="14" height="14" viewBox="0 0 39.276 39.277" fill="currentColor" aria-hidden="true">'
+      + '<path d="M6.505,0.79L39.276,33.561l-6.505,4.926L0,5.716Z"/>'
+      + '<path d="M38.486,6.506L5.715,39.277l-4.926-6.505L33.56,0Z"/></svg>';
+    b.appendChild(el('span', 'u-sr-only', aria));
+    return b;
+  }
+
   /* ── first layer (banner) ──────────────────────────────────────────────── */
 
   var bannerNode = null;
 
+  // Same bar the site already had: .popup-cookie on a dark theme with a top
+  // border, copy in u-text-style-small / u-color-light-400 and a brand-500
+  // underlined link. It uses .u-container-full, not .u-container: the capped
+  // one centres inside a 90rem box, which on a wide screen boxed the copy into
+  // a narrow column and pushed the bar to four lines tall with half the width
+  // empty. Full-bleed with the site's own --site--margin gutter puts the text
+  // hard left and lets it run, so the bar is one or two lines.
   function buildBanner() {
-    var wrap = el('div', 'pp-cc-banner u-theme-dark');
+    var wrap = el('div', 'popup-cookie pp-cc-banner u-theme-dark u-border-top-main');
     wrap.id = 'pp-cc-banner';
     wrap.setAttribute('role', 'dialog');
     wrap.setAttribute('aria-modal', 'false');
-    wrap.setAttribute('aria-labelledby', 'pp-cc-banner-title');
+    wrap.setAttribute('aria-label', 'Cookies');
     wrap.setAttribute('aria-describedby', 'pp-cc-banner-desc');
 
-    var inner = el('div', 'pp-cc-banner-inner');
-
-    var copy = el('div', 'pp-cc-banner-copy');
-    var h = el('h2', 'pp-cc-banner-title u-text-style-h6 u-text-transform-uppercase', 'Cookies');
-    h.id = 'pp-cc-banner-title';
-    copy.appendChild(h);
+    var container = el('div', 'u-container-full pp-cc-container');
+    var row = el('div', 'pp-cc-row');
 
     // First layer content per Guía AEPD 3.1.2.2: who, what for, own/third
     // party, what the third party does, how to accept/configure/reject, and a
     // visible link to the second layer.
-    var p = el('p', 'pp-cc-banner-text u-text-style-small');
+    var p = el('p', 'u-text-style-small u-color-light-400 u-margin-0 pp-cc-banner-text');
     p.id = 'pp-cc-banner-desc';
     p.appendChild(document.createTextNode(
-      'Piripiri España S.L. usa almacenamiento propio necesario para que la web '
-      + 'funcione. El módulo de reservas lo sirve CoverManager e incorpora cookies '
-      + 'de terceros de medición y publicidad (Google, Meta, Stripe) con '
-      + 'transferencia a EE. UU.: no se cargan hasta que las aceptes. Puedes '
-      + 'aceptar, rechazar o elegir por finalidad. '));
-    var link = el('a', 'pp-cc-a', 'Política de cookies');
+      'Piripiri España S.L. usa almacenamiento propio para que la web funcione. '
+      + 'El módulo de reservas es de CoverManager y trae cookies de Google, Meta y '
+      + 'Stripe (medición y publicidad, con datos a EE. UU.): no se cargan sin tu '
+      + 'permiso. Acepta, rechaza o configura por finalidad. '));
+    var link = el('a', 'u-color-brand-500 u-text-decoration-underline', 'Política de cookies');
     link.href = 'legal#cookies';
     p.appendChild(link);
     p.appendChild(document.createTextNode('.'));
-    copy.appendChild(p);
+    row.appendChild(p);
 
-    var actions = el('div', 'pp-cc-banner-actions');
-    // Reject first and visually identical to Accept. Configure is secondary —
-    // it is an extra route, not the only route to rejecting.
-    actions.appendChild(action('Rechazar', 'reject', 'pp-cc-btn pp-cc-btn--solid'));
-    actions.appendChild(action('Aceptar', 'accept', 'pp-cc-btn pp-cc-btn--solid'));
-    actions.appendChild(action('Configurar', 'settings', 'pp-cc-btn pp-cc-btn--quiet'));
+    // Configurar sits BEFORE the pair so the two pills anchor the right edge
+    // together instead of leaving the link orphaned off the end. Reject and
+    // Accept stay adjacent and identical, which is what parity requires.
+    var actions = el('div', 'pp-cc-actions');
+    actions.appendChild(quietLink('Configurar', 'settings'));
+    actions.appendChild(brandButton('RECHAZAR', 'reject'));
+    actions.appendChild(brandButton('ACEPTAR', 'accept'));
+    row.appendChild(actions);
 
-    inner.appendChild(copy);
-    inner.appendChild(actions);
-    wrap.appendChild(inner);
+    container.appendChild(row);
+    wrap.appendChild(container);
     return wrap;
-  }
-
-  function action(label, key, cls) {
-    var b = el('button', cls, label);
-    b.type = 'button';
-    b.setAttribute('data-pp-cc', key);
-    return b;
   }
 
   function showBanner() {
@@ -315,66 +345,90 @@
   var panelNode = null;
   var lastFocus = null;
 
+  // Same shell as the promo popup on the home page: .popup-overlay scrim,
+  // .modal_content card on a dark theme with the main border and radius, the
+  // .popup-close-btn X top-right, and a centred body using the same flex +
+  // padding utilities.
   function buildPanel() {
-    var overlay = el('div', 'pp-cc-overlay');
+    var overlay = el('div', 'popup-overlay pp-cc-overlay');
     overlay.id = 'pp-cc-panel';
     overlay.setAttribute('role', 'dialog');
     overlay.setAttribute('aria-modal', 'true');
     overlay.setAttribute('aria-labelledby', 'pp-cc-panel-title');
 
-    var panel = el('div', 'pp-cc-panel u-theme-dark');
+    var panel = el('div',
+      'modal_content u-theme-dark u-border-main u-position-relative u-radius-main pp-cc-modal');
 
-    var close = el('button', 'pp-cc-panel-close', '×');
-    close.type = 'button';
-    close.setAttribute('data-pp-cc', 'panel-close');
-    close.setAttribute('aria-label', 'Cerrar preferencias');
-    panel.appendChild(close);
+    panel.appendChild(closeButton('panel-close', 'Cerrar preferencias'));
 
-    var t = el('h2', 'pp-cc-panel-title u-text-style-h5 u-text-transform-uppercase', 'Preferencias de cookies');
+    var body = el('div',
+      'pp-cc-modal-body u-flex-vertical-nowrap u-align-items-center u-gap-6 '
+      + 'u-padding-block-7 u-padding-inline-7');
+
+    var t = el('h2', 'u-text-style-h2 u-text-transform-uppercase u-margin-0 pp-cc-modal-title');
     t.id = 'pp-cc-panel-title';
-    panel.appendChild(t);
+    t.innerHTML = 'TUS<br>COOKIES';
+    body.appendChild(t);
 
-    panel.appendChild(el('p', 'pp-cc-panel-intro u-text-style-small',
+    body.appendChild(el('p', 'u-text-style-main u-margin-0 pp-cc-modal-lead',
       'Elige por finalidad. Nada que no sea estrictamente necesario se carga sin '
-      + 'tu permiso, y puedes cambiar de opinión cuando quieras desde el enlace '
-      + '"Preferencias de cookies" del pie de página.'));
+      + 'tu permiso, y puedes cambiar de opinión cuando quieras.'));
 
     var list = el('ul', 'pp-cc-cats');
     CATEGORIES.forEach(function (cat) {
-      var li = el('li', 'pp-cc-cat');
-      var head = el('div', 'pp-cc-cat-head');
+      var li = el('li', 'pp-cc-cat u-border-main u-radius-main u-padding-block-4 u-padding-inline-4');
+      var head = el('div', 'pp-cc-cat-head u-flex-horizontal-nowrap u-align-items-center u-justify-content-between u-gap-3');
 
       if (cat.essential) {
-        head.appendChild(el('span', 'pp-cc-cat-name u-text-style-main', cat.label));
-        head.appendChild(el('span', 'pp-cc-cat-always u-text-style-small', 'Siempre activas'));
+        head.appendChild(el('span', 'u-text-style-main pp-cc-cat-name', cat.label));
+        head.appendChild(el('span', 'u-text-style-small u-color-brand-500 pp-cc-cat-always', 'SIEMPRE ACTIVAS'));
       } else {
-        var label = el('label', 'pp-cc-cat-label');
-        var input = el('input', 'pp-cc-check');
+        // The site's own checkbox: .newsletter-consent + .newsletter-checkbox-box
+        // wrapping a visually hidden real input, with the orchid fill on :checked.
+        // Already defined in site.css, so nothing new is invented here.
+        var label = el('label', 'newsletter-consent pp-cc-cat-label');
+        var box = el('span', 'newsletter-checkbox-box');
+        var input = el('input', 'newsletter_checkbox');
         input.type = 'checkbox';
         input.setAttribute('data-pp-cat', cat.id);
-        // Never pre-ticked in favour of accepting (Guía AEPD 3.1.2.2 / panel).
+        // Never pre-ticked in favour of accepting (Guía AEPD 3.2.3).
         input.checked = granted(cat.id);
-        label.appendChild(input);
-        label.appendChild(el('span', 'pp-cc-cat-name u-text-style-main', cat.label));
+        box.appendChild(input);
+        var check = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        check.setAttribute('class', 'newsletter-checkbox-check');
+        check.setAttribute('width', '14');
+        check.setAttribute('height', '14');
+        check.setAttribute('viewBox', '0 0 24 24');
+        check.setAttribute('fill', 'none');
+        check.setAttribute('stroke', 'currentColor');
+        check.setAttribute('stroke-width', '3.5');
+        check.setAttribute('aria-hidden', 'true');
+        var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M4 12.5 9.5 18 20 6');
+        check.appendChild(path);
+        box.appendChild(check);
+        label.appendChild(box);
+        label.appendChild(el('span', 'u-text-style-main pp-cc-cat-name', cat.label));
         head.appendChild(label);
       }
 
       li.appendChild(head);
-      li.appendChild(el('p', 'pp-cc-cat-desc u-text-style-small', cat.desc));
+      li.appendChild(el('p', 'u-text-style-small u-color-light-400 u-margin-0 pp-cc-cat-desc', cat.desc));
       list.appendChild(li);
     });
-    panel.appendChild(list);
+    body.appendChild(list);
 
-    var acts = el('div', 'pp-cc-panel-actions');
-    acts.appendChild(action('Rechazar todo', 'reject', 'pp-cc-btn pp-cc-btn--solid'));
-    acts.appendChild(action('Aceptar todo', 'accept', 'pp-cc-btn pp-cc-btn--solid'));
-    acts.appendChild(action('Guardar preferencias', 'save', 'pp-cc-btn pp-cc-btn--quiet'));
-    panel.appendChild(acts);
+    var acts = el('div', 'pp-cc-panel-actions u-flex-horizontal-nowrap u-align-items-center u-justify-content-center u-gap-3');
+    acts.appendChild(brandButton('RECHAZAR TODO', 'reject'));
+    acts.appendChild(brandButton('ACEPTAR TODO', 'accept'));
+    body.appendChild(acts);
+    body.appendChild(quietLink('Guardar preferencias', 'save'));
 
+    panel.appendChild(body);
     overlay.appendChild(panel);
 
     overlay.addEventListener('click', function (e) {
-      // Clicking the backdrop closes the panel without deciding anything; the
+      // Clicking the scrim closes the panel without deciding anything; the
       // first layer comes back if there was no prior choice.
       if (e.target === overlay) closePanel();
     });
@@ -449,15 +503,26 @@
 
   /* ── footer control (permanent, every page) ────────────────────────────── */
 
+  // The withdrawal route has to be permanent and reachable from every page
+  // (Guía AEPD 3.2.9). The footer's legal strip is that place: it is on all
+  // pages and it is where a visitor already looks for this. Mirrors the
+  // existing markup (.footer_bottom_list > .footer_bottom_item > link) and
+  // lands last, next to "Política de Cookies".
   function injectFooterLink() {
     if (document.querySelector('[data-pp-cc="footer"]')) return;
-    var sibling = document.querySelector('.footer_bottom_link_wrap');
-    if (!sibling || !sibling.parentNode) return;
+    var links = document.querySelectorAll('.footer_bottom_link_wrap');
+    if (!links.length) return;
+    var lastItem = links[links.length - 1].parentNode;
+    var list = lastItem && lastItem.parentNode;
+    if (!list) return;
+
+    var item = el('div', lastItem.className || 'footer_bottom_item');
     var btn = el('button', 'footer_bottom_link_wrap pp-cc-footer-btn');
     btn.type = 'button';
     btn.setAttribute('data-pp-cc', 'footer');
     btn.appendChild(el('div', 'footer_bottom_link_text u-text-style-small', 'Preferencias de cookies'));
-    sibling.parentNode.appendChild(btn);
+    item.appendChild(btn);
+    list.appendChild(item);
   }
 
   /* ── wiring ────────────────────────────────────────────────────────────── */
@@ -931,7 +996,10 @@ const PP_IS_TOUCH = !!(window.matchMedia && window.matchMedia('(hover: none), (p
     const ctas = document.querySelector('.floating-ctas');
     if (!ctas) return;
     const subfooter = document.querySelector('.footer_bottom_wrap');
-    const cookieBanner = document.getElementById('cookie-banner');
+    // Consent banner id, injected by the consent block at the top of this file.
+    // It only exists while there is no valid stored decision; when it is absent
+    // the offset stays 0, which is the correct resting state.
+    const cookieBanner = document.getElementById('pp-cc-banner');
 
     let subfooterVisible = false;
     let cookieOffset = 0;
