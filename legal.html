@@ -15,6 +15,11 @@
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
   <!-- CSS -->
+  <!-- Site icons. Client masters from Identity/Site Icons: Webflow's
+       favicon (32x32) + webclip (256x256) pair. Vector sources live in
+       references/brand/site-icons/. -->
+  <link href="assets/resources/icons/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="assets/resources/icons/webclip.png" rel="apple-touch-icon">
   <link href="css/lumos.css?v=a040767e" rel="stylesheet" type="text/css">
   <link href="css/site.css?v=20260606x" rel="stylesheet" type="text/css">
   <link href="css/interactions.css?v=0dde50df" rel="stylesheet" type="text/css">
@@ -781,13 +786,15 @@
           </div>
         </div>
 
-        <!-- Newsletter Signup (Center) — opens the PRENDE LA MECHA modal -->
+        <!-- Club CTA (Center) — links straight to the Cheerfy loyalty portal.
+             It used to open the PRENDE LA MECHA popup, which made joining a
+             two-click job: open modal, then click the same button again. -->
         <div class="u-flex-vertical-nowrap u-gap-4 u-align-items-center u-text-align-center" style="flex: 1 1 auto; max-width: 32rem;">
           <p class="u-text-style-main" style="font-style: italic;">El Club Secreto de los Devoradores de Alas: cada compra suma plumas y cada pluma desbloquea recompensas.</p>
           <div data-button-mode="orchid" class="button_main_wrap" data-trigger="hover focus">
-            <button type="button" class="button_main_element" data-style="secondary" onclick="openSuscribePopup();">
+            <a href="https://portal.cheerfy.com/?portal_id=ff7d8ec029654c97961d8c2bda590325&affiliate=Landing%20Web" target="_blank" rel="noopener" class="button_main_element" data-style="secondary">
               <div class="button_main_text u-text-style-main">ÚNETE AL CLUB</div>
-            </button>
+            </a>
           </div>
         </div>
 

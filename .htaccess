@@ -29,6 +29,9 @@ ErrorDocument 404 /404.html
     # Matches the header Webflow was already sending, so browsers that cached
     # HSTS from the old host keep an unbroken policy across the migration.
     Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
+    <FilesMatch "\.html$">
+        Header set Cache-Control "no-cache, must-revalidate"
+    </FilesMatch>
     Header always set X-Content-Type-Options "nosniff"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
@@ -41,9 +44,11 @@ ErrorDocument 404 /404.html
 
 <IfModule mod_expires.c>
     ExpiresActive On
-    # HTML stays short: the site is edited under a retainer and must not go
-    # stale in visitors' caches after an FTP push.
-    ExpiresByType text/html                 "access plus 10 minutes"
+    # HTML must never be served stale: pushes to GitHub auto-deploy straight to
+    # production, so an edit has to be visible on the next request. `no-cache`
+    # means revalidate, not "don't store" — the browser still sends a
+    # conditional request and gets a cheap 304 when nothing changed.
+    ExpiresByType text/html                 "access plus 0 seconds"
     ExpiresByType text/css                  "access plus 1 year"
     ExpiresByType application/javascript    "access plus 1 year"
     ExpiresByType image/webp                "access plus 1 year"

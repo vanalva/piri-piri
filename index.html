@@ -71,6 +71,11 @@
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous">
 <!-- CSS -->
+  <!-- Site icons. Client masters from Identity/Site Icons: Webflow's
+       favicon (32x32) + webclip (256x256) pair. Vector sources live in
+       references/brand/site-icons/. -->
+  <link href="assets/resources/icons/favicon.png" rel="shortcut icon" type="image/x-icon">
+  <link href="assets/resources/icons/webclip.png" rel="apple-touch-icon">
   <link href="css/lumos.css?v=a040767e" rel="stylesheet" type="text/css">
   <link href="css/site.css?v=20260606x" rel="stylesheet" type="text/css">
   <link href="css/interactions.css?v=0dde50df" rel="stylesheet" type="text/css">
@@ -223,8 +228,7 @@
               <!-- Slide 3: VERDADERO FINAL FELIZ (postres) -->
               <div class="popup-slide">
                 <div class="popup-slide-image">
-                  <!-- TODO: replace with the postres photo -->
-                  <img src="https://picsum.photos/seed/piripiri-final-feliz/1200/750" alt="Postres Piri Piri" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                  <img src="assets/resources/images/Carta/1024w/mousse-de-chocolate_1024w.webp" srcset="assets/resources/images/Carta/480w/mousse-de-chocolate_480w.webp 480w, assets/resources/images/Carta/768w/mousse-de-chocolate_768w.webp 768w, assets/resources/images/Carta/1024w/mousse-de-chocolate_1024w.webp 1024w" sizes="(max-width: 767px) 90vw, 520px" loading="lazy" decoding="async" alt="Mousse de chocolate de Piri Piri en tarro de cristal con perlas de chocolate" style="width: 100%; height: 100%; object-fit: cover; display: block;">
                 </div>
                 <div class="popup-slide-body u-flex-vertical-nowrap u-align-items-center u-gap-6 u-padding-block-7 u-padding-inline-7" style="text-align: center;">
                   <h2 class="u-text-style-h2 u-text-transform-uppercase u-margin-0" style="line-height: 0.95;">VERDADERO<br>FINAL FELIZ</h2>
@@ -1150,7 +1154,7 @@
          against vh as well, and reserving 75% of it as padding (the share that
          sits inside the section — the other 25% spills past the bottom edge),
          keeps text and bird apart at every ratio. -->
-    <div class="u-theme-brand u-radius-bottom-main" style="--pp-rooster: min(clamp(32rem, 55vw, 64rem), 72vh); min-height: 100vh; padding-top: 15vh; padding-bottom: calc(0.75 * var(--pp-rooster) + var(--_spacing---space--6)); display: flex; align-items: flex-start; justify-content: center; position: relative; overflow: hidden;">
+    <div class="home_quemamos_stage u-theme-brand u-radius-bottom-main">
       <!-- Centered info block — width matches the canonical --cs-measure recipe. -->
       <div class="u-container-small u-align-items-center" style="text-align: center; position: relative; z-index: 2; max-width: var(--cs-measure); min-width: 0;">
         <!-- Tagline -->
@@ -2671,13 +2675,15 @@
           </div>
         </div>
 
-        <!-- Newsletter Signup (Center) — opens the PRENDE LA MECHA modal -->
+        <!-- Club CTA (Center) — links straight to the Cheerfy loyalty portal.
+             It used to open the PRENDE LA MECHA popup, which made joining a
+             two-click job: open modal, then click the same button again. -->
         <div class="u-flex-vertical-nowrap u-gap-4 u-align-items-center u-text-align-center" style="flex: 1 1 auto; max-width: 32rem;">
           <p class="u-text-style-main" style="font-style: italic;">El Club Secreto de los Devoradores de Alas: cada compra suma plumas y cada pluma desbloquea recompensas.</p>
           <div data-button-mode="orchid" class="button_main_wrap" data-trigger="hover focus">
-            <button type="button" class="button_main_element" data-style="secondary" onclick="openSuscribePopup();">
+            <a href="https://portal.cheerfy.com/?portal_id=ff7d8ec029654c97961d8c2bda590325&affiliate=Landing%20Web" target="_blank" rel="noopener" class="button_main_element" data-style="secondary">
               <div class="button_main_text u-text-style-main">ÚNETE AL CLUB</div>
-            </button>
+            </a>
           </div>
         </div>
 

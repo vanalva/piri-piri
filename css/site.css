@@ -5365,3 +5365,43 @@ html {
   .button_main_icon { width: 1.4rem !important; }
   .hero_nav .hero_logo_wrap { width: 6.5rem !important; }
 }
+
+/* =====================================================================
+   HOME - QUEMAMOS stage (rooster illustration)
+   Moved off the inline style attribute so the phone breakpoint can reach
+   it: inline styles can only be beaten by !important, which Webflow strips.
+   ===================================================================== */
+
+.home_quemamos_stage {
+  /* --pp-rooster drives BOTH the illustration's size and the space reserved
+     for it under the copy. It used to be sized off viewport WIDTH (55vw) while
+     its headroom came from viewport HEIGHT (100vh), so on a wide, short screen
+     the bird outgrew its space and climbed into the paragraph. The 72vh cap is
+     what prevents that -- do not remove it. */
+  --pp-rooster: min(clamp(32rem, 55vw, 64rem), 72vh);
+  min-height: 100vh;
+  padding-top: 15vh;
+  /* min(..., 100%) mirrors the image's own max-width: 100%. Below ~512px wide
+     the illustration is width-capped, and reserving against the uncapped
+     --pp-rooster booked ~86px of orange for pixels that never render. */
+  padding-bottom: calc(0.75 * min(var(--pp-rooster), 100%) + var(--_spacing---space--6));
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* Phones only. The top 16.2% of the artwork is flames, and they are the same
+   orange as this section, so they read as empty space above the comb. Trimming
+   the reserve by 0.10 lifts the bird into that dead band and cannot push the
+   visible ink into the copy -- 0.10 is smaller than the artwork's own 0.162
+   headroom, so the worst case is invisible flames overlapping.
+   This stays OFF at 479px and up: from tablet upward the bird is no longer
+   width-capped and 0.75 is what keeps it out of the paragraph. */
+@media (max-width: 478px) {
+  .home_quemamos_stage {
+    padding-bottom: calc(0.65 * min(var(--pp-rooster), 100%) + var(--_spacing---space--6));
+  }
+}
