@@ -44,6 +44,16 @@ AcceptPathInfo Off
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME}\.html -f
     RewriteRule ^(.+?)/?$ $1.html [L]
+
+    # 6. Nothing matched: answer 404 ourselves.
+    #    Without this, LiteSpeed resolves a request like /carta/no-existe against
+    #    carta.html with "/no-existe" as trailing path info and returns 500.
+    #    AcceptPathInfo Off does not prevent that here, so the request is
+    #    terminated in the rewrite chain instead, before it reaches the handler.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.html !-f
+    RewriteRule ^ - [R=404,L]
 </IfModule>
 
 # Served internally, so it does not re-enter the redirect rules above.
