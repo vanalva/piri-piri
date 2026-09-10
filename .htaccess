@@ -4,6 +4,10 @@
 Options -Indexes
 DirectoryIndex index.html
 
+# Without this, a request like /carta/no-existe is handed to carta.html as
+# trailing path info and the server answers 500 instead of a clean 404.
+AcceptPathInfo Off
+
 <IfModule mod_rewrite.c>
     RewriteEngine On
 

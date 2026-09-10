@@ -3137,11 +3137,47 @@
         }
       });
 
-      setFilter("all");
+      // Deep link straight into a category. index.html's popup links to
+      // ./carta.html#postres and #bebidas, and nothing was reading them, so the
+      // page just opened on "Todos". No element carries those ids either, so the
+      // browser did not even scroll. Accept ?cat= as well, and only honour a
+      // value that has a real filter button still on screen — the block above
+      // hides buttons for categories with no dishes.
+      const readDeepCategory = () => {
+        const raw = (location.hash || "").replace("#", "") ||
+          new URLSearchParams(location.search).get("cat") || "";
+        const cat = normalizeCategory(raw);
+        if (!cat || cat === "all") return null;
+        const btn = filterButtons.find((b) =>
+          b.dataset.filterBtn === cat && b.style.display !== "none");
+        return btn ? cat : null;
+      };
+
+      const deepCategory = readDeepCategory();
+      setFilter(deepCategory || "all");
       // Restore the view the user came back from (?view=list|masonry|grid),
       // otherwise default to the mosaico view.
       const _returnView = new URLSearchParams(location.search).get("view");
       setView(["grid", "masonry", "list"].includes(_returnView) ? _returnView : "masonry");
+
+      if (deepCategory) {
+        // The filtered list sits below the hero, so bring it into view once the
+        // view has laid out. Instant, not smooth: arriving mid-animation from a
+        // popup reads as a glitch.
+        requestAnimationFrame(() => {
+          const target = document.getElementById("carta");
+          if (target) target.scrollIntoView({ block: "start" });
+        });
+      }
+
+      // Already on the page and the hash changes (a second popup link, back
+      // button): re-filter instead of doing nothing.
+      window.addEventListener("hashchange", () => {
+        const cat = readDeepCategory();
+        setFilter(cat || "all");
+        const target = document.getElementById("carta");
+        if (cat && target) target.scrollIntoView({ block: "start", behavior: "smooth" });
+      });
 
       const collapseBtn = document.querySelector("[data-grid-collapse]");
       const panelBody = document.querySelector("[data-grid-panel-body]");
