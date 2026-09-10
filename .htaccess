@@ -45,6 +45,17 @@ AcceptPathInfo Off
     RewriteCond %{REQUEST_FILENAME}\.html -f
     RewriteRule ^(.+?)/?$ $1.html [L]
 
+    # 5b. This site is flat: every page is a file at the web root. So a request
+    #     with a path segment whose first part is not a real directory can never
+    #     be a page. Matching on REQUEST_URI is deliberate — by the time these
+    #     rules run, LiteSpeed has already resolved /carta/no-existe to
+    #     carta.html with "/no-existe" as trailing path info, so REQUEST_FILENAME
+    #     reports an existing file and every !-f test below is skipped. That is
+    #     what made this return 500 instead of 404.
+    RewriteCond %{REQUEST_URI} ^/([^/]+)/.+$
+    RewriteCond %{DOCUMENT_ROOT}/%1 !-d
+    RewriteRule ^ - [R=404,L]
+
     # 6. Nothing matched: answer 404 ourselves.
     #    Without this, LiteSpeed resolves a request like /carta/no-existe against
     #    carta.html with "/no-existe" as trailing path info and returns 500.
