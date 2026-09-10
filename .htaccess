@@ -1,7 +1,5 @@
 # somospiripiri.com — Apache/LiteSpeed config for Hostinger shared hosting.
 # Copied verbatim to the web root by build-web.js (src/static/** passthrough).
-# Reproduces the two behaviours Webflow was providing for us: the apex -> www
-# canonical redirect, and a real 404 route.
 
 Options -Indexes
 DirectoryIndex index.html
@@ -15,25 +13,49 @@ DirectoryIndex index.html
 
     # 2. www but still plain HTTP -> HTTPS. Both conditions must be false to
     #    skip, so an already-secure request never re-enters the rule and there
-    #    is no loop. X-Forwarded-Proto covers the case where TLS terminates
-    #    upstream and %{HTTPS} reads as off.
+    #    is no loop. X-Forwarded-Proto covers TLS terminating upstream.
     RewriteCond %{HTTPS} !=on
     RewriteCond %{HTTP:X-Forwarded-Proto} !=https
     RewriteRule ^ https://www.somospiripiri.com%{REQUEST_URI} [R=301,L]
+
+    # 3-5 give the site extensionless URLs.
+    #
+    # Rules 3 and 4 match on THE_REQUEST — the raw request line the browser
+    # sent — NOT on the current rewritten path. That distinction is what keeps
+    # them from fighting rule 5: rule 5 rewrites internally without touching
+    # THE_REQUEST, so it can never re-trigger a redirect. Matching on the path
+    # instead would loop forever.
+
+    # 3. /index.html -> /
+    RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+    RewriteRule ^ / [R=301,L]
+
+    # 4. /anything.html -> /anything   (old links, bookmarks, Google results)
+    RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+    RewriteRule ^ /%1 [R=301,L]
+
+    # 5. Serve /anything from anything.html without changing the address bar.
+    #    Guarded so real files and directories are never shadowed.
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.html -f
+    RewriteRule ^(.+?)/?$ $1.html [L]
 </IfModule>
 
-# 404.html is built from src/pages/404.html and lives at the web root.
+# Served internally, so it does not re-enter the redirect rules above.
 ErrorDocument 404 /404.html
 
 <IfModule mod_headers.c>
     # Matches the header Webflow was already sending, so browsers that cached
     # HSTS from the old host keep an unbroken policy across the migration.
     Header always set Strict-Transport-Security "max-age=31536000" env=HTTPS
-    <FilesMatch "\.html$">
-        Header set Cache-Control "no-cache, must-revalidate"
-    </FilesMatch>
     Header always set X-Content-Type-Options "nosniff"
     Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # ── TEMPORARY: caching fully off while the site is being edited ──────────
+    # Restore the mod_expires block below (and drop this) once it settles.
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
 </IfModule>
 
 <IfModule mod_deflate.c>
@@ -42,19 +64,9 @@ ErrorDocument 404 /404.html
     AddOutputFilterByType DEFLATE image/svg+xml
 </IfModule>
 
+# ── TEMPORARY: expiry disabled alongside the no-store header above ───────────
+# The settled configuration is: HTML revalidates every request, everything else
+# caches for a year (safe because CSS/JS are ?v= busted).
 <IfModule mod_expires.c>
-    ExpiresActive On
-    # HTML must never be served stale: pushes to GitHub auto-deploy straight to
-    # production, so an edit has to be visible on the next request. `no-cache`
-    # means revalidate, not "don't store" — the browser still sends a
-    # conditional request and gets a cheap 304 when nothing changed.
-    ExpiresByType text/html                 "access plus 0 seconds"
-    ExpiresByType text/css                  "access plus 1 year"
-    ExpiresByType application/javascript    "access plus 1 year"
-    ExpiresByType image/webp                "access plus 1 year"
-    ExpiresByType image/jpeg                "access plus 1 year"
-    ExpiresByType image/png                 "access plus 1 year"
-    ExpiresByType image/svg+xml             "access plus 1 year"
-    ExpiresByType font/woff2                "access plus 1 year"
-    ExpiresByType video/mp4                 "access plus 1 year"
+    ExpiresActive Off
 </IfModule>

@@ -507,6 +507,17 @@ const PP_IS_TOUCH = !!(window.matchMedia && window.matchMedia('(hover: none), (p
     let lastY = window.scrollY || window.pageYOffset || 0;
     let rafId = 0;
 
+    // Phones: keep the bar off-screen until the user actually scrolls. Under
+    // this many pixels from the top nothing shows at all — no pair, no FAB.
+    // Past it the normal collapse/expand behaviour takes over. CSS holds the
+    // hidden state (.floating-ctas:not(.is-scrolled)), so it applies from the
+    // first paint instead of after this deferred script runs.
+    const SHOW_AFTER = 48;
+
+    function syncScrolled(y) {
+      ctas.classList.toggle('is-scrolled', y > SHOW_AFTER);
+    }
+
     function setCollapsed(next) {
       collapsed = next;
       ctas.classList.toggle('is-collapsed', collapsed && mobileMq.matches);
@@ -516,6 +527,7 @@ const PP_IS_TOUCH = !!(window.matchMedia && window.matchMedia('(hover: none), (p
       rafId = 0;
       const y = window.scrollY || window.pageYOffset || 0;
       const delta = y - lastY;
+      syncScrolled(y);
       // ignore tiny jitter / rubber-banding
       if (Math.abs(delta) > 6) {
         if (delta < 0) setCollapsed(false);   // scrolling up → expand
@@ -531,6 +543,7 @@ const PP_IS_TOUCH = !!(window.matchMedia && window.matchMedia('(hover: none), (p
     function applyMode() {
       if (mobileMq.matches) {
         setCollapsed(collapsed);              // honor current state on mobile
+        syncScrolled(window.scrollY || window.pageYOffset || 0);
       } else {
         ctas.classList.remove('is-collapsed'); // desktop: always full pair
       }

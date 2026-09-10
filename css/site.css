@@ -5282,6 +5282,19 @@ html {
 .floating-ctas-fab svg { width: auto; height: 1.85rem; display: block; }
 
 @media (max-width: 767px) {
+  /* Phones: nothing floats until the user actually scrolls. At the top of the
+     page there is no pair and no FAB — the hero stays clean. site.js adds
+     .is-scrolled past a small threshold and drops it again back at the top.
+     The hiding lives here rather than in JS because site.js is deferred: if
+     the pair started visible it would paint, then snap to the FAB. Phones
+     already depend on JS for this bar (the FAB is JS-built), so there is no
+     fallback being given up. */
+  .floating-ctas:not(.is-scrolled) {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
   /* collapsed → show only the FAB, hide the two pills */
   .floating-ctas.is-collapsed .button_main_wrap { display: none; }
   .floating-ctas.is-collapsed .floating-ctas-fab { display: flex; }
