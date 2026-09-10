@@ -1364,47 +1364,27 @@
             <p class="u-text-style-h3 u-font-secondary">El club secreto de<br>los devoradores de alas</p>
           </div>
 
-          <!-- Bottom: Logos + Wallet Buttons -->
+          <!-- Bottom: club marks + join CTA -->
           <div class="u-flex-horizontal-nowrap u-align-items-center u-gap-4 u-margin-top-8" style="flex-wrap: wrap;">
-            <!-- Animated logo. Vector (SMIL) instead of the old animated
-                 .webp: crisp on retina, and the new export drops the baked-in
-                 "El club secreto de los devoradores de alas" wordmark, which
-                 is already set as live text right above this. -->
-            <div style="width: 6rem; flex-shrink: 0;">
-              <img src="assets/resources/images/loyalty/piripiri-logo-anim-light.svg" loading="lazy" alt="Piri Piri" class="u-width-full u-height-auto" style="aspect-ratio: 1 / 1;">
+            <!-- Animated club mark. This is the same asset the club-secreto
+                 hero uses (rooster head + the handwritten wordmark), not the
+                 SVG that fills the right-hand column of this section — that
+                 one was duplicated here at 6rem and read as a repeat. -->
+            <div style="width: 11rem; flex-shrink: 0;">
+              <img src="assets/resources/images/loyalty/piripiri-logo-anim-light.webp" loading="lazy" alt="El Club Secreto de los Devoradores de Alas" class="u-width-full u-height-auto">
             </div>
             <!-- Ribbon Logo -->
             <div style="width: 12rem; flex-shrink: 0;">
               <img src="assets/resources/images/loyalty/piripiri-ribon-logo.png" loading="lazy" alt="Piri Piri" class="u-width-full u-height-auto">
             </div>
-            <!-- Google Wallet Button -->
-            <a href="#" class="u-flex-horizontal-nowrap u-align-items-center u-gap-3 u-padding-3 u-padding-inline-4 u-radius-main u-text-decoration-none u-color-inherit" style="background: var(--_theme---background-2); border: var(--border-width--main) solid var(--_theme---border); flex-shrink: 0;">
-              <svg viewBox="0 0 24 24" style="width: 2rem; height: 2rem;" fill="none">
-                <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                <circle cx="7" cy="12" r="2" fill="#4285F4"/>
-                <circle cx="10" cy="12" r="2" fill="#EA4335"/>
-                <circle cx="13" cy="12" r="2" fill="#FBBC05"/>
-                <circle cx="16" cy="12" r="2" fill="#34A853"/>
-              </svg>
-              <div class="u-flex-vertical-nowrap u-align-items-start">
-                <span class="u-text-style-small u-opacity-75">Add to</span>
-                <span class="u-text-style-main" style="font-weight: 600;">Google Wallet</span>
-              </div>
-            </a>
-            <!-- Apple Wallet Button -->
-            <a href="#" class="u-flex-horizontal-nowrap u-align-items-center u-gap-3 u-padding-3 u-padding-inline-4 u-radius-main u-text-decoration-none u-color-inherit" style="background: var(--_theme---background-2); border: var(--border-width--main) solid var(--_theme---border); flex-shrink: 0;">
-              <svg viewBox="0 0 24 24" style="width: 2rem; height: 2rem;" fill="none">
-                <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
-                <rect x="4" y="6" width="16" height="3" fill="#FF5F57"/>
-                <rect x="4" y="9" width="16" height="3" fill="#FFBD2E"/>
-                <rect x="4" y="12" width="16" height="3" fill="#28CA41"/>
-                <rect x="4" y="15" width="16" height="3" fill="#1E90FF"/>
-              </svg>
-              <div class="u-flex-vertical-nowrap u-align-items-start">
-                <span class="u-text-style-small u-opacity-75">Add to</span>
-                <span class="u-text-style-main" style="font-weight: 600;">Apple Wallet</span>
-              </div>
-            </a>
+            <!-- Join CTA. Straight to the Cheerfy loyalty portal, same as every
+                 other club button on the site — the wallet passes that used to
+                 sit here do not exist yet. -->
+            <div class="button_main_wrap" data-trigger="hover focus">
+              <a href="https://portal.cheerfy.com/?portal_id=ff7d8ec029654c97961d8c2bda590325&affiliate=Landing%20Web" target="_blank" rel="noopener" class="button_main_element">
+                <div class="button_main_text u-text-style-main">&Uacute;NETE AL CLUB</div>
+              </a>
+            </div>
           </div>
         </div>
 

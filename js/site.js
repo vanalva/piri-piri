@@ -1,3 +1,513 @@
+// ─── Cookie consent (LSSI-CE art. 22.2 · RGPD arts. 6 y 7 · Guía AEPD) ──────
+// Injected here rather than pasted into each page so all pages behave alike.
+// Everything visual lives in site.css (.pp-cc-*); this file only sets classes.
+//
+// Design notes, because the details are the compliance:
+//   · Nothing non-exempt loads until there is a recorded, affirmative choice.
+//     The reservation widgets ship as inert placeholders (`data-pp-embed`) and
+//     become real <iframe>s only after consent. Inaction loads nothing.
+//   · "Rechazar" and "Aceptar" are the same control, at the same level, in the
+//     first layer — never a link, never behind "Configurar" (Guía AEPD 3.2.3).
+//   · Continued browsing is NOT consent. There is no close button on the first
+//     layer and no scroll/timeout auto-accept.
+//   · The decision persists across pages and visits with a version and an
+//     expiry, and is withdrawable at any time from the footer link on every
+//     page (Guía AEPD 3.2.8 / 3.2.9).
+//
+// PP_CONSENT_VERSION: bump whenever the set of purposes or third parties
+// changes. A stored record from an older version is treated as absent, so the
+// banner returns and the user decides again (Guía AEPD 3.2.7).
+(function () {
+  'use strict';
+
+  var STORE_KEY = 'pp_consent';
+  var PP_CONSENT_VERSION = 1;
+
+  // The AEPD's stated ceiling is 24 months ("no tenga una duración superior a
+  // 24 meses", Guía 3.2.8). We re-ask at 12 — comfortably inside the ceiling,
+  // and one prompt a year is not a burden on a restaurant site. Raise only
+  // with advice; never above 730.
+  var PP_CONSENT_MAX_AGE_DAYS = 365;
+
+  // Purpose registry. `essential` categories are exempt under art. 22.2 and
+  // are not offered as a choice. Adding a purpose later = one entry here, one
+  // row in the panel, one row in the policy table, and a version bump.
+  var CATEGORIES = [
+    {
+      id: 'necesarias',
+      essential: true,
+      label: 'Necesarias',
+      desc: 'Almacenamiento propio, en tu navegador, para que la web funcione: '
+          + 'recordar tu decisión sobre cookies, el plato de la carta que estabas '
+          + 'viendo y tus ajustes del mini-juego. No identifican a nadie, no salen '
+          + 'de tu dispositivo y no se comparten. Exentas de consentimiento '
+          + '(art. 22.2 LSSI-CE).'
+    },
+    {
+      id: 'terceros',
+      essential: false,
+      label: 'Módulo de reservas (CoverManager)',
+      desc: 'Carga el motor de reservas de CoverManager dentro de la página. '
+          + 'CoverManager incorpora sus propias etiquetas de medición y '
+          + 'publicidad (Google Analytics, Google Ads, Meta Pixel), su proveedor '
+          + 'de pago (Stripe) y su monitorización (New Relic), que instalan '
+          + 'cookies y envían datos a Estados Unidos. Si lo rechazas, puedes '
+          + 'seguir reservando por teléfono o cargar el módulo puntualmente '
+          + 'desde la propia página.'
+    }
+  ];
+
+  var NON_ESSENTIAL = CATEGORIES.filter(function (c) { return !c.essential; });
+
+  /* ── record ────────────────────────────────────────────────────────────── */
+
+  function emptyState() {
+    var s = {};
+    CATEGORIES.forEach(function (c) { s[c.id] = !!c.essential; });
+    return s;
+  }
+
+  // Returns the stored record, or null when there is none, it is unreadable,
+  // it predates the current version, or it has expired. Any of those means
+  // "no valid consent" — we ask again and load nothing in the meantime.
+  function readRecord() {
+    var raw;
+    try { raw = window.localStorage.getItem(STORE_KEY); } catch (e) { return null; }
+    if (!raw) return null;
+    var rec;
+    try { rec = JSON.parse(raw); } catch (e) { return null; }
+    if (!rec || rec.v !== PP_CONSENT_VERSION) return null;
+    if (!rec.exp || Date.now() > rec.exp) return null;
+    if (!rec.cats) return null;
+    return rec;
+  }
+
+  // The proof-of-consent record. Client-side only: this is a static site with
+  // no backend, so there is nowhere to log to. It carries what a record needs
+  // — when, which version, which purposes, and by which action — but it lives
+  // in the visitor's own browser and the visitor can clear it. If the client
+  // needs accreditation that survives that, it needs a server endpoint; see
+  // notes/COOKIE-AUDIT-2026-09.md.
+  function writeRecord(state, method) {
+    var now = Date.now();
+    var rec = {
+      v: PP_CONSENT_VERSION,
+      ts: new Date(now).toISOString(),
+      exp: now + PP_CONSENT_MAX_AGE_DAYS * 86400000,
+      method: method,
+      cats: state
+    };
+    try { window.localStorage.setItem(STORE_KEY, JSON.stringify(rec)); } catch (e) { /* private mode */ }
+    return rec;
+  }
+
+  function currentState() {
+    var rec = readRecord();
+    return rec ? rec.cats : emptyState();
+  }
+
+  function granted(catId) {
+    return currentState()[catId] === true;
+  }
+
+  /* ── third-party embeds ────────────────────────────────────────────────── */
+
+  // iframeResizer is CoverManager's own parent-side script (v3.6.1, self-hosted
+  // so no request reaches covermanager.com before consent). Loaded lazily, once,
+  // at the moment a widget is actually being hydrated.
+  var resizerState = 0; // 0 = untouched, 1 = loading, 2 = ready
+  var resizerQueue = [];
+
+  function withResizer(fn) {
+    if (resizerState === 2 || typeof window.iFrameResize === 'function') { fn(); return; }
+    resizerQueue.push(fn);
+    if (resizerState === 1) return;
+    resizerState = 1;
+    var s = document.createElement('script');
+    s.src = 'assets/vendor/iframeResizer.min.js';
+    s.async = true;
+    s.onload = s.onerror = function () {
+      // onerror too: the widget still works unresized, which beats not loading.
+      resizerState = 2;
+      resizerQueue.splice(0).forEach(function (q) { try { q(); } catch (e) {} });
+    };
+    document.head.appendChild(s);
+  }
+
+  function hydrateEmbed(gate) {
+    if (gate.getAttribute('data-pp-loaded') === '1') return;
+    var src = gate.getAttribute('data-pp-src');
+    if (!src) return;
+    gate.setAttribute('data-pp-loaded', '1');
+
+    var frame = document.createElement('iframe');
+    frame.src = src;
+    frame.title = gate.getAttribute('data-pp-title') || 'Reservas';
+    frame.className = 'pp-embed-frame';
+    frame.setAttribute('frameborder', '0');
+    frame.setAttribute('scrolling', 'no');
+    frame.setAttribute('allow', 'payment');
+    frame.width = '100%';
+    frame.height = gate.getAttribute('data-pp-height') || '550';
+    if (gate.getAttribute('data-pp-id')) frame.id = gate.getAttribute('data-pp-id');
+    frame.addEventListener('load', function () {
+      withResizer(function () {
+        if (typeof window.iFrameResize === 'function') {
+          try { window.iFrameResize({}, frame); } catch (e) {}
+        }
+      });
+    });
+
+    gate.textContent = '';
+    gate.classList.add('is-loaded');
+    gate.appendChild(frame);
+  }
+
+  // Revoking puts the placeholder back. Note for the policy and for the user:
+  // cookies a third party already set on its own domain cannot be deleted from
+  // here — that needs the browser's own settings.
+  function dehydrateEmbed(gate) {
+    if (gate.getAttribute('data-pp-loaded') !== '1') return;
+    gate.setAttribute('data-pp-loaded', '0');
+    gate.classList.remove('is-loaded');
+    renderGate(gate);
+  }
+
+  function renderGate(gate) {
+    var title = gate.getAttribute('data-pp-title') || 'Contenido de terceros';
+    gate.textContent = '';
+
+    var inner = el('div', 'pp-embed-gate-inner');
+    inner.appendChild(el('h3', 'pp-embed-gate-title u-text-style-h5', title));
+    inner.appendChild(el('p', 'pp-embed-gate-text u-text-style-small',
+      'El motor de reservas lo sirve CoverManager e incorpora cookies de terceros '
+      + '(Google, Meta y Stripe) que envían datos a Estados Unidos. No se carga '
+      + 'hasta que tú lo pidas.'));
+
+    var btn = el('button', 'pp-cc-btn pp-cc-btn--solid', 'Cargar el módulo de reservas');
+    btn.type = 'button';
+    btn.setAttribute('data-pp-embed-load', '');
+    inner.appendChild(btn);
+
+    var note = el('p', 'pp-embed-gate-note u-text-style-small',
+      'Al cargarlo aceptas esas cookies para esta finalidad. También puedes reservar '
+      + 'por teléfono. ');
+    var a = el('a', 'pp-cc-a', 'Política de cookies');
+    a.href = 'legal#cookies';
+    note.appendChild(a);
+    inner.appendChild(note);
+
+    gate.appendChild(inner);
+  }
+
+  function eachGate(fn) {
+    Array.prototype.forEach.call(document.querySelectorAll('[data-pp-embed]'), fn);
+  }
+
+  function syncEmbeds() {
+    var ok = granted('terceros');
+    eachGate(function (gate) { ok ? hydrateEmbed(gate) : dehydrateEmbed(gate); });
+  }
+
+  function initGates() {
+    eachGate(function (gate) {
+      if (gate.getAttribute('data-pp-loaded') === '1') return;
+      renderGate(gate);
+    });
+    // One delegated listener: gates are re-rendered, so per-button binding would
+    // go stale on every revoke.
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest ? e.target.closest('[data-pp-embed-load]') : null;
+      if (!btn) return;
+      var gate = btn.closest('[data-pp-embed]');
+      if (!gate) return;
+      // A click on this button is consent for this purpose, given at the moment
+      // the service is requested (Guía AEPD 3.2.3.d). It is recorded like any
+      // other, so the choice persists and shows up in the preferences panel.
+      var state = currentState();
+      state.terceros = true;
+      writeRecord(state, 'inline-embed:' + (gate.getAttribute('data-pp-embed') || '?'));
+      syncEmbeds();
+      syncPanelInputs();
+      hideBanner();
+    });
+  }
+
+  /* ── DOM helpers ───────────────────────────────────────────────────────── */
+
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  /* ── first layer (banner) ──────────────────────────────────────────────── */
+
+  var bannerNode = null;
+
+  function buildBanner() {
+    var wrap = el('div', 'pp-cc-banner u-theme-dark');
+    wrap.id = 'pp-cc-banner';
+    wrap.setAttribute('role', 'dialog');
+    wrap.setAttribute('aria-modal', 'false');
+    wrap.setAttribute('aria-labelledby', 'pp-cc-banner-title');
+    wrap.setAttribute('aria-describedby', 'pp-cc-banner-desc');
+
+    var inner = el('div', 'pp-cc-banner-inner');
+
+    var copy = el('div', 'pp-cc-banner-copy');
+    var h = el('h2', 'pp-cc-banner-title u-text-style-h6 u-text-transform-uppercase', 'Cookies');
+    h.id = 'pp-cc-banner-title';
+    copy.appendChild(h);
+
+    // First layer content per Guía AEPD 3.1.2.2: who, what for, own/third
+    // party, what the third party does, how to accept/configure/reject, and a
+    // visible link to the second layer.
+    var p = el('p', 'pp-cc-banner-text u-text-style-small');
+    p.id = 'pp-cc-banner-desc';
+    p.appendChild(document.createTextNode(
+      'Piripiri España S.L. usa almacenamiento propio necesario para que la web '
+      + 'funcione. El módulo de reservas lo sirve CoverManager e incorpora cookies '
+      + 'de terceros de medición y publicidad (Google, Meta, Stripe) con '
+      + 'transferencia a EE. UU.: no se cargan hasta que las aceptes. Puedes '
+      + 'aceptar, rechazar o elegir por finalidad. '));
+    var link = el('a', 'pp-cc-a', 'Política de cookies');
+    link.href = 'legal#cookies';
+    p.appendChild(link);
+    p.appendChild(document.createTextNode('.'));
+    copy.appendChild(p);
+
+    var actions = el('div', 'pp-cc-banner-actions');
+    // Reject first and visually identical to Accept. Configure is secondary —
+    // it is an extra route, not the only route to rejecting.
+    actions.appendChild(action('Rechazar', 'reject', 'pp-cc-btn pp-cc-btn--solid'));
+    actions.appendChild(action('Aceptar', 'accept', 'pp-cc-btn pp-cc-btn--solid'));
+    actions.appendChild(action('Configurar', 'settings', 'pp-cc-btn pp-cc-btn--quiet'));
+
+    inner.appendChild(copy);
+    inner.appendChild(actions);
+    wrap.appendChild(inner);
+    return wrap;
+  }
+
+  function action(label, key, cls) {
+    var b = el('button', cls, label);
+    b.type = 'button';
+    b.setAttribute('data-pp-cc', key);
+    return b;
+  }
+
+  function showBanner() {
+    if (!bannerNode) {
+      bannerNode = buildBanner();
+      document.body.appendChild(bannerNode);
+    }
+    bannerNode.classList.add('is-open');
+  }
+
+  function hideBanner() {
+    if (bannerNode) bannerNode.classList.remove('is-open');
+  }
+
+  /* ── second layer (preferences panel) ──────────────────────────────────── */
+
+  var panelNode = null;
+  var lastFocus = null;
+
+  function buildPanel() {
+    var overlay = el('div', 'pp-cc-overlay');
+    overlay.id = 'pp-cc-panel';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-labelledby', 'pp-cc-panel-title');
+
+    var panel = el('div', 'pp-cc-panel u-theme-dark');
+
+    var close = el('button', 'pp-cc-panel-close', '×');
+    close.type = 'button';
+    close.setAttribute('data-pp-cc', 'panel-close');
+    close.setAttribute('aria-label', 'Cerrar preferencias');
+    panel.appendChild(close);
+
+    var t = el('h2', 'pp-cc-panel-title u-text-style-h5 u-text-transform-uppercase', 'Preferencias de cookies');
+    t.id = 'pp-cc-panel-title';
+    panel.appendChild(t);
+
+    panel.appendChild(el('p', 'pp-cc-panel-intro u-text-style-small',
+      'Elige por finalidad. Nada que no sea estrictamente necesario se carga sin '
+      + 'tu permiso, y puedes cambiar de opinión cuando quieras desde el enlace '
+      + '"Preferencias de cookies" del pie de página.'));
+
+    var list = el('ul', 'pp-cc-cats');
+    CATEGORIES.forEach(function (cat) {
+      var li = el('li', 'pp-cc-cat');
+      var head = el('div', 'pp-cc-cat-head');
+
+      if (cat.essential) {
+        head.appendChild(el('span', 'pp-cc-cat-name u-text-style-main', cat.label));
+        head.appendChild(el('span', 'pp-cc-cat-always u-text-style-small', 'Siempre activas'));
+      } else {
+        var label = el('label', 'pp-cc-cat-label');
+        var input = el('input', 'pp-cc-check');
+        input.type = 'checkbox';
+        input.setAttribute('data-pp-cat', cat.id);
+        // Never pre-ticked in favour of accepting (Guía AEPD 3.1.2.2 / panel).
+        input.checked = granted(cat.id);
+        label.appendChild(input);
+        label.appendChild(el('span', 'pp-cc-cat-name u-text-style-main', cat.label));
+        head.appendChild(label);
+      }
+
+      li.appendChild(head);
+      li.appendChild(el('p', 'pp-cc-cat-desc u-text-style-small', cat.desc));
+      list.appendChild(li);
+    });
+    panel.appendChild(list);
+
+    var acts = el('div', 'pp-cc-panel-actions');
+    acts.appendChild(action('Rechazar todo', 'reject', 'pp-cc-btn pp-cc-btn--solid'));
+    acts.appendChild(action('Aceptar todo', 'accept', 'pp-cc-btn pp-cc-btn--solid'));
+    acts.appendChild(action('Guardar preferencias', 'save', 'pp-cc-btn pp-cc-btn--quiet'));
+    panel.appendChild(acts);
+
+    overlay.appendChild(panel);
+
+    overlay.addEventListener('click', function (e) {
+      // Clicking the backdrop closes the panel without deciding anything; the
+      // first layer comes back if there was no prior choice.
+      if (e.target === overlay) closePanel();
+    });
+    return overlay;
+  }
+
+  function syncPanelInputs() {
+    if (!panelNode) return;
+    var state = currentState();
+    Array.prototype.forEach.call(panelNode.querySelectorAll('[data-pp-cat]'), function (i) {
+      i.checked = state[i.getAttribute('data-pp-cat')] === true;
+    });
+  }
+
+  function openPanel() {
+    lastFocus = document.activeElement;
+    if (!panelNode) {
+      panelNode = buildPanel();
+      document.body.appendChild(panelNode);
+    }
+    syncPanelInputs();
+    panelNode.classList.add('is-open');
+    document.body.classList.add('pp-cc-locked');
+    var first = panelNode.querySelector('.pp-cc-panel-close');
+    if (first) first.focus();
+  }
+
+  function closePanel() {
+    if (!panelNode) return;
+    panelNode.classList.remove('is-open');
+    document.body.classList.remove('pp-cc-locked');
+    if (!readRecord()) showBanner();
+    if (lastFocus && lastFocus.focus) { try { lastFocus.focus(); } catch (e) {} }
+  }
+
+  /* ── decisions ─────────────────────────────────────────────────────────── */
+
+  function acceptAll(method) {
+    var state = emptyState();
+    CATEGORIES.forEach(function (c) { state[c.id] = true; });
+    writeRecord(state, method);
+    afterDecision();
+  }
+
+  function rejectAll(method) {
+    // Rejecting is a recorded decision, not an absence of one — otherwise the
+    // banner would come back on the next page and nag the user into accepting.
+    writeRecord(emptyState(), method);
+    afterDecision();
+  }
+
+  function saveSelection() {
+    var state = emptyState();
+    if (panelNode) {
+      Array.prototype.forEach.call(panelNode.querySelectorAll('[data-pp-cat]'), function (i) {
+        state[i.getAttribute('data-pp-cat')] = i.checked === true;
+      });
+    }
+    writeRecord(state, 'panel-save');
+    afterDecision();
+  }
+
+  function afterDecision() {
+    hideBanner();
+    if (panelNode) {
+      panelNode.classList.remove('is-open');
+      document.body.classList.remove('pp-cc-locked');
+    }
+    syncPanelInputs();
+    syncEmbeds();
+  }
+
+  /* ── footer control (permanent, every page) ────────────────────────────── */
+
+  function injectFooterLink() {
+    if (document.querySelector('[data-pp-cc="footer"]')) return;
+    var sibling = document.querySelector('.footer_bottom_link_wrap');
+    if (!sibling || !sibling.parentNode) return;
+    var btn = el('button', 'footer_bottom_link_wrap pp-cc-footer-btn');
+    btn.type = 'button';
+    btn.setAttribute('data-pp-cc', 'footer');
+    btn.appendChild(el('div', 'footer_bottom_link_text u-text-style-small', 'Preferencias de cookies'));
+    sibling.parentNode.appendChild(btn);
+  }
+
+  /* ── wiring ────────────────────────────────────────────────────────────── */
+
+  function onClick(e) {
+    var t = e.target.closest ? e.target.closest('[data-pp-cc]') : null;
+    if (!t) return;
+    var k = t.getAttribute('data-pp-cc');
+    if (k === 'accept')       { acceptAll(panelIsOpen() ? 'panel-accept-all' : 'banner-accept-all'); }
+    else if (k === 'reject')  { rejectAll(panelIsOpen() ? 'panel-reject-all' : 'banner-reject-all'); }
+    else if (k === 'save')    { saveSelection(); }
+    else if (k === 'settings' || k === 'footer') { openPanel(); }
+    else if (k === 'panel-close') { closePanel(); }
+  }
+
+  function panelIsOpen() {
+    return !!(panelNode && panelNode.classList.contains('is-open'));
+  }
+
+  function init() {
+    // Suppress inside our own iframes (the mini-game embed): the parent page
+    // already carries the banner, and a second one inside a game frame would
+    // be both broken and pointless.
+    try { if (window.top !== window.self) return; } catch (e) { return; }
+
+    initGates();
+    injectFooterLink();
+    document.addEventListener('click', onClick);
+    document.addEventListener('keydown', function (e) {
+      // Escape closes the panel only. It never dismisses the first layer —
+      // dismissing is not deciding, and inaction is not consent.
+      if (e.key === 'Escape' && panelIsOpen()) closePanel();
+    });
+
+    if (readRecord()) syncEmbeds();
+    else showBanner();
+  }
+
+  // Read by support when someone asks what they consented to, and by the
+  // retest script. Deliberately read-only.
+  window.ppConsentRecord = function () { return readRecord(); };
+  window.ppOpenCookiePrefs = function () { openPanel(); };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
 // ─── Site-wide cursor & button fire effects ────────────────────────────────
 // 1. initFlameCursor — animated SVG flame follows the cursor.
 // 2. initButtonFire  — flames spawn above buttons/links on hover.

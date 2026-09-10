@@ -5418,3 +5418,541 @@ html {
     padding-bottom: calc(0.65 * min(var(--pp-rooster), 100%) + var(--_spacing---space--6));
   }
 }
+
+/* ─── Cookie consent UI ─────────────────────────────────────────────────────
+   Markup is injected by site.js; only class names cross the boundary, so all
+   presentation lives here. Written to the workspace Webflow rules: longhand
+   properties only, the three max-width breakpoints, no !important, no
+   relational selectors in class rules (state comes from modifier classes, and
+   the checkboxes are native so no `:checked + span` trickery is needed).
+
+   The one rule that is not cosmetic: .pp-cc-btn--solid is shared by "Rechazar"
+   and "Aceptar" so the two are pixel-identical. Guía AEPD 3.2.3 requires the
+   reject option "al mismo tiempo, al mismo nivel y con la misma visibilidad"
+   as accept. Do not give either one its own colour, size or weight. */
+
+/* ── first layer ─────────────────────────────────────────────────────────── */
+
+.pp-cc-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1200;
+  display: none;
+  background-color: var(--_theme---background);
+  border-top-width: var(--border-width--main);
+  border-top-style: solid;
+  border-top-color: var(--_theme---border);
+  color: var(--_theme---text);
+}
+
+.pp-cc-banner.is-open {
+  display: block;
+}
+
+.pp-cc-banner-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: var(--_spacing---space--8);
+  row-gap: var(--_spacing---space--5);
+  max-width: 80rem;
+  margin-top: 0;
+  margin-right: auto;
+  margin-bottom: 0;
+  margin-left: auto;
+  padding-top: var(--_spacing---space--5);
+  padding-right: var(--_spacing---space--6);
+  padding-bottom: var(--_spacing---space--5);
+  padding-left: var(--_spacing---space--6);
+}
+
+.pp-cc-banner-copy {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--_spacing---space--2);
+  min-width: 0;
+}
+
+.pp-cc-banner-title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.pp-cc-banner-text {
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 62ch;
+  color: var(--_theme---text-2);
+}
+
+.pp-cc-banner-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--_spacing---space--3);
+  row-gap: var(--_spacing---space--3);
+  flex-shrink: 0;
+}
+
+/* ── shared controls ─────────────────────────────────────────────────────── */
+
+.pp-cc-btn {
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  font-weight: 500;
+  padding-top: 0.75rem;
+  padding-right: var(--_spacing---space--5);
+  padding-bottom: 0.75rem;
+  padding-left: var(--_spacing---space--5);
+  border-top-width: var(--border-width--main);
+  border-right-width: var(--border-width--main);
+  border-bottom-width: var(--border-width--main);
+  border-left-width: var(--border-width--main);
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: currentColor;
+  border-right-color: currentColor;
+  border-bottom-color: currentColor;
+  border-left-color: currentColor;
+  border-top-left-radius: var(--radius--round);
+  border-top-right-radius: var(--radius--round);
+  border-bottom-right-radius: var(--radius--round);
+  border-bottom-left-radius: var(--radius--round);
+  cursor: pointer;
+  white-space: nowrap;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+
+/* Accept and Reject both use this. Same size, same weight, same contrast. */
+.pp-cc-btn--solid {
+  background-color: transparent;
+  color: var(--_theme---text);
+}
+
+.pp-cc-btn--solid:hover {
+  background-color: var(--swatch--brand-500);
+  color: var(--swatch--brand-text);
+  border-top-color: var(--swatch--brand-500);
+  border-right-color: var(--swatch--brand-500);
+  border-bottom-color: var(--swatch--brand-500);
+  border-left-color: var(--swatch--brand-500);
+}
+
+/* Secondary route only. Never the only way to reject. */
+.pp-cc-btn--quiet {
+  background-color: transparent;
+  color: var(--_theme---text-2);
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  text-decoration-line: underline;
+  text-decoration-color: currentColor;
+  text-decoration-style: solid;
+  padding-right: var(--_spacing---space--2);
+  padding-left: var(--_spacing---space--2);
+}
+
+.pp-cc-btn--quiet:hover {
+  color: var(--_theme---text);
+}
+
+.pp-cc-btn:focus-visible {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: var(--swatch--brand-500);
+  outline-offset: 2px;
+}
+
+.pp-cc-a {
+  color: var(--swatch--brand-500);
+  text-decoration-line: underline;
+  text-decoration-color: currentColor;
+  text-decoration-style: solid;
+}
+
+/* ── second layer (preferences panel) ────────────────────────────────────── */
+
+.pp-cc-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding-top: var(--_spacing---space--5);
+  padding-right: var(--_spacing---space--5);
+  padding-bottom: var(--_spacing---space--5);
+  padding-left: var(--_spacing---space--5);
+  background-color: color-mix(in srgb, var(--swatch--dark-900) 85%, transparent);
+}
+
+.pp-cc-overlay.is-open {
+  display: flex;
+}
+
+.pp-cc-locked {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.pp-cc-panel {
+  position: relative;
+  width: min(38rem, 100%);
+  max-height: 86vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: var(--_theme---background);
+  color: var(--_theme---text);
+  border-top-width: var(--border-width--main);
+  border-right-width: var(--border-width--main);
+  border-bottom-width: var(--border-width--main);
+  border-left-width: var(--border-width--main);
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: var(--_theme---border);
+  border-right-color: var(--_theme---border);
+  border-bottom-color: var(--_theme---border);
+  border-left-color: var(--_theme---border);
+  border-top-left-radius: var(--radius--main);
+  border-top-right-radius: var(--radius--main);
+  border-bottom-right-radius: var(--radius--main);
+  border-bottom-left-radius: var(--radius--main);
+  padding-top: var(--_spacing---space--7);
+  padding-right: var(--_spacing---space--7);
+  padding-bottom: var(--_spacing---space--7);
+  padding-left: var(--_spacing---space--7);
+}
+
+.pp-cc-panel-close {
+  position: absolute;
+  top: var(--_spacing---space--4);
+  right: var(--_spacing---space--4);
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: currentColor;
+  background-color: transparent;
+  border-top-width: var(--border-width--main);
+  border-right-width: var(--border-width--main);
+  border-bottom-width: var(--border-width--main);
+  border-left-width: var(--border-width--main);
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: currentColor;
+  border-right-color: currentColor;
+  border-bottom-color: currentColor;
+  border-left-color: currentColor;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-bottom-left-radius: 50%;
+  cursor: pointer;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+.pp-cc-panel-title {
+  margin-top: 0;
+  margin-bottom: var(--_spacing---space--3);
+  padding-right: var(--_spacing---space--8);
+}
+
+.pp-cc-panel-intro {
+  margin-top: 0;
+  margin-bottom: var(--_spacing---space--6);
+  color: var(--_theme---text-2);
+}
+
+.pp-cc-cats {
+  list-style-type: none;
+  list-style-position: outside;
+  margin-top: 0;
+  margin-bottom: var(--_spacing---space--6);
+  padding-left: 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--_spacing---space--5);
+}
+
+.pp-cc-cat {
+  padding-top: var(--_spacing---space--4);
+  padding-right: var(--_spacing---space--4);
+  padding-bottom: var(--_spacing---space--4);
+  padding-left: var(--_spacing---space--4);
+  border-top-width: var(--border-width--main);
+  border-right-width: var(--border-width--main);
+  border-bottom-width: var(--border-width--main);
+  border-left-width: var(--border-width--main);
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-top-color: var(--_theme---border);
+  border-right-color: var(--_theme---border);
+  border-bottom-color: var(--_theme---border);
+  border-left-color: var(--_theme---border);
+  border-top-left-radius: var(--radius--small);
+  border-top-right-radius: var(--radius--small);
+  border-bottom-right-radius: var(--radius--small);
+  border-bottom-left-radius: var(--radius--small);
+}
+
+.pp-cc-cat-head {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: var(--_spacing---space--3);
+  row-gap: var(--_spacing---space--2);
+  margin-bottom: var(--_spacing---space--2);
+}
+
+.pp-cc-cat-label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: var(--_spacing---space--3);
+  cursor: pointer;
+}
+
+/* Native checkbox on purpose: it is keyboard- and screen-reader-correct with
+   no extra markup, and styling it needs no relational selectors. */
+.pp-cc-check {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+  accent-color: var(--swatch--brand-500);
+  cursor: pointer;
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+}
+
+.pp-cc-cat-name {
+  font-weight: 500;
+}
+
+.pp-cc-cat-always {
+  color: var(--_theme---text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pp-cc-cat-desc {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--_theme---text-2);
+}
+
+.pp-cc-panel-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: var(--_spacing---space--3);
+  row-gap: var(--_spacing---space--3);
+}
+
+/* ── footer control ──────────────────────────────────────────────────────── */
+
+.pp-cc-footer-btn {
+  background-color: transparent;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+  color: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+/* ── third-party embed gate ──────────────────────────────────────────────── */
+
+.pp-embed-gate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34rem;
+  width: 100%;
+  background-color: var(--_theme---background-2);
+  border-top-width: var(--border-width--main);
+  border-right-width: var(--border-width--main);
+  border-bottom-width: var(--border-width--main);
+  border-left-width: var(--border-width--main);
+  border-top-style: dashed;
+  border-right-style: dashed;
+  border-bottom-style: dashed;
+  border-left-style: dashed;
+  border-top-color: var(--_theme---border);
+  border-right-color: var(--_theme---border);
+  border-bottom-color: var(--_theme---border);
+  border-left-color: var(--_theme---border);
+  border-top-left-radius: var(--radius--main);
+  border-top-right-radius: var(--radius--main);
+  border-bottom-right-radius: var(--radius--main);
+  border-bottom-left-radius: var(--radius--main);
+  padding-top: var(--_spacing---space--6);
+  padding-right: var(--_spacing---space--5);
+  padding-bottom: var(--_spacing---space--6);
+  padding-left: var(--_spacing---space--5);
+}
+
+/* Once hydrated the gate is just a frame holder: drop the dashed chrome so the
+   widget looks exactly as it did before it was gated. */
+.pp-embed-gate.is-loaded {
+  display: block;
+  min-height: 0;
+  background-color: transparent;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+
+.pp-embed-gate-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: var(--_spacing---space--4);
+  max-width: 34rem;
+  text-align: center;
+}
+
+.pp-embed-gate-title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.pp-embed-gate-text {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--_theme---text-2);
+}
+
+.pp-embed-gate-note {
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--_theme---text-2);
+}
+
+.pp-embed-frame {
+  display: block;
+  width: 100%;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-top-style: solid;
+  border-right-style: solid;
+  border-bottom-style: solid;
+  border-left-style: solid;
+}
+
+/* ── responsive ──────────────────────────────────────────────────────────── */
+
+@media (max-width: 991px) {
+  .pp-cc-banner-inner {
+    padding-right: var(--_spacing---space--5);
+    padding-left: var(--_spacing---space--5);
+    column-gap: var(--_spacing---space--5);
+  }
+}
+
+@media (max-width: 767px) {
+  .pp-cc-banner-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .pp-cc-banner-actions {
+    width: 100%;
+  }
+
+  .pp-cc-banner {
+    max-height: 80vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .pp-embed-gate {
+    min-height: 26rem;
+  }
+}
+
+@media (max-width: 478px) {
+  .pp-cc-banner-inner {
+    padding-top: var(--_spacing---space--4);
+    padding-right: var(--_spacing---space--4);
+    padding-bottom: var(--_spacing---space--4);
+    padding-left: var(--_spacing---space--4);
+  }
+
+  /* Reject and Accept stay side by side and equal-width; only Configurar
+     wraps below. Stacking them would risk one reading as the primary. */
+  .pp-cc-btn--solid {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+    padding-right: var(--_spacing---space--3);
+    padding-left: var(--_spacing---space--3);
+  }
+
+  .pp-cc-btn--quiet {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  .pp-cc-panel {
+    padding-top: var(--_spacing---space--5);
+    padding-right: var(--_spacing---space--5);
+    padding-bottom: var(--_spacing---space--5);
+    padding-left: var(--_spacing---space--5);
+  }
+
+  .pp-cc-panel-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}

@@ -45,13 +45,16 @@ AcceptPathInfo Off
     RewriteCond %{REQUEST_FILENAME}\.html -f
     RewriteRule ^(.+?)/?$ $1.html [L]
 
-    # 5b. This site is flat: every page is a file at the web root. So a request
-    #     with a path segment whose first part is not a real directory can never
-    #     be a page. Matching on REQUEST_URI is deliberate — by the time these
-    #     rules run, LiteSpeed has already resolved /carta/no-existe to
-    #     carta.html with "/no-existe" as trailing path info, so REQUEST_FILENAME
-    #     reports an existing file and every !-f test below is skipped. That is
-    #     what made this return 500 instead of 404.
+    # 5b. Flat site: a request whose first path segment is not a real directory
+    #     cannot be a page, so answer 404. This catches the general case.
+    #
+    #     KNOWN UNFIXED: it does NOT catch /<existing-page>/anything —
+    #     /carta/no-existe and /index/foo still return 500. LiteSpeed resolves
+    #     those to carta.html with trailing path info before .htaccess runs, and
+    #     neither REQUEST_FILENAME tests, REQUEST_URI tests, nor
+    #     `AcceptPathInfo Off` override it from here. Tried 2026-09-10, three
+    #     approaches, all failed — it needs a server-level change from Hostinger.
+    #     Low impact: only reachable by hand-constructing such a URL.
     RewriteCond %{REQUEST_URI} ^/([^/]+)/.+$
     RewriteCond %{DOCUMENT_ROOT}/%1 !-d
     RewriteRule ^ - [R=404,L]
