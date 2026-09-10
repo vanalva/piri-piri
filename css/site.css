@@ -4255,7 +4255,13 @@ html {
   aspect-ratio: 1 / 1;
 }
 
-.masonry-item + .masonry-item {
+/* Scoped to .masonry-row on purpose. This -2px pulls a tile onto its
+   neighbour's border inside a two-up row; carta.html reuses the .masonry-item
+   name in .carta-masonry, a WRAPPING flex grid, where `+` also matches the
+   first card of every new row. That dragged the whole single-column list 2px
+   left of its container (15px left / 19px right against a 17px gutter) and
+   knocked rows 2+ out of line with row 1 on desktop. */
+.masonry-row > .masonry-item + .masonry-item {
   margin-left: var(--border-width--overlap);
 }
 

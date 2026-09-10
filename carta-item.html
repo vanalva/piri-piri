@@ -214,8 +214,13 @@
           </button>
         </div>
 
+        <!-- Gutter comes from u-padding-inline-gutter alone. The u-container that
+             used to sit in here added its own --site--margin on top, so the hero
+             landed at 34px on a phone and 66px on desktop while the logo and MENU
+             above it sit at --site--gutter (17/27) — the same rule every other
+             hero card on the site follows (historia, contacto, club secreto). -->
         <div class="u-flex-grow u-width-full u-flex-vertical-nowrap u-justify-content-center u-padding-inline-gutter">
-          <div class="u-container">
+          <div class="u-position-relative">
             <div class="u-flex-horizontal-nowrap u-gap-6 u-flex-column-mobile u-align-items-stretch">
               <div class="u-radius-main u-border-main u-align-self-stretch" style="flex: 0 0 48%; overflow: hidden; aspect-ratio: 4 / 3;">
                 <img src="assets/resources/images/lumos-v2.webp" alt="Plato Piri Piri" class="u-width-full u-height-full u-object-fit-cover" data-item-image>
