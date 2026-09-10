@@ -182,7 +182,7 @@
         </div>
       </dialog>
 
-      <section class="u-min-height-screen u-flex-vertical-nowrap u-theme-dark">
+      <section class="section_item-hero u-min-height-screen u-flex-vertical-nowrap u-theme-dark">
         <!-- Navigation — flows with the page (matches homepage). The MENU
              button + floating CTAs are the only fixed elements. -->
         <nav class="hero_nav u-flex-horizontal-nowrap u-justify-content-center u-align-items-center u-padding-inline-gutter u-width-full" style="position: absolute; top: 0; left: 0; right: 0; z-index: 10; padding-block: var(--site--gutter);">
@@ -528,7 +528,7 @@
         if (item.image) {
           const absImage = item.image.startsWith("http")
             ? item.image
-            : `https://somospiripiri.com/${item.image}`;
+            : `https://www.somospiripiri.com/${item.image}`;
           setMeta('meta[property="og:image"]', absImage);
           setMeta('meta[name="twitter:image"]', absImage);
         }
@@ -624,6 +624,10 @@
           r++;
         }
         gallerySection.style.display = "";
+        // The marquee inside this section could not measure itself while the
+        // section was display:none, so kick it now that it has a width. The
+        // initializer skips components it has already set up.
+        if (window.initMarquees) window.initMarquees();
       })();
 
       if (dietaryEl) {
@@ -807,6 +811,8 @@
   </script>
 
   <!-- Site-wide flame cursor + button fire -->
+  <!-- Lumos Marquee Initialization — shared with index -->
+  <script src="js/marquee.js?v=8c3f77ab"></script>
   <script src="js/site.js?v=20260606x" defer></script>
 
 </body>

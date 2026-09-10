@@ -4537,6 +4537,22 @@ html {
   container-type: inline-size;
 }
 
+/* Carta item hero — reserve the nav's room.
+   The logo is absolute and the MENÚ button is fixed, so nothing in this section
+   accounts for either. The section is min-height-screen with its content
+   vertically centred, so as soon as the dish photo + detail card grew taller
+   than the viewport (any phone once the browser chrome eats ~140px) the centring
+   collapsed to zero and the photo ran under the logo and the MENÚ pill.
+   --nav--height-total is LUMOS's own "space the nav occupies" token
+   (--nav--height + --nav--spacing-outer-vertical); this file already uses it for
+   the modal max-heights. It resolves to ~81px on a phone, which is exactly where
+   the floating chrome ends, so add one gutter on top of it for breathing room —
+   the same "landmark + one gutter" idiom the home hero uses for its own mobile
+   offset (padding-top: calc(50vh + var(--site--gutter))). */
+.section_item-hero {
+  padding-top: calc(var(--nav--height-total) + var(--site--gutter));
+}
+
 /* Edge-to-edge 2-column grid: image fills left column, text on right.
    Capped at 75vh so the hero never dominates the viewport on tall screens. */
 .historia_hero_grid {
